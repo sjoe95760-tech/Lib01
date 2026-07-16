@@ -15,14 +15,13 @@ target_language = languages[current_hour % len(languages)]
 
 print(f"⏳ Learning about: {target_language}")
 
-# --- Get API key ---
-deepseek_key = os.environ.get('DEEPSEEK_API_KEY')
-if not deepseek_key:
-    print("❌ ERROR: DEEPSEEK_API_KEY environment variable is not set.")
-    print("   Please add it in Settings → Secrets and variables → Actions")
+# --- Use GitHub Token (no new key needed!) ---
+github_token = os.environ.get('GITHUB_TOKEN')
+if not github_token:
+    print("❌ ERROR: GITHUB_TOKEN not found. This should be auto-provided by GitHub Actions.")
     exit(1)
 
-print("✅ API Key found. Calling DeepSeek API...")
+print("✅ GitHub Token found. Calling GitHub Models API...")
 
 # --- Build the prompt ---
 prompt = f"""
@@ -54,45 +53,36 @@ Structure your response as clean HTML with these exact sections:
 Return ONLY the HTML block. No markdown formatting, no extra text outside the HTML.
 """
 
+# --- GitHub Models API endpoint (FREE) ---
+# Using DeepSeek-R1 model via GitHub Models
+url = "https://models.inference.ai.azure.com/v1/chat/completions"
+
 headers = {
-    'Authorization': f'Bearer {deepseek_key}',
-    'Content-Type': 'application/json'
+    "Authorization": f"Bearer {github_token}",
+    "Content-Type": "application/json"
 }
 
 data = {
-    'model': 'deepseek-chat',
-    'messages': [{'role': 'user', 'content': prompt}],
-    'temperature': 0.8,
-    'max_tokens': 1500
+    "model": "DeepSeek-R1",
+    "messages": [{"role": "user", "content": prompt}],
+    "temperature": 0.8,
+    "max_tokens": 2000
 }
 
 # --- Call the API ---
 try:
-    print("📡 Sending request to DeepSeek...")
-    ds_response = requests.post(
-        'https://api.deepseek.com/v1/chat/completions',
-        headers=headers,
-        json=data,
-        timeout=60
-    )
+    print("📡 Sending request to GitHub Models (DeepSeek-R1)...")
+    response = requests.post(url, headers=headers, json=data, timeout=120)
     
-    print(f"📊 HTTP Status Code: {ds_response.status_code}")
+    print(f"📊 HTTP Status Code: {response.status_code}")
     
-    # If status is not 200, print the error and exit
-    if ds_response.status_code != 200:
-        print(f"❌ API Error Response: {ds_response.text}")
+    if response.status_code != 200:
+        print(f"❌ API Error Response: {response.text}")
         exit(1)
     
-    result = ds_response.json()
-    
-    # Check if DeepSeek returned an error object
-    if 'error' in result:
-        print(f"❌ DeepSeek API Error: {result['error']}")
-        exit(1)
-    
-    # Extract the content
+    result = response.json()
     html_content = result['choices'][0]['message']['content']
-    print("✅ Successfully received response from DeepSeek")
+    print("✅ Successfully received response from GitHub Models")
 
 except Exception as e:
     print(f"❌ Request failed with exception: {e}")
@@ -136,7 +126,7 @@ page_html = f"""
 </head>
 <body>
     <h1>🧠 AI's Programming Knowledge Base</h1>
-    <p>This page is automatically updated every hour by DeepSeek AI. 
+    <p>This page is automatically updated every hour by DeepSeek-R1 via GitHub Models (FREE). 
        It learns the logic, structure, and patterns of every known programming language.</p>
     <hr>
 """
@@ -145,7 +135,7 @@ for entry in reversed(log):
     page_html += f"<div class='lesson'>{entry['html']}</div><hr>"
 
 page_html += """
-    <footer>🔄 Updated hourly by DeepSeek AI. No human interaction required.</footer>
+    <footer>🔄 Updated hourly by DeepSeek-R1 (GitHub Models - FREE). No human interaction required.</footer>
 </body>
 </html>
 """
