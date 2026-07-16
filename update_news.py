@@ -3,22 +3,28 @@ import os
 import json
 from datetime import datetime
 
-# --- List of all major programming languages to learn ---
+# --- List of languages ---
 languages = [
     "Python", "JavaScript", "Java", "C++", "C#", 
     "Go", "Rust", "Swift", "Kotlin", "TypeScript", 
     "Ruby", "PHP", "SQL", "HTML/CSS", "Scala", "Perl"
 ]
 
-# --- Pick one language based on the current hour (so it rotates automatically) ---
 current_hour = datetime.now().hour
 target_language = languages[current_hour % len(languages)]
 
 print(f"⏳ Learning about: {target_language}")
 
-# --- 1. Ask DeepSeek to teach us about this language ---
-deepseek_key = os.environ['DEEPSEEK_API_KEY']
+# --- Get API key ---
+deepseek_key = os.environ.get('DEEPSEEK_API_KEY')
+if not deepseek_key:
+    print("❌ ERROR: DEEPSEEK_API_KEY environment variable is not set.")
+    print("   Please add it in Settings → Secrets and variables → Actions")
+    exit(1)
 
+print("✅ API Key found. Calling DeepSeek API...")
+
+# --- Build the prompt ---
 prompt = f"""
 Act as a senior software architect and programming language theorist.
 Provide a deep, educational breakdown of the programming language: {target_language}.
@@ -60,17 +66,39 @@ data = {
     'max_tokens': 1500
 }
 
-# Call the DeepSeek API
-ds_response = requests.post(
-    'https://api.deepseek.com/v1/chat/completions',
-    headers=headers,
-    json=data
-)
+# --- Call the API ---
+try:
+    print("📡 Sending request to DeepSeek...")
+    ds_response = requests.post(
+        'https://api.deepseek.com/v1/chat/completions',
+        headers=headers,
+        json=data,
+        timeout=60
+    )
+    
+    print(f"📊 HTTP Status Code: {ds_response.status_code}")
+    
+    # If status is not 200, print the error and exit
+    if ds_response.status_code != 200:
+        print(f"❌ API Error Response: {ds_response.text}")
+        exit(1)
+    
+    result = ds_response.json()
+    
+    # Check if DeepSeek returned an error object
+    if 'error' in result:
+        print(f"❌ DeepSeek API Error: {result['error']}")
+        exit(1)
+    
+    # Extract the content
+    html_content = result['choices'][0]['message']['content']
+    print("✅ Successfully received response from DeepSeek")
 
-result = ds_response.json()
-html_content = result['choices'][0]['message']['content']
+except Exception as e:
+    print(f"❌ Request failed with exception: {e}")
+    exit(1)
 
-# --- 2. Read the existing knowledge log (history) ---
+# --- Save to knowledge log ---
 log_file = 'knowledge_log.json'
 
 if os.path.exists(log_file):
@@ -79,22 +107,19 @@ if os.path.exists(log_file):
 else:
     log = []
 
-# --- 3. Append the new lesson to the log ---
 log.append({
     "language": target_language,
     "html": html_content,
     "timestamp": datetime.now().isoformat()
 })
 
-# Keep only the last 50 lessons to prevent the file from getting too big
 if len(log) > 50:
     log = log[-50:]
 
-# Save the updated log
 with open(log_file, 'w') as f:
     json.dump(log, f)
 
-# --- 4. Build the new index.html page from the entire log ---
+# --- Build the webpage ---
 page_html = f"""
 <!DOCTYPE html>
 <html>
@@ -116,7 +141,6 @@ page_html = f"""
     <hr>
 """
 
-# Display the lessons (newest first)
 for entry in reversed(log):
     page_html += f"<div class='lesson'>{entry['html']}</div><hr>"
 
@@ -126,7 +150,6 @@ page_html += """
 </html>
 """
 
-# Write the new index.html
 with open('index.html', 'w') as f:
     f.write(page_html)
 
