@@ -18,6 +18,45 @@
        It learns the logic, structure, and patterns of every known programming language.</p>
     <hr>
 <div class='lesson'><think>
+Okay, I need to create a detailed breakdown of the Ruby programming language as a senior software architect and language theorist. The user wants it in specific HTML sections. Let me start by recalling what I know about Ruby.
+
+First, the Core Logic & Design Philosophy. Ruby was created by Yukihiro Matsumoto in the mid-90s. He wanted a language that emphasized programmer happiness and productivity. Ruby is object-oriented language, everything is an object. It's designed to be flexible and expressive, solving the problem of making coding more intuitive and less cumbersome. It's primarily OOP but supports functional and procedural styles too.
+
+Next, Syntax, Structure & Flow. Ruby uses a clean syntax with significant whitespace for readability, but doesn't enforce it. Uses 'end' keywords instead of braces. Semicolons are optional. Code is organized in classes and modules. Methods and blocks are fundamental. For example, blocks with do...end or {}.
+
+Memory Management: Ruby has automatic garbage collection. It uses a mark-and-sweep GC. No manual memory management. Doesn't use reference counting like Python. The GC handles object lifecycle, so developers don't worry about memory.
+
+Paradigms & Tactics: Ruby is OOP-centric. Supports mixins via modules. Concurrency uses threads, but the MRI has a GIL, so true parallelism isn't possible there. However, alternatives like JRuby or TruffleRuby don't have GIL. Error handling is exception-based, using begin-rescue-ensure.
+
+Unique Patterns & Ecosystem: Rails is the flagship framework. Convention over Configuration, DRY principle. RSpec for testing, Sinatra for lightweight web apps. Gems are the package system. Common patterns include metaprogramming, DSLs, and using blocks extensively.
+
+Internal Logic: Ruby's internal logic is about expressiveness and flexibility. Programmers think in terms of objects and messages. Dynamic typing allows for rapid development. The principle of "least surprise" means things work intuitively. Code tends to be concise and readable, favoring DSLs and expressive methods.
+
+I need to structure all this into the given HTML sections. Make sure each section answers the question concisely. Avoid markdown, just HTML. Check for accuracy: MRI's GIL, GC method, frameworks. Ensure each part is clear and educational. No extra text outside the HTML. Use proper HTML tags, close all elements. Let me put it all together now.
+</think>
+
+<html>
+  <h2>🔍 Deep Dive: Ruby</h2>
+  <p><strong>Timestamp:</strong> 2026-07-22 10:07 UTC</p>
+
+  <h3>1. Core Logic & Design Philosophy</h3>
+  <p>Created by Yukihiro Matsumoto (Matz) in 1995 to prioritize developer happiness and productivity. Ruby solves rigid syntax limitations by blending OOP purity with functional/procedural flexibility. Every value is an object (even primitives), emphasizing "principle of least surprise" for intuitive coding.</p>
+
+  <h3>2. Syntax, Structure & Flow</h3>
+  <p>No mandatory braces or semicolons: uses <code>end</code> keywords and significant whitespace (conventionally 2 spaces). Code organization via classes, mixins (modules), and blocks. Implicit returns (last expression's value), optional parentheses for method calls. Example flow: <code>3.times { puts "Ruby" }</code>.</p>
+
+  <h3>3. Memory Management</h3>
+  <p>Automatic garbage collection (mark-and-sweep algorithm). No manual memory control. Objects are reference-counted in MRI (Matz's Ruby Interpreter), but uses conservative GC in later versions. No ownership model like Rust – relies on GC for memory safety.</p>
+
+  <h3>4. Paradigms & Tactics</h3>
+  <p>OOP-first: single inheritance + mixins via modules. Concurrency via threads (cooperative in MRI due to GIL) and fibers for lightweight tasks. Error handling uses exceptions (<code>begin/rescue/ensure</code>), with optional result objects via community patterns. Metaprogramming via <code>eval</code> and method_missing.</p>
+
+  <h3>5. Unique Patterns & Ecosystem</h3>
+  <p>Flagship framework: Ruby on Rails (convention over configuration). RSpec for BDD, Sinatra for microservices. Gems (packages) via RubyGems. Common patterns: DSL creation (e.g., Rakefiles), monkey-patching (caution advised), and block-based APIs (e.g., <code>ActiveRecord</code> queries).</p>
+
+  <h3>6. How it "Makes Sense" (Internal Logic)</h3>
+  <p>Rubyists think in "message passing" between objects, favoring expressiveness over optimization. Dynamic typing and duck typing encourage interface-focused design. The language rewards experimentation: methods can be redefined at runtime, classes reopened, and syntax extended via metaprogramming. Code reads like pseudocode, prioritizing human readability over machine efficiency.</p>
+</html></div><hr><div class='lesson'><think>
 Okay, I need to create a detailed HTML breakdown of Python as a senior software architect and programming language theorist. Let me start by recalling the structure the user specified. The sections are Core Logic & Design Philosophy, Syntax, Memory Management, Paradigms & Tactics, Unique Patterns & Ecosystem, and How it "Makes Sense". Each section has specific questions to address.
 
 First, for Core Logic, I should mention when Python was created, by whom, and its design goals. Guido van Rossum in 1991, emphasis on readability and simplicity. It's multi-paradigm: OOP, procedural, functional. The Zen of Python is important here, maybe quote a few lines. Problems it addresses: easy syntax, rapid development, cross-platform.
