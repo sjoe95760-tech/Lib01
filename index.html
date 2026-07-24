@@ -18,6 +18,45 @@
        It learns the logic, structure, and patterns of every known programming language.</p>
     <hr>
 <div class='lesson'><think>
+Okay, I need to create a detailed HTML breakdown of Perl as a senior software architect and programming language theorist. Let me start by recalling what I know about Perl.
+
+First, the Core Logic & Design Philosophy. Perl was created by Larry Wall in 1987. It's known for its text processing capabilities. The main problems it solves are handling text manipulation, system administration tasks, and CGI scripting. It's a multi-paradigm language, supporting procedural, functional, and OOP approaches, though OOP was added later. The philosophy is "There's more than one way to do it" (TMTOWTDI), which emphasizes flexibility.
+
+Next, Syntax, Structure & Flow. Perl uses braces for blocks and semicolons to end statements. Indentation isn't enforced, so code can be written in various styles. Subroutines are defined with 'sub' keyword. Variables have sigils: $ for scalars, @ for arrays, % for hashes. The flow is procedural by default but can be modular with packages.
+
+Memory Management: Perl uses reference counting for garbage collection. When a variable's reference count drops to zero, it's deallocated. Circular references can cause leaks, so programmers need to be careful. There's no manual memory management like in C, nor ownership models like Rust.
+
+Paradigms & Tactics: OOP is done through packages and blessing references into classes. Concurrency isn't Perl's strong suit; it uses threads but they're not lightweight. Error handling typically uses eval blocks and checking $@ for exceptions. Modules like Try::Tiny add try/catch syntax.
+
+Unique Patterns & Ecosystem: CPAN is the massive module repository. Frameworks like Dancer and Mojolicious for web dev. Common patterns include regex-based text processing, one-liners for scripts, and using hashes for flexible data structures.
+
+Internal Logic: Programmers think in terms of text processing first. The language's idioms encourage concise code, leveraging built-in functions and context sensitivity (scalar vs list context). The motto TMTOWTDI allows multiple approaches but requires discipline to maintain readability.
+
+I need to structure all this into the specified HTML sections. Make sure each section answers the question concisely, using technical terms where appropriate. Check for accuracy, especially on memory management and paradigms. Avoid markdown, just HTML. Ensure the timestamp is correct as per the user's request.
+</think>
+
+<html>
+<h2>🔍 Deep Dive: Perl</h2>
+<p><strong>Timestamp:</strong> 2026-07-24 15:18 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Created by Larry Wall in 1987, Perl was designed for text processing and system administration. It emphasizes practicality over purity ("There's more than one way to do it"). Primarily procedural with later OOP support (Perl 5) and functional influences. Excels at string manipulation, regex, and glue code between systems.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Uces sigils ($ for scalars, @ for arrays, % for hashes), mandatory semicolons, and braces for blocks. No enforced indentation. Code organized in subroutines (<code>sub</code>) and packages. Context sensitivity (scalar vs list context) drives implicit behavior. Flow controlled via <code>if/unless</code>, <code>while/until</code>, and postfix conditionals.</p>
+
+<h3>3. Memory Management</h3>
+<p>Reference-counted garbage collection. Variables are automatically reclaimed when reference counts drop to zero. Weak references via <code>Scalar::Util</code> mitigate circular references. No manual memory management or ownership systems - Perl prioritizes developer convenience over low-level control.</p>
+
+<h3>4. Paradigms & Tactics</h3>
+<p>OOP implemented via packages and blessed references (not class-based). Concurrency via forked processes (not threads) or event loops like POE. Error handling uses <code>eval</code> blocks and <code>die</code>/<code>warn</code>, with exception objects in modern Perl. Functional programming via first-class subroutines and closures.</p>
+
+<h3>5. Unique Patterns & Ecosystem</h3>
+<p>CPAN (Comprehensive Perl Archive Network) hosts 200k+ modules. Key frameworks: Mojolicious (web), DBIx::Class (ORM), Catalyst (MVC). Idioms: Schwartzian transform for sorting, <code>map</code>/<code>grep</code> pipelines, regex-driven parsing. Famous for "Perl one-liners" using <code>-n</code>/<code>-p</code> flags.</p>
+
+<h3>6. How it "Makes Sense" (Internal Logic)</h3>
+<p>Perl programmers think in text transformations and pragmatic solutions. The language rewards brevity through context-aware functions (<code>wantarray</code>), implicit variables ($_, @_), and operator variants (string vs numeric comparisons). Code evolves organically via gradual refinement of regex patterns and list-processing chains, prioritizing immediate utility over long-term structure.</p>
+</html></div><hr><div class='lesson'><think>
 Alright, I need to create a detailed HTML breakdown of TypeScript as a senior software architect and programming language theorist. Let me start by recalling the structure required: six sections with specific headings. 
 
 First, the Core Logic & Design Philosophy. I remember TypeScript was developed by Microsoft to add static types to JavaScript. It solves issues like type-related bugs and scalability in large codebases. It's a superset of JS, so it supports multiple paradigms—OOP, functional, procedural. I should mention Anders Hejlsberg's role here.
