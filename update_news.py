@@ -30,15 +30,9 @@ if not github_token:
 
 print("✅ GitHub Token found. Calling GitHub Models API...")
 
-# --- Build the prompt ---
-prompt = f"""
-Act as a senior software architect and programming language theorist.
-Provide a deep, educational breakdown of the programming language: {target_language}.
-
-Structure your response as clean HTML with these exact sections:
-<h2>🔍 Deep Dive: {target_language}</h2>
-<p><strong>Timestamp:</strong> {datetime.now().strftime('%Y-%m-%d %H:%M UTC')}</p>
-
+if category == "language":
+    role = "a senior software architect and programming language theorist"
+    sections = """
 <h3>1. Core Logic & Design Philosophy</h3>
 <p>Why was it created? What problems does it solve? (OOP, Functional, Procedural?)</p>
 
@@ -56,7 +50,37 @@ Structure your response as clean HTML with these exact sections:
 
 <h3>6. How it "Makes Sense" (Internal Logic)</h3>
 <p>Explain the internal logic of the language and how a programmer thinks in it.</p>
+"""
+else:  # security
+    role = "a senior cybersecurity analyst and educator"
+    sections = """
+<h3>1. What It Is & Why It Matters</h3>
+<p>Core definition and the real-world risk or problem it addresses.</p>
 
+<h3>2. How It Works</h3>
+<p>The underlying mechanics, techniques, tools, or processes involved.</p>
+
+<h3>3. Common Attack/Defense Techniques</h3>
+<p>Widely used offensive techniques and corresponding defensive measures.</p>
+
+<h3>4. Real-World Examples</h3>
+<p>Notable incidents, breaches, or practical scenarios illustrating the topic.</p>
+
+<h3>5. Tools & Frameworks</h3>
+<p>Industry-standard tools, frameworks, or compliance standards related to this topic.</p>
+
+<h3>6. How a Security Professional Thinks About It</h3>
+<p>The mindset, risk model, or approach an analyst/pentester brings to this topic.</p>
+"""
+
+prompt = f"""
+Act as {role}.
+Provide a deep, educational breakdown of the topic: {target_topic}.
+
+Structure your response as clean HTML with these exact sections:
+<h2>🔍 Deep Dive: {target_topic}</h2>
+<p><strong>Timestamp:</strong> {datetime.now().strftime('%Y-%m-%d %H:%M UTC')}</p>
+{sections}
 Return ONLY the HTML block. No markdown formatting, no extra text outside the HTML.
 """
 
