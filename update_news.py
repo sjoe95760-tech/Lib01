@@ -4,18 +4,28 @@ import json
 from datetime import datetime
 
 # --- List of languages ---
-languages = [
-    "Python", "JavaScript", "Java", "C++", "C#", 
-    "Go", "Rust", "Swift", "Kotlin", "TypeScript", 
-    "Ruby", "PHP", "SQL", "HTML/CSS", "Scala", "Perl"
-     "Network Security", "Cryptography", "Penetration Testing", 
-    "Social Engineering", "Malware Analysis", "Web Application Security",
-    "Firewalls & IDS/IPS", "Zero Trust Architecture", "Threat Intelligence",
-    "Incident Response", "Digital Forensics", "Identity & Access Management",
-    "Vulnerability Management", "Security Compliance & Frameworks",
-    "Cloud Security", "OWASP Top 10", "SIEM & Log Monitoring",
-    "Ethical Hacking Methodology", "DNS Security", "Ransomware & Extortion Tactics"
+topics = [
+    ("language", "Python"), ("language", "JavaScript"), ("language", "Java"),
+    ("language", "C++"), ("language", "C#"), ("language", "Go"),
+    ("language", "Rust"), ("language", "Swift"), ("language", "Kotlin"),
+    ("language", "TypeScript"), ("language", "Ruby"), ("language", "PHP"),
+    ("language", "SQL"), ("language", "HTML/CSS"), ("language", "Scala"), ("language", "Perl"),
+
+    ("security", "Network Security"), ("security", "Cryptography"),
+    ("security", "Penetration Testing"), ("security", "Social Engineering"),
+    ("security", "Malware Analysis"), ("security", "Web Application Security"),
+    ("security", "Firewalls & IDS/IPS"), ("security", "Zero Trust Architecture"),
+    ("security", "Threat Intelligence"), ("security", "Incident Response"),
+    ("security", "Digital Forensics"), ("security", "Identity & Access Management"),
+    ("security", "Vulnerability Management"), ("security", "OWASP Top 10"),
+    ("security", "Cloud Security"), ("security", "SIEM & Log Monitoring"),
+    ("security", "Ethical Hacking Methodology"), ("security", "Ransomware & Extortion Tactics"),
 ]
+
+current_hour = datetime.now().hour
+category, target_topic = topics[current_hour % len(topics)]
+
+print(f"⏳ Learning about: {target_topic} ({category})")
 
 current_hour = datetime.now().hour
 target_language = languages[current_hour % len(languages)]
