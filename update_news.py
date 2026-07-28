@@ -8,6 +8,13 @@ languages = [
     "Python", "JavaScript", "Java", "C++", "C#", 
     "Go", "Rust", "Swift", "Kotlin", "TypeScript", 
     "Ruby", "PHP", "SQL", "HTML/CSS", "Scala", "Perl"
+     "Network Security", "Cryptography", "Penetration Testing", 
+    "Social Engineering", "Malware Analysis", "Web Application Security",
+    "Firewalls & IDS/IPS", "Zero Trust Architecture", "Threat Intelligence",
+    "Incident Response", "Digital Forensics", "Identity & Access Management",
+    "Vulnerability Management", "Security Compliance & Frameworks",
+    "Cloud Security", "OWASP Top 10", "SIEM & Log Monitoring",
+    "Ethical Hacking Methodology", "DNS Security", "Ransomware & Extortion Tactics"
 ]
 
 current_hour = datetime.now().hour
