@@ -3,7 +3,7 @@ import os
 import json
 from datetime import datetime
 
-# --- List of languages ---
+# --- List of topics ---
 topics = [
     ("language", "Python"), ("language", "JavaScript"), ("language", "Java"),
     ("language", "C++"), ("language", "C#"), ("language", "Go"),
@@ -27,18 +27,13 @@ category, target_topic = topics[current_hour % len(topics)]
 
 print(f"⏳ Learning about: {target_topic} ({category})")
 
-current_hour = datetime.now().hour
-target_language = languages[current_hour % len(languages)]
-
-print(f"⏳ Learning about: {target_language}")
-
-# --- Use GitHub Token (no new key needed!) ---
-github_token = os.environ.get('GITHUB_TOKEN')
-if not github_token:
-    print("❌ ERROR: GITHUB_TOKEN not found. This should be auto-provided by GitHub Actions.")
+# --- Use Gemini free tier ---
+api_key = os.environ.get('GEMINI_API_KEY')
+if not api_key:
+    print("❌ ERROR: GEMINI_API_KEY not found. Add it as a repo secret.")
     exit(1)
 
-print("✅ GitHub Token found. Calling GitHub Models API...")
+print("✅ API key found. Calling Gemini...")
 
 if category == "language":
     role = "a senior software architect and programming language theorist"
@@ -94,17 +89,16 @@ Structure your response as clean HTML with these exact sections:
 Return ONLY the HTML block. No markdown formatting, no extra text outside the HTML.
 """
 
-# --- GitHub Models API endpoint (FREE) ---
-# Using DeepSeek-R1 model via GitHub Models
-url = "https://models.inference.ai.azure.com/v1/chat/completions"
+# --- Gemini's OpenAI-compatible endpoint ---
+url = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
 
 headers = {
-    "Authorization": f"Bearer {github_token}",
+    "Authorization": f"Bearer {api_key}",
     "Content-Type": "application/json"
 }
 
 data = {
-    "model": "DeepSeek-R1",
+    "model": "gemini-2.5-flash",
     "messages": [{"role": "user", "content": prompt}],
     "temperature": 0.8,
     "max_tokens": 2000
@@ -112,18 +106,18 @@ data = {
 
 # --- Call the API ---
 try:
-    print("📡 Sending request to GitHub Models (DeepSeek-R1)...")
+    print("📡 Sending request to Gemini...")
     response = requests.post(url, headers=headers, json=data, timeout=120)
-    
+
     print(f"📊 HTTP Status Code: {response.status_code}")
-    
+
     if response.status_code != 200:
         print(f"❌ API Error Response: {response.text}")
         exit(1)
-    
+
     result = response.json()
     html_content = result['choices'][0]['message']['content']
-    print("✅ Successfully received response from GitHub Models")
+    print("✅ Successfully received response from Gemini")
 
 except Exception as e:
     print(f"❌ Request failed with exception: {e}")
@@ -139,7 +133,8 @@ else:
     log = []
 
 log.append({
-    "language": target_language,
+    "topic": target_topic,
+    "category": category,
     "html": html_content,
     "timestamp": datetime.now().isoformat()
 })
@@ -151,24 +146,24 @@ with open(log_file, 'w') as f:
     json.dump(log, f)
 
 # --- Build the webpage ---
-page_html = f"""
+page_html = """
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AI Learns Programming Languages</title>
+    <title>AI Knowledge Base</title>
     <style>
-        body {{ font-family: 'Segoe UI', Tahoma, sans-serif; max-width: 1000px; margin: 30px auto; padding: 20px; background: #f8f9fa; }}
-        h1 {{ color: #0d6efd; }}
-        .lesson {{ background: white; padding: 25px; margin-bottom: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 5px solid #0d6efd; }}
-        .timestamp {{ color: #6c757d; font-size: 0.9em; }}
-        hr {{ margin: 40px 0; }}
-        footer {{ text-align: center; color: #6c757d; margin-top: 30px; }}
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; max-width: 1000px; margin: 30px auto; padding: 20px; background: #f8f9fa; }
+        h1 { color: #0d6efd; }
+        .lesson { background: white; padding: 25px; margin-bottom: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 5px solid #0d6efd; }
+        .timestamp { color: #6c757d; font-size: 0.9em; }
+        hr { margin: 40px 0; }
+        footer { text-align: center; color: #6c757d; margin-top: 30px; }
     </style>
 </head>
 <body>
-    <h1>🧠 AI's Programming Knowledge Base</h1>
-    <p>This page is automatically updated every hour by DeepSeek-R1 via GitHub Models (FREE). 
-       It learns the logic, structure, and patterns of every known programming language.</p>
+    <h1>🧠 AI Knowledge Base</h1>
+    <p>This page is automatically updated hourly by Gemini (free tier).
+       It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
 """
 
@@ -176,7 +171,7 @@ for entry in reversed(log):
     page_html += f"<div class='lesson'>{entry['html']}</div><hr>"
 
 page_html += """
-    <footer>🔄 Updated hourly by DeepSeek-R1 (GitHub Models - FREE). No human interaction required.</footer>
+    <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
 """
@@ -184,4 +179,4 @@ page_html += """
 with open('index.html', 'w') as f:
     f.write(page_html)
 
-print(f"✅ Successfully added lesson for {target_language}. Total lessons stored: {len(log)}")
+print(f"✅ Successfully added lesson for {target_topic}. Total lessons stored: {len(log)}")
