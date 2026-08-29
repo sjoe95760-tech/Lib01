@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AI Learns Programming Languages</title>
+    <title>AI Knowledge Base</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, sans-serif; max-width: 1000px; margin: 30px auto; padding: 20px; background: #f8f9fa; }
         h1 { color: #0d6efd; }
@@ -13,11 +13,30 @@
     </style>
 </head>
 <body>
-    <h1>🧠 AI's Programming Knowledge Base</h1>
-    <p>This page is automatically updated every hour by DeepSeek-R1 via GitHub Models (FREE). 
-       It learns the logic, structure, and patterns of every known programming language.</p>
+    <h1>🧠 AI Knowledge Base</h1>
+    <p>This page is automatically updated hourly by Gemini (free tier).
+       It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><think>
+<div class='lesson'><h2>🔍 Deep Dive: TypeScript</h2>
+<p><strong>Timestamp:</strong> 2026-08-29 09:54 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>TypeScript was engineered by Microsoft (led by Anders Hejlsberg) to address the existential scalability limits of JavaScript when building large-scale enterprise applications. As JavaScript grew from a lightweight browser scripting language into the universal runtime for both client (browsers) and server (Node.js), developers struggled with maintainability, refactoring risks, and dynamic duck-typing errors that manifested exclusively at runtime.</p>
+
+<p>From a programming language theory (PLT) perspective, TypeScript is a <strong>gradually typed, structurally typed compile-to-JavaScript language</strong>. Its core design philosophy revolves around three fundamental tenets:</p>
+<ul>
+  <li><strong>Erased Types (Zero-Cost Abstraction at Runtime):</strong> TypeScript types are strictly compile-time artifacts. The compiler performs static analysis, emits clean standard JavaScript, and completely erases all type annotations, interfaces, and generics. TypeScript introduces zero runtime execution overhead.</li>
+  <li><strong>Structural Subtyping (Shape-Based Equivalence):</strong> Unlike nominal type systems (e.g., Java, C++) where type compatibility is declared explicitly via class inheritance or interface implementation, TypeScript evaluates compatibility based on shape. If type <code>A</code> has at least the same properties with compatible types as type <code>B</code>, <code>A</code> is a subtype of <code>B</code>. This formalizes JavaScript's idiomatic "duck typing" without sacrificing static safety.</li>
+  <li><strong>Pragmatic Non-Soundness:</strong> TypeScript’s type system is intentionally <em>unsound</em> in specific domain scenarios to balance safety with JavaScript interoperability and developer ergonomics. Operations such as function parameter bivariance ( historically allowed for array handling), type assertions (<code>as T</code>), and indexed array access assumptions prioritize real-world usability over absolute mathematical rigor.</li>
+</ul>
+<p>TypeScript supports a hybrid, multi-paradigm approach. It seamlessly unifies Object-Oriented Programming (OOP) with classical class inheritance and access modifiers, Functional Programming (FP) with first-class functions, immutability patterns, and higher-order functions, alongside standard imperative/procedural control flow.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>TypeScript syntax is a strict syntactic superset of ECMAScript (JS). Every valid JavaScript file is syntactically valid TypeScript code. TypeScript extends JavaScript syntax by attaching type annotations via a colon syntax (<code>identifier: Type</code>), declaring interfaces, type aliases, enums, and generics.</p>
+
+<h4>Syntactic Mechanics & Grammar</h4>
+<ul>
+  <li><strong>Block Scoping</div><hr><div class='lesson'><think>
 Okay, I need to create a detailed HTML breakdown of the Ruby programming language as a senior software architect and language theorist. Let me start by recalling the structure required. The user specified six sections: Core Logic & Design Philosophy, Syntax, Memory Management, Paradigms & Tactics, Unique Patterns & Ecosystem, and How it "Makes Sense". Each section has specific questions to address.
 
 First, for Core Logic, I should mention why Ruby was created. I remember Yukihiro Matsumoto wanted a language that emphasizes programmer happiness and productivity. It's object-oriented, so I need to highlight that everything is an object. Also, it combines elements from Perl and Smalltalk, solving the need for a flexible, expressive scripting language.
@@ -2004,6 +2023,6 @@ I need to make sure each section is concise but informative, using proper HTML t
     Embraces "worse is better" philosophy - forgiving syntax enables quick iteration but demands vigilance 
     against type coercion edge cases.</p>
 </article></div><hr>
-    <footer>🔄 Updated hourly by DeepSeek-R1 (GitHub Models - FREE). No human interaction required.</footer>
+    <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
