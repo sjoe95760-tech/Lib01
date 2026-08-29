@@ -17,7 +17,36 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: TypeScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Scala</h2>
+<p><strong>Timestamp:</strong> 2026-08-29 14:45 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Scala—short for <em>Scalable Language</em>—was created in 2004 by Martin Odersky at EPFL. Its core thesis is that Object-Oriented Programming (OOP) and Functional Programming (FP) are not opposing paradigms, but orthogonal dimensions of software architecture that can be harmonized into a single, cohesive type system.</p>
+<p>Scala was explicitly designed to fix the design flaws and syntactic verbosity of Java while maintaining full interoperability with the Java Virtual Machine (JVM). It solves several systemic problems in software engineering:</p>
+<ul>
+    <li><strong>Unification of Functions and Objects:</strong> In Scala, every value is an object (including primitive types), and every function is an instance of an object implementing a <code>FunctionN</code> trait. This eliminates the dualities present in languages like Java.</li>
+    <li><strong>Expressive, Static Type Safety:</strong> Scala introduces an advanced type system with features like path-dependent types, higher-kinded types, typeclasses, structural typing, and variance annotations. This allows developers to move runtime assertions into compile-time proofs.</li>
+    <li><strong>Boilerplate Reduction:</strong> Through implicit parameters (in Scala 2) / context parameters (<code>given</code>/<code>using</code> in Scala 3), pattern matching, primary constructors, and case classes/enums, complex domain models require a fraction of the code needed in traditional imperative languages.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Scala features a hybrid expression-oriented syntax. In Scala 3 ("Dotty"), the language embraced optional indentation-based "quiet" syntax alongside traditional brace-delimited blocks.</p>
+<ul>
+    <li><strong>Expression-Oriented Execution:</strong> Almost every syntactic construct yields a value. Constructs like <code>if/else</code>, <code>try/catch</code>, and <code>match</code> are expressions that return values rather than statements that mutate state.</li>
+    <li><strong>Semicolon Inference:</strong> Semicolons are optional and automatically inferred based on line breaks and parser context.</li>
+    <li><strong>Immutability by Default:</strong> Bindings are declared as immutable (<code>val</code>) or mutable (<code>var</code>). Idiomatic Scala heavily favors <code>val</code>.</li>
+    <li><strong>Code Organization:</strong> Code is structured in packages, modules (<code>object</code> singletons), classes (<code>class</code>), and traits (<code>trait</code>). Scala 3 permits top-level function and variable definitions.</li>
+</ul>
+
+<pre><code>// Scala 3 syntax demonstration
+enum OrderStatus:
+  case Pending, Processing, Shipped, Delivered
+
+case class Order(id: String, total: BigDecimal, status: OrderStatus)
+
+def computeDiscount(order: Order): BigDecimal = order.status match
+  case OrderStatus.Pending if order.total &gt; 100 =&gt; order.total * 0.10
+  case OrderStatus.</div><hr><div class='lesson'><h2>🔍 Deep Dive: TypeScript</h2>
 <p><strong>Timestamp:</strong> 2026-08-29 09:54 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
