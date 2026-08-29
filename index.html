@@ -17,7 +17,41 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Scala</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Cryptography</h2>
+<p><strong>Timestamp:</strong> 2026-08-29 17:58 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>Cryptography is the science and mathematical discipline of transforming information to secure it against unauthorized access, modification, and forgery across untrusted channels. At its core, it converts human-readable plaintext into unreadable ciphertext (encryption) and vice versa (decryption) using mathematical algorithms and cryptographic keys.</p>
+
+<p>In modern security architecture, cryptography addresses the fundamental risk of operating on inherently hostile networks, such as the public internet. Without cryptography, data in transit (e.g., web traffic, financial transactions) and data at rest (e.g., database storage, cloud backups) would be fully exposed to eavesdropping, tampering, and spoofing. It provides the foundation for four key security guarantees:</p>
+<ul>
+  <li><strong>Confidentiality:</strong> Ensuring only authorized entities can read the data.</li>
+  <li><strong>Integrity:</strong> Guaranteeing that data has not been altered or tampered with in transit or storage.</li>
+  <li><strong>Authentication:</strong> Verifying the true identity of a user, system, or message sender.</li>
+  <li><strong>Non-Repudiation:</strong> Ensuring an entity cannot deny the authenticity of their signature or transaction.</li>
+</ul>
+
+<h3>2. How It Works</h3>
+<p>Cryptography relies on mathematical primitives grouped into distinct operational categories:</p>
+
+<h4>A. Symmetric Encryption (Secret Key Cryptography)</h4>
+<p>Uses a single shared key for both encryption and decryption. It is extremely fast and ideal for encrypting large volumes of data (data at rest or bulk stream encryption).</p>
+<ul>
+  <li><strong>Key Algorithms:</strong> Advanced Encryption Standard (AES-128/256), ChaCha20.</li>
+  <li><strong>Modes of Operation:</strong> Cipher Block Chaining (CBC), Galois/Counter Mode (GCM - provides authenticated encryption with associated data).</li>
+</ul>
+
+<h4>B. Asymmetric Encryption (Public Key Cryptography)</h4>
+<p>Uses a mathematically linked key pair: a <strong>Public Key</strong> (distributed freely for encryption or signature verification) and a <strong>Private Key</strong> (kept strictly secret for decryption or signing).</p>
+<ul>
+  <li><strong>Key Algorithms:</strong> RSA, Elliptic Curve Cryptography (ECC / ECDSA, Ed25519).</li>
+  <li><strong>Primary Use Cases:</strong> Key exchange, digital signatures, and establishing identity in TLS/SSL.</li>
+</ul>
+
+<h4>C. Cryptographic Hashing</h4>
+<p>One-way deterministic mathematical functions that map input data of arbitrary size to a fixed-size byte array (digest). A tiny change in input fundamentally alters the output digest (avalanche effect).</p>
+<ul>
+  <li><strong>Key Algorithms:</strong></div><hr><div class='lesson'><h2>🔍 Deep Dive: Scala</h2>
 <p><strong>Timestamp:</strong> 2026-08-29 14:45 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1996,62 +2030,7 @@ Avoid markdown, use proper HTML tags. Make sure the timestamp is as specified. N
 
 <h3>6. How it "Makes Sense" (Internal Logic)</h3>
 <p>C# programmers think in strongly typed hierarchies, leveraging the CLR's safety net. The language encourages "pit of success" design—defaults guide toward safe, performant code. Asynchronous workflows are first-class via <code>Task</code>, while LINQ enables declarative data manipulation. Developers balance OOP structure with functional expressiveness, relying on GC for memory but using <code>using</code> for deterministic cleanup. Cross-platform .NET runtime unifies Windows/Linux/macOS targets.</p>
-</html></div><hr><div class='lesson'><think>
-Okay, I need to create a detailed HTML breakdown of JavaScript as a senior software architect and programming language theorist. Let me start by going through each section step by step.
-
-First, the Core Logic & Design Philosophy. JavaScript was created by Brendan Eich in 1995 for Netscape Navigator to add interactivity to web pages. It solves the problem of making web pages dynamic. Originally named Mocha, then LiveScript, it became JavaScript for marketing. It's multi-paradigm: supports OOP, functional, and procedural. The design philosophy emphasizes flexibility and approachability, allowing both prototypal inheritance and class-based syntax.
-
-Next, Syntax, Structure & Flow. JavaScript uses C-style syntax with braces and semicolons, but ASI allows omitting semicolons. Code is organized in functions, modules (ES6), and scripts. Indentation isn't enforced but is conventional. Function hoisting and block scoping with let/const are key points.
-
-Memory Management: JavaScript uses automatic garbage collection (mark-and-sweep). No manual memory management. Circular references can cause leaks. WeakMap and WeakSet help with memory by not preventing garbage collection.
-
-Paradigms & Tactics: OOP via prototypes, ES6 classes. Functional with first-class functions. Concurrency is event-loop based with async/await and promises. Error handling uses try/catch and exceptions, with callback errors in older patterns.
-
-Unique Patterns & Ecosystem: Major frameworks like React, Angular, Vue. Node.js for backend. Common patterns like Module, Observer, Prototype. Ecosystem has npm, webpack, Babel.
-
-Internal Logic: JavaScript is prototype-based, dynamic typing, single-threaded with non-blocking I/O. Programmers think in event-driven flows, manage async operations, and leverage closures and IIFEs. Understanding the event loop is crucial for handling concurrency.
-
-I need to make sure each section is concise but informative, using proper HTML tags without any markdown. Check for accuracy, especially in paradigms and memory management. Ensure the timestamp is correct and structure matches the user's request exactly.
-</think>
-
-<article>
-    <h2>🔍 Deep Dive: JavaScript</h2>
-    <p><strong>Timestamp:</strong> 2026-07-16 17:41 UTC</p>
-
-    <h3>1. Core Logic & Design Philosophy</h3>
-    <p>Created in 1995 by Brendan Eich for Netscape Navigator to enable dynamic web pages. Solves client-side interactivity 
-    in browsers. Multi-paradigm: prototype-based OOP, functional (first-class functions), and procedural. Prioritizes 
-    flexibility over strictness, enabling "gradual typing" via TypeScript. Designed for rapid prototyping and 
-    backward compatibility.</p>
-
-    <h3>2. Syntax, Structure & Flow</h3>
-    <p>C-style syntax with braces, optional semicolons (ASI rules). Dynamic typing with <code>let</code>/<code>const</code>. 
-    Code organized in functions, ES6 modules, or script files. Event-driven flow via callback queue and event loop. 
-    Hoisting behavior for function/var declarations. Uses === for strict equality checks.</p>
-
-    <h3>3. Memory Management</h3>
-    <p>Automatic garbage collection via mark-and-sweep algorithm. No manual memory control. Heap-allocated objects 
-    with reference tracking. Memory leaks occur via unintended global variables, orphaned closures, or uncleared 
-    event listeners. WeakMap/WeakSet allow garbage-collectable key references.</p>
-
-    <h3>4. Paradigms & Tactics</h3>
-    <p>Prototypal inheritance (pre-ES6) vs class syntax (ES6+). Async handled via callbacks → promises → async/await. 
-    Single-threaded concurrency with non-blocking I/O. Error handling uses try/catch with exception bubbling. 
-    Functional patterns: higher-order functions, closures, and currying.</p>
-
-    <h3>5. Unique Patterns & Ecosystem</h3>
-    <p>Frameworks: React (component architecture), Node.js (event-driven backend). Common patterns: 
-    Module Revealing Pattern, Observer (event emitters), Middleware (Express.js). Ecosystem: npm (largest 
-    package registry), transpilers (Babel), bundlers (Webpack). Unique quirks: IIFEs, prototype pollution 
-    risks, "this" binding nuances.</p>
-
-    <h3>6. How it "Makes Sense" (Internal Logic)</h3>
-    <p>JavaScript thinks in <em>runtime dynamism</em> - objects as flexible property bags, functions as first-class 
-    citizens. Programmers must track execution context ("this"), closure scopes, and micro/macro task queues. 
-    Successful code requires understanding the event loop phases (call stack, task queue, microtask queue). 
-    Embraces "worse is better" philosophy - forgiving syntax enables quick iteration but demands vigilance 
-    against type coercion edge cases.</p>
-</article></div><hr>
+</html></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
