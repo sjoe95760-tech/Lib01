@@ -98,7 +98,7 @@ headers = {
 }
 
 data = {
-    "model": "gemini-2.5-flash",
+    "model": "gemini-3.6-flash",
     "messages": [{"role": "user", "content": prompt}],
     "temperature": 0.8,
     "max_tokens": 2000
