@@ -17,7 +17,22 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
+<p><strong>Timestamp:</strong> 2026-08-30 12:23 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Structured Query Language (SQL) was designed in the early 1970s by Donald Chamberlin and Raymond Boyce at IBM, grounded in Edgar F. Codd’s formal Relational Model. Prior to SQL, database systems relied on hierarchical or network models (like CODASYL) where software engineers had to write imperative code to manually navigate physical memory pointers and disk addresses to retrieve data. SQL solved this fundamental coupling problem by introducing a high-level abstraction: separating the logical representation of data from its physical storage mechanism.</p>
+<p>SQL is primarily a <strong>declarative, set-based Domain-Specific Language (DSL)</strong> rooted in mathematical <em>Relational Algebra</em> and <em>Tuple Relational Calculus</em>. It is neither Object-Oriented nor purely Functional, nor procedural in its ISO standard form. Instead of prescribing *how* to compute a result via explicit loops and branches, a SQL query specifies the formal mathematical properties that the target relation (result set) must satisfy. The system's underlying Query Planner and Optimizer bear the full responsibility for translating that declarative specification into an optimal physical execution algorithm.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>SQL syntax resembles structured English constructs to maximize readability, using a keyword-driven DSL format. Indentation and whitespace are syntactically irrelevant, and statements are conventionally terminated with a semicolon (<code>;</code>). Keywords are case-insensitive by spec, though standard convention dictates using uppercase for keywords (e.g., <code>SELECT</code>, <code>JOIN</code>, <code>WHERE</code>) and lowercase or snake_case for schema identifiers.</p>
+<p>A critical source of initial developer confusion is the strict divergence between SQL's <strong>Lexical/Written Structure</strong> and its actual <strong>Logical Execution Order</strong>:</p>
+<p><strong>Lexical Order (How developers write code):</strong><br>
+<code>SELECT</code> &rarr; <code>FROM</code> &rarr; <code>JOIN</code> &rarr; <code>WHERE</code> &rarr; <code>GROUP BY</code> &rarr; <code>HAVING</code> &rarr; <code>WINDOW</code> &rarr; <code>ORDER BY</code> &rarr; <code>LIMIT/OFFSET</code></p>
+<p><strong>Logical Execution Order (How the database engine evaluates data):</strong><br>
+1. <code>FROM</code> / <code>JOIN</code>: Define and construct the initial working dataset (Cartesian products / relational cross-joins).<br>
+2. <code>WHERE</code>: Apply row-level tuple filters to eliminate non-matching records early.<br>
+3. <code>GROUP</div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
 <p><strong>Timestamp:</strong> 2026-08-30 06:01 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1901,46 +1916,7 @@ Make sure the timestamp is correct as per the user's request: 2026-07-17 22:34 U
 
   <h3>6. How it "Makes Sense" (Internal Logic)</h3>
   <p>Rust forces upfront reasoning about ownership, lifetimes, and data flow. Programmers think in terms of "who owns what" and "who can mutate when," with the compiler as a strict enforcer. Error handling is deliberate, requiring explicit <code>Ok/Err</code> checks. The mindset blends low-level control (like C) with high-level safety guarantees, prioritizing compile-time correctness over runtime surprises.</p>
-</html></div><hr><div class='lesson'><think>
-Okay, I need to create a detailed HTML breakdown of C++ as a senior software architect and programming language theorist. Let me start by recalling the structure the user specified. The sections are Core Logic & Design Philosophy, Syntax, Memory Management, Paradigms & Tactics, Unique Patterns & Ecosystem, and How it "Makes Sense". Each section has specific questions to address.
-
-First, for Core Logic, I should explain why C++ was created. Bjarne Stroustrup wanted to add OOP to C, so it's an extension. It solves the need for high-performance with abstraction. It's multi-paradigm: procedural, OOP, generic, and some functional programming. Mention efficiency and control over hardware.
-
-Next, Syntax. C++ uses braces, semicolons are mandatory. Code organization includes headers and source files, include directives, namespaces. Indentation is not enforced but conventional. Preprocessor directives are important here.
-
-Memory Management: Manual management with new/delete. RAII is key, smart pointers in modern C++. No garbage collection, but can use libraries. Ownership is manual but smart pointers help. Mention stack vs heap.
-
-Paradigms: OOP with classes, inheritance, polymorphism. Concurrency via threads in STL, async/await since C++20. Error handling with exceptions, but also error codes. Exceptions can be avoided for performance.
-
-Unique Patterns: STL containers, algorithms, RAII, CRTP, TMP. Frameworks like Qt, Boost, Unreal Engine. Design patterns like Factory, Singleton (though cautious), Observer.
-
-Internal Logic: Programmers think in terms of resource ownership, zero-cost abstractions. Balance between high-level and low-level. Compile-time computations with constexpr. Template metaprogramming for generic code.
-
-I need to make sure each section is concise but informative. Use technical terms but explain them. Check for accuracy: RAII, smart pointers, STL components. Avoid markdown, just HTML. Ensure the timestamp is as specified. No extra text outside the HTML. Let me structure each section with the appropriate headings and paragraphs, using lists where needed but in HTML. Remember to escape any characters if needed, but in the examples given, maybe not necessary. Let me review each section to ensure it answers the prompt questions accurately.
-</think>
-
-```html
-<h2>🔍 Deep Dive: C++</h2>
-<p><strong>Timestamp:</strong> 2026-07-17 19:47 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>C++ was created by Bjarne Stroustrup in 1985 to add object-oriented programming (OOP) to C while retaining low-level control. It solves the need for high-performance systems programming with abstraction mechanisms. C++ is multi-paradigm: procedural (C-like functions), OOP (classes, inheritance), generic (templates), and increasingly functional (C++11+ lambdas, constexpr). Its philosophy emphasizes "zero-overhead abstractions" and "you don’t pay for what you don’t use."</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>C++ uses braces <code>{}</code> for blocks, semicolons to terminate statements, and header/source file separation (.hpp/.cpp). Code organization relies on <code>#include</code> directives, namespaces, and translation units. Indentation is stylistic, not enforced. Preprocessor directives (e.g., <code>#define</code>) enable macros. Control flow mirrors C: <code>if</code>, <code>for</code>, <code>while</code>, with added range-based loops (<code>for (auto x : container)</code>).</p>
-
-<h3>3. Memory Management</h3>
-<p>Manual memory management via <code>new</code>/<code>delete</code> (heap) and stack allocation. No built-in garbage collection. Modern C++ emphasizes RAII (Resource Acquisition Is Initialization) with smart pointers (<code>unique_ptr</code>, <code>shared_ptr</code>) for automatic cleanup. Ownership semantics are explicit but lack Rust-like borrow-checker guarantees. Memory safety relies on programmer discipline.</p>
-
-<h3>4. Paradigms & Tactics</h3>
-<p>OOP: Classes with public/private access, multiple inheritance (with caution), and virtual functions for polymorphism. Concurrency: Threads via <code>&lt;thread&gt;</code>, async/await with <code>std::async</code> (C++11+), and atomic types. Error handling: Exceptions (try/catch), but many codebases avoid them for performance; alternatives include error codes (e.g., <code>std::expected</code> in C++23).</p>
-
-<h3>5. Unique Patterns & Ecosystem</h3>
-<p>Frameworks: Qt (GUI), Boost (utilities), Unreal Engine (game dev). Common idioms: RAII, CRTP (Curiously Recurring Template Pattern), SFINAE (template metaprogramming). The Standard Template Library (STL) provides containers (<code>vector</code>, <code>map</code>), algorithms (<code>sort</code>), and iterators. Design patterns: Factory, Singleton (controversial), Observer via signals/slots.</p>
-
-<h3>6. How it "Makes Sense" (Internal Logic)</h3>
-<p>C++ programmers think in terms of resource ownership, abstraction costs, and hardware proximity. The language rewards meticulous control: stack vs. heap, move semantics (C++11), and compile-time computation (constexpr, templates). Code is structured to minimize runtime overhead while enabling high-level abstractions. A C++ mindset balances "trust the programmer" with "avoid undefined behavior," often leveraging the type system and static analysis tools.</p>
-```</div><hr>
+</html></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
