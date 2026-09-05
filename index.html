@@ -17,7 +17,42 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
+<div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
+<p><strong>Timestamp:</strong> 2026-09-05 13:43 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>From a programming language theory (PLT) perspective, HTML (HyperText Markup Language) and CSS (Cascading Style Sheets) are domain-specific declarative languages designed to solve the document-layout and presentation problem across heterogeneous client runtimes. HTML defines a structured, hierarchical tree of semantics and content, while CSS operates as a rule-based constraint and styling system evaluated against that hierarchical tree.</p>
+
+<p>Neither language follows imperative Paradigms (Object-Oriented, Procedural, or Pure Functional execution models). Instead:</p>
+<ul>
+    <li><strong>HTML is a Declarative Data-Structuring Language:</strong> Derived from SGML/XML, it constructs an Abstract Syntax Tree (AST) known at runtime as the Document Object Model (DOM). It declares <em>what</em> nodes exist and their semantic role, not <em>how</em> to allocate or construct them.</li>
+    <li><strong>CSS is a Declarative, Pattern-Matching Constraint Solver:</strong> It employs a reactive, rule-matching model. Selectors act as queries against DOM nodes, and declarations apply properties to matching nodes. The browser engine resolves these properties into dynamic layout constraints using algorithms like Flexbox, Grid, and the traditional Block/Inline formatting contexts.</li>
+</ul>
+<p>The foundational design philosophy is the <strong>Separation of Concerns</strong> (Data/Semantics via HTML, Visual Presentation via CSS, and Behavior via JavaScript) alongside strict fault tolerance to ensure web documents render gracefully despite syntactical errors or network degradation.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p><strong>HTML Syntax & Grammar:</strong> HTML uses an element-based tagging system with angle brackets (<code>&lt;tag attribute="value"&gt;content&lt;/tag&gt;</code>). It forms a context-free grammar parsing into a strict tree structure (the DOM). Indentation and whitespace are largely collapsed by the parser except inside specific whitespace-preserving contexts like <code>&lt;pre&gt;</code>. HTML supports void elements (e.g., <code>&lt;img&gt;</code>, <code>&lt;input&gt;</code>) which do not contain child nodes.</p>
+
+<p><strong>CSS Syntax & Cascading Mechanics:</strong> CSS relies on declaration blocks attached to selectors: <code>selector { property: value; }</code>. Rules are delimited by braces (<code>{}</code>) and terminated with semicolons (<code>;</code>). CSS layout flow operates through distinct formatting contexts:</p>
+<ul>
+    <li><strong>Normal Flow:</strong> Block-level elements stack vertically; inline-level elements flow horizontally within line boxes.</li>
+    <li><strong>Flexbox & Grid Layouts:</strong> Multi-dimensional constraint solvers that distribute space dynamically based on axis rules, auto-margins, and track definitions.</li>
+    <li><strong>Box Model:</strong> Every element calculates a 4-layer box footprint consisting of <code>content</code>, <code>padding</code>, <code>border</code>, and <code>margin</code>, controlled by the <code>box-sizing</code> geometry model (<code>content-box</code> vs. <code>border-box</code>).</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Neither HTML nor CSS exposes manual memory allocation (like C or Rust) or explicit garbage collection primitives (like Java or Go). Instead, memory management is deferred entirely to the underlying engine host (e.g., Chromium's Blink, Firefox's Gecko, Safari's WebKit):</p>
+
+<ul>
+    <li><strong>DOM/CSSOM Lifecycle:</strong> When HTML and CSS are parsed, the browser allocates C++ heap objects corresponding to DOM nodes and CSSOM (CSS Object Model) rule nodes.</li>
+    <li><strong>Garbage Collection & Detached Nodes:</strong> Nodes are retained in memory as long as they reside in the active DOM tree or are referenced by JavaScript runtime memory. Once a subtree is removed from the document root and no JS references exist, engine GC sweeps the native C++ objects.</li>
+    <li><strong>Layout Engine Memory Footprint:</strong> CSS creates internal data structures (Style Trees, Render Trees, Fragment Trees, and Layer Trees). Overuse of deeply nested DOM trees or unoptimized CSS rules (e.g., widespread dynamic selectors like <code>*</code> or complex <code>:has()</code> chains) inflates memory usage through layout cache growth and memory-intensive compositing layers (GPU texture allocations via <code>will-change</code> or 3D transforms).</li>
+</ul>
+
+<h3>4. Paradigms & Tactics</h3>
+<p>Because HTML and CSS are non-imperative, classical concepts like threading, async paradigms, and explicit exception handling manifest differently:</p>
+
+<ul></div><hr><div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
 <p><strong>Timestamp:</strong> 2026-09-05 11:00 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1482,45 +1517,6 @@ I need to structure all this into the specified HTML sections. Make sure each se
 
 <h3>6. How it "Makes Sense" (Internal Logic)</h3>
 <p>Perl programmers think in text transformations and pragmatic solutions. The language rewards brevity through context-aware functions (<code>wantarray</code>), implicit variables ($_, @_), and operator variants (string vs numeric comparisons). Code evolves organically via gradual refinement of regex patterns and list-processing chains, prioritizing immediate utility over long-term structure.</p>
-</html></div><hr><div class='lesson'><think>
-Alright, I need to create a detailed HTML breakdown of TypeScript as a senior software architect and programming language theorist. Let me start by recalling the structure required: six sections with specific headings. 
-
-First, the Core Logic & Design Philosophy. I remember TypeScript was developed by Microsoft to add static types to JavaScript. It solves issues like type-related bugs and scalability in large codebases. It's a superset of JS, so it supports multiple paradigms—OOP, functional, procedural. I should mention Anders Hejlsberg's role here.
-
-Next, Syntax, Structure & Flow. Key points: uses braces, optional semicolons, type annotations. Modules and namespaces for organization. Transpilation to JS. Need to highlight differences from JavaScript, like interfaces and generics.
-
-Memory Management: Since it compiles to JS, it inherits JS's garbage collection. No manual memory control. Should note that memory leaks can still happen through closures or detached DOM references.
-
-Paradigms & Tactics: TypeScript supports OOP with classes and interfaces. Functional aspects with first-class functions. Async/await for concurrency. Error handling via try/catch and optional error types like in FP.
-
-Unique Patterns & Ecosystem: Popular frameworks like Angular, React with TypeScript. Design patterns such as Dependency Injection, Decorators. Tools like ts-node, tsc. Maybe mention DefinitelyTyped for type definitions.
-
-Internal Logic: Emphasize type-first approach. How the compiler catches errors early. Structural typing vs nominal. Thinking in terms of interfaces and contracts. Gradual typing allows incremental adoption.
-
-I need to ensure each section is concise but informative. Avoid markdown, use proper HTML tags. Check for accuracy, like correct transpilation process, structural typing details. Make sure timestamps and sections are correctly placed. No extra text outside the HTML. Double-check for any markdown remnants. Use entities for special characters like arrows. Keep paragraphs under each heading clear and to the point.
-</think>
-
-<html>
-<h2>🔍 Deep Dive: TypeScript</h2>
-<p><strong>Timestamp:</strong> 2026-07-24 09:40 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>TypeScript was created by Microsoft to address JavaScript's lack of static typing and scalability for large applications. It solves type-related runtime errors, enhances tooling support (e.g., autocompletion), and enables better code organization. It’s OOP-first but supports functional and procedural patterns via JavaScript compatibility. Core philosophy: "JavaScript that scales."</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Uses C-style braces, optional semicolons, and type annotations (e.g., <code>let x: number = 5;</code>). Code is organized using ES modules or namespaces. Structural subtyping (duck typing) defines compatibility. Transpiler enforces static checks but emits idiomatic JavaScript, preserving runtime behavior.</p>
-
-<h3>3. Memory Management</h3>
-<p>Inherits JavaScript's garbage-collected memory model. No manual memory control. Memory leaks occur via unintended closures or detached DOM references. WeakMap/WeakRef mitigate some issues, but TypeScript adds no new memory management constructs.</p>
-
-<h3>4. Paradigms & Tactics</h3>
-<p>Supports classes, interfaces, and inheritance (OOP). Functional patterns via first-class functions and type-safe higher-order operations. Concurrency relies on JavaScript's event loop (async/await, Promises). Error handling uses try/catch, with optional FP-style Result types via community patterns.</p>
-
-<h3>5. Unique Patterns & Ecosystem</h3>
-<p>Frameworks: Angular (native TS), React with TSX. Common patterns: Decorators (metadata-driven classes), Dependency Injection (via Angular/IoC), and Generic Constraints. Ecosystem tools: tsc (compiler), ts-node, and DefinitelyTyped for third-party type definitions.</p>
-
-<h3>6. How it "Makes Sense" (Internal Logic)</h3>
-<p>TypeScript programmer thinks in contracts: interfaces define expected shapes, generics abstract over types. Compiler-as-mentor flags mismatches early. Structural typing means "if it quacks, it’s a duck." Gradual typing allows mixing JS’s dynamism with strictness where needed. Code is JavaScript with type-driven intent.</p>
 </html></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
