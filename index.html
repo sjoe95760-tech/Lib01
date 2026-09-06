@@ -17,7 +17,32 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: TypeScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
+<p><strong>Timestamp:</strong> 2026-09-06 13:15 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>From a programming language theory (PLT) perspective, HTML and CSS are specialized declarative Domain-Specific Languages (DSLs). Neither HTML nor pure CSS are general-purpose, Turing-complete imperative languages; rather, they form a dual-DSL system designed to separate <strong>structural semantic trees</strong> from <strong>spatial constraint and styling systems</strong>.</p>
+<p>HTML (HyperText Markup Language) was created by Tim Berners-Lee to define the abstract syntax tree (AST) of document nodes—known as the Document Object Model (DOM). CSS (Cascading Style Sheets) was introduced by Håkon Wium Lie to solve the problem of visual specification without polluting the structural markup. Together, they eliminate hardcoded visual layouts and enable separation of concerns: HTML defines *what* data exists and *what it means* (semantics), while CSS defines *how* that data should be projected across varied spatial runtime target environments (viewports, print, accessibility trees).</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>HTML uses an explicit context-free grammar based on SGML/XML tree nesting rules. Its elements are denoted by tags using angle brackets (<code>&lt;tag attribute="value"&gt;child&lt;/tag&gt;</code>), constructing a hierarchical ordered tree. CSS uses a pattern-matching constraint syntax composed of rule sets: selectors (the pattern matching expressions) paired with property-declaration blocks (<code>selector { key: value; }</code>).</p>
+<p>The operational execution flow inside a browser engine (e.g., Blink, Gecko, Servo) is strictly pipeline-driven:</p>
+
+<p><strong>1. Parsing & Tokenization:</strong> HTML text stream &rarr; HTML Lexer &rarr; Token Stream &rarr; DOM Tree Construction.<br />
+<strong>2. CSSOM Construction:</strong> CSS text stream &rarr; CSS Lexer &rarr; Token Stream &rarr; CSS Object Model (CSSOM) Tree.<br />
+<strong>3. Render Tree Attachment:</strong> The engine merges the DOM and CSSOM trees into a Render Tree, stripping unrendered nodes (e.g., <code>&lt;head&gt;</code>, <code>display: none</code>).<br />
+<strong>4. Reflow (Layout):</strong> Geometric calculation of exact spatial bounding boxes ($x, y, \text{width}, \text{height}$) for each node using box-model math.<br />
+<strong>5. Repaint & Compositing:</strong> Vector shapes, typography, and colors are converted to raster pixels and sent as layers to GPU VRAM for display.</p>
+
+<p>Unlike strict languages like Rust or C++, HTML and CSS rely on a standard called the <em>HTML5 permissive parsing algorithm</em>. They have no fatal syntax exceptions; syntax errors trigger predefined fault-tolerant recovery modes rather than runtime aborts.</p>
+
+<h3>3. Memory Management</h3>
+<p>Neither HTML nor CSS exposes manual memory allocation primitives (such as <code>malloc</code> or pointer arithmetic), nor do they run an explicit user-land garbage collector within their native code scopes. Memory management is entirely delegated to the host browser engine implemented in native C++ or Rust.</p>
+
+<p>Inside the engine engine layer:</p>
+
+<ul>
+  <li><strong>DOM/CSSOM Heap Allocations:</strong> Every HTML tag and CSS rule instantiation constructs a C++ or Rust class instance (e.g., <code>Element</code></div><hr><div class='lesson'><h2>🔍 Deep Dive: TypeScript</h2>
 <p><strong>Timestamp:</strong> 2026-09-06 09:50 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1443,46 +1468,7 @@ Wait, the user asked for the exact HTML structure. Let me structure each section
 <p>Famous patterns: middleware chaining (Gin), worker pools, and channel pipelines. Key frameworks: Gin (web), Cobra (CLI), and GORM (ORM). The standard library includes HTTP servers, templating, and testing tools. Ecosystem strengths: Kubernetes, Docker, and Terraform are built with Go. Community emphasizes minimal dependencies and "batteries-included" tooling (e.g., <code>go test</code>, <code>go mod</code>).</p>
 
 <h3>6. How it "Makes Sense" (Internal Logic)</h3>
-<p>Go programmers think in terms of small, composable interfaces and orthogonal features. Concurrency is modeled as independent goroutines communicating via channels, avoiding shared-state complexity. Errors are treated as values, requiring deliberate handling. The type system encourages simplicity (no generics until Go 1.18, limited to avoid over-abstraction). Compiler-enforced rules (e.g., unused variables) keep codebases maintainable. Go’s design reflects a "less is exponentially more" philosophy, favoring clarity over cleverness.</p></div><hr><div class='lesson'><think>
-Okay, I need to create a detailed HTML breakdown of Java as a senior software architect and programming language theorist. Let me start by recalling the structure the user specified. There are six sections: Core Logic & Design Philosophy, Syntax, Memory Management, Paradigms & Tactics, Unique Patterns & Ecosystem, and How it "Makes Sense". Each section has specific questions to address.
-
-First, for Core Logic, Java was created to solve the problem of platform independence and to simplify C++-like complexity. It's primarily OOP, so I should mention "Write Once, Run Anywhere" with the JVM, and how it enforces OOP structure. Also, the design philosophy around simplicity and security.
-
-Next, Syntax. Java uses braces and semicolons strictly. Indentation isn't enforced but is conventional. Code is organized into classes, packages, and JAR files. I should note that every statement ends with a semicolon, unlike Python. Also, the structure of a typical Java file with class and method declarations.
-
-Memory Management: Java uses automatic garbage collection. Unlike manual management in C/C++ or ownership in Rust, Java's GC handles memory, which reduces leaks but can lead to occasional performance issues. I should mention the different GC algorithms and maybe the possibility of manual hints like nulling references.
-
-Paradigms & Tactics: Java is OOP but added functional features in Java 8 with lambdas and streams. Concurrency uses threads with synchronized blocks and the java.util.concurrent package. Error handling is via exceptions, both checked and unchecked. Need to explain how checked exceptions enforce error handling at compile time.
-
-Unique Patterns & Ecosystem: Frameworks like Spring, Hibernate. Design patterns like Singleton, Factory, MVC. Build tools like Maven and Gradle. Enterprise patterns such as DAO, DTO. Maybe JUnit for testing.
-
-How it "Makes Sense": Programmers think in terms of objects and class hierarchies. Emphasize encapsulation, interfaces, and design patterns. The JVM abstracts hardware, so code is platform-agnostic. The type system and compile-time checks enforce structure, leading to robust applications. Also, the ecosystem's maturity with libraries and tools.
-
-I need to make sure each section is concise but informative, using technical terms appropriately. Check for accuracy: Java's GC doesn't use reference counting, it's tracing-based. Checked exceptions are unique to Java. Lambdas were introduced in Java 8. Also, mention JIT compilation in the JVM under internal logic.
-
-Avoid markdown, only HTML. Use the exact section headings. Timestamp is fixed. Ensure paragraphs under each h3, no lists unless necessary. Maybe use <p> tags with inline strong for terms. Make sure the HTML is well-structured, properly closed tags. No extra text outside the HTML block.
-</think>
-
-<h2>🔍 Deep Dive: Java</h2>
-<p><strong>Timestamp:</strong> 2026-07-25 18:07 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Java was created to enable <strong>platform-independent software</strong> through the JVM ("Write Once, Run Anywhere"). It solved memory corruption risks in C/C++ and enforced <strong>strict OOP</strong> with class-based structures. Designed for simplicity, security, and robustness, it prioritizes readability over conciseness, avoiding low-level features like pointers.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Java uses <strong>C-style braces</strong> and <strong>mandatory semicolons</strong>. Code is organized into classes within packages, compiled into bytecode. Indentation is conventional but not enforced. Execution starts at <code>public static void main(String[] args)</code>. All code must declare types explicitly, with strict access modifiers (public, private, protected).</p>
-
-<h3>3. Memory Management</h3>
-<p>Java uses <strong>automatic garbage collection</strong> (tracing-based, not reference counting). Objects are heap-allocated, with no manual memory control. The JVM handles memory via generational GC (Young/Old Gen) and algorithms like G1 or ZGC. Memory leaks occur via unintended object retention (e.g., static references).</p>
-
-<h3>4. Paradigms & Tactics</h3>
-<p><strong>OOP-first</strong> with interfaces and inheritance), but supports functional programming via lambdas (since Java 8). Concurrency uses threads with <code>synchronized</code> blocks and utilities in <code>java.util.concurrent</code>. Errors are handled via <strong>checked exceptions</strong> (compile-time enforcement) and unchecked exceptions (runtime).</p>
-
-<h3>5. Unique Patterns & Ecosystem</h3>
-<p>Dominant frameworks: Spring (dependency injection), Hibernate (ORM), Jakarta EE. Common patterns: Factory, Singleton, Observer. Build tools: Maven, Gradle. Ecosystem emphasizes <strong>enterprise patterns</strong> (DAO, DTO) and JVM optimizations (JIT compilation). Testing via JUnit and Mockito is standard.</p>
-
-<h3>6. How it "Makes Sense" (Internal Logic)</h3>
-<p>Java programmers think in <strong>object hierarchies</strong> and interface contracts. The JVM abstracts hardware, enabling focus on business logic. Compile-time type checking enforces structure, while GC reduces memory risks. Code organization revolves around packages and modularization (Java 9+). The language rewards upfront design over rapid prototyping, aligning with large-scale system needs.</p></div><hr>
+<p>Go programmers think in terms of small, composable interfaces and orthogonal features. Concurrency is modeled as independent goroutines communicating via channels, avoiding shared-state complexity. Errors are treated as values, requiring deliberate handling. The type system encourages simplicity (no generics until Go 1.18, limited to avoid over-abstraction). Compiler-enforced rules (e.g., unused variables) keep codebases maintainable. Go’s design reflects a "less is exponentially more" philosophy, favoring clarity over cleverness.</p></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
