@@ -17,7 +17,54 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Go</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
+<p><strong>Timestamp:</strong> 2026-09-07 10:56 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Ruby was designed in 1995 by Yukihiro "Matz" Matsumoto with a singular human-centric thesis: <em>optimize for developer happiness and productivity rather than machine efficiency</em>. Matz synthesized elements from Smalltalk, Lisp, and Perl to create a language that feels natural, highly expressive, and deeply dynamic.</p>
+
+<p>At its theoretical core, Ruby is a <strong>pure Object-Oriented Language</strong> where every value—including primitives like integers, booleans, and <code>nil</code>—is a full-fledged object residing in an inheritance hierarchy. It rejects the dichotomy between primitive types and object types found in languages like Java or C++. Simultaneously, Ruby incorporates functional programming constructs (first-class closures, higher-order functions via blocks/procs) and scripting ergonomics (Perl-like regular expressions and imperative script flow).</p>
+
+<p>Ruby addresses the problem of rigid, boilerplate-heavy statically typed languages by offering extreme dynamic flexibility. It operates on the <strong>Principle of Least Surprise (POLS)</strong>, meaning the language behavior minimizes cognitive friction for the programmer by adhering to intuitive internal consistency.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Ruby syntax is deliberately clean, flexible, and human-readable. It avoids mandatory semicolons, visual noise like excessive parentheses, and rigid whitespace rules, relying instead on keyword-delimited blocks.</p>
+
+<ul>
+  <li><strong>Block Structure:</strong> Constructs like classes, methods, and conditionals are opened with keywords (<code>class</code>, <code>def</code>, <code>if</code>) and closed with <code>end</code>. Whitespace indentation is idiomatic (conventionally 2 spaces), but not syntactically enforced like in Python.</li>
+  <li><strong>Implicit Return:</strong> Methods automatically return the result of the last evaluated expression, eliminating boilerplate <code>return</code> statements unless early exit is required.</li>
+  <li><strong>First-Class Blocks:</strong> Ruby introduces a syntactic innovation called "blocks"—chunks of code enclosed in <code>do...end</code> or <code>{...}</code> passed implicitly or explicitly to methods. Blocks power iteration and control structures seamlessly (e.g., <code>5.times { putc '.' }</code>).</li>
+  <li><strong>Code Organization:</strong> Code is organized into classes and modules. Modules serve two main functions: namespace isolation and behavior mixins (composition via multiple inclusion, avoiding the diamond problem of multiple class inheritance).</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Ruby delegates all memory management to its runtime environment, traditionally CRuby/MRI (Matz's Ruby Interpreter). Developers do not manually allocate or free memory, nor does Ruby employ Rust-style compile-time ownership tracking.</p>
+
+<ul>
+  <li><strong>Reference Semantics:</strong> Variables in Ruby do not store values directly; they store object references pointing to memory heap locations (with minor optimizations like immediate values for small integers and symbols embedded directly in pointer bits).</li>
+  <li><strong>Garbage Collection Evolution:</strong> 
+    <ul>
+      <li>Historically, MRI used a naive, stop-the-world Mark-and-Sweep garbage collector.</li>
+      <li>Modern Ruby uses <strong>RGenGC (Generational Garbage Collection)</strong> combined with incremental tri-color marking. Objects are categorized into "young" and "old" generations based on survival, minimizing full GC scan overhead.</li>
+      <li><strong>Compaction:</strong> Ruby includes a compacting garbage collector to combat heap fragmentation caused by long-running dynamic object allocations, improving memory locality and copy-on-write (CoW) efficiency in multi-process setups (such as Unicorn or Puma web servers).</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>4. Paradigms & Tactics</h3>
+
+<p><strong>Object-Oriented Architecture & Message Passing:</strong><br>
+Ruby adopts Smalltalk's model of OOP: execution is conceptually sending messages to objects rather than invoking static functions. If an object receives a message it does not explicitly handle, it triggers the <code>method_missing</code> hook, enabling powerful dynamic dispatch, proxying, and DSL creation.</p>
+
+<p><strong>Concurrency Models:</strong></p>
+<ul>
+  <li><strong>Global VM Lock (GVL):</strong> Standard MRI execution uses a GVL, which prevents true CPU-bound multi-core parallel execution of Ruby bytecode within a single process. However, threads release the GVL during blocking I/O operations, making standard Ruby threading effective for I/O-bound tasks.</li>
+  <li><strong>Fibers:</strong> Lightweight, cooperatively scheduled coroutines used for asymmetric concurrency and event-driven async frameworks (e.g., Falcon web server).</li>
+  <li><strong>Ractors (Ruby 3+):</strong> An actor-model implementation providing true parallel execution across multiple CPU cores without GVL constraints by isolating mutable object states between Ractors.</li>
+</ul>
+
+<p><strong>Error Handling:</strong><br>
+Ruby relies on an exception-driven</div><hr><div class='lesson'><h2>🔍 Deep Dive: Go</h2>
 <p><strong>Timestamp:</strong> 2026-09-07 05:23 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1430,28 +1477,7 @@ I need to ensure each section answers the specific questions posed. Avoid markdo
 
   <h3>6. How it "Makes Sense" (Internal Logic)</h3>
   <p>Python codifies human-friendly abstractions: objects are first-class citizens, duck typing replaces rigid interfaces, and dynamic dispatch enables rapid prototyping. Programmers think in terms of clear, concise expressions rather than boilerplate. The interpreter's REPL encourages iterative exploration, aligning with its "glue language" heritage.</p>
-</html></div><hr><div class='lesson'>
-
-<h2>🔍 Deep Dive: Kotlin</h2>
-<p><strong>Timestamp:</strong> 2026-07-27 08:59 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Created by JetBrains (2011) to modernize Java development with conciseness, safety, and full interoperability. Solves Java's verbosity, null unsafety, and functional programming gaps. Combines OOP with functional programming (first-class functions, immutability support). Pragmatic design: preserves JVM compatibility while adding modern features like type inference and extension functions.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Braces for blocks, optional semicolons. Type declarations follow `name: Type` (e.g., `val x: Int = 5`). Key rules: nullability marked with `?`, `val`/`var` distinction for immutability. Code organized in packages/modules, supports top-level functions. Flow control uses `when` instead of `switch`, and lambda syntax `{ a -> ... }` for functional operations.</p>
-
-<h3>3. Memory Management</h3>
-<p>Relies on JVM garbage collection. No manual memory control. Avoids cycles via weak references/cleaners. Native targets (via Kotlin/Native) use automatic reference counting with cycle detection. No Rust-like ownership model – focuses on developer productivity over low-level control.</p>
-
-<h3>4. Paradigms & Tactics</h3>
-<p>Hybrid OOP/functional: classes with inheritance, interfaces, and data classes. Concurrency via coroutines (lightweight threads with `suspend` functions). Error handling mixes exceptions and functional patterns (`Result<T>`, `try/catch`). Encourages immutability with `val`, `copy()` in data classes, and `List` vs `MutableList` separation.</p>
-
-<h3>5. Unique Patterns & Ecosystem</h3>
-<p>Frameworks: Ktor (async web), Jetpack Compose (declarative UI). Patterns: delegation (`by` keyword), sealed classes for state machines, DSL builders. Android-first focus, but expanding to backend (Spring) and multiplatform (iOS, WebAssembly). Unique features: extension functions (`fun String.reverse()`) and smart casts.</p>
-
-<h3>6. How it "Makes Sense" (Internal Logic)</h3>
-<p>Kotlin emphasizes "pragmatic expression": write intent clearly with minimal boilerplate. Programmers think in null-safe scopes (`?.let { }`), leverage coroutines for async without callback hell, and use Java interop as a bridge rather than constraint. Type system nudges toward safe patterns (non-null defaults, exhaustive `when` checks). Code flows like "enhanced Java" with functional shortcuts where useful.</p></div><hr>
+</html></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
