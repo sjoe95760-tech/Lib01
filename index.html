@@ -17,7 +17,32 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Perl</h2>
+<p><strong>Timestamp:</strong> 2026-09-08 15:33 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Created by Larry Wall in 1987—a linguist turned systems programmer—Perl was designed to bridge the functional gap between low-level C system programming and high-level shell scripting (<code>sh</code>, <code>sed</code>, <code>awk</code>). Its original intent was to facilitate report generation and text processing, but it rapidly evolved into a general-purpose language powering early web infrastructure (CGI) and enterprise systems management.</p>
+
+<p>Perl's foundational core rests on three architectural and philosophical pillars:</p>
+<ul>
+    <li><strong>TMTOWTDI ("There's More Than One Way To Do It"):</strong> Unlike languages like Python, which enforce a single canonical pattern, Perl deliberately provides multiple syntactic paths to achieve the same operational outcome. This design mirrors natural human language, prioritizing authorial expressiveness over uniformity.</li>
+    <li><strong>Context Sensitivity:</strong> Inspired by natural language linguistics, expressions in Perl are evaluated differently depending on the surrounding context (e.g., whether a value is requested as a single entity or as a list).</li>
+    <li><strong>Pragmatism Over Theoretical Purity:</strong> Perl prioritizes practical outcome over strict type systems or paradigm dogma. It seamlessly blends multi-paradigm techniques—procedural logic, functional constructs, and retrofitted dynamic object-oriented programming.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Perl uses C-style control structures with explicit braces <code>{ ... }</code> and mandatory semicolons for statement termination. Indentation is purely stylistic and completely ignored by the interpreter.</p>
+
+<p>The most distinctive element of Perl's syntax is its system of <strong>sigils</strong>, which indicate the data container type rather than the underlying data type:</p>
+<ul>
+    <li><code>$scalar</code>: Represents single values (strings, integers, floats, object references, filehandles).</li>
+    <li><code>@array</code>: Represents ordered, zero-indexed lists of scalars.</li>
+    <li><code>%hash</code>: Represents unordered key-value lookup tables (string keys to scalar values).</li>
+    <li><code>&amp;subroutine</code>: Identifies code references/subroutine calls.</li>
+    <li><code>*typeglob</code>: Accesses the symbol table entry for a given identifier name.</li>
+</ul>
+
+<p>A</div><hr><div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
 <p><strong>Timestamp:</strong> 2026-09-08 11:51 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1414,26 +1439,7 @@ case class Order(id: String, total: BigDecimal, status: OrderStatus)
 
 def computeDiscount(order: Order): BigDecimal = order.status match
   case OrderStatus.Pending if order.total &gt; 100 =&gt; order.total * 0.10
-  case OrderStatus.</div><hr><div class='lesson'><h2>🔍 Deep Dive: TypeScript</h2>
-<p><strong>Timestamp:</strong> 2026-08-29 09:54 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>TypeScript was engineered by Microsoft (led by Anders Hejlsberg) to address the existential scalability limits of JavaScript when building large-scale enterprise applications. As JavaScript grew from a lightweight browser scripting language into the universal runtime for both client (browsers) and server (Node.js), developers struggled with maintainability, refactoring risks, and dynamic duck-typing errors that manifested exclusively at runtime.</p>
-
-<p>From a programming language theory (PLT) perspective, TypeScript is a <strong>gradually typed, structurally typed compile-to-JavaScript language</strong>. Its core design philosophy revolves around three fundamental tenets:</p>
-<ul>
-  <li><strong>Erased Types (Zero-Cost Abstraction at Runtime):</strong> TypeScript types are strictly compile-time artifacts. The compiler performs static analysis, emits clean standard JavaScript, and completely erases all type annotations, interfaces, and generics. TypeScript introduces zero runtime execution overhead.</li>
-  <li><strong>Structural Subtyping (Shape-Based Equivalence):</strong> Unlike nominal type systems (e.g., Java, C++) where type compatibility is declared explicitly via class inheritance or interface implementation, TypeScript evaluates compatibility based on shape. If type <code>A</code> has at least the same properties with compatible types as type <code>B</code>, <code>A</code> is a subtype of <code>B</code>. This formalizes JavaScript's idiomatic "duck typing" without sacrificing static safety.</li>
-  <li><strong>Pragmatic Non-Soundness:</strong> TypeScript’s type system is intentionally <em>unsound</em> in specific domain scenarios to balance safety with JavaScript interoperability and developer ergonomics. Operations such as function parameter bivariance ( historically allowed for array handling), type assertions (<code>as T</code>), and indexed array access assumptions prioritize real-world usability over absolute mathematical rigor.</li>
-</ul>
-<p>TypeScript supports a hybrid, multi-paradigm approach. It seamlessly unifies Object-Oriented Programming (OOP) with classical class inheritance and access modifiers, Functional Programming (FP) with first-class functions, immutability patterns, and higher-order functions, alongside standard imperative/procedural control flow.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>TypeScript syntax is a strict syntactic superset of ECMAScript (JS). Every valid JavaScript file is syntactically valid TypeScript code. TypeScript extends JavaScript syntax by attaching type annotations via a colon syntax (<code>identifier: Type</code>), declaring interfaces, type aliases, enums, and generics.</p>
-
-<h4>Syntactic Mechanics & Grammar</h4>
-<ul>
-  <li><strong>Block Scoping</div><hr>
+  case OrderStatus.</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
