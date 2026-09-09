@@ -17,7 +17,26 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Go</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
+<p><strong>Timestamp:</strong> 2026-09-09 10:17 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Designed in 1995 by Yukihiro "Matz" Matsumoto, Ruby was built on the human-centric philosophy that software languages should be optimized for developer happiness and productivity rather than runtime performance or machine constraints. Its guiding design rule is often cited as the <em>Principle of Least Surprise</em> (POLS)—meaning code should behave in the way an intuitive programmer expects.</p>
+
+<p>Ruby is a <strong>pure, dynamic Object-Oriented Language</strong> inspired heavily by Smalltalk and Perl. Unlike languages with primitive types, absolutely everything in Ruby is an object—including integers, booleans, classes, and `nil`. While procedural at the surface syntax level (allowing scripts without class declarations) and deeply functional in execution tactics (via blocks, higher-order functions, and closures), its underlying conceptual architecture is strictly based on dynamic message passing between objects.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Ruby's syntax emphasizes readability and minimal visual noise, leaning on human linguistic conventions rather than strict mathematical notation.</p>
+
+<ul>
+  <li><strong>Structure & Blocks:</strong> Indentation (conventionally two spaces) is for human readability, not syntax grouping. Blocks of code are defined using keywords (`def ... end`, `class ... end`, `if ... end`) or braces (`{ ... }`) typically reserved for single-line closures. Semicolons are optional line terminators and generally omitted in favor of newlines.</li>
+  <li><strong>Syntactic Sugar:</strong> Parentheses around method arguments are optional in most contexts, allowing for natural domain-specific language (DSL) construction (e.g., `validates :name, presence: true`).</li>
+  <li><strong>Expressions over Statements:</strong> Virtually every construct in Ruby is an expression that yields a value. `if` blocks, `case` statements, and even class bodies return the value of their last evaluated expression. Methods implicitly return their final expression without requiring an explicit `return` keyword.</li>
+  <li><strong>Top-Level Execution:</strong> Code written outside of a class or module executes within the context of a special root object called `main` (an instance of `Object`).</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Ruby manages memory dynamically using an automated runtime garbage collector (GC), relieving the developer from manual memory allocation or</div><hr><div class='lesson'><h2>🔍 Deep Dive: Go</h2>
 <p><strong>Timestamp:</strong> 2026-09-09 05:29 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1461,31 +1480,7 @@ Go provides the performance profile of a compiled language alongside the safety 
 <p><strong>Timestamp:</strong> 2026-08-30 00:52 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
-<p>Python was created in the late 1980s by Guido van Rossum as a successor to the ABC language. Its overarching design goal was</div><hr><div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
-<p><strong>Timestamp:</strong> 2026-08-29 22:53 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>In network security, <strong>Firewalls</strong> and <strong>Intrusion Detection/Prevention Systems (IDS/IPS)</strong> form the foundational perimeter and segmentation controls. A firewall acts as a digital border control, enforcing access control policies by allowing or blocking traffic based on defined security rules. An IDS/IPS acts as a security camera and active security guard: an IDS passively monitors network traffic for malicious signatures or anomalous activity and issues alerts, while an IPS sits inline to actively block or mitigate identified threats in real time.</p>
-<p>Without these technologies, networks are completely exposed to untrusted environments like the internet. They address critical business risks including unauthorized external access, lateral threat movement within compromised subnets, data exfiltration, Command and Control (C2) beaconing, and automated exploitation of unpatched vulnerabilities.</p>
-
-<h3>2. How It Works</h3>
-<p>Modern network defense relies on layered inspection mechanics operating across the OSI model:</p>
-
-<h4>Firewall Evolution & Mechanics</h4>
-<ul>
-    <li><strong>Packet Filtering (Layer 3/4):</strong> Evaluates stateless attributes such as Source/Destination IP addresses, Ports, and Protocols (TCP/UDP/ICMP).</li>
-    <li><strong>Stateful Inspection (Layer 4):</strong> Tracks the state of active network connections (e.g., TCP handshakes: SYN, SYN-ACK, ACK). It ensures incoming packets belong to an established, legitimate outbound session.</li>
-    <li><strong>Next-Generation Firewalls (NGFW - Layer 7):</strong> Performs deep packet inspection (DPI) to identify specific applications (e.g., distinguishing standard HTTPS from encrypted Tor traffic on port 443), integrates user identity mapping (Active Directory/SSO), and enforces threat intelligence feeds.</li>
-</ul>
-
-<h4>IDS/IPS Operating Principles</h4>
-<ul>
-    <li><strong>Deployment Topology:</strong> An <em>IDS</em> receives mirrored traffic via SPAN (Switched Port Analyzer) ports or network TAPs out-of-band, ensuring no latency impact. An <em>IPS</em> is deployed inline (in-band), meaning all traffic must physically pass through the sensor, enabling real-time packet dropping or TCP connection resets (sending <code>RST</code> packets to both endpoints).</li>
-    <li><strong>Detection Engines:</strong>
-        <ul>
-            <li><em>Signature-Based:</em> Matches byte sequences, header attributes, or regular expressions against a database of known threat patterns (e.g., Snort or Suricata rule sets). Highly effective for known exploits, but blind to zero-days.</li>
-            <li><em>Anomaly/Behavioral-Based:</em> Establishes a baseline of normal network activity using statistical models or machine learning. Flags deviations (e.g., an unexpected spike in outbound UDP traffic at midnight). High detection capability for new threats, but prone to false positives.</li>
-            <li><em>Heuristic/</div><hr>
+<p>Python was created in the late 1980s by Guido van Rossum as a successor to the ABC language. Its overarching design goal was</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
