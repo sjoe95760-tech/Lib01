@@ -17,7 +17,29 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Penetration Testing</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
+<p><strong>Timestamp:</strong> 2026-09-09 23:37 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>Zero Trust Architecture (ZTA) is a strategic security framework built on a simple, uncompromising axiom: <em>"Never trust, always verify."</em> Unlike traditional legacy security models—often referred to as the "castle-and-moat" approach, which assumes everything inside an enterprise network perimeter is inherently trustworthy—Zero Trust assumes that threats exist both outside and inside the network at all times.</p>
+<p>In modern enterprise environments, the network perimeter has effectively dissolved due to cloud adoption, remote/hybrid workforce expansion, third-party integrations, and mobile device usage. Relying on network location as a proxy for trust creates immense security risk. Once an attacker breaches the perimeter in a traditional network, they enjoy broad, implicit trust, enabling unchecked lateral movement. Zero Trust solves this fundamental vulnerability by eliminating implicit trust and requiring continuous validation of every access request across identity, device, network, and workload contexts.</p>
+
+<h3>2. How It Works</h3>
+<p>Zero Trust operates by breaking down access decisions into granular, context-aware policy enforcement evaluations. It relies on three primary tenets defined by NIST SP 800-207:</p>
+<ul>
+    <li><strong>Verify Explicitly:</strong> Always authenticate and authorize based on all available data points, including user identity, geographic location, device health/posture, service/workload context, data classification, and anomaly detection.</li>
+    <li><strong>Use Least Privilege Access:</strong> Limit user and machine access with Just-In-Time (JIT) and Just-Enough-Access (JEA) models, Risk-Based Adaptive Policies, and data protection strategies.</li>
+    <li><strong>Assume Breach:</strong> Minimize blast radius by segmenting access by network, user, devices, and application awareness. Encrypt all end-to-end telemetry, utilize analytics to gain visibility, and constantly monitor east-west traffic.</li>
+</ul>
+<p>Architecturally, Zero Trust relies on a <strong>Policy Engine (PE)</strong> that makes access decisions, a <strong>Policy Administrator (PA)</strong> that issues commands to establish or terminate connections, and a <strong>Policy Enforcement Point (PEP)</strong> that enables, monitors, and terminates connections between subjects and resources.</p>
+
+<h3>3. Common Attack/Defense Techniques</h3>
+<p>Offensive operations continuously adapt to exploit gaps in Zero Trust implementations, while defenders deploy precise technical countermeasures:</p>
+<ul>
+    <li><strong>Identity Exploitation & MFA Fatigue vs. Phishing-Resistant MFA:</strong> Attackers target weak Multi-Factor Authentication (MFA) via push-spamming or Adversary-in-the-Middle (AiTM) phishing proxies. <em>Defensive Measure:</em> Enforce FIDO2/WebAuthn hardware keys, certificate-based authentication, and dynamic step-up authentication when anomaly thresholds are breached.</li>
+    <li><strong>Session Hijacking vs. Continuous Token Validation:</strong> Attackers steal access tokens or session cookies via malware to bypass MFA. <em>Defensive Measure:</em> Implement Continuous Access Evaluation Protocol (CAEP), binding sessions to device identity (e.g., TPM-backed certificates) and continuously evaluating device risk telemetry to revoke active sessions in real time.</li>
+    <li><strong>Lateral Movement vs. Micro-segmentation:</strong> Attackers leverage tools like Mimikatz or PsExec to move across flat internal networks. <em>Defensive Measure:</em> Deploy software-defined micro-segmentation and Zero Trust Network Access (ZTNA) solutions that isolate applications so assets cannot discover or communicate with adjacent hosts without explicit authorization.</li>
+</ul></div><hr><div class='lesson'><h2>🔍 Deep Dive: Penetration Testing</h2>
 <p><strong>Timestamp:</strong> 2026-09-09 18:06 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1575,22 +1597,7 @@ Go provides the performance profile of a compiled language alongside the safety 
     <li><strong>Next-Generation Firewalls (NGFW / Layer 7):</strong> Combines traditional stateful inspection with deep packet inspection (DPI), application-level awareness, TLS/SSL decryption, and integrated threat intelligence.</li>
 </ul>
 
-<h4>B. IDS/IPS</div><hr><div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
-<p><strong>Timestamp:</strong> 2026-08-30 12:23 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Structured Query Language (SQL) was designed in the early 1970s by Donald Chamberlin and Raymond Boyce at IBM, grounded in Edgar F. Codd’s formal Relational Model. Prior to SQL, database systems relied on hierarchical or network models (like CODASYL) where software engineers had to write imperative code to manually navigate physical memory pointers and disk addresses to retrieve data. SQL solved this fundamental coupling problem by introducing a high-level abstraction: separating the logical representation of data from its physical storage mechanism.</p>
-<p>SQL is primarily a <strong>declarative, set-based Domain-Specific Language (DSL)</strong> rooted in mathematical <em>Relational Algebra</em> and <em>Tuple Relational Calculus</em>. It is neither Object-Oriented nor purely Functional, nor procedural in its ISO standard form. Instead of prescribing *how* to compute a result via explicit loops and branches, a SQL query specifies the formal mathematical properties that the target relation (result set) must satisfy. The system's underlying Query Planner and Optimizer bear the full responsibility for translating that declarative specification into an optimal physical execution algorithm.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>SQL syntax resembles structured English constructs to maximize readability, using a keyword-driven DSL format. Indentation and whitespace are syntactically irrelevant, and statements are conventionally terminated with a semicolon (<code>;</code>). Keywords are case-insensitive by spec, though standard convention dictates using uppercase for keywords (e.g., <code>SELECT</code>, <code>JOIN</code>, <code>WHERE</code>) and lowercase or snake_case for schema identifiers.</p>
-<p>A critical source of initial developer confusion is the strict divergence between SQL's <strong>Lexical/Written Structure</strong> and its actual <strong>Logical Execution Order</strong>:</p>
-<p><strong>Lexical Order (How developers write code):</strong><br>
-<code>SELECT</code> &rarr; <code>FROM</code> &rarr; <code>JOIN</code> &rarr; <code>WHERE</code> &rarr; <code>GROUP BY</code> &rarr; <code>HAVING</code> &rarr; <code>WINDOW</code> &rarr; <code>ORDER BY</code> &rarr; <code>LIMIT/OFFSET</code></p>
-<p><strong>Logical Execution Order (How the database engine evaluates data):</strong><br>
-1. <code>FROM</code> / <code>JOIN</code>: Define and construct the initial working dataset (Cartesian products / relational cross-joins).<br>
-2. <code>WHERE</code>: Apply row-level tuple filters to eliminate non-matching records early.<br>
-3. <code>GROUP</div><hr>
+<h4>B. IDS/IPS</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
