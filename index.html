@@ -17,7 +17,17 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Social Engineering</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<p><strong>Timestamp:</strong> 2026-09-09 00:49 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Python was created in the late 1980s by Guido van Rossum as a successor to the ABC language, designed to bridge the gap between shell scripting and C systems programming within the Amoeba distributed operating system. Its primary architectural goal is high-level developer velocity through code readability and cognitive simplicity ("executable pseudocode").</p>
+<p>The core philosophy is codified in PEP 20 (The Zen of Python), emphasizing explicit declarations over implicit magic, simplicity over complexity, and the idea that "there should be one—and preferably only one—obvious way to do it."</p>
+<p>Python is a strongly, dynamically typed multi-paradigm language:</p>
+<ul>
+    <li><strong>Object-Oriented:</strong> Pure OOP at its foundation; every runtime entity—including primitive integers, functions, modules, and classes themselves—is an instance of a heap-allocated class inheriting from <code>object</code>.</li>
+    <li><strong>Procedural:</strong> Supports imperative, top-down structured programming with clean control-flow constructs.</li>
+    <li><strong>Functional:</strong> Provides first-class and higher-order functions, closures, list/dict/set comprehensions, and lazy evaluation via generators. However, it explicitly rejects pure functional language invariants like mandatory immutability</div><hr><div class='lesson'><h2>🔍 Deep Dive: Social Engineering</h2>
 <p><strong>Timestamp:</strong> 2026-09-08 19:05 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1476,41 +1486,7 @@ Go provides the performance profile of a compiled language alongside the safety 
     <li><strong>Offensive Evasion Techniques:</strong>
         <ul>
             <li><em>Anti-Analysis & Anti-VM:</em> Querying registry keys, loaded drivers, MAC addresses, or hypervisor artifacts (e.g., VMware/VirtualBox hooks) to detect sandboxes and immediately exit or alter behavior.</li>
-            <li><em>Process Injection:</em></div><hr><div class='lesson'><h2>🔍 Deep Dive: Cryptography</h2>
-<p><strong>Timestamp:</strong> 2026-08-29 17:58 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>Cryptography is the science and mathematical discipline of transforming information to secure it against unauthorized access, modification, and forgery across untrusted channels. At its core, it converts human-readable plaintext into unreadable ciphertext (encryption) and vice versa (decryption) using mathematical algorithms and cryptographic keys.</p>
-
-<p>In modern security architecture, cryptography addresses the fundamental risk of operating on inherently hostile networks, such as the public internet. Without cryptography, data in transit (e.g., web traffic, financial transactions) and data at rest (e.g., database storage, cloud backups) would be fully exposed to eavesdropping, tampering, and spoofing. It provides the foundation for four key security guarantees:</p>
-<ul>
-  <li><strong>Confidentiality:</strong> Ensuring only authorized entities can read the data.</li>
-  <li><strong>Integrity:</strong> Guaranteeing that data has not been altered or tampered with in transit or storage.</li>
-  <li><strong>Authentication:</strong> Verifying the true identity of a user, system, or message sender.</li>
-  <li><strong>Non-Repudiation:</strong> Ensuring an entity cannot deny the authenticity of their signature or transaction.</li>
-</ul>
-
-<h3>2. How It Works</h3>
-<p>Cryptography relies on mathematical primitives grouped into distinct operational categories:</p>
-
-<h4>A. Symmetric Encryption (Secret Key Cryptography)</h4>
-<p>Uses a single shared key for both encryption and decryption. It is extremely fast and ideal for encrypting large volumes of data (data at rest or bulk stream encryption).</p>
-<ul>
-  <li><strong>Key Algorithms:</strong> Advanced Encryption Standard (AES-128/256), ChaCha20.</li>
-  <li><strong>Modes of Operation:</strong> Cipher Block Chaining (CBC), Galois/Counter Mode (GCM - provides authenticated encryption with associated data).</li>
-</ul>
-
-<h4>B. Asymmetric Encryption (Public Key Cryptography)</h4>
-<p>Uses a mathematically linked key pair: a <strong>Public Key</strong> (distributed freely for encryption or signature verification) and a <strong>Private Key</strong> (kept strictly secret for decryption or signing).</p>
-<ul>
-  <li><strong>Key Algorithms:</strong> RSA, Elliptic Curve Cryptography (ECC / ECDSA, Ed25519).</li>
-  <li><strong>Primary Use Cases:</strong> Key exchange, digital signatures, and establishing identity in TLS/SSL.</li>
-</ul>
-
-<h4>C. Cryptographic Hashing</h4>
-<p>One-way deterministic mathematical functions that map input data of arbitrary size to a fixed-size byte array (digest). A tiny change in input fundamentally alters the output digest (avalanche effect).</p>
-<ul>
-  <li><strong>Key Algorithms:</strong></div><hr>
+            <li><em>Process Injection:</em></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
