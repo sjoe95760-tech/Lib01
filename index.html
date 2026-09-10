@@ -17,7 +17,15 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<p><strong>Timestamp:</strong> 2026-09-10 06:46 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Rust was designed by Graydon Hoare at Mozilla to resolve a fundamental false dichotomy in software engineering: the choice between high-level memory safety (guaranteed by Garbage Collection at the cost of latency, memory footprint, and predictability) and low-level control (provided by C/C++ at the cost of catastrophic memory safety vulnerabilities and concurrency bugs). Its governing philosophy is <strong>empowerment through static guarantees</strong>, summarized by the mantra of <em>"zero-cost abstractions"</em> and <em>"fearless concurrency."</em></p>
+<p>From a programming language theory perspective, Rust rejects classic class-based Object-Oriented Programming (no implementation inheritance or vtables by default) in favor of a pragmatic synthesis of:</p>
+<ul>
+  <li><strong>Functional Programming:</strong> Expressive algebraic data types (enums), pattern matching, parametric polymorphism, higher-order functions, immutable-by-default bindings, and monadic error handling.</li>
+  <li><strong>Systems Procedural/Imperative Programming:</strong> Explicit, fine-grained control over memory layouts, stack vs. heap allocation, cache locality, inline assembly</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
 <p><strong>Timestamp:</strong> 2026-09-10 01:53 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1584,33 +1592,7 @@ Go provides the performance profile of a compiled language alongside the safety 
 
 <ul>
   <li><strong>PyObject Architecture:</strong> Every Python variable is a pointer to a <code>PyObject</code> struct in C, which maintains an internal reference counter (<code>ob_refcnt</code>) and a pointer to its type object (<code>ob_type</code>). When a reference count drops to zero, memory is immediately deallocated.</li>
-  <li><strong>Cyclic Garbage</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
-<p><strong>Timestamp:</strong> 2026-08-31 01:05 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>JavaScript was created in May 1995 by Brendan Eich at Netscape, famously prototyped in just 10 days under the codename Mocha. It was designed to address a critical architectural gap in the early Web: the static, non-interactive nature of HTML documents. The goal was to provide an accessible, interpreted scripting language for non-professional developers to manipulate DOM structures, validate forms, and orchestrate client-side behavior without requiring expensive server roundtrips or full compilation step chains.</p>
-
-<p>From a programming language theory perspective, JavaScript is a multi-paradigm, dynamically and weakly typed language with dynamic dispatch and prototype-based object composition. Eich synthesized two opposing paradigms:</p>
-
-<ul>
-  <li><strong>Scheme (Functional Programming):</strong> First-class functions, lexical closures, dynamic typing, and higher-order function capabilities.</li>
-  <li><strong>Self (Prototype-based OOP):</strong> Prototype-based delegation instead of classical class-based inheritance, decoupling instance instantiation from class definitions.</li>
-</ul>
-
-<p>To satisfy executive demands, Netscape wrapped this core in a C/Java-like syntax. The result is a universal runtime standard (ECMAScript) that evolved from simple client-side scripting into an ubiquitous server, desktop, and embedded ecosystem powered by high-performance JIT (Just-In-Time) engines like V8, SpiderMonkey, and JavaScriptCore.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>JavaScript uses a C-style syntax employing curly braces <code>{}</code> to delimit statement blocks, parentheses <code>()</code> for control flow conditions and function arguments, and comma separators. Indentation is purely cosmetic; scoping is defined lexically by braces and declarations.</p>
-
-<h4>Syntactic Rules & Variable Scoping</h4>
-<ul>
-  <li><code>var</code>: Function-scoped or globally-scoped. Variables declared with <code>var</code> are hoisted to the top of their execution context and initialized with <code>undefined</code>.</li>
-  <li><code>let</code> and <code>const</code>: Introduced in ES6, these provide block scoping. They are hoisted but sit inside a <em>Temporal Dead Zone (TDZ)</em> until execution hits the declaration line, throwing a <code>ReferenceError</code> if accessed early.</li>
-  <li><code>const</code> guarantees reference immutability, not structural immutability (object properties inside a <code>const</code> reference can still be mutated).</li>
-</ul>
-
-<h4>Automatic Semicolon Insertion (ASI)</h4>
-<p>JavaScript</div><hr>
+  <li><strong>Cyclic Garbage</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
