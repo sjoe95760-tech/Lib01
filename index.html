@@ -17,7 +17,42 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
+<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<p><strong>Timestamp:</strong> 2026-09-10 01:53 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>
+JavaScript was created in 1995 by Brendan Eich at Netscape, famously drafted in just ten days. Its initial mandate was to provide a lightweight, dynamic scripting language for web browsers to make static HTML pages interactive. To satisfy marketing pressures and capitalize on Java's popularity at the time, its syntax was intentionally designed to resemble Java and C, masking a drastically different core runtime architecture.
+</p>
+<p>
+From a language design perspective, JavaScript is a hybrid construct. Underneath its C-like syntax lies a core heavily influenced by <strong>Scheme</strong> (first-class functions, lexical scoping) and <strong>Self</strong> (prototype-based object inheritance, dynamic object mutation). It solved the fundamental problem of client-side dynamic execution without needing costly round-trips to a web server or compilation down to browser-native binaries.
+</p>
+<p>
+JavaScript is fundamentally a dynamic, weakly typed, multi-paradigm language. It does not enforce a single architectural standard:
+</p>
+<ul>
+    <li><strong>Functional:</strong> Treats functions as first-class citizens, allowing functions to be assigned to variables, passed as arguments, returned from other functions, and composed using high-order paradigms.</li>
+    <li><strong>Prototype-Based OOP:</strong> Objects inherit directly from other objects via a prototype delegation chain, eschewing traditional classical inheritance structures (despite modern class syntax).</li>
+    <li><strong>Event-Driven / Procedural:</strong> Encourages imperative step-by-step logic and reactive state management triggered by external events.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>
+JavaScript uses a C-style syntax using curly braces <code>{}</code> to delimit code blocks, parentheses <code>()</code> for argument lists, and standard control flow statements (<code>if</code>, <code>for</code>, <code>while</code>, <code>switch</code>). 
+</p>
+
+<p><strong>Key Syntactic Characteristics:</strong></p>
+<ul>
+    <li><strong>Braces over Indentation:</strong> White space and indentation are ignored by the parser; code blocks are explicitly delimited by braces.</li>
+    <li><strong>Automatic Semicolon Insertion (ASI):</strong> Semicolons are formally required to terminate statements, but the parser automatically inserts them in most cases during AST generation. ASI is a known source of edge-case bugs (e.g., returning an object literal where the opening brace is placed on a new line yields <code>undefined</code>).</li>
+    <li><strong>Dynamic and Weak Type System:</strong> Variables are untyped containers, while values hold types. Implicit type coercion occurs automatically when operations involve mismatched types (e.g., <code>1 + "2" == "12"</code> or <code>[] + {} == "[object Object]"</code>). Equality evaluation employs abstract comparison (<code>==</code>, with coercion) versus strict identity comparison (<code>===</code>, without coercion).</li>
+    <li><strong>Variable Scoping:</strong> 
+        <ul>
+            <li><code>var</code>: Function-scoped or globally-scoped, subject to variable hoisting (declarations are moved to the top of their scope during compilation).</li>
+            <li><code>let</code> and <code>const</code>: Introduced in ES6, providing block-level scoping governed by a "Temporal Dead Zone" (accessing them prior to declaration throws a <code>ReferenceError</code>). <code>const</code> prevents re-assignment of the variable binding, though the underlying object value remains mutable.</li>
+        </ul>
+    </li>
+    <li><strong>Modular Organization:</strong> Native</div><hr><div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
 <p><strong>Timestamp:</strong> 2026-09-09 23:37 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1575,29 +1610,7 @@ Go provides the performance profile of a compiled language alongside the safety 
 </ul>
 
 <h4>Automatic Semicolon Insertion (ASI)</h4>
-<p>JavaScript</div><hr><div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
-<p><strong>Timestamp:</strong> 2026-08-30 22:58 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>In modern network security, <strong>Firewalls</strong>, <strong>Intrusion Detection Systems (IDS)</strong>, and <strong>Intrusion Prevention Systems (IPS)</strong> form the foundational perimeter and segmentation controls of an organization's defense-in-depth strategy.</p>
-<ul>
-    <li><strong>Firewall:</strong> A network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules. It acts as a barrier between a trusted internal network and untrusted external networks (like the Internet).</li>
-    <li><strong>Intrusion Detection System (IDS):</strong> A passive monitoring system that analyzes network traffic or system logs for suspicious activity, policy violations, or known threat signatures, generating alerts for security analysts.</li>
-    <li><strong>Intrusion Prevention System (IPS):</strong> An active inline system that sits directly in the traffic flow to detect <em>and automatically block</em> or mitigate malicious activity in real-time.</li>
-</ul>
-<p><strong>Why It Matters:</strong> Without these controls, internal resources are exposed to direct exploitation, automated botnet scanning, unauthorized lateral movement, and unmonitored data exfiltration. While firewalls define <em>where</em> traffic is allowed to travel, IDS/IPS inspects <em>what</em> is inside that traffic to stop active exploitation.</p>
-
-<h3>2. How It Works</h3>
-<p>Network security devices operate across different layers of the OSI model and utilize distinct inspection mechanisms:</p>
-
-<h4>A. Firewall Mechanics</h4>
-<ul>
-    <li><strong>Stateless Packet Filtering (Layer 3/4):</strong> Inspects individual packet headers (source/destination IP, port, protocol) in isolation. Fast, but lacks context.</li>
-    <li><strong>Stateful Inspection (Layer 3/4):</strong> Tracks active connection states (e.g., TCP handshakes via state tables). It ensures inbound packets match an established outbound session.</li>
-    <li><strong>Next-Generation Firewalls (NGFW / Layer 7):</strong> Combines traditional stateful inspection with deep packet inspection (DPI), application-level awareness, TLS/SSL decryption, and integrated threat intelligence.</li>
-</ul>
-
-<h4>B. IDS/IPS</div><hr>
+<p>JavaScript</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
