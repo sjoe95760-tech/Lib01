@@ -17,7 +17,27 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Perl</h2>
+<p><strong>Timestamp:</strong> 2026-09-10 15:32 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Created by Larry Wall in 1987, Perl (Practical Extraction and Report Language) was designed to bridge the gap between low-level systems programming in C and high-level, brittle Unix shell scripting. Wall, a trained linguist, deliberately engineered Perl around principles of natural human language rather than strict mathematical formalism.</p>
+
+<p>The foundational tenets of Perl's design philosophy include:</p>
+
+<ul>
+  <li><strong>TMTOWTDI ("There's More Than One Way To Do It"):</strong> Unlike Python's "one obvious way," Perl embraces expressive freedom. Language features allow developers to write concise one-liners, functional pipelines, or formal object-oriented architectures based on context and team preference.</li>
+  <li><strong>Postel's Law applied to syntax:</strong> "Be liberal in what you accept, and conservative in what you send." Perl attempts to infer intent, coercing types fluidly based on operators rather than raising type errors.</li>
+  <li><strong>Pragmatism over Purity:</strong> "Easy things should be easy, and hard things should be possible." Perl solves real-world data extraction, text processing, and glue-code tasks with minimal ceremony.</li>
+</ul>
+
+<p>Architecturally, Perl started as a procedural language with built-in regular expressions and dynamic array/hash types. Perl 5 introduced robust references, package-based namespaces, and an extensible, prototype-like object-oriented system built on top of blessed references. It supports functional constructs through first-class anonymous subroutines, closures, and higher-order functions.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Perl uses C-style block structures with explicit curly braces <code>{}</code> and mandatory statement-terminating semicolons <code>;</code>. Indentation is purely cosmetic. However, its surface syntax is radically shaped by <em>sigils</em> and <em>evaluation contexts</em>.</p>
+
+<h4>Sigils & Variable Naming</h4>
+<p>Variables are prefixed with sigils that indicate the structural type being accessed:</p</div><hr><div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
 <p><strong>Timestamp:</strong> 2026-09-10 11:56 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1554,36 +1574,7 @@ Lifetimes are generic parameters used by the compiler's borrow checker to verify
 <p>Ruby handles memory management via an automated runtime Garbage Collector (GC), freeing developers from manual allocation (<code>malloc</code>) or explicit deallocation (<code>free</code>).</p>
 
 <ul>
-  <li><strong>Mark-and-Sweep Strategy:</strong> Historically, CRuby (MRI—Matz's Ruby Interpreter) utilized a standard stop-the-world Mark-and-Sweep GC. Over modern iterations (Ruby 2.x and 3</div><hr><div class='lesson'><h2>🔍 Deep Dive: Go</h2>
-<p><strong>Timestamp:</strong> 2026-09-01 05:49 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>
-Go (often called Golang) was designed at Google in 2007 by Robert Griesemer, Rob Pike, and Ken Thompson to address systemic software engineering challenges encountered in massive, distributed codebases: agonizingly slow compile times, complex dependency graphs, unreadable meta-programming, and the difficulty of writing safe concurrent code in C++ and Java.
-</p>
-<p>
-From a programming language theory (PLT) perspective, Go is a statically typed, compiled, imperative procedural language with strong structural typing and built-in primitives for Communicating Sequential Processes (CSP). It deliberately rejects modern dynamic expressiveness, complex type systems (such as high-kinded types or full functional abstractions), and traditional class-based Object-Oriented Programming (OOP). Go's philosophy prioritizes reader comprehensibility, orthogonal orthogonal feature design, and rapid compilation over linguistic expressiveness.
-</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>
-Go inherits its core syntax from the C family but aggressively simplifies it by removing syntactic redundancy. 
-</p>
-<ul>
-  <li><strong>Semicolon Injection:</strong> Go's grammar formally uses semicolons to terminate statements, but the lexer automatically inserts them at line breaks using a simple formal rule. This makes explicit semicolons unnecessary in source code while enforcing mandatory line-break formatting rules (e.g., opening braces `{` cannot start on a new line).</li>
-  <li><strong>Control Flow Simplification:</strong> Go drastically reduces control structures. There is only one looping construct: `for` (which handles condition loops, traditional three-part loops, and infinite loops). Parentheses around conditions in `if` and `for` statements are omitted, but curly braces `{}` are strictly mandatory.</li>
-  <li><strong>Visibility via Case:</strong> Identifiers (variables, functions, types, fields) are exported (public) if they begin with a capital letter and unexported (private to the package) if they begin with a lowercase letter. There are no `public`, `private`, or `protected` keywords.</li>
-  <li><strong>Strict Compilation Rules:</strong> Unused variables or imported packages are strictly treated as compile-time errors rather than warnings, ensuring clean codebases at scale.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>
-Go provides the performance profile of a compiled language alongside the safety of automatic memory management:
-</p>
-<ul>
-  <li><strong>Garbage Collection:</strong> Go utilizes a concurrent, tri-color mark-and-sweep garbage collector optimized for ultra-low latency (sub-millisecond pause times) rather than maximum throughput. It sacrifices raw GC throughput to minimize system latency spikes in network services.</li>
-  <li><strong>Escape Analysis:</strong> The compiler performs static escape analysis during compilation to determine whether a variable can live on the stack or must escape to the heap. If a variable's lifetime does not outlive its activation record, it is allocated on the stack, bypassing GC overhead entirely.</li>
-  <li><strong>Explicit Pointers without Arithmetic:</strong> Go features explicit pointers (`*T`), giving</div><hr>
+  <li><strong>Mark-and-Sweep Strategy:</strong> Historically, CRuby (MRI—Matz's Ruby Interpreter) utilized a standard stop-the-world Mark-and-Sweep GC. Over modern iterations (Ruby 2.x and 3</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
