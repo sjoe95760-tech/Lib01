@@ -17,7 +17,28 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
+<p><strong>Timestamp:</strong> 2026-09-10 23:31 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>Zero Trust Architecture (ZTA) is a strategic cybersecurity framework rooted in a fundamental paradigm shift: <strong>"Never Trust, Always Verify."</strong> Unlike traditional perimeter-based security models—often referred to as the "castle-and-moat" approach, which implicitly trusts any user or device inside the corporate network—Zero Trust assumes that threats exist both outside and inside the network boundaries at all times.</p>
+<p>In a traditional architecture, once an attacker breaches the external firewall or compromises a single VPN credential, they gain broad internal access to pivot laterally across servers, databases, and workstations. Zero Trust addresses this critical vulnerability by removing implicit trust based on network location. It enforces strict context-aware authentication, explicit authorization, and continuous validation for every access request, regardless of whether it originates from a remote coffee shop or an internal corporate desk.</p>
+
+<h3>2. How It Works</h3>
+<p>Zero Trust operates through three core guiding principles defined by industry bodies like NIST and CISA:</p>
+<ul>
+  <li><strong>Explicit Verification:</strong> Always authenticate and authorize based on all available data points, including user identity, geographic location, device health/posture, workload context, data classification, and real-time anomaly detection.</li>
+  <li><strong>Least Privilege Access:</strong> Limit user and machine access using Just-In-Time (JIT) and Just-Enough-Access (JEA) models, Risk-Based Adaptive Policies, and data protection mechanisms to minimize exposure.</li>
+  <li><strong>Assume Breach:</strong> Design systems under the assumption that an attacker is already inside the environment. Minimize blast radius through microsegmentation, end-to-end encryption, continuous logging, and automated response capabilities.</li>
+</ul>
+<p>Architecturally, Zero Trust decouples the control plane from the data plane. A centralized <strong>Policy Decision Point (PDP)</strong> evaluates contextual telemetry against security policies. If approved, the PDP instructs a <strong>Policy Enforcement Point (PEP)</strong> (such as an API gateway, ZTNA agent, or next-gen firewall) to establish an encrypted, micro-segmented connection specifically restricted to the requested resource—never granting broad network access.</p>
+
+<h3>3. Common Attack/Defense Techniques</h3>
+<p>Implementing Zero Trust changes the dynamic between offensive tactics and defensive strategies:</p>
+<ul>
+  <li><strong>Offensive Tactics (Attacker Perspective):</strong>
+    <ul>
+      <li></div><hr><div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
 <p><strong>Timestamp:</strong> 2026-09-10 21:16 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1558,11 +1579,7 @@ Lifetimes are generic parameters used by the compiler's borrow checker to verify
   <li><strong>Phishing-Resistant MFA:</strong> Enforcing FIDO2/WebAuthn hardware security keys to eliminate traditional OTP and push-notification fatigue vulnerabilities.</li>
   <li><strong>Device Attestation:</strong> Requiring cryptographic proof of device health from Trusted Platform Modules (TPM) alongside Endpoint Detection and Response (EDR) agent verification before granting access.</li>
   <li><strong>Just-In-Time (JIT) & Just-Enough-Access (JEA):</strong> Granting ephemeral, time-bound administrative privileges that automatically expire when tasks are completed.</li>
-  <li><strong>Data-Centric Security:</strong> Encrypting data at rest, in transit, and in use, combined with Digital Rights Management (DRM</div><hr><div class='lesson'>-Left Security</strong>:</p>
-
-<ul>
-  <li><strong>Assume Untrusted Input:</strong> Every byte arriving from a browser, client API, cookie, or header must be treated as malicious until validated and sanitized on the server.</li>
-  <li><strong>Context is King:</strong> Automated scanners identify low-hanging fruit, but humans break applications by understanding business logic. An analyst asks</div><hr>
+  <li><strong>Data-Centric Security:</strong> Encrypting data at rest, in transit, and in use, combined with Digital Rights Management (DRM</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
