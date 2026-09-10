@@ -17,7 +17,21 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
+<p><strong>Timestamp:</strong> 2026-09-10 11:56 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>PHP (originally "Personal Home Page", now the recursive acronym "PHP: Hypertext Preprocessor") was created by Rasmus Lerdorf in 1994 as a set of C CGI binaries to track web traffic. It evolved into a full programming language when Zeev Suraski and Andi Gutmans rewritten the core parser, establishing the Zend Engine.</p>
+<p>Unlike general-purpose languages adapted for the web, PHP was built specifically for web request processing. Its underlying architecture enforces a <strong>shared-nothing execution model</strong>: every HTTP request initializes a completely clean runtime environment, executes code, generates a response, and tears down all allocated state. This design guarantees isolation between requests, eliminating shared-memory state corruption across web interactions without requiring explicit application-level thread synchronization.</p>
+<p>PHP is a pragmatically multi-paradigm language. While it began as an imperative procedural templating language, modern PHP (v7.0 through v8.x) is dominated by a strict, Java-like class-based Object-Oriented paradigm augmented by functional programming primitives (first-class functions, closures, arrow functions, and pure expressions).</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>PHP’s syntax derives from C, C++, and Perl. It operates as an embedded language: execution begins inside script tags (<code>&lt;?php ... ?&gt;</code>), allowing raw text or HTML outside tags to stream directly to output.</p>
+<ul>
+  <li><strong>Variable Identifiers:</strong> Variables are explicitly denoted by a leading dollar sign (<code>$variable</code>). Sigils differentiate variable evaluation from function calls or structural keywords.</li>
+  <li><strong>Blocks &amp; Statements:</strong> C-style braces (<code>{}</code>) delimit control blocks; semicolons (<code>;</code>) strictly terminate statements.</li>
+  <li><strong>Scope Model:</strong> PHP features explicit lexical scope. Global variables are not automatically accessible inside function scopes unless explicitly bound via the <code>global</code> keyword or imported into closures via the <code>use</code> statement.</li>
+  <li><strong>Type System:</strong> PHP implements gradual, dynamic typing with runtime scalar type enforcement. Modern PHP supports precise type annotations, including union types (<code>string|int</code>), intersection types (<code>ClassA&amp;InterfaceB</code>), Disjunctive Normal Form (DNF) types (<code>(A&amp;B)|C</code>), non-nullable types, properties marked as <code>readonly</code>, and strict mode declaration (<code>declare(strict_types=1);</code>) which turns off coercion</div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
 <p><strong>Timestamp:</strong> 2026-09-10 06:46 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1569,30 +1583,7 @@ Go provides the performance profile of a compiled language alongside the safety 
 <ul>
   <li><strong>Garbage Collection:</strong> Go utilizes a concurrent, tri-color mark-and-sweep garbage collector optimized for ultra-low latency (sub-millisecond pause times) rather than maximum throughput. It sacrifices raw GC throughput to minimize system latency spikes in network services.</li>
   <li><strong>Escape Analysis:</strong> The compiler performs static escape analysis during compilation to determine whether a variable can live on the stack or must escape to the heap. If a variable's lifetime does not outlive its activation record, it is allocated on the stack, bypassing GC overhead entirely.</li>
-  <li><strong>Explicit Pointers without Arithmetic:</strong> Go features explicit pointers (`*T`), giving</div><hr><div class='lesson'><h2>🔍 Deep Dive: Python</h2>
-<p><strong>Timestamp:</strong> 2026-09-01 00:52 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Python was created in the late 1980s by Guido van Rossum as a successor to the ABC language, designed to bridge the gap between low-level C systems programming and traditional shell scripting. Its core design philosophy is codified in PEP 20 ("The Zen of Python"), emphasizing code readability, simplicity, and explicit semantics over implicit magic ("Explicit is better than implicit", "Simple is better than complex").</p>
-<p>Architecturally, Python is a high-level, dynamically typed, interpreted (or JIT-compiled in implementations like PyPy/GraalPy) language with strong runtime type checking. It is multi-paradigm: strictly object-oriented at its runtime core (every value is a heap-allocated object), while supporting procedural flow control and functional programming primitives (first-class functions, higher-order functions, map/filter, and list comprehensions). Python solves the problem of high developer cognitive load, prioritizing programmer velocity and maintainability over raw microarchitectural execution efficiency.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Python uses the "off-side rule," enforcing code block scope through mandatory lexical indentation rather than curly braces (<code>{}</code>) or explicit delimiters. Statements are terminated by newlines; semicolons are syntactically valid but idiomatically discouraged except for rare inline statement separation.</p>
-
-<p>Code is organized hierarchically into <strong>modules</strong> (single <code>.py</code> source files) and <strong>packages</strong> (directories containing an <code>__init__.py</code> file or structured as namespace packages). Variable resolution follows the strict <strong>LEGB rule</strong> (Local, Enclosing, Global, Built-in lexical scopes):</p>
-
-<ul>
-  <li><strong>Declarations:</strong> Variables are dynamically bound upon assignment; there is no keyword for variable declaration (e.g., <code>let</code> or <code>var</code>). Scope modification requires explicit keywords like <code>global</code> or <code>nonlocal</code>.</li>
-  <li><strong>Type System:</strong> Dynamic with gradual typing support via PEP 484 type hints. Type annotations are evaluated at module import time and attached to function/class metadata via <code>__annotations__</code>, but are not natively enforced at runtime by the CPython interpreter without third-party static analysis (e.g., Mypy, Pyright) or runtime validators (e.g., Pydantic).</li>
-  <li><strong>Control Flow:</strong> Standard constructs include <code>if/elif/else</code>, <code>while</code>, and structural pattern matching (<code>match/case</code>). Iteration is fundamentally iterator-based (via <code>for item in iterable</code>) rather than index-counter-based.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Memory in CPython (the reference implementation) is managed through a hybrid model combining <strong>Reference Counting</strong> and a <strong>Generational Cyclic Garbage Collector (GC)</strong>.</p>
-
-<ul>
-  <li><strong>PyObject Architecture:</strong> Every Python variable is a pointer to a <code>PyObject</code> struct in C, which maintains an internal reference counter (<code>ob_refcnt</code>) and a pointer to its type object (<code>ob_type</code>). When a reference count drops to zero, memory is immediately deallocated.</li>
-  <li><strong>Cyclic Garbage</div><hr>
+  <li><strong>Explicit Pointers without Arithmetic:</strong> Go features explicit pointers (`*T`), giving</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
