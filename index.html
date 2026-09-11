@@ -17,7 +17,19 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<p><strong>Timestamp:</strong> 2026-09-11 06:46 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Rust was created at Mozilla (originally designed by Graydon Hoare) to solve a fundamental, historical dilemma in software engineering: the trade-off between <strong>safety</strong> (offered by garbage-collected languages like Java, Go, or Python) and <strong>control/performance</strong> (offered by systems languages like C and C++). Prior to Rust, memory-safe execution required a runtime garbage collector or interpreter, which introduced non-deterministic latency, memory overhead, and lack of bare-metal control.</p>
+
+<p>Rust eliminates spatial and temporal memory safety bugs—such as null pointer dereferences, double frees, use-after-free, buffer overflows, and data races—entirely at <em>compile time</em>, without requiring a garbage collector. It operates on the philosophy of <strong>zero-cost abstractions</strong>: higher-level language constructs (like iterators, closures, and async blocks) compile down to machine code equivalent to, or faster than, hand-written C.</p>
+
+<p>From a programming language theory (PLT) perspective, Rust is a multi-paradigm language:</p>
+<ul>
+    <li><strong>Procedural/Imperative:</strong> Execution flow relies on explicit block scopes, loops, and function invocations with low-level hardware control.</li>
+    <li><strong>Functional:</strong> Strongly influenced by ML/OCaml. Immutability by default, algebraic data types (enums), pattern matching, higher-order functions, and expression-oriented syntax are foundational.</li>
+    <li><strong>Trait-Based Object-Oriented:</strong> Rust intentionally rejects traditional class-based inheritance, instead favoring ad-hoc polymorphism via structural interfaces called <em>traits</em>,</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
 <p><strong>Timestamp:</strong> 2026-09-11 01:51 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1523,43 +1535,7 @@ To prevent data corruption, Rust enforces the aliasing XOR mutability law at com
 </ul>
 
 <p><strong>3. Lifetimes (<code>'a</code>):</strong><br>
-Lifetimes are generic parameters used by the compiler's borrow checker to verify</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
-<p><strong>Timestamp:</strong> 2026-09-02 01:46 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>JavaScript was created in 1995 by Brendan Eich at Netscape to make the web dynamic. Designed in just ten days, its rapid creation produced a unique synthesis of programming language concepts: the C-like syntax requested by management to appeal to Java developers, Scheme's first-class functions and lexical scoping, and Self's prototype-based inheritance.</p>
-
-<p>At its core, JavaScript was built to solve the client-side execution problem—allowing lightweight, non-blocking execution inside a memory-constrained, single-threaded web browser environment without requiring full compilation steps. Its design philosophy prioritizes high malleability, runtime reflection, and extreme forgiveness (fail-soft behavior over hard runtime crashes).</p>
-
-<p>JavaScript is strictly <strong>multi-paradigm</strong>:</p>
-<ul>
-  <li><strong>First-Class Functional:</strong> Functions are first-class citizens (objects), enabling currying, higher-order functions, and closures.</li>
-  <li><strong>Prototype-based Object-Oriented:</strong> OOP without traditional classes; objects inherit directly from other objects via a dynamic delegation chain.</li>
-  <li><strong>Event-Driven & Imperative:</strong> Control flow driven by an asynchronous, non-blocking event loop executing dynamic script logic.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>JavaScript uses a C-family block-structured syntax utilizing curly braces <code>{}</code> for code blocks and expressions ending with optional semicolons, managed by an Automatic Semicolon Insertion (ASI) engine parser ruleset.</p>
-
-<p>Key syntactic characteristics include:</p>
-<ul>
-  <li><strong>Dynamic & Weak Typing:</strong> Types are associated with values, not variables. Implicit coercion (e.g., <code>'5' + 3 === '53'</code>) is prevalent, though modern usage favors strict equality (<code>===</code>) to enforce reference and type identity.</li>
-  <li><strong>Lexical Scoping & Hoisting:</strong> Variable scoping operates at block levels via <code>let</code> and <code>const</code> (introduced in ES6). Legacy <code>var</code> uses function scoping and elevates (hoists) declarations to the top of the execution context during the compilation phase.</li>
-  <li><strong>Module Systems:</strong> Code organization has evolved from immediate-invoked function expressions (IIFE) and CommonJS (<code>require</code> / <code>module.exports</code>) to native ECMAScript Modules (ESM) using static <code>import</code> and <code>export</code> statements.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>JavaScript delegates memory management entirely to the host engine runtime (e.g., V8, SpiderMonkey, JavaScriptCore) using automatic **Garbage Collection (GC)**. Developers do not perform manual allocation or deallocation, nor does the language enforce Rust-like compile-time ownership semantics.</p>
-
-<p>Modern engines implement sophisticated multi-generational, mark-and-sweep garbage collection strategies:</p>
-<ul>
-  <li><strong>Young Generation (Scavenger):</strong> Newly allocated objects reside in a compact space. A Cheney-style copying collection algorithm quickly clears short-lived allocations.</li>
-  <li><strong>Old Generation (Mark-Sweep-Compact):</strong> Objects surviving multiple scavenging cycles are promoted to the old space. The engine runs incremental and concurrent marking phases across the object reachability graph to avoid blocking the main thread execution.</li>
-  <li><strong>Memory Leak Pitfalls:</strong> Because allocation is managed via reachability from root references (the global object, current stack frame), leaks typically stem from unintended retained references in long-lived closures, uncleaned global event listeners, or uncleared intervals.</li>
-</ul>
-
-<h3>4. Paradigms & Tactics</h3>
-<p>Architecturally,</div><hr>
+Lifetimes are generic parameters used by the compiler's borrow checker to verify</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
