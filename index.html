@@ -17,7 +17,28 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<p><strong>Timestamp:</strong> 2026-09-12 06:45 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Rust was designed by Graydon Hoare and backed by Mozilla to bridge a long-standing divide in systems programming: the choice between absolute bare-metal performance with unsafe manual memory management (C/C++) and memory safety enforced by a language runtime or Garbage Collector (Java, Go, Haskell). Rust’s core philosophy is <em>zero-cost abstractions</em>—meaning what you don't use, you don't pay for, and abstractions should compile down to code as efficient as hand-written assembly.</p>
+
+<p>From a programming language theory (PLT) perspective, Rust is a multi-paradigm language built upon an <strong>affine type system</strong>. It draws heavy inspiration from functional programming (ML family) for its type system, expression-based syntax, algebraic data types (ADTs), and pattern matching, while retaining the raw layout control, pointers, and deterministic performance of procedural systems languages. Rust explicitly rejects classical Object-Oriented Programming (OOP) class-based inheritance in favor of composition, structural data modeling, and parametric polymorphism via ad-hoc interface definitions (Traits).</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Rust utilizes block-scoped C-style syntax using curly braces <code>{}</code> and explicit scope delimiters. However, its semantics are overwhelmingly <strong>expression-oriented</strong> rather than statement-oriented. Almost every construct—including <code>if</code> blocks, <code>match</code> statements, and plain code blocks—evaluates to a value.</p>
+
+<pre><code>// Semicolon suppresses the return value, making it a statement (evaluating to unit tuple `()`)
+let value = if condition {
+    42 // No semicolon: expression evaluates to 42
+} else {
+    0  // Expression evaluates to 0
+};
+</code></pre>
+
+<p>Key syntactic and structural mechanics include:</p>
+<ul>
+    <li><strong>Explicit S</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
 <p><strong>Timestamp:</strong> 2026-09-12 01:56 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1564,33 +1585,7 @@ TypeScript possesses no independent memory management engine or garbage collecto
   <li><strong>Garbage Collection Evolution:</strong>
     <ul>
       <li>Historically, CRuby used a simple, blocking <em>Mark-and-Sweep</em> algorithm which led to unpredictable "stop-the-world" latency.</li>
-      <li>Modern Ruby (Ruby 2.1+) utilizes a <strong>Generational GC (RGenGC)</strong> based on the standard hypothesis that most objects die young. It divides heap objects into "young" and "old" generations to reduce</div><hr><div class='lesson'><h2>🔍 Deep Dive: Go</h2>
-<p><strong>Timestamp:</strong> 2026-09-03 05:17 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Go (Golang) was created at Google in 2007 by Robert Griesemer, Rob Pike, and Ken Thompson to solve large-scale software engineering problems: slow compilation times, overly complex C++ codebases, difficult concurrency, and unmaintainable dependency graphs. Its core design philosophy prioritizes <strong>simplicity, explicit behavior, and orthogonal features</strong> over syntactic expressiveness or theoretical abstraction.</p>
-<p>In terms of paradigm classification:</p>
-<ul>
-  <li><strong>Procedural & Imperative:</strong> Go is fundamentally a modern procedural C-family language. Flow of control is sequential, clear, and predictable.</li>
-  <li><strong>Structural Typing:</strong> Go rejects class-based Object-Oriented Programming (OOP). There is no class inheritance, no constructors, and no subtype polymorphism. Instead, it uses lightweight struct composition and implicit structural interfaces.</li>
-  <li><strong>CSP Concurrency Model:</strong> It integrates Communicating Sequential Processes (CSP) directly into the language runtime using lightweight green threads (Goroutines) and typed channels.</li>
-  <li><strong>Pragmatic Pragmatism:</strong> Go deliberately avoids complex features like macro systems, implicit type conversions, and pointer arithmetic. Generics were omitted for over a decade and only added in version 1.18 in a constrained, pragmatic manner to avoid compiler inflation.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Go syntax strips away the noise of classical C-family languages while retaining familiarity.</p>
-<ul>
-  <li><strong>Braces vs. Indentation:</strong> Go uses explicit curly braces <code>{}</code> for scope block definition. Formatting is non-negotiable: the built-in compiler tooling enforces a standard format via <code>gofmt</code>, eliminating stylistic arguments across the industry.</li>
-  <li><strong>Semicolons:</strong> Formal grammar uses semicolons, but they are automatically injected by the lexer at the end of lines using simple rules. Developers rarely type them manually.</li>
-  <li><strong>Code Organization:</strong> All code lives inside a <code>package</code>. Executables require a <code>package main</code> with a <code>func main()</code> entry point. Visibility (public vs. private) is determined entirely by identifier capitalization: upper-case (e.g., <code>ExportedSymbol</code>) is visible outside the package; lower-case (e.g., <code>internalSymbol</code>) is package-private.</li>
-  <li><strong>Control Flow:</strong> Control flow primitives are unified. There is only one looping construct: <code>for</code> (used for standard loops, condition-only loops equivalent to <code>while</code>, and infinite loops). Conditionals do not require parentheses around expression blocks.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Go provides the memory safety of managed languages alongside control over memory layout similar to systems languages.</p>
-<ul>
-  <li><strong>Pointers Without Arithmetic:</strong> Go supports explicit pointers (<code>*T</code>), allowing developers to choose between pass-by-value and pass-by-reference semantics. However, pointer arithmetic is prohibited by default (requiring the unsafe package), preventing buffer overflows and illegal memory access.</li>
-  <li><strong>Escape Analysis:</strong> The Go compiler performs static escape analysis to determine whether an object can be allocated on the function's stack frame or must "escape" to the heap. If a variable's lifetime exceeds the stack frame's lifetime, it is allocated</div><hr>
+      <li>Modern Ruby (Ruby 2.1+) utilizes a <strong>Generational GC (RGenGC)</strong> based on the standard hypothesis that most objects die young. It divides heap objects into "young" and "old" generations to reduce</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
