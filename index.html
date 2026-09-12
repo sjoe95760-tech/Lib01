@@ -17,7 +17,40 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
+<p><strong>Timestamp:</strong> 2026-09-12 11:21 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>PHP (originally Personal Home Page, now the recursive acronym <em>PHP: Hypertext Preprocessor</em>) was birthed by Rasmus Lerdorf in 1994 not as a formal programming language, but as a suite of C-based Common Gateway Interface (CGI) binaries designed to maintain personal web pages. This pragmatism—solving Web-specific problems over theoretical purity—remains its defining foundational ethos.</p>
+
+<p>The core logic of PHP rests upon a <strong>Shared-Nothing Architecture</strong> wrapped around a web-native execution lifecycle. Unlike long-running application servers (e.g., Java Application Servers or Node.js event loops), canonical PHP executes in a stateless sandbox per HTTP request. The runtime boots, reads state, processes input, renders an output payload, and tears down every allocated byte of memory. This radically isolates failure modes: a fatal crash in one HTTP thread cannot corrupt the memory space of concurrent requests.</p>
+
+<p>Historically standard procedural C-style scripting, modern PHP (post-PHP 7 and 8) has morphed into a robust, gradually-typed, multi-paradigm language. It prioritizes modern class-based Object-Oriented Programming (OOP) with Java/C#-like semantics, complemented by functional primitives (first-class functions, closures, arrow functions, and pure immutability features).</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>PHP is a dynamic, interpreted language compiled JIT/AOT into intermediate opcodes executed by the Zend Engine. Syntactically derived from C, Perl, and Java, it relies on explicit block delimiters (braces `{}`) and mandatory trailing semicolons.</p>
+
+<ul>
+    <li><strong>Lexical Boundary Delimiters:</strong> PHP acts as an HTML-templating preprocessor. Execution state only activates inside `<?php ... ?>` tags. Text outside these tags is streamed directly to the output buffer, making tokenization context-dependent.</li>
+    <li><strong>Sigil-Based Variable Scoping:</strong> Variables are explicitly denoted by a leading dollar sign (`$var`). Lexical scoping is strict and local by default; functions cannot access outer-scope variables unless explicitly imported via the `global` keyword or closed over using the `use` clause in anonymous functions.</li>
+    <li><strong>Type System:</strong> PHP implements a dual-mode gradual type system. While dynamically typed by default with runtime coercion, modern PHP supports strict scalar types, class/interface typing, union types (`int|string`), intersection types (`Renderable&Countable`), disjunctive normal form (DNF) types, and `readonly` properties. Adding `declare(strict_types=1);` disables implicit dynamic type casting within a given file unit.</li>
+    <li><strong>Attributes:</strong> Native structured metadata (PHP 8+) using `#[Attribute]` syntax provides reflection-based declarative metadata, replacing legacy DocBlock parsing.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>PHP manages memory through a hybrid allocator inside the Zend Memory Manager (Zend MM), operating under a **Reference Counting with Cycle Collection** paradigm, heavily optimized for transient request lifecycles.</p>
+
+<ul>
+    <li><strong>Zval Container Architecture:</strong> Every PHP variable is represented internally by a C structure called a `zval` (Zend value). The `zval` holds the value payload, a type tag, and a reference count (`refcount`).</li>
+    <li><strong>Copy-on-Write (CoW):</strong> To optimize memory usage, symbol assignment (`$b = $a`) does not duplicate underlying data. Instead, both symbols point to the same `zval` structure and increment its `refcount`. Physical allocation and duplication only occur at the exact moment one of the symbols mutates the value.</li>
+    <li><strong>Cycle Collector (Bacon & Rajan Algorithm):</strong> Standard reference counting fails on circular references (e.g., Object A referencing Object B, which references Object A). PHP uses a synchronous garbage collection algorithm that monitors potential root zvals (complex objects and arrays whose reference count decreases but does not hit zero). When a buffer threshold is reached, a mark-and-sweep pass traverses the graph to isolate and purge unreferenced cyclic structures.</li>
+    <li><strong>Request-Scoped Allocation:</strong> Because the standard SAPI (Server API like PHP-FPM) follows a request-tear-down model, memory allocation is bounded. The Zend MM requests bulk memory pools from the OS and uses custom fast allocators. At request termination, the entire request heap is wiped unconditionally, eliminating classic long-term memory leaks in standard Web scenarios.</li>
+</ul>
+
+<h3>4. Paradigms & Tactics</h3>
+
+<h4>Object-Oriented Programming (OOP)</h4>
+<p>PHP features a unified class model with single inheritance, interfaces, abstract classes</div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
 <p><strong>Timestamp:</strong> 2026-09-12 06:45 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1553,39 +1586,7 @@ TypeScript possesses no independent memory management engine or garbage collecto
 </ul>
 
 <h3>3. Memory Management</h3>
-<p>Scala relies primarily on the underlying runtime platform for memory management—most commonly the JVM, though targets exist for Scala.js (JavaScript engine) and</div><hr><div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
-<p><strong>Timestamp:</strong> 2026-09-03 10:17 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Created in 1995 by Yukihiro "Matz" Matsumoto, Ruby was designed with a explicit human-centric philosophy: to make programmers happy, productive, and stress-free. Matz synthesized the best features of Smalltalk (pure object orientation), Lisp (functional power and blocks/closures), Perl (regular expressions and text processing power), and Eiffel (clean syntax and design by contract concepts).</p>
-
-<p>At its core, Ruby solves the problem of cognitive friction between human thought and machine code. While languages like C++ or Rust prioritize hardware efficiency, Ruby prioritizes expressive power and mental ergonomics. Its design aligns with the <strong>Principle of Least Surprise (POLS)</strong>—meaning the language behaves in a way that minimizes confusion for an experienced developer.</p>
-
-<p>Architecturally, Ruby is a <strong>pure, dynamic Object-Oriented Language</strong> with strong functional capabilities:</p>
-<ul>
-  <li><strong>Pure Object-Orientation:</strong> Everything in Ruby is an object. There are no primitive types. The integer <code>1</code>, the boolean <code>true</code>, the concept of <code>nil</code>, and even classes themselves are instances of objects residing on the heap with executable methods.</li>
-  <li><strong>Dynamic Metaprogramming engine:</strong> The language execution environment is fundamentally an open runtime state. Code is executed sequentially, meaning class and module definitions are live expressions evaluated at runtime rather than static declarative structures.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Ruby’s syntax is clean, flexible, and context-aware, designed to resemble natural language where possible:</p>
-
-<ul>
-  <li><strong>Formatting & Delimiters:</strong> Ruby does not use mandatory semicolons to end statements (newlines act as terminators), nor does it use curly braces for code blocks (using <code>do...end</code> keywords for multi-line blocks instead, though <code>{}</code> is used for single-line blocks and Hash literals). Indentation is conventionally 2 spaces and holds semantic meaning only for human readability, not execution scoping.</li>
-  <li><strong>Implicit Returns:</strong> Methods automatically return the result of the last evaluated expression, eliminating boilerplate <code>return</code> statements.</li>
-  <li><strong>Dynamic & Duck Typing:</strong> Types are attached to values, not variables. Ruby relies on "Duck Typing" (<em>"If it walks like a duck and quacks like a duck, it is a duck"</em>). Code checks for capabilities (method responding) rather than rigid class inheritance structures.</li>
-  <li><strong>Code Organization:</strong> Code is grouped into <code>Classes</code> for instantiation and <code>Modules</code> for namespacing and behavior sharing (Mixins). There is no strict 1:1 file-to-class naming constraint imposed by the language core, though standard conventions (like autoloaders in Rails) enforce it.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Ruby manages memory dynamically using automatic runtime Garbage Collection (GC), abstracting hardware details completely from the developer.</p>
-
-<ul>
-  <li><strong>VALUE Types & Tagged Pointers:</strong> In the reference implementation (MRI/CRuby), every variable holds a C pointer called a <code>VALUE</code>. Small integers (<code>Integer</code>), symbols, and special constants (<code>true</code>, <code>false</code>, <code>nil</code>) use immediate value encoding (tagged pointers) directly inside the <code>VALUE</code> variable, bypassing heap allocation entirely. All other complex structures are allocated on the C heap.</li>
-  <li><strong>Garbage Collection Evolution:</strong>
-    <ul>
-      <li>Historically, CRuby used a simple, blocking <em>Mark-and-Sweep</em> algorithm which led to unpredictable "stop-the-world" latency.</li>
-      <li>Modern Ruby (Ruby 2.1+) utilizes a <strong>Generational GC (RGenGC)</strong> based on the standard hypothesis that most objects die young. It divides heap objects into "young" and "old" generations to reduce</div><hr>
+<p>Scala relies primarily on the underlying runtime platform for memory management—most commonly the JVM, though targets exist for Scala.js (JavaScript engine) and</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
