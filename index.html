@@ -17,7 +17,31 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Scala</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Cryptography</h2>
+<p><strong>Timestamp:</strong> 2026-09-12 17:30 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>Cryptography is the mathematical science of transforming data into unreadable forms to protect its confidentiality, integrity, authenticity, and non-repudiation. In modern cybersecurity, it serves as the fundamental trust layer underlying all digital communications, identity verification, and data storage.</p>
+<p>Without cryptography, digital architecture collapses into inherent insecurity. It directly mitigates critical real-world risks, including:</p>
+<ul>
+  <li><strong>Eavesdropping & Interception:</strong> Preventing unauthorized adversaries from reading sensitive data in transit over untrusted networks (e.g., Man-in-the-Middle attacks on public Wi-Fi).</li>
+  <li><strong>Data Tampering:</strong> Detecting unauthorized modifications to files, software packages, or network packets during transmission or storage.</li>
+  <li><strong>Identity Impersonation:</strong> Verifying the true identity of servers, users, and code authors to block spoofing and unauthorized access.</li>
+  <li><strong>Exfiltration Exposure:</strong> Ensuring that even if an attacker breaches storage media (Data at Rest), the stolen databases or backups remain unreadable without key access.</li>
+</ul>
+
+<h3>2. How It Works</h3>
+<p>Cryptography relies on complex mathematical primitives categorized into three core mechanisms, backed by robust key management systems.</p>
+
+<h4>A. Symmetric Encryption (Secret Key Cryptography)</h4>
+<p>Uses a single shared key for both encryption and decryption. It offers high throughput and low computational overhead, making it ideal for bulk data encryption.</p>
+<ul>
+  <li><strong>Common Algorithms:</strong> Advanced Encryption Standard (AES-128/256), ChaCha20.</li>
+  <li><strong>Modes of Operation:</strong> Block ciphers operate on fixed-size blocks of data using modes such as GCM (Galois/Counter Mode, which provides authenticated encryption) or CBC (Cipher Block Chaining).</li>
+</ul>
+
+<h4>B. Asymmetric Encryption (Public Key Cryptography)</h4>
+<p>Uses a mathematically linked key pair: a <em>public key</em> (distributed freely for encryption/signature verification) and a <em>private key</em> (kept</div><hr><div class='lesson'><h2>🔍 Deep Dive: Scala</h2>
 <p><strong>Timestamp:</strong> 2026-09-12 14:33 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1555,35 +1579,7 @@ TypeScript possesses no independent memory management engine or garbage collecto
         <br><em>Mechanism:</em> When static MFA and traditional network firewalls block initial password access, attackers deploy Adversary-in-the-Middle (AiTM) phishing frameworks (like Evilginx) or malware to steal active browser session cookies and OAuth refresh tokens.
         <br><em>Defensive ZTA Countermeasure:</em> Implementation of <strong>FIDO2/WebAuthn phishing-resistant MFA</strong>, continuous session evaluation (verifying IP/device posture drift during an active session), and binding tokens to hardware devices via TPMs (Device Bound Session Credentials).
     </li>
-    <li><strong>Offensive Technique: Lateral Movement via Pass-the-Hash / Pass-the-</div><hr><div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
-<p><strong>Timestamp:</strong> 2026-09-03 21:28 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>Web Application Security is the discipline of protecting web applications, application programming interfaces (APIs), and the underlying services from malicious exploitation across the entire Software Development Lifecycle (SDLC). Because web applications are publicly accessible by design and process critical business transactions, they represent the largest external attack surface for modern organizations.</p>
-<p>Weaknesses in web applications expose sensitive user data (PII, financial records, health data) to theft, facilitate unauthorized system access, cause operational downtime, and lead to catastrophic regulatory non-compliance fines (such as GDPR or PCI-DSS). Modern web application security moves beyond legacy firewalls to focus on application logic, secure coding, identity enforcement, and real-time defense-in-depth.</p>
-
-<h3>2. How It Works</h3>
-<p>Web application security operates by enforcing security controls across every hop of the HTTP/S request-response lifecycle. When a user interacts with a browser or API client, requests traverse multiple logical layers before reaching business logic and data stores.</p>
-
-<p>Key architectural components and execution processes include:</p>
-<ul>
-  <li><strong>Traffic Ingestion & Edge Protection:</strong> Inbound traffic hits Web Application Firewalls (WAFs) and Content Delivery Networks (CDNs) designed to filter out volumetric DDoS attacks, known exploit signatures, and bot activity before reaching the origin server.</li>
-  <li><strong>Transport Layer Security (TLS):</strong> Enforcing cryptographic standards (TLS 1.3) ensures confidentiality and data integrity while in transit, mitigating Man-in-the-Middle (MitM) sniffing attacks.</li>
-  <li><strong>Input Processing & Sanitization:</strong> The application parses untrusted user inputs (GET parameters, POST bodies, headers, cookies). Secure apps run input through strict allow-lists and schema validation before passing it to internal functions.</li>
-  <li><strong>Authentication & Access Control:</strong> Requests are checked against identity systems using tokens (JWTs, OAuth2, SAML) or session IDs to verify identity and determine specific authorization privileges (RBAC/ABAC).</li>
-  <li><strong>Secure Execution & Data Abstraction:</strong> Business logic executes query execution using abstractions like Object-Relational Mapping (ORM) or parameterized queries to prevent direct interpreter command execution.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Offensive Vector (Attack)</th>
-      <th>Mechanics</th>
-      <th>Defensive Measure (Mitigation)</th>
-    </tr>
-  </thead></div><hr>
+    <li><strong>Offensive Technique: Lateral Movement via Pass-the-Hash / Pass-the-</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
