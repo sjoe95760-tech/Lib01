@@ -17,7 +17,39 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<p><strong>Timestamp:</strong> 2026-09-13 06:55 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Rust was designed by Graydon Hoare at Mozilla to resolve the fundamental dilemma of modern systems programming: the choice between the low-level execution control and performance of C/C++ and the memory safety of garbage-collected languages like Java, C#, or Go. Traditional systems programming accepted software vulnerabilities (e.g., use-after-free, double frees, buffer overflows, data races) as an inevitable price of manual memory management. Higher-level languages eliminated these risks by introducing runtime overhead via Garbage Collection (GC) or managed runtimes.</p>
+
+<p>Rust breaks this trade-off by achieving memory safety and thread safety at <em>compile-time</em> without a garbage collector. Its design philosophy centers on <strong>zero-cost abstractions</strong>—meaning higher-level language constructs compile down to machine code as efficient as hand-written low-level code.</p>
+
+<p>From a programming language theory (PLT) perspective, Rust is a multi-paradigm language strongly influenced by functional programming (ML family) and systems engineering:</p>
+<ul>
+    <li><strong>Not Object-Oriented in the classical sense:</strong> It eschews class-based inheritance in favor of composition, Algebraic Data Types (ADTs), and trait-based parametric polymorphism.</li>
+    <li><strong>Functional Foundations:</strong> Expressions are first-class, pattern matching is exhaustive, immutability is the default, and type inference is Hindley-Milner-inspired.</li>
+    <li><strong>Procedural Efficiency:</strong> Memory layout is fully predictable, control flow is explicit, and native machine instructions are targeted directly.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Rust utilizes standard C-family syntax (curly braces <code>{}</code> for block scopes, block delimiters, and explicit control structures), but its expression-based nature alters its control flow mechanics significantly.</p>
+
+<ul>
+    <li><strong>Expressions vs. Statements:</strong> Blocks of code evaluate to their final expression if the final line omits a trailing semicolon. Adding a semicolon converts an expression into a statement evaluating to <code>()</code> (the unit type).
+    <pre><code>let x = {
+    let a = 5;
+    let b = 10;
+    a + b // No semicolon: evaluates to 15
+};</code></pre>
+    </li>
+    <li><strong>Immutability by Default:</strong> Variables declared with <code>let</code> are strictly immutable. Mutation requires explicit opt-in using the <code>mut</code> keyword (e.g., <code>let mut count = 0;</code>).</li>
+    <li><strong>Module System & Compilation Units:</strong> Code is organized into <em>Crates</em> (compilation targets, either libraries or binaries). Within a crate, code is structured using hierarchical <code>mod</code> trees. Privacy is strict; items are private by default and exposed explicitly using the <code>pub</code> modifier.</li>
+    <li><strong>Type System Structure:</strong> Rust is statically and strongly typed. It employs local type inference, meaning the developer rarely needs to annotate variable types within function bodies, though top-level function signatures strictly require explicit type declarations.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Rust's defining innovation is its compile-time memory model</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
 <p><strong>Timestamp:</strong> 2026-09-13 01:50 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1561,32 +1593,7 @@ TypeScript possesses no independent memory management engine or garbage collecto
     <li><strong>Cross-Site Scripting (XSS):</strong>
         <ul>
             <li><em>Attack:</em> Injecting malicious JavaScript into web pages viewed by other users to steal session tokens, log keystrokes, or perform actions on behalf of the victim.</li>
-            <li><em>Defense:</em> Apply context-aware output encoding (HTML, JavaScript, CSS context), enforce strict Content Security</div><hr><div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
-<p><strong>Timestamp:</strong> 2026-09-04 11:51 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>PHP (originally <em>Personal Home Page</em>, now a recursive acronym for <em>PHP: Hypertext Preprocessor</em>) was conceived in 1994 by Rasmus Lerdorf. Its foundational purpose was not to advance programming language theory, but to solve an immediate, pragmatic problem: embedding dynamic server-side logic seamlessly into static HTML documents without the overhead of compiling C-based CGI binaries.</p>
-
-<p>The core philosophy of PHP is built around a <strong>Shared-Nothing Architecture</strong> and extreme pragmatism. Unlike application servers running long-lived processes (such as Java Application Servers or Node.js event loops), standard PHP operates on an isolated per-request execution model: every HTTP request bootstraps a clean execution context, runs to completion, emits its response, and completely tears down its state. This eliminates cross-request state contamination, memory leaks across client boundaries, and concurrency locking bugs inherent in shared-memory environments.</p>
-
-<p>Over three decades, PHP evolved from a procedural template-oriented scripting layer into a powerful multi-paradigm, dynamically interpreted (with JIT capabilities) language. Today, it primarily favors strict, class-based Object-Oriented Programming (OOP) with strong gradual typing, alongside functional features like first-class closures, arrow functions, and pure functions.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>PHP’s syntax derives heavily from C, Perl, and Java. Code execution occurs inside explicit tags (<code>&lt;?php ... ?&gt;</code>), enabling the engine to act as a preprocessor that streams raw text until an execution boundary is hit.</p>
-
-<ul>
-    <li><strong>Block Structure & Identifiers:</strong> Blocks are enclosed in curly braces <code>{}</code>, and statements must end with explicit semicolons <code>;</code>. Identifiers for variables are explicitly sigil-prefixed with a dollar sign (<code>$variable</code>), distinguishing them structurally from constants and function names.</li>
-    <li><strong>Type System & Modern Flow:</strong> PHP uses a gradual, dynamic type system that has shifted radically toward static safety. Codebases can enforce strict typing at the file level via <code>declare(strict_types=1);</code>. Modern PHP supports union types (<code>string|int</code>), intersection types (<code>Countable&Iterator</code>), static return types, property type declarations, and <code>readonly</code> classes/properties.</li>
-    <li><strong>Control Flow:</strong> Beyond classical C-style flow (<code>if/else</code>, <code>switch</code>, <code>for</code>, <code>while</code>), modern PHP uses value-returning, strictly-typed pattern matching via the <code>match</code> expression.</li>
-    <li><strong>Code Organization:</strong> Code is organized via namespaces (<code>namespace App\Services;</code>) using the backslash separator (<code>\</code>). The industry universally uses the <strong>PSR-4 autoloading standard</strong>, mapping class namespaces directly to file system directory structures via Composer.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>PHP manages memory automatically through the <strong>Zend Engine Memory Manager (ZMM)</strong>, an abstraction layer situated over C's system-level <code>malloc()</code>. Memory allocation is tied intimately to the lifecycle of an internal data structure called the <code>zval</code> (Zend Value).</p>
-
-<ul>
-    <li><strong>Reference Counting with Copy-on-Write (CoW):</strong> Every variable point to a <code>zval</code> container holding its value and a reference counter (<code>refcount</code>). Multiple variables assigned to the same value share the same <code>zval</code> without duplicating memory. Physical cloning only occurs when one variable is modified (Copy-on-Write).</li>
-    <li><strong>Cycle Collection Garbage Collector (GC):</strong> Reference counting alone fails when complex datastructures (like objects or arrays) contain circular references (e.g., Object A references Object B, which references Object A). PHP implements a concurrent cycle collection algorithm based on the</div><hr>
+            <li><em>Defense:</em> Apply context-aware output encoding (HTML, JavaScript, CSS context), enforce strict Content Security</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
