@@ -17,7 +17,36 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Social Engineering</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
+<p><strong>Timestamp:</strong> 2026-09-13 21:53 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>Web Application Security encompasses the processes, controls, technologies, and practices designed to protect web applications, web services, and APIs from security threats, unauthorized access, and malicious exploitation throughout the Software Development Lifecycle (SDLC).</p>
+<p>Because web applications must be publicly accessible to serve users, they inherently expose an entry point through network firewalls directly into an organization's internal data stores and application logic. A single flaw in application logic or input handling can bypass traditional perimeter controls, leading to high-impact consequences including massive data breaches, unauthorized financial transactions, operational downtime, severe regulatory fines (e.g., GDPR, PCI-DSS), and long-term brand damage.</p>
+
+<h3>2. How It Works</h3>
+<p>Web application security works by establishing multi-layered technical boundaries across the interaction model between the client (usually a web browser or mobile client), the network transport tier, the web/application server, and back-end resources (databases, microservices, file systems).</p>
+<ul>
+    <li><strong>Trust Boundaries & Input Validation:</strong> The foundational rule of web application security is that the client cannot be trusted. All incoming data (GET/POST parameters, headers, cookies, file uploads) must cross a trust boundary and undergo strict input sanitization, strict type checking, and boundary validation on the server side before execution or storage.</li>
+    <li><strong>State & Session Management:</strong> HTTP is natively a stateless protocol. Applications rely on tokens, session IDs, or cookies to maintain state. Secure session management ensures that session tokens are cryptographically strong, randomly generated, transmitted exclusively over HTTPS (using flags like <code>Secure</code>, <code>HttpOnly</code>, and <code>SameSite</code>), and properly invalidated upon logout or timeout.</li>
+    <li><strong>Authentication & Authorization:</strong> Authentication verifies identity (e.g., passwords, Multi-Factor Authentication/MFA, OAuth 2.0/OIDC), while authorization ensures that an authenticated entity has explicit permissions to view or mutate specific resources (Role-Based Access Control / Attribute-Based Access Control).</li>
+    <li><strong>Transport Layer Security (TLS):</strong> Encrypts payload data in transit using TLS 1.3, mitigating Man-In-The-Middle (MITM) attacks, credential sniffing, and session hijacking.</li>
+</ul>
+
+<h3>3. Common Attack/Defense Techniques</h3>
+<ul>
+    <li>
+        <strong>SQL Injection (SQLi)</strong>
+        <ul>
+            <li><em>Attack:</em> Malicious SQL statements are inserted into entry fields to manipulate backend database queries, extracting or destroying data.</li>
+            <li><em>Defense:</em> Use Parameterized Queries (Prepared Statements) or Object-Relational Mapping (ORM) frameworks. Never concatenate user input directly into SQL strings.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Cross-Site Scripting (XSS)</strong>
+        <ul>
+            <li><em>Attack:</em> Injecting client-side scripts into web pages viewed by other users (Reflected, Stored, or DOM-based), allowing attackers to steal session cookies or perform actions on behalf of the victim.</li>
+            <li><em>Defense:</em> Implement context-aware output encoding (HTML, JavaScript, CSS encoding), deploy</div><hr><div class='lesson'><h2>🔍 Deep Dive: Social Engineering</h2>
 <p><strong>Timestamp:</strong> 2026-09-13 19:03 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1590,27 +1619,7 @@ TypeScript possesses no independent memory management engine or garbage collecto
 <p>PHP automates memory lifecycle using a hybrid system based on <strong>Reference Counting with a Cycle-Collecting Garbage Collector</strong> inside the Zend Engine.</p>
 
 <ul>
-    <li><strong>Z</div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
-<p><strong>Timestamp:</strong> 2026-09-05 06:26 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Rust was created at Mozilla by Graydon Hoare and refined by a global community to solve the fundamental dilemma of systems programming: the choice between performance and safety. Historically, systems languages like C and C++ offered zero-cost abstractions and deterministic resource allocation at the expense of memory unsafety (dangling pointers, double frees, buffer overflows, and data races). Conversely, managed languages (Java, Go, C#) eliminated memory corruption through garbage collectors at the cost of runtime overhead, non-deterministic latency, and higher memory footprints.</p>
-<p>Rust achieves memory safety, type safety, and concurrency safety without a garbage collector or mandatory runtime. Structurally, Rust is a multi-paradigm language anchored in affine type theory. It combines an imperative, low-level operational core with heavy functional influences—such as algebraic data types (ADTs), pattern matching, closures, and iterator pipelines—while eschewing classical object-oriented class inheritance in favor of composition and parametric polymorphism via traits.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Rust utilizes block-scoped, C-style syntax using curly braces (<code>{}</code>). However, its semantics are heavily expression-oriented rather than statement-oriented. Almost every construct (e.g., <code>if</code> blocks, <code>match</code> statements, unsafe blocks) evaluates to a value. The distinction between an expression and a statement is explicitly governed by the semicolon: appending a semicolon (<code>;</code>) evaluates an expression, discards its value, and yields the unit type <code>()</code>, while omitting the semicolon from the final expression in a block treats that value as the implicit return value of the block.</p>
-<p>Code is organized into hierarchical compilation units:</p>
-<ul>
-    <li><strong>Crates:</strong> The fundamental unit of compilation and dependency versioning (binary or library).</li>
-    <li><strong>Modules (<code>mod</code>):</strong> Namespacing boundaries that encapsulate visibility. Fields and functions are private by default, requiring explicit <code>pub</code>, <code>pub(crate)</code>, or custom scoped visibility markers.</li>
-    <li><strong>Cargo:</strong> The standard build tool, package manager, and metadata system orchestrating deterministic builds using declarative <code>Cargo.toml</code> definitions.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Rust manages memory deterministically at compile time using a discipline called the <strong>Ownership and Borrowing system</strong>, rooted in Linear and Affine Logic. Memory is allocated on the stack (fast, contiguous, fixed-size) or the heap (dynamically sized) without manual allocation/deallocation calls or garbage collection sweeps.</p>
-<p>The system operates on three foundational invariants enforced entirely by the compiler's <em>Borrow Checker</em>:</p>
-<ol>
-    <li><strong>Ownership:</strong> Every resource in memory has exactly one owner variable at any given time. When the owner goes out of scope, the resource is automatically destructed via</div><hr>
+    <li><strong>Z</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
