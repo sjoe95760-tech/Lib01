@@ -17,7 +17,40 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
+<p><strong>Timestamp:</strong> 2026-09-13 12:26 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Structured Query Language (SQL) was designed in the early 1970s by Donald Chamberlin and Raymond Boyce at IBM, rooted directly in Edgar F. Codd’s formal relational model of data. Its primary design goal was to decouple logical data access from physical data storage representation—allowing developers and analysts to query data without writing imperative procedural logic to traverse B-trees, linked lists, or pointers on disk.</p>
+
+<p>SQL is fundamentally a <strong>declarative, domain-specific programming language (DSL)</strong> based on <em>relational algebra</em> and <em>tuple relational calculus</em>. Unlike imperative paradigms (OOP, Functional, Procedural), SQL shifts the burden of execution strategy from the developer to an optimizing compiler (the Query Optimizer). You specify <em>what</em> result set you need, and the underlying Relational Database Management System (RDBMS) determines <em>how</em> to retrieve, index, join, filter, and stream that data efficiently.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>SQL syntax is designed to approximate natural English clauses, but it possesses a strict logical execution model that diverges radically from its written lexical order.</p>
+
+<p><strong>Lexical Syntax vs. Logical Execution Flow:</strong></p>
+
+<p>A typical written SQL query follows this lexical structure:</p>
+
+<p><code>SELECT cols FROM table JOIN table2 ON condition WHERE filter GROUP BY keys HAVING group_filter ORDER BY cols;</code></p>
+
+<p>However, the internal query engine executes these clauses in a completely different order to logically evaluate candidate sets:</p>
+
+<ol>
+  <li><strong>FROM &amp; JOIN:</strong> The engine identifies target relations and builds Cartesian products/joins (evaluating <code>ON</code> filters).</li>
+  <li><strong>WHERE:</strong> Filters individual rows prior to grouping (eliminating non-matching tuples early).</li>
+  <li><strong>GROUP BY:</strong> Groups remaining rows into equivalence classes based on specified keys.</li>
+  <li><strong>HAVING:</strong> Filters aggregated groups (operates on post-group summary values).</li>
+  <li><strong>SELECT:</strong> Evaluates expressions, aliases, and projects specific columns from the set.</li>
+  <li><strong>DISTINCT:</strong> Deduplicates remaining row instances.</li>
+  <li><strong>ORDER BY:</strong> Sorts the projected set (converting the mathematical <em>unordered set</em> into an ordered sequence).</li>
+  <li><strong>LIMIT / OFFSET:</strong> Slices the final result vector.</li>
+</ol>
+
+<p>SQL is block-scoped through subqueries and Common Table Expressions (CTEs), ignores arbitrary whitespace, relies on single-quotes for string literals, and uses semicolons as statement terminators to demarcate distinct commands within transactional blocks.</p>
+
+<h3>3. Memory Management</h3>
+<p>SQL as a language abstractly presents an infinite memory pool. The programmer does not allocate memory,</div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
 <p><strong>Timestamp:</strong> 2026-09-13 06:55 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1565,35 +1598,7 @@ TypeScript possesses no independent memory management engine or garbage collecto
 </ul>
 
 <h3>3. Common Attack/Defense Techniques</h3>
-<p>As organizations transition to ZTA, the battleground shifts from network-layer breaches to identity- and application-layer</div><hr><div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
-<p><strong>Timestamp:</strong> 2026-09-04 21:07 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>Web Application Security encompasses the posture, processes, technologies, and defensive controls designed to protect web applications, web services, and APIs from exploitation, unauthorized access, and operational disruption. Unlike traditional network security, which focuses on securing perimeters and ports, web application security operates at the Application Layer (Layer 7 of the OSI model).</p>
-<p>It matters fundamentally because web applications serve as the primary public-facing threshold for modern businesses. Because HTTP/HTTPS endpoints must remain open to the public to serve legitimate users, attackers can bypass network firewalls by embedding malicious payloads directly within legitimate web requests. A breach at the application layer can result in catastrophic data exfiltration (PII, payment credentials, corporate intellectual property), server takeover, reputational damage, and severe regulatory non-compliance fines (GDPR, PCI-DSS, CCPA).</p>
-
-<h3>2. How It Works</h3>
-<p>Web application security functions by establishing continuous, multi-layered controls across the entire software development life cycle (SDLC) and deployment environment. Modern web applications operate on a multi-tier model consisting of the client browser, web/application servers, and backend databases. Security controls operate continuously across these tiers:</p>
-<ul>
-    <li><strong>Client-Server Trust Boundaries:</strong> Applications must treat all incoming data from the client side (browser, mobile app, API caller) as inherently untrusted, enforcing strict controls on the server side regardless of client-side logic.</li>
-    <li><strong>Input & Output Handling:</strong> Every user-supplied data point (form inputs, HTTP headers, cookies, URL parameters) must be validated, sanitized, or parameterized before processing, and properly encoded before being rendered back to the client.</li>
-    <li><strong>Identity & Session Management:</strong> Securing the stateless nature of HTTP via secure session tokens (such as HTTPS-only, SameSite, HttpOnly cookies or signed JWTs), multi-factor authentication (MFA), and robust password hashing algorithms (e.g., Argon2id, bcrypt).</li>
-    <li><strong>Continuous Testing & Verification:</strong> Utilizing Static Application Security Testing (SAST) in CI/CD pipelines to scan source code, Dynamic Application Security Testing (DAST) to analyze running apps, and Interactive Application Security Testing (IAST) for runtime code analysis.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<p>Securing a web application requires pairing known attack vectors with context-aware defensive patterns:</p>
-<ul>
-    <li><strong>SQL Injection (SQLi):</strong>
-        <ul>
-            <li><em>Attack:</em> An attacker inserts malicious SQL commands into input fields to manipulate database queries, bypassing authentication or dumping database contents.</li>
-            <li><em>Defense:</em> Use parameterized queries (prepared statements) or Object-Relational Mapping (ORM) frameworks. Never concatenate user input into raw SQL strings.</li>
-        </ul>
-    </li>
-    <li><strong>Cross-Site Scripting (XSS):</strong>
-        <ul>
-            <li><em>Attack:</em> Injecting malicious JavaScript into web pages viewed by other users to steal session tokens, log keystrokes, or perform actions on behalf of the victim.</li>
-            <li><em>Defense:</em> Apply context-aware output encoding (HTML, JavaScript, CSS context), enforce strict Content Security</div><hr>
+<p>As organizations transition to ZTA, the battleground shifts from network-layer breaches to identity- and application-layer</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
