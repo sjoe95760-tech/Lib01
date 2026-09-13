@@ -17,7 +17,44 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Network Security</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Social Engineering</h2>
+<p><strong>Timestamp:</strong> 2026-09-13 19:03 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p><strong>Social Engineering</strong> is the psychological manipulation of human beings to trick them into performing actions, divulging confidential information, or granting unauthorized access to systems. In cybersecurity, it represents "hacking the human"—targeting the cognitive vulnerabilities of people rather than software flaws or system misconfigurations.</p>
+<p>It matters because human error remains the primary attack vector for enterprise breaches. An organization can invest millions in modern Endpoint Detection and Response (EDR), Next-Gen Firewalls (NGFW), and robust encryption, but a single well-crafted phishing email or social engineering phone call can completely bypass these controls. Adversaries recognize that compromising an employee's credentials via deception is exponentially faster, cheaper, and quieter than discovering a zero-day vulnerability in hardened software.</p>
+
+<h3>2. How It Works</h3>
+<p>Social engineering operates on structured psychological triggers and a defined execution lifecycle:</p>
+<ul>
+    <li><strong>The Attack Lifecycle:</strong>
+        <ol>
+            <li><strong>Reconnaissance (OSINT):</strong> Gathering open-source intelligence on the target via LinkedIn, social media, company websites, or breach databases to identify high-value personnel, organizational structures, and third-party vendors.</li>
+            <li><strong>Establishing Rapport & Pretexting:</strong> Fabricating a plausible scenario (a "pretext")—such as posing as IT support, an executive, an auditor, or a trusted vendor—to build trust.</li>
+            <li><strong>Exploitation:</strong> Triggering the victim to act (e.g., clicking a link, downloading a malicious attachment, approving a Multi-Factor Authentication prompt, or transferring funds).</li>
+            <li><strong>Execution & Exit:</strong> Utilizing the obtained credentials or access to establish persistence while quietly terminating contact without raising suspicion.</li>
+        </ol>
+    </li>
+    <li><strong>Psychological Drivers (Cialdini's Principles of Persuasion):</strong>
+        <ul>
+            <li><strong>Authority:</strong> Users naturally defer to leadership, law enforcement, or IT admins.</li>
+            <li><strong>Urgency/Scarcity:</strong> Creating panic ("Account suspended in 15 minutes") to force rapid action before critical thinking intervenes.</li>
+            <li><strong>Fear/Intimidation:</strong> Threatening negative consequences (termination, legal action) if demands are not immediately met.</li>
+            <li><strong>Social Proof/Consensus:</strong> Assuring the target that "everyone else in your department has already completed this step."</li>
+            <li><strong>Liking & Reciprocity:</strong> Building friendly rapport or offering a small favor/gift to generate an implicit obligation to help in return.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>3. Common Attack/Defense Techniques</h3>
+<p>Effective defense requires mapping specific offensive vectors to technical, procedural, and cultural controls:</p>
+<ul>
+    <li><strong>Phishing (Mass / Generic):</strong>
+        <ul>
+            <li><em>Offense:</em> Broad, automated email campaigns aimed at harvesting credentials or delivering malware.</li>
+            <li><em>Defense:</em> Robust email filtering (SPF, DKIM, DMARC enforcement), Secure Email Gateways (SEGs), and automated link re-writing/sandboxing.</li>
+        </ul>
+    </li></div><hr><div class='lesson'><h2>🔍 Deep Dive: Network Security</h2>
 <p><strong>Timestamp:</strong> 2026-09-13 16:43 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1573,34 +1610,7 @@ TypeScript possesses no independent memory management engine or garbage collecto
 <p>Rust manages memory deterministically at compile time using a discipline called the <strong>Ownership and Borrowing system</strong>, rooted in Linear and Affine Logic. Memory is allocated on the stack (fast, contiguous, fixed-size) or the heap (dynamically sized) without manual allocation/deallocation calls or garbage collection sweeps.</p>
 <p>The system operates on three foundational invariants enforced entirely by the compiler's <em>Borrow Checker</em>:</p>
 <ol>
-    <li><strong>Ownership:</strong> Every resource in memory has exactly one owner variable at any given time. When the owner goes out of scope, the resource is automatically destructed via</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
-<p><strong>Timestamp:</strong> 2026-09-05 01:47 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>JavaScript (ECMAScript) was created in 1995 by Brendan Eich at Netscape. Designed in just ten days, its original mandate was to serve as an accessible, lightweight scripting language to make static HTML documents dynamic within the Netscape Navigator browser. To fulfill this business requirement, Eich harmonized three distinct programming language traditions: the C-like syntax requested by management to appeal to Java developers, Lisp/Scheme-style first-class functions and lexical scoping, and Self-style prototype-based object orientation.</p>
-
-<p>At its core, JavaScript solves the problem of high-concurrency, user-driven interactive programming over unpredictable network layers without requiring multi-threaded locks or complex OS-level thread orchestration. It is a multi-paradigm, dynamically and weakly typed, JIT-compiled language designed around an asynchronous, non-blocking event loop. Rather than enforcing strict structural boundaries, JavaScript's philosophy favors high flexibility, malleability, and dynamic runtime mutation.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>JavaScript employs a C-style syntax using curly braces <code>{}</code> to define statement blocks and explicit control structures (<code>if</code>, <code>for</code>, <code>while</code>, <code>switch</code>). Statement termination traditionally uses semicolons (<code>;</code>), though the language engine includes an Automatic Semicolon Insertion (ASI) mechanism, making them syntactically optional in many contexts, albeit with precise edge-case pitfalls (e.g., returning object literals across newline boundaries).</p>
-
-<p>Code organization operates on variable scoping levels defined by three keywords:</p>
-<ul>
-  <li><code>var</code>: Function-scoped, hoisted to the top of its enclosing context with an initial value of <code>undefined</code>.</li>
-  <li><code>let</code>: Block-scoped, hoisted but kept in a "Temporal Dead Zone" (TDZ) until execution reaches its declaration.</li>
-  <li><code>const</code>: Block-scoped, TDZ-enforced, and binds an immutable reference (though the underlying value remains mutable if it is an object or array).</li>
-</ul>
-
-<p>Modern JavaScript prioritizes ES Modules (ESM) using <code>import</code> and <code>export</code> statements, enforcing static module resolution and clean encapsulation over legacy global scope pollution or CommonJS (<code>require</code>/<code>module.exports</code>) dynamic runtime imports.</p>
-
-<h3>3. Memory Management</h3>
-<p>JavaScript abstracts memory management through automatic Garbage Collection (GC), removing the need for manual allocation (<code>malloc</code>) or explicit deallocation (<code>free</code>). Memory is bifurcated into two primary structures:</p>
-<ul>
-  <li><strong>Call Stack:</strong> Stores primitive values (<code>Number</code>, <code>String</code>, <code>Boolean</code>, <code>Symbol</code>, <code>BigInt</code>, <code>undefined</code>, <code>null</code>) and stack frames containing execution context metadata.</li>
-  <li><strong>Memory Heap:</strong> Stores reference types (objects, arrays, functions, maps). Stack identifiers hold memory addresses pointing to these heap allocations.</li>
-</ul>
-
-<p>Modern engines (such as V8 or JavaScriptCore) manage the heap via a generational Mark-and-Sweep garbage collector, frequently supplemented by dynamic tracing and incremental/concurrent sweeping. Objects are grouped into "New Space" (nursery) and "Old Space". Objects surviving multiple collection passes in the New Space are promoted to the Old Space. Memory leaks primarily occur due to retained references in lexical closures, lingering event listeners, global variable pollution, or detached DOM</div><hr>
+    <li><strong>Ownership:</strong> Every resource in memory has exactly one owner variable at any given time. When the owner goes out of scope, the resource is automatically destructed via</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
