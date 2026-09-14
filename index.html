@@ -17,7 +17,24 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Malware Analysis</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
+<p><strong>Timestamp:</strong> 2026-09-14 22:59 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>In network security, <strong>Firewalls</strong> and <strong>Intrusion Detection/Prevention Systems (IDS/IPS)</strong> serve as the primary perimeter and segmentation controls. While often paired together in modern Next-Generation Firewalls (NGFW), they address distinct security requirements:</p>
+<ul>
+    <li><strong>Firewalls:</strong> Act as policy-driven gatekeepers that enforce traffic boundary controls. They permit or deny network traffic based on configured rules (source, destination, port, protocol, or application layer contextual data).</li>
+    <li><strong>IDS (Intrusion Detection System):</strong> A passive security monitor that inspects network traffic or system logs for malicious signatures, policy violations, or anomalous behavior, triggering alerts without interrupting traffic flow.</li>
+    <li><strong>IPS (Intrusion Prevention System):</strong> An active, inline device that dynamically detects and blocks malicious activity in real-time by dropping packets, resetting TCP connections, or dynamically updating firewall tables.</li>
+</ul>
+<p><strong>Why It Matters:</strong> Without robust network boundaries and inspection engines, networks are subject to unhindered initial access, automated exploit propagation, and unrestricted lateral movement. Firewalls define trust zones (e.g., DMZ vs. Internal Corporate), while IDS/IPS perform the deep packet analysis required to block zero-day exploits, command-and-control (C2) beaconing, and unauthorized data exfiltration.</p>
+
+<h3>2. How It Works</h3>
+<p>Both technologies operate across various layers of the OSI model using distinct analysis engines:</p>
+
+<h4>Firewall Architecture Mechanics</h4>
+<ul>
+    <li><strong>Stateless Packet Filtering (Layer 3/4):</strong> Evaluates individual packets in isolation against static ACLs (Access</div><hr><div class='lesson'><h2>🔍 Deep Dive: Malware Analysis</h2>
 <p><strong>Timestamp:</strong> 2026-09-14 20:00 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1526,15 +1543,7 @@ TypeScript possesses no independent memory management engine or garbage collecto
 </p>
 <ul>
   <li><strong>Garbage Collection:</strong> Objects, primitives, and functions are allocated on the heap or stack managed by the underlying host engine, which utilizes modern, generational mark-and-sweep garbage collection algorithms.</li>
-  <li><strong>No Manual Pointers or Ownership:</strong> There is no concept of manual pointer arithmetic, explicit memory deallocation, or affine ownership semantics (like Rust</div><hr><div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
-<p><strong>Timestamp:</strong> 2026-09-05 22:26 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>
-    At the core of network security, <strong>Firewalls</strong>, <strong>Intrusion Detection Systems (IDS)</strong>, and <strong>Intrusion Prevention Systems (IPS)</strong> form the foundational traffic inspection and boundary defense capabilities of modern infrastructure.
-</p>
-<ul>
-    <li><strong>Firewalls:</strong> Network security security controls that inspect incoming and outgoing traffic to permit or block data flows based on pre-configured security rules (e.g., IP addresses, ports,</div><hr>
+  <li><strong>No Manual Pointers or Ownership:</strong> There is no concept of manual pointer arithmetic, explicit memory deallocation, or affine ownership semantics (like Rust</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
