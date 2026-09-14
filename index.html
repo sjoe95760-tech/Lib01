@@ -17,7 +17,35 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Java</h2>
+<p><strong>Timestamp:</strong> 2026-09-14 02:07 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Java was created in 1995 by James Gosling at Sun Microsystems with a single foundational vision: "Write Once, Run Anywhere" (WORA). Designed to overcome the platform dependency, security vulnerabilities, and memory corruption risks inherent in C and C++, Java introduced a managed runtime environment called the Java Virtual Machine (JVM). Instead of compiling directly to native machine code, Java compiles into intermediate bytecode, which the JVM executes and optimizes at runtime using Just-In-Time (JIT) compilation.</p>
+<p>Architecturally, Java is primarily a strictly typed, class-based Object-Oriented Programming (OOP) language. It intentionally omitted dangerous C++ features like pointer arithmetic, multiple implementation inheritance, and manual memory deallocation. Over the decades, Java has modernly evolved into a multi-paradigm language, introducing functional programming idioms (lambdas, functional interfaces, the Stream API) and immutable data primitives (records), while maintaining near-unrivaled backward compatibility.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Java utilizes a rigid, C-style syntax defined by explicit block scoping via curly braces (<code>{}</code>) and mandatory trailing semicolons (<code>;</code>) to terminate statements. Code organization is strictly hierarchical and tied directly to the host filesystem: source files reside in named <code>package</code> declarations corresponding to directory structures, and each <code>.java</code> file can contain only one public outer class matching the exact name of the file.</p>
+<p>Control flow relies on standard procedural imperatives: <code>if/else</code>, <code>switch</code> expressions (with modern pattern matching), <code>for</code>, <code>while</code>, and <code>do-while</code> loops. Type declarations are statically checked at compile time. Although Java 10 introduced local variable type inference via the <code>var</code> keyword, the underlying typing system remains strictly static, manifest, and invariant by default (with use-site variance achieved via generics wildcards like <code>&lt;? extends T&gt;</code>).</p>
+
+<h3>3. Memory Management</h3>
+<p>Java delegates memory management entirely to the JVM, eliminating manual allocations (like <code>malloc</code>/<code>free</code>) and pointer arithmetic. Memory is divided into two primary runtime areas: the <strong>Stack</strong>, which stores primitive values and short-lived execution frame references for threads, and the <strong>Heap</strong>, where all instantiated objects reside.</p>
+
+<p>Object lifecycle and reclamation are handled by advanced, non-deterministic Automatic Garbage Collection (GC) algorithms (e.g., G1, ZGC, Shenandoah). Java tracks object reachability from GC Roots (e.g., active thread stack frames, static fields) through a graph traversal. Unreachable objects are marked and swept or compacted during generational GC cycles (Young vs. Old Generation). To tune memory behavior, developers can leverage reference types beyond standard strong references, such as <code>WeakReference</code>, <code>SoftReference</code>, and <code>PhantomReference</code>.</p>
+
+<h3>4. Paradigms & Tactics</h3>
+<p>Java enforces strict Object-Oriented paradigms centered on Encapsulation (access modifiers like <code>private</code>, <code>protected</code>), Abstraction (<code>interface</code>, <code>abstract class</code>), Polymorphism (method overriding and subtyping), and Single Inheritance. Functional tactics complement this OOP core through stateless lambda expressions, method references, and pipeline processing via <code>java.util.stream.Stream</code>.</p>
+<p>For concurrency, Java originally relied on explicit, OS-level heavy threads synchronized via intrinsic object locks (<code>synchronized</code>) and explicit lock primitives in <code>java.util.concurrent</code>. In modern Java, Virtual Threads (Project Loom) provide lightweight, preemptive-like fiber scheduling managed directly by the JVM, allowing millions of concurrent tasks without mapping 1:1 to kernel threads. Error handling uses an explicit exception system categorized into <em>Checked Exceptions</em> (enforced at compile time, requiring explicit <code>throws</code> signatures or <code>try-catch</code> handling) and <em>Unchecked Exceptions</em> (subclasses of <code>RuntimeException</code> for unrecoverable or logic errors).</p>
+
+<h3>5. Unique Patterns & Ecosystem</h3>
+<p>Java boasts one of the most mature enterprise ecosystems in computing history. Its enterprise footprint is anchored by massive framework ecosystems such as the <strong>Spring Framework / Spring Boot</strong> and <strong>Jakarta EE</strong> (formerly Java EE), as well as object-relational mapping (ORM) systems like <strong>Hibernate</strong>. Build management relies on standardized tooling like <strong>Maven</strong> and <strong>Gradle</strong>.</p>
+
+<p>The idiom of Java development heavily features classic GoF (Gang of Four) Design Patterns. Standard Java architectures universally deploy:</p>
+<ul>
+  <li><strong>Dependency Injection (DI) / Inversion of Control (IoC):</strong> Decoupling component creation from execution.</li>
+  <li><strong>Factory &amp; Builder Patterns:</strong> Constructing complex objects without leaking initialization logic.</li>
+  <li><strong>Singleton &amp; Strategy Patterns:</strong> Managing runtime configuration state and dynamic behavior encapsulation.</li>
+  <li><strong>Decorator &amp; Proxy Patterns:</strong> Dynamically adding cross-cutting concerns (logging, transactions) at runtime</div><hr><div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
 <p><strong>Timestamp:</strong> 2026-09-13 23:44 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1596,42 +1624,7 @@ TypeScript possesses no independent memory management engine or garbage collecto
         <br><em>Defense:</em> Enforce micro-segmentation, disable legacy protocols (SMBv1, NBT-NS, LLMNR), implement host-based firewalls, and restrict administrative remote access paths.
     </li>
     <li><strong>Denial of Service (DoS/DDoS):</strong>
-        <br><em>Attack:</em> Botnets overwhelm network capacity or protocol stack</div><hr><div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
-<p><strong>Timestamp:</strong> 2026-09-05 13:43 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>From a programming language theory (PLT) perspective, HTML (HyperText Markup Language) and CSS (Cascading Style Sheets) are domain-specific declarative languages designed to solve the document-layout and presentation problem across heterogeneous client runtimes. HTML defines a structured, hierarchical tree of semantics and content, while CSS operates as a rule-based constraint and styling system evaluated against that hierarchical tree.</p>
-
-<p>Neither language follows imperative Paradigms (Object-Oriented, Procedural, or Pure Functional execution models). Instead:</p>
-<ul>
-    <li><strong>HTML is a Declarative Data-Structuring Language:</strong> Derived from SGML/XML, it constructs an Abstract Syntax Tree (AST) known at runtime as the Document Object Model (DOM). It declares <em>what</em> nodes exist and their semantic role, not <em>how</em> to allocate or construct them.</li>
-    <li><strong>CSS is a Declarative, Pattern-Matching Constraint Solver:</strong> It employs a reactive, rule-matching model. Selectors act as queries against DOM nodes, and declarations apply properties to matching nodes. The browser engine resolves these properties into dynamic layout constraints using algorithms like Flexbox, Grid, and the traditional Block/Inline formatting contexts.</li>
-</ul>
-<p>The foundational design philosophy is the <strong>Separation of Concerns</strong> (Data/Semantics via HTML, Visual Presentation via CSS, and Behavior via JavaScript) alongside strict fault tolerance to ensure web documents render gracefully despite syntactical errors or network degradation.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p><strong>HTML Syntax & Grammar:</strong> HTML uses an element-based tagging system with angle brackets (<code>&lt;tag attribute="value"&gt;content&lt;/tag&gt;</code>). It forms a context-free grammar parsing into a strict tree structure (the DOM). Indentation and whitespace are largely collapsed by the parser except inside specific whitespace-preserving contexts like <code>&lt;pre&gt;</code>. HTML supports void elements (e.g., <code>&lt;img&gt;</code>, <code>&lt;input&gt;</code>) which do not contain child nodes.</p>
-
-<p><strong>CSS Syntax & Cascading Mechanics:</strong> CSS relies on declaration blocks attached to selectors: <code>selector { property: value; }</code>. Rules are delimited by braces (<code>{}</code>) and terminated with semicolons (<code>;</code>). CSS layout flow operates through distinct formatting contexts:</p>
-<ul>
-    <li><strong>Normal Flow:</strong> Block-level elements stack vertically; inline-level elements flow horizontally within line boxes.</li>
-    <li><strong>Flexbox & Grid Layouts:</strong> Multi-dimensional constraint solvers that distribute space dynamically based on axis rules, auto-margins, and track definitions.</li>
-    <li><strong>Box Model:</strong> Every element calculates a 4-layer box footprint consisting of <code>content</code>, <code>padding</code>, <code>border</code>, and <code>margin</code>, controlled by the <code>box-sizing</code> geometry model (<code>content-box</code> vs. <code>border-box</code>).</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Neither HTML nor CSS exposes manual memory allocation (like C or Rust) or explicit garbage collection primitives (like Java or Go). Instead, memory management is deferred entirely to the underlying engine host (e.g., Chromium's Blink, Firefox's Gecko, Safari's WebKit):</p>
-
-<ul>
-    <li><strong>DOM/CSSOM Lifecycle:</strong> When HTML and CSS are parsed, the browser allocates C++ heap objects corresponding to DOM nodes and CSSOM (CSS Object Model) rule nodes.</li>
-    <li><strong>Garbage Collection & Detached Nodes:</strong> Nodes are retained in memory as long as they reside in the active DOM tree or are referenced by JavaScript runtime memory. Once a subtree is removed from the document root and no JS references exist, engine GC sweeps the native C++ objects.</li>
-    <li><strong>Layout Engine Memory Footprint:</strong> CSS creates internal data structures (Style Trees, Render Trees, Fragment Trees, and Layer Trees). Overuse of deeply nested DOM trees or unoptimized CSS rules (e.g., widespread dynamic selectors like <code>*</code> or complex <code>:has()</code> chains) inflates memory usage through layout cache growth and memory-intensive compositing layers (GPU texture allocations via <code>will-change</code> or 3D transforms).</li>
-</ul>
-
-<h3>4. Paradigms & Tactics</h3>
-<p>Because HTML and CSS are non-imperative, classical concepts like threading, async paradigms, and explicit exception handling manifest differently:</p>
-
-<ul></div><hr>
+        <br><em>Attack:</em> Botnets overwhelm network capacity or protocol stack</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
