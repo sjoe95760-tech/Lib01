@@ -17,7 +17,25 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Perl</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Malware Analysis</h2>
+<p><strong>Timestamp:</strong> 2026-09-14 20:00 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>Malware analysis is the practice of dissecting malicious software—such as ransomware, trojans, worms, rootkits, and spyware—to understand its structure, functionality, origin, and intended impact. It is a foundational discipline within cybersecurity that bridges incident response, threat intelligence, and security engineering.</p>
+<p>Without malware analysis, security teams operate blindly during a breach. Performing malware analysis solves several critical real-world problems:</p>
+<ul>
+  <li><strong>Incident Response & Scoping:</strong> Determines what actions an attacker took on a compromised system, what data was accessed or exfiltrated, and how far the infection spread.</li>
+  <li><strong>Indicator Generation (IoCs):</strong> Extracts actionable indicators of compromise, such as malicious domain names, command-and-control (C2) IP addresses, file hashes, registry keys, and mutexes.</li>
+  <li><strong>Detection Engineering:</strong> Enables the creation of resilient detection signatures (e.g., YARA rules, Sigma rules, Snort/Suricata rules) to defend against current and future variants.</li>
+  <li><strong>Threat Intelligence & Attribution:</strong> Uncovers code overlap, compilation artifacts, and tradecraft that map directly to known Advanced Persistent Threat (APT) groups.</li>
+</ul>
+
+<h3>2. How It Works</h3>
+<p>Malware analysis is conducted through a structured, multi-layered methodology, typically progressing from low-risk high-level inspection to deep, resource-intensive reverse engineering:</p>
+
+<ol>
+  <li><strong>Static Analysis (Basic):</strong> Inspecting the binary without executing it. Analysts examine PE (Portable Executable) headers, imports/exports, compilation timestamps, cryptographic hashes, embedded resources, and plain-text/obfuscated strings using static inspection tools.</li>
+  <li><strong>Dynamic Analysis (Basic):</strong> Executing the malware in a controlled, isolated sandbox (e.g., Cuckoo, ANY.</div><hr><div class='lesson'><h2>🔍 Deep Dive: Perl</h2>
 <p><strong>Timestamp:</strong> 2026-09-14 15:21 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1516,62 +1534,7 @@ TypeScript possesses no independent memory management engine or garbage collecto
     At the core of network security, <strong>Firewalls</strong>, <strong>Intrusion Detection Systems (IDS)</strong>, and <strong>Intrusion Prevention Systems (IPS)</strong> form the foundational traffic inspection and boundary defense capabilities of modern infrastructure.
 </p>
 <ul>
-    <li><strong>Firewalls:</strong> Network security security controls that inspect incoming and outgoing traffic to permit or block data flows based on pre-configured security rules (e.g., IP addresses, ports,</div><hr><div class='lesson'><h2>🔍 Deep Dive: Malware Analysis</h2>
-<p><strong>Timestamp:</strong> 2026-09-05 20:47 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p><strong>Malware Analysis</strong> is the study and dissection of malicious software—such as ransomware, trojans, backdoors, keyloggers, and rootkits—to understand its structure, functionality, origin, and potential impact. Analysts study compiled binaries, scripts, or weaponized documents to reverse-engineer their inner workings.</p>
-
-<p>Malware analysis is a foundational discipline within modern cybersecurity operations for several reasons:</p>
-<ul>
-    <li><strong>Incident Response & Scoping:</strong> It allows incident responders to determine what an attacker's payload did on a compromised host (e.g., file modification, privilege escalation, lateral movement).</li>
-    <li><strong>Indicator Extraction (IOCs):</strong> It reveals hardcoded Command and Control (C2) domains, IP addresses, registry keys, and cryptographic hashes used to hunt for threats across the rest of the enterprise network.</li>
-    <li><strong>Detection Engineering:</strong> Insights gained from analysis enable engineers to write precise YARA rules, Sigma rules, and EDR signatures to block future instances.</li>
-    <li><strong>Threat Intelligence & Attribution:</strong> By analyzing code reuse, unique compiler flags, and distinct behavioral traits, analysts can map payloads to specific Threat Actor groups (APTs) and track their Tactics, Techniques, and Procedures (TTPs).</li>
-</ul>
-
-<h3>2. How It Works</h3>
-<p>Malware analysis follows a structured, multi-tiered methodology moving from high-level inspection to deep-dive reverse engineering.</p>
-
-<ol>
-    <li><strong>Static Analysis (Basic):</strong>
-        <ul>
-            <li>Examinations performed without executing the binary.</li>
-            <li>Includes calculating file hashes (MD5, SHA-256), inspecting Portable Executable (PE) headers, evaluating digital signatures, analyzing embedded strings, and examining imported API functions (e.g., <code>VirtualAllocEx</code>, <code>WriteProcessMemory</code>).</li>
-        </ul>
-    </li>
-    <li><strong>Dynamic Analysis (Basic / Behavioral):</strong>
-        <ul>
-            <li>Executing the malware inside an isolated, instrumented environment (sandbox).</li>
-            <li>Monitoring runtime behavior: file system modifications, registry alterations, process creation trees, API call sequences, and network activity (DNS queries, HTTP POSTs, raw TCP sockets).</li>
-        </ul>
-    </li>
-    <li><strong>Code Analysis (Advanced Static / Reverse Engineering):</strong>
-        <ul>
-            <li>Disassembling machine code into Assembly language or decompiling it into pseudo-C code using tools like IDA Pro or Ghidra.</li>
-            <li>Analyzing control flow graphs, cryptographic routines, proprietary network protocols, and internal function calls to understand business logic.</li>
-        </ul>
-    </li>
-    <li><strong>Dynamic Code Analysis (Advanced Dynamic):</strong>
-        <ul>
-            <li>Running the binary inside a debugger (e.g., x64dbg) step-by-step.</li>
-            <li>Setting breakpoints, inspecting register values, manipulating memory addresses during execution, and bypassing protection controls in real time.</li>
-        </ul>
-    </li>
-    <li><strong>Memory Analysis:</strong>
-        <ul>
-            <li>Capturing a RAM dump from an infected or sandboxed machine to analyze unencrypted memory structures, injected DLLs, unpacked payloads, and volatile network connections.</li>
-        </ul>
-    </li>
-</ol>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-
-<h4>Offensive & Evasion Techniques</h4>
-<ul>
-    <li><strong>Packing and Obfuscation:</strong> Encrypting or compressing the main malicious payload inside a stub/wrapper to obscure assembly code and bypass static signature scanners.</li>
-    <li><strong>Anti-Analysis & Anti-VM:</strong> Detecting virtualization platforms (VMware, VirtualBox) or debuggers by querying system metrics (CPUID, hypervisor flags, timing checks like <code>RDTSC</code>) and terminating execution or altering behavior if detected.</li>
-    <li><strong>Process Injection:</div><hr>
+    <li><strong>Firewalls:</strong> Network security security controls that inspect incoming and outgoing traffic to permit or block data flows based on pre-configured security rules (e.g., IP addresses, ports,</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
