@@ -17,7 +17,24 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
+<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<p><strong>Timestamp:</strong> 2026-09-15 01:11 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>JavaScript was designed in 1995 by Brendan Eich at Netscape under a mandate to create a lightweight, interpreted scripting language for the web browser. Architecturally, it is an amalgam of distinct programming language paradigms:</p>
+<ul>
+    <li><strong>Scheme:</strong> Inspired JavaScript's core functional programming identity, providing first-class functions, higher-order functions, and lexical scoping (closures).</li>
+    <li><strong>Self:</strong> Inspired its object-oriented model, opting for prototype-based delegation rather than traditional class-based object orientation.</li>
+    <li><strong>Java & C:</strong> Derived its syntactic appearance (curly braces, statement structures) and nominal dynamic coercion behaviors primarily for marketing and superficial familiarity in the mid-1990s.</li>
+</ul>
+<p>JavaScript solves the fundamental problem of <strong>dynamic client-side execution and event-driven interaction</strong> without requiring compilation cycles or thick-client runtimes. It is dynamic, weakly typed, and multi-paradigm (supporting Object-Oriented, Functional, and Procedural styles concurrently).</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>JavaScript features C-style syntax using curly braces <code>{}</code> for block delineation and explicit control structures (<code>if</code>, <code>switch</code>, <code>for</code>, <code>while</code>). Indentation is purely cosmetic, though semi-colons are grammatically standard; the runtime employs <strong>Automatic Semicolon Insertion (ASI)</strong> to parse missing line terminators, though reliance on ASI can introduce subtle grammar ambiguities.</p>
+
+<p>Code organization operates on a lexical scope hierarchy:</p>
+<ul>
+    <li><strong>Variable Binding:</strong> Modern JavaScript utilizes <code>let</code> (block</div><hr><div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
 <p><strong>Timestamp:</strong> 2026-09-14 22:59 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1511,39 +1528,7 @@ Ruby relies on an exception-driven</div><hr><div class='lesson'><h2>🔍 Deep Di
 <p>Inside the engine engine layer:</p>
 
 <ul>
-  <li><strong>DOM/CSSOM Heap Allocations:</strong> Every HTML tag and CSS rule instantiation constructs a C++ or Rust class instance (e.g., <code>Element</code></div><hr><div class='lesson'><h2>🔍 Deep Dive: TypeScript</h2>
-<p><strong>Timestamp:</strong> 2026-09-06 09:50 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>
-TypeScript was designed by Anders Hejlsberg at Microsoft to address a fundamental architectural challenge: JavaScript was created as a lightweight scripting language for web pages, but industry demands forced it to become the runtime engine for massive, enterprise-scale applications. Plain JavaScript lacks static verification, refactoring tooling, and explicit contract boundaries, making large codebases brittle and bug-prone.
-</p>
-<p>
-TypeScript solves this through three core design pillars:
-</p>
-<ul>
-  <li><strong>Compile-Time Erasure (Zero Runtime Cost):</strong> TypeScript types exist exclusively during compilation. The compiler validates the code and strips away all type annotations, emitting clean JavaScript. There are no runtime type checks overhead or custom object representations.</li>
-  <li><strong>Structural Type System (Duck Typing Formalized):</strong> Unlike nominal languages (such as Java or C#) where compatibility depends on explicit declaration or class inheritance, TypeScript evaluates compatibility based on shape. If an object has the required properties and method signatures, it satisfies the type—regardless of how it was instantiated.</li>
-  <li><strong>Pragmatic Non-Soundness:</strong> TypeScript’s type system prioritizes developer ergonomics and real-world JavaScript idioms over strict mathematical soundness. Operations like array index accesses returning non-undefined types by default or covariance in function parameters are deliberate tradeoffs made to maintain a balance between strictness and usability.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>
-TypeScript syntax is a strict superset of ECMAScript (ES6+). Every valid JavaScript program is syntactically valid TypeScript. The language adds annotations using a colon syntax (<code>value: Type</code>) and provides structural declarations via <code>interface</code> and <code>type</code> definitions.
-</p>
-<ul>
-  <li><strong>Syntactic Grammar:</strong> Uses C-style curly braces (<code>{}</code>) for scoping and block structure. Semicolons are optional (handled via Automatic Semicolon Insertion in the JS emitter), though explicit semicolons are standard practice in enterprise code bases.</li>
-  <li><strong>Code Organization:</strong> Code is organized into ES Modules (<code>import</code> and <code>export</code> statements). Namespaces exist as legacy logical groupings, but modern TS relies on file-level modularity.</li>
-  <li><strong>Control Flow Analysis (CFA):</strong> The TypeScript compiler performs sophisticated path-sensitive analysis. As execution branches through conditionals, early returns, type guards (e.g., <code>typeof</code>, <code>instanceof</code>, custom assertions), and switch statements, the compiler continuously narrow types down the control flow graph.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>
-TypeScript possesses no independent memory management engine or garbage collector. Because it compiles directly to JavaScript, its execution and memory allocation model are entirely dictated by the host JavaScript runtime (such as V8, JavaScriptCore, or SpiderMonkey).
-</p>
-<ul>
-  <li><strong>Garbage Collection:</strong> Objects, primitives, and functions are allocated on the heap or stack managed by the underlying host engine, which utilizes modern, generational mark-and-sweep garbage collection algorithms.</li>
-  <li><strong>No Manual Pointers or Ownership:</strong> There is no concept of manual pointer arithmetic, explicit memory deallocation, or affine ownership semantics (like Rust</div><hr>
+  <li><strong>DOM/CSSOM Heap Allocations:</strong> Every HTML tag and CSS rule instantiation constructs a C++ or Rust class instance (e.g., <code>Element</code></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
