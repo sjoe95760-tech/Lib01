@@ -17,7 +17,28 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<p><strong>Timestamp:</strong> 2026-09-15 06:54 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Rust was designed by Graydon Hoare and backed by Mozilla to resolve a historic software engineering dilemma: the tradeoff between low-level performance/control (C/C++) and high-level safety/productivity (Java, C#, Go). Prior to Rust, system programming languages achieved maximum speed by requiring manual memory management—a primary source of severe security bugs like buffer overflows, use-after-free, and data races. Conversely, safe languages relied on a Garbage Collector (GC), introducing non-deterministic latency spikes and memory overhead.</p>
+
+<p>Rust's core thesis is <strong>"Memory safety without garbage collection"</strong> achieved via static analysis at compile time, operating under the principle of <strong>Zero-Cost Abstractions</strong> (what you don't use, you don't pay for; and abstractions compile down to code as efficient as handwritten assembly).</p>
+
+<p>Paradigm-wise, Rust is a multi-paradigm language:</p>
+<ul>
+  <li><strong>Functional:</strong> Strongly expression-based, heavy reliance on Algebraic Data Types (enums with data), pattern matching, closures, and lazy iterators.</li>
+  <li><strong>Procedural & Systems:</strong> Direct hardware control, explicit memory layouts, low-level pointers (`*const T`, `*mut T`), and zero runtime tax.</li>
+  <li><strong>Trait-Based Polymorphism:</strong> Rejects traditional object-oriented inheritance in favor of generic programming constrained by traits (similar to Haskell typeclasses or interfaces).</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Rust belongs to the C-family in syntax, utilizing curly braces <code>{}</code> for scope block encapsulation and semicolons <code>;</code> for statement termination. However, its semantics are deeply expression-oriented.</p>
+
+<ul>
+  <li><strong>Statements vs. Expressions:</strong> In Rust, almost everything is an expression that yields a value. If an expression is not followed by a semicolon, its value is implicitly returned from the enclosing block. Adding a semicolon converts the expression into a statement returning the unit type <code>()</code>.</li>
+  <li><strong>Variables and Mutability:</strong> Variables are immutable by default (declared via <code>let x = 5;</code>). To allow mutation, the developer must explicitly opt-in using the <code>mut</code> keyword (<code>let mut x = 5;</code>).</li>
+  <li><strong>Code Organization:</strong> Code is organized into functions (<code>fn</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
 <p><strong>Timestamp:</strong> 2026-09-15 01:11 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1503,32 +1524,7 @@ Ruby relies on an exception-driven</div><hr><div class='lesson'><h2>🔍 Deep Di
       <td>Implement Managed Service Accounts (gMSAs), set complex passwords (25+ chars) for service accounts, and monitor Event ID 4769.</td>
     </tr>
     <tr>
-      <td><strong>Server-Side Request</div><hr><div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
-<p><strong>Timestamp:</strong> 2026-09-06 13:15 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>From a programming language theory (PLT) perspective, HTML and CSS are specialized declarative Domain-Specific Languages (DSLs). Neither HTML nor pure CSS are general-purpose, Turing-complete imperative languages; rather, they form a dual-DSL system designed to separate <strong>structural semantic trees</strong> from <strong>spatial constraint and styling systems</strong>.</p>
-<p>HTML (HyperText Markup Language) was created by Tim Berners-Lee to define the abstract syntax tree (AST) of document nodes—known as the Document Object Model (DOM). CSS (Cascading Style Sheets) was introduced by Håkon Wium Lie to solve the problem of visual specification without polluting the structural markup. Together, they eliminate hardcoded visual layouts and enable separation of concerns: HTML defines *what* data exists and *what it means* (semantics), while CSS defines *how* that data should be projected across varied spatial runtime target environments (viewports, print, accessibility trees).</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>HTML uses an explicit context-free grammar based on SGML/XML tree nesting rules. Its elements are denoted by tags using angle brackets (<code>&lt;tag attribute="value"&gt;child&lt;/tag&gt;</code>), constructing a hierarchical ordered tree. CSS uses a pattern-matching constraint syntax composed of rule sets: selectors (the pattern matching expressions) paired with property-declaration blocks (<code>selector { key: value; }</code>).</p>
-<p>The operational execution flow inside a browser engine (e.g., Blink, Gecko, Servo) is strictly pipeline-driven:</p>
-
-<p><strong>1. Parsing & Tokenization:</strong> HTML text stream &rarr; HTML Lexer &rarr; Token Stream &rarr; DOM Tree Construction.<br />
-<strong>2. CSSOM Construction:</strong> CSS text stream &rarr; CSS Lexer &rarr; Token Stream &rarr; CSS Object Model (CSSOM) Tree.<br />
-<strong>3. Render Tree Attachment:</strong> The engine merges the DOM and CSSOM trees into a Render Tree, stripping unrendered nodes (e.g., <code>&lt;head&gt;</code>, <code>display: none</code>).<br />
-<strong>4. Reflow (Layout):</strong> Geometric calculation of exact spatial bounding boxes ($x, y, \text{width}, \text{height}$) for each node using box-model math.<br />
-<strong>5. Repaint & Compositing:</strong> Vector shapes, typography, and colors are converted to raster pixels and sent as layers to GPU VRAM for display.</p>
-
-<p>Unlike strict languages like Rust or C++, HTML and CSS rely on a standard called the <em>HTML5 permissive parsing algorithm</em>. They have no fatal syntax exceptions; syntax errors trigger predefined fault-tolerant recovery modes rather than runtime aborts.</p>
-
-<h3>3. Memory Management</h3>
-<p>Neither HTML nor CSS exposes manual memory allocation primitives (such as <code>malloc</code> or pointer arithmetic), nor do they run an explicit user-land garbage collector within their native code scopes. Memory management is entirely delegated to the host browser engine implemented in native C++ or Rust.</p>
-
-<p>Inside the engine engine layer:</p>
-
-<ul>
-  <li><strong>DOM/CSSOM Heap Allocations:</strong> Every HTML tag and CSS rule instantiation constructs a C++ or Rust class instance (e.g., <code>Element</code></div><hr>
+      <td><strong>Server-Side Request</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
