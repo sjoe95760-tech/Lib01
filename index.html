@@ -17,7 +17,34 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Malware Analysis</h2>
+<p><strong>Timestamp:</strong> 2026-09-16 20:34 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>
+    <strong>Malware Analysis</strong> is the practice of dissecting malicious software—such as ransomware, trojans, spyware, rootkits, and worms—to understand its origin, functionality, execution mechanics, and intent. Rather than treating a security breach as an isolated event, malware analysis turns malicious binaries into intelligence.
+</p>
+<p>
+    In modern enterprise defense, malware analysis addresses critical operational challenges:
+</p>
+<ul>
+    <li><strong>Incident Response Acceleration:</strong> Uncovering actionable Indicators of Compromise (IOCs) such as Command & Control (C2) IP addresses, domain names, file hashes, and registry modifications to contain active breaches.</li>
+    <li><strong>Threat Intelligence & Attribution:</strong> Mapping technical capabilities to specific Threat Actor Groups (e.g., APTs) through code reuse, compilation artifacts, and unique tactics.</li>
+    <li><strong>Detection Engineering:</strong> Generating high-fidelity rules (such as YARA, Sigma, or Snort signatures) to proactively block future variants across SIEM, EDR, and network perimeter devices.</li>
+    <li><strong>Impact Assessment:</strong> Determining whether a sample exfiltrated data, encrypted critical systems, or established persistent backdoors.</li>
+</ul>
+
+<h3>2. How It Works</h3>
+<p>
+    Malware analysis follows a structured, multi-layered methodology spanning four primary phases, increasing in complexity:
+</p>
+
+<h4>A. Static Analysis (Basic & Advanced)</h4>
+<p>
+    Examining the binary without executing it. 
+</p>
+<ul>
+    <li><strong>Basic Static:</strong> Calculating file hashes (MD5,</div><hr><div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
 <p><strong>Timestamp:</strong> 2026-09-16 13:11 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1469,54 +1496,7 @@ val result: String = optionValue match
         </tr>
         <tr>
             <td><strong>Anti-Analysis & Anti-VM</strong></td>
-            <td>Checking for virtualized environments (e.g., VM CPU instructions, specific registry keys</div><hr><div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
-<p><strong>Timestamp:</strong> 2026-09-07 10:56 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Ruby was designed in 1995 by Yukihiro "Matz" Matsumoto with a singular human-centric thesis: <em>optimize for developer happiness and productivity rather than machine efficiency</em>. Matz synthesized elements from Smalltalk, Lisp, and Perl to create a language that feels natural, highly expressive, and deeply dynamic.</p>
-
-<p>At its theoretical core, Ruby is a <strong>pure Object-Oriented Language</strong> where every value—including primitives like integers, booleans, and <code>nil</code>—is a full-fledged object residing in an inheritance hierarchy. It rejects the dichotomy between primitive types and object types found in languages like Java or C++. Simultaneously, Ruby incorporates functional programming constructs (first-class closures, higher-order functions via blocks/procs) and scripting ergonomics (Perl-like regular expressions and imperative script flow).</p>
-
-<p>Ruby addresses the problem of rigid, boilerplate-heavy statically typed languages by offering extreme dynamic flexibility. It operates on the <strong>Principle of Least Surprise (POLS)</strong>, meaning the language behavior minimizes cognitive friction for the programmer by adhering to intuitive internal consistency.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Ruby syntax is deliberately clean, flexible, and human-readable. It avoids mandatory semicolons, visual noise like excessive parentheses, and rigid whitespace rules, relying instead on keyword-delimited blocks.</p>
-
-<ul>
-  <li><strong>Block Structure:</strong> Constructs like classes, methods, and conditionals are opened with keywords (<code>class</code>, <code>def</code>, <code>if</code>) and closed with <code>end</code>. Whitespace indentation is idiomatic (conventionally 2 spaces), but not syntactically enforced like in Python.</li>
-  <li><strong>Implicit Return:</strong> Methods automatically return the result of the last evaluated expression, eliminating boilerplate <code>return</code> statements unless early exit is required.</li>
-  <li><strong>First-Class Blocks:</strong> Ruby introduces a syntactic innovation called "blocks"—chunks of code enclosed in <code>do...end</code> or <code>{...}</code> passed implicitly or explicitly to methods. Blocks power iteration and control structures seamlessly (e.g., <code>5.times { putc '.' }</code>).</li>
-  <li><strong>Code Organization:</strong> Code is organized into classes and modules. Modules serve two main functions: namespace isolation and behavior mixins (composition via multiple inclusion, avoiding the diamond problem of multiple class inheritance).</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Ruby delegates all memory management to its runtime environment, traditionally CRuby/MRI (Matz's Ruby Interpreter). Developers do not manually allocate or free memory, nor does Ruby employ Rust-style compile-time ownership tracking.</p>
-
-<ul>
-  <li><strong>Reference Semantics:</strong> Variables in Ruby do not store values directly; they store object references pointing to memory heap locations (with minor optimizations like immediate values for small integers and symbols embedded directly in pointer bits).</li>
-  <li><strong>Garbage Collection Evolution:</strong> 
-    <ul>
-      <li>Historically, MRI used a naive, stop-the-world Mark-and-Sweep garbage collector.</li>
-      <li>Modern Ruby uses <strong>RGenGC (Generational Garbage Collection)</strong> combined with incremental tri-color marking. Objects are categorized into "young" and "old" generations based on survival, minimizing full GC scan overhead.</li>
-      <li><strong>Compaction:</strong> Ruby includes a compacting garbage collector to combat heap fragmentation caused by long-running dynamic object allocations, improving memory locality and copy-on-write (CoW) efficiency in multi-process setups (such as Unicorn or Puma web servers).</li>
-    </ul>
-  </li>
-</ul>
-
-<h3>4. Paradigms & Tactics</h3>
-
-<p><strong>Object-Oriented Architecture & Message Passing:</strong><br>
-Ruby adopts Smalltalk's model of OOP: execution is conceptually sending messages to objects rather than invoking static functions. If an object receives a message it does not explicitly handle, it triggers the <code>method_missing</code> hook, enabling powerful dynamic dispatch, proxying, and DSL creation.</p>
-
-<p><strong>Concurrency Models:</strong></p>
-<ul>
-  <li><strong>Global VM Lock (GVL):</strong> Standard MRI execution uses a GVL, which prevents true CPU-bound multi-core parallel execution of Ruby bytecode within a single process. However, threads release the GVL during blocking I/O operations, making standard Ruby threading effective for I/O-bound tasks.</li>
-  <li><strong>Fibers:</strong> Lightweight, cooperatively scheduled coroutines used for asymmetric concurrency and event-driven async frameworks (e.g., Falcon web server).</li>
-  <li><strong>Ractors (Ruby 3+):</strong> An actor-model implementation providing true parallel execution across multiple CPU cores without GVL constraints by isolating mutable object states between Ractors.</li>
-</ul>
-
-<p><strong>Error Handling:</strong><br>
-Ruby relies on an exception-driven</div><hr>
+            <td>Checking for virtualized environments (e.g., VM CPU instructions, specific registry keys</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
