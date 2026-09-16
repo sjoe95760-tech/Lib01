@@ -17,7 +17,25 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Java</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<p><strong>Timestamp:</strong> 2026-09-16 07:59 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Swift was created by Apple (led by Chris Lattner) and introduced in 2014 to displace Objective-C as the primary language for Apple platform development. Objective-C, burdened by its 1980s Smalltalk-on-C legacy, suffered from dynamic message-dispatch overhead, brittle pointer arithmetic, verbose syntax, and a total lack of modern compile-time safety guarantees.</p>
+<p>The core philosophy of Swift can be summarized in three words: <strong>Safe, Fast, and Expressive</strong>.</p>
+<ul>
+    <li><strong>Safety through strict typing:</strong> Swift eliminates entire classes of runtime bugs (such as null-pointer dereferences and uninitialized memory access) at compile time via strong typing and mandatory explicit handling of missing values.</li>
+    <li><strong>Speed via LLVM:</strong> Swift uses the LLVM toolchain, compiling directly to native machine code. It defaults to static dispatch over dynamic dispatch wherever possible, yielding performance comparable to C++.</li>
+    <li><strong>Multi-Paradigm Engine:</strong> Swift is fundamentally a <em>Protocol-Oriented Language</em>, while blending high-level functional concepts (first-class functions, pattern matching, value semantics, monads via optionals) with classical object-oriented abstraction.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Swift adopts a C-family syntax clean of legacy C cruft—headers are removed, syntax overhead is minimized, and source files define cohesive modules.</p>
+
+<ul>
+    <li><strong>Braces vs. Indentation:</strong> Swift uses explicit curly braces <code>{}</code> for scope block boundary, while whitespace and indentation carry no semantic meaning. Semicolons are entirely optional and discouraged unless separating multiple statements on a single line.</li>
+    <li><strong>Variables & Immutability:</strong> Immutability is enforced at the language level: <code>let</code> declares compile-time immutable bindings, while <code>var</code> declares mutable state. Mutation of value types declared with <code>let</code> is explicitly forbidden.</li>
+    <li><strong>Null Safety (Optionals):</strong> Types are non-nullable by default. A variable of type <code>String</code></div><hr><div class='lesson'><h2>🔍 Deep Dive: Java</h2>
 <p><strong>Timestamp:</strong> 2026-09-16 02:07 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1472,46 +1490,7 @@ Ruby relies on an exception-driven</div><hr><div class='lesson'><h2>🔍 Deep Di
 <h3>3. Memory Management</h3>
 <p>Go balances C-like low-level memory layout control with managed safety:</p>
 <ul>
-    <li><strong>Concurrent Garbage Collector:</strong> Go uses a non-generational, concurrent, tri-color mark-and-sweep garbage collector optimized for low latency rather than</div><hr><div class='lesson'><h2>🔍 Deep Dive: Python</h2>
-<p><strong>Timestamp:</strong> 2026-09-07 00:26 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Python was created in late 1989 by Guido van Rossum at CWI in the Netherlands as a successor to the ABC programming language, capable of exception handling and interfacing with the Amoeba operating system. Its fundamental design thesis is that <strong>code is read far more often than it is written</strong>. Python prioritizes developer velocity and cognitive clarity over machine execution efficiency, operating on the explicit trade-off of programmer time for CPU cycles.</p>
-<p>Architecturally, Python is a highly dynamic, multi-paradigm, interpreted language. It seamlessly blends:</p>
-<ul>
-  <li><strong>Object-Oriented Programming (OOP):</strong> Everything in Python is a runtime object, including functions, modules, and primitive types.</li>
-  <li><strong>Procedural Programming:</strong> Top-down script execution without forcing boilerplate class constructs (unlike Java).</li>
-  <li><strong>Functional Programming:</strong> Support for first-class functions, higher-order functions, lambda expressions, and immutable data structures (tuples, frozensets).</li>
-</ul>
-<p>The core logic is codified in <em>PEP 20 (The Zen of Python)</em>, emphasizing "Explicit is better than implicit," "Simple is better than complex," and "There should be one—and preferably only one—obvious way to do it."</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Python enforces structural readability using the <strong>off-side rule</strong>, where lexical scope is delineated by whitespace indentation rather than curly braces (`{}`) or explicit scope keywords (`begin`/`end`). Semicolons are omitted at line ends unless chaining multiple statements on a single line (which is idiomatic anti-pattern).</p>
-<p>Key structural mechanics include:</p>
-<ul>
-  <li><strong>Dynamic & Strong Typing:</strong> Variables are untyped labels bound to strongly typed objects in memory. Operations like `"4" + 2` trigger a runtime `TypeError` rather than implicit type coercion.</li>
-  <li><strong>Execution Model:</strong> Python source code (`.py`) is compiled into an intermediate stack-based bytecode (`.pyc`), which is executed by the CPython Virtual Machine (VM).</li>
-  <li><strong>Code Organization:</strong> Code is organized hierarchically into scripts, modules (single `.py` files), and packages (directories containing `__init__.py` files or utilizing namespace packages). Dynamic late-binding allows attributes and methods to be looked up at runtime via dictionary dispatches.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Python utilizes a hybrid runtime memory management architecture managed entirely by the interpreter (primarily CPython):</p>
-<ul>
-  <li><strong>Reference Counting:</strong> The primary garbage collection mechanism. Every object header contains an `ob_refcnt` field. When reference count drops to zero, the memory is immediately deallocated.</li>
-  <li><strong>Generational Cyclic Garbage Collector:</strong> To handle reference cycles (e.g., Object A points to B, and B points to A), Python employs a dynamic cyclic GC operating across three generations (Gen 0, Gen 1, Gen 2). It uses linked lists to track container objects and uses tri-color marking algorithms to detect and reclaim unreachable cyclic structures.</li>
-  <li><strong>PyMalloc Allocator:</strong> To prevent heap fragmentation from constant small object allocations, CPython uses `PyMalloc`, a specialized memory allocator that manages pools, blocks, and arenas dedicated to objects smaller than 512 bytes. Larger allocations bypass PyMalloc and default to standard system `malloc`.</li>
-  <li><strong>No Manual Deallocation:</strong> Memory ownership is hidden from the developer; there are no raw pointers or manual `free()` operations, though explicit reference deletion (`del`) decrements reference counts.</li>
-</ul>
-
-<h3>4. Paradigms & Tactics</h3>
-<p>Python's architectural flexibility relies on specific runtime tactics:</p>
-
-<h4>Object-Oriented Architecture</h4>
-<p>Python uses single and multiple inheritance backed by the <strong>C3 Linearization Algorithm</strong> to calculate the Method Resolution Order (MRO) deterministically, preventing the classic "Diamond Problem." OOP relies heavily on <strong>Duck Typing</strong> ("If it walks like a duck and quacks like a duck, it's a duck"), focusing on object behavior over class hierarchies. Interfaces are implemented via Abstract Base Classes (ABCs) or Protocol types (Structural Subtyping).</p>
-
-<h4>Concurrency Models</h4>
-<ul>
-  <li><strong>The GIL (Global Interpreter Lock):</strong></div><hr>
+    <li><strong>Concurrent Garbage Collector:</strong> Go uses a non-generational, concurrent, tri-color mark-and-sweep garbage collector optimized for low latency rather than</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
