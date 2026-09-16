@@ -17,7 +17,53 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
+<p><strong>Timestamp:</strong> 2026-09-16 13:11 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>HTML (HyperText Markup Language) and CSS (Cascading Style Sheets) are domain-specific declarative languages engineered to decouple structural semantics from visual presentation in heterogeneous computing environments. They do not adhere to traditional imperative paradigms like Object-Oriented, Functional, or Procedural programming; instead, they operate as a declarative document definition system and an attribute-driven constraint solver.</p>
+<p>HTML was created to facilitate cross-platform document sharing via hyperlinking, formalizing structural content through a hierarchical tree. CSS was introduced to solve the scaling crisis of presentation tag bloat, establishing a clear Separation of Concerns (SoC). Together, they abstract away platform-specific graphics APIs, offering an OS-agnostic blueprint for UI layout engines (such as Blink, Gecko, and WebKit).</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>HTML relies on a tagged, XML-like block syntax that constructs the Document Object Model (DOM)—an abstract syntax tree representing page structure. Elements use opening and closing tags, void self-closing tags, and key-value attributes. Syntactic indentation is purely cosmetic; document hierarchy is defined strictly by node nesting.</p>
+<p>CSS employs a rule-set syntax structured as <code>selector { property: value; }</code>. Rules are grouped inside curly braces with properties delimited by semicolons. Code flow is non-linear; evaluation is dictated by the <strong>Cascade Engine</strong>, which computes final visual property values through a deterministic pipeline based on six key criteria:</p>
+<ol>
+    <li><strong>Importance:</strong> User agent defaults vs. author styles vs. <code>!important</code>.</li>
+    <li><strong>Origin & Cascade Layers:</strong> User, Author, or User Agent contexts, modulated by <code>@layer</code> declarations.</li>
+    <li><strong>Specificity:</strong> A calculated tuple vector <code>(Inline, ID, Class/Attribute/Pseudo-class, Type/Pseudo-element)</code>.</li>
+    <li><strong>Scope:</strong> Proximity within Shadow DOM boundary structures.</li>
+    <li><strong>Order of Appearance:</strong> Source file order serving as the ultimate tie-breaker.</li>
+    <li><strong>Inheritance:</strong> Computed values flowing down the DOM hierarchy to child nodes.</li>
+</ol>
+
+<h3>3. Memory Management</h3>
+<p>HTML and CSS do not expose manual memory pointers or garbage collection primitives to the runtime developer. Instead, memory management is entirely delegated to the underlying host browser engine written in low-level languages (C++ or Rust).</p>
+<ul>
+    <li><strong>DOM & CSSOM Allocation:</strong> Parsing HTML/CSS allocates heap memory for DOM and CSSOM (CSS Object Model) trees. Node elements contain pointers to parents, children, and computed style structs.</li>
+    <li><strong>Layout & Render Trees:</strong> The engine merges the DOM and CSSOM to build the Render Tree and Layout Box Tree. Memory consumed by obsolete layout calculations is cleared deterministically during recalculation passes.</li>
+    <li><strong>Garbage Collection Interoperability:</strong> When exposed to runtime environments like JavaScript via the Web API, DOM nodes are tracked using mark-and-sweep garbage collection algorithms. A DOM node is kept in memory as long as it is attached to the active document tree or retained by a live JavaScript variable reference. Memory leaks occur when detached nodes remain bound in JS closures.</li>
+</ul>
+
+<h3>4. Paradigms & Tactics</h3>
+<p>HTML and CSS are purely <strong>Declarative Constraint-Based Paradigms</strong>. Rather than specifying step-by-step algorithms to draw pixels, the engineer defines semantic boundaries and stylistic constraints, leaving geometric rendering to the host engine.</p>
+<ul>
+    <li><strong>Concurrency & Off-Main-Thread Execution:</strong> HTML parsing, DOM construction, and CSS style recalculation historically ran on the browser's Main Thread alongside JavaScript. Modern engines decouple rendering into multi-threaded architectures: parsing occurs asynchronously, while painting and spatial layout transforms are offloaded to dedicated Compositor and GPU Rasterization threads using visual hardware acceleration.</li>
+    <li><strong>Fault-Tolerant Error Handling:</strong> HTML/CSS employ "resilient parsing" instead of fatal panics or runtime exceptions. If an invalid HTML tag or syntactically broken CSS rule is encountered, the parser discards the single malformed token/rule and resumes parsing at the next valid boundaries. This ensures progressive degradation rather than application crash.</li>
+</ul>
+
+<h3>5. Unique Patterns & Ecosystem</h3>
+<p>The CSS/HTML architectural ecosystem relies on specialized design patterns to manage visual scope, scalability, and layout context:</p>
+<ul>
+    <li><strong>BEM (Block Element Modifier):</strong> A component-driven naming convention used to control specificity vectors and isolate styles in flat global namespaces.</li>
+    <li><strong>Utility-First (e.g., Tailwind CSS):</strong> A functional design pattern mapping atomic CSS properties directly to structural markup, reducing CSS runtime overhead at the cost of markup density.</li>
+    <li><strong>CSS Modules & Shadow DOM:</strong> Encapsulation patterns that generate local scoping boundaries, preventing global cascade leaks (native in Web Components via Shadow Root).</li>
+    <li><strong>Constraint Layout Algorithms:</strong> Flexbox (1D distribution) and CSS Grid (2D spatial constraint mapping) sub-systems, alongside Container Queries for intrinsic component-level responsiveness.</li>
+    <li><strong>Ecosystem Tooling:</strong> PostCSS (AST transformation), Sass/Less (pre-compilation abstractions), and Lightning CSS (high-performance Rust-based bundling and minification).</li>
+</ul>
+
+<h3>6. How it "Makes Sense" (Internal Logic)</h3>
+<p>To master HTML and CSS as an engineer, one must shift from an <em>imperative execution model</em> to a <em>spatial-constraint document model</em>. The internal logic operates on the core concept of the <strong>Box Model</strong> and <strong>Formatting Contexts</strong>.</p>
+<p>An</div><hr><div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
 <p><strong>Timestamp:</strong> 2026-09-16 07:59 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1470,27 +1516,7 @@ Ruby adopts Smalltalk's model of OOP: execution is conceptually sending messages
 </ul>
 
 <p><strong>Error Handling:</strong><br>
-Ruby relies on an exception-driven</div><hr><div class='lesson'><h2>🔍 Deep Dive: Go</h2>
-<p><strong>Timestamp:</strong> 2026-09-07 05:23 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Go (Golang) was designed at Google in 2007 by Rob Pike, Ken Thompson, and Robert Griesemer to address acute software engineering challenges: massive codebases, slow build times, complex dependency management, and the difficulty of writing safe, concurrent software on multicore architecture. Go was conceived not to push the boundaries of programming language theory, but to simplify the operational realities of industrial software development.</p>
-
-<p>Go rejects complex type hierarchies, macro systems, and deep feature footprints in favor of extreme minimalism and fast compilation. Paradigm-wise, Go is a statically typed, compiled, concurrent procedural language with structural typing (interfaces) and selective object-oriented capabilities (composition over inheritance). It explicitly omits classical OOP features like class inheritance, constructors, method overloading, and implicit type coercions. The philosophy prioritizes code readability, mechanical sympathy, and developer interchangeability over expressiveness or syntactic brevity.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Go's syntax derives from the C family, stripped of lexical ambiguities. Key syntactic attributes include:</p>
-<ul>
-    <li><strong>Mandatory Formatting and Braces:</strong> Code layout is standardized across the global ecosystem via <code>gofmt</code>. Curly braces are required for control structures, and opening braces must remain on the line declaring the statement due to automatic semicolon insertion (ASI).</li>
-    <li><strong>No Explicit Semicolons:</strong> The lexer automatically inserts semicolons using a simple rule based on trailing tokens, reducing visual noise.</li>
-    <li><strong>Package and Module Structure:</strong> Code is organized into packages. Identifiers are exported based on casing: an initial capital letter (e.g., <code>ExportedFunc</code>) indicates public visibility outside the package, while lowercase (e.g., <code>internalFunc</code>) designates package-private scope.</li>
-    <li><strong>Unified Control Flow:</strong> Go consolidates iteration into a single construct: <code>for</code>. It acts as a traditional 3-component loop, a <code>while</code> loop, or an iterator (<code>range</code>) across slices, maps, channels, and integers.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Go balances C-like low-level memory layout control with managed safety:</p>
-<ul>
-    <li><strong>Concurrent Garbage Collector:</strong> Go uses a non-generational, concurrent, tri-color mark-and-sweep garbage collector optimized for low latency rather than</div><hr>
+Ruby relies on an exception-driven</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
