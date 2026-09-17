@@ -17,7 +17,31 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Kotlin</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Cryptography</h2>
+<p><strong>Timestamp:</strong> 2026-09-17 17:48 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p><strong>Cryptography</strong> is the discipline of using mathematical algorithms to secure information at rest, in transit, and in use. It converts readable plain text into unintelligible cipher text (encryption) and provides mechanisms to verify data origin and integrity.</p>
+
+<p>In modern cybersecurity, cryptography addresses the core problem of operating over untrusted networks like the Internet. Without cryptography, every piece of data transmitted—passwords, financial transactions, medical records, and state secrets—would be vulnerable to ambient sniffing, modification, or spoofing. It provides four fundamental security guarantees:</p>
+<ul>
+    <li><strong>Confidentiality:</strong> Ensuring only authorized entities can read data.</li>
+    <li><strong>Integrity:</strong> Guaranteeing data has not been altered or tampered with in transit or storage.</li>
+    <li><strong>Authentication:</strong> Verifying the true identity of the sender or system.</li>
+    <li><strong>Non-repudiation:</strong> Ensuring a party cannot deny the authenticity of their signature or transaction.</li>
+</ul>
+
+<h3>2. How It Works</h3>
+<p>Cryptography relies on distinct mathematical primitives combined into higher-level protocols:</p>
+
+<ul>
+    <li><strong>Symmetric Cryptography:</strong> Uses a single shared secret key for both encryption and decryption. Fast and computationally efficient, making it ideal for bulk data encryption. Common algorithms include <code>AES-GCM</code> (Advanced Encryption Standard with Galois/Counter Mode) and <code>ChaCha20-Poly1305</code>.</li>
+    
+    <li><strong>Asymmetric Cryptography (Public Key Cryptography):</strong> Uses a mathematically linked key pair: a <em>Public Key</em> (distributed freely to encrypt or verify) and a <em>Private Key</em> (kept secret to decrypt or sign). It solves the key-distribution problem. Common schemes include <code>RSA</code>, <code>ECC</code> (Elliptic Curve Cryptography), and <code>Ed25519</code>.</li>
+    
+    <li><strong>Cryptographic Hash Functions:</strong> One-way, deterministic mathematical functions that transform arbitrary-length input into a fixed-length output (digest). They are collision-resistant and irreversible. Examples include <code>SHA-256</code>, <code>SHA-3</code>, and dedicated password-hashing functions like <code>Argon2id</code> and <code>bcrypt</code>.</li>
+    
+    <li><strong>Digital Signatures & Key Exchange:</strong> Protocols use asymmetric keys to securely negotiate session keys across untrusted channels (e.g., <code>ECDHE</code>—Elliptic Curve Diffie-Hellman Ephemeral) and sign data to prove origin via Public Key Infrastructure (PKI).</div><hr><div class='lesson'><h2>🔍 Deep Dive: Kotlin</h2>
 <p><strong>Timestamp:</strong> 2026-09-17 08:05 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1504,27 +1528,7 @@ val result: String = optionValue match
     <li><code>*typeglob</code>: Accesses the symbol table entry for a given identifier name.</li>
 </ul>
 
-<p>A</div><hr><div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
-<p><strong>Timestamp:</strong> 2026-09-08 11:51 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>PHP (originally Personal Home Page, now Hypertext Preprocessor) was created by Rasmus Lerdorf in 1994 not as a theoretical programming language, but as a pragmatic set of C-based CGI binaries designed to solve immediate web development problems. Its core design philosophy is centered on <strong>rapid web delivery, pragmatism, and a shared-nothing execution model</strong>.</p>
-<p>Unlike general-purpose languages that require explicit HTTP server orchestration, PHP was natively designed to embed logic directly inside presentation templates and process HTTP requests out-of-the-box. Over three decades, it evolved from a procedural template-scripting tool into a full-featured, dynamic, multi-paradigm language. Today, it natively supports strong Class-based Object-Oriented Programming (OOP) with opt-in strict typing, functional paradigms (first-class functions, closures, arrow functions), and imperative procedural scripting.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>PHP inherits its syntax primarily from C, C++, and Perl. Code blocks are delineated by opening and closing tags (<code>&lt;?php ... ?&gt;</code>), allowing execution logic to be seamlessly interspersed with static markup, though modern architecture strictly separates this via templating engines and API endpoints.</p>
-<ul>
-    <li><strong>Sigils & Variables:</strong> Every variable identifier must begin with a dollar sign (<code>$variable</code>). Variable names are case-sensitive, whereas function and class names are case-insensitive.</li>
-    <li><strong>Braces & Statements:</strong> Uses standard C-style curly braces (<code>{}</code>) for scoping. Indentation is whitespace-insensitive and purely conventions-based (PSR-12). Statements must terminate with a mandatory semicolon (<code>;</code>).</li>
-    <li><strong>Code Organization:</strong> Modern PHP projects abandon manual file inclusions (<code>require</code>/<code>include</code>) in favor of the <strong>PSR-4 Autoloading standard</strong>, which maps fully qualified class namespaces (e.g., <code>App\Services\PaymentProcessor</code>) directly to directory structures on disk using Composer.</li>
-    <li><strong>Execution Flow:</strong> In traditional deployments (FPM/Apache), every incoming HTTP request triggers a fresh, isolated execution context. Script execution starts at an entry point (typically <code>public/index.php</code>), flows through middleware and application routing, returns a response, and immediately terminates.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>PHP employs automatic memory management managed by the <strong>Zend Engine Memory Manager (ZMM)</strong>. Developers do not perform manual allocation or pointer arithmetic.</p>
-<ul>
-    <li><strong>Reference Counting with Cycle Collection:</strong> Variable containers (zvals) use reference counting (refcounting) to track active handles on underlying data structures. When a refcount drops to zero, the memory is freed immediately. To prevent memory leaks caused by circular references (e.g., Object A referencing Object B, which references Object A), PHP implements a synchronous/asynchronous root-buffer Cycle Collector based on the Bacon & Rajan algorithm.</li>
-    <li><strong>Shared-Nothing & Memory Cleansing:</strong> The core strength of PHP's runtime is its short-lived memory lifecycle. Because requests run in isolated</div><hr>
+<p>A</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
