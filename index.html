@@ -17,7 +17,37 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
+<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<p><strong>Timestamp:</strong> 2026-09-18 01:58 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>JavaScript was created in 1995 by Brendan Eich at Netscape, famously prototyped in just 10 days. Its original purpose was to serve as a lightweight, dynamic scripting language for the web browser, allowing non-professional developers to manipulate document structures and handle user input without the compilation overhead of C++ or Java.</p>
+
+<p>From a programming language theory perspective, JavaScript is a multi-paradigm, dynamically typed, weakly typed, interpreted (or JIT-compiled) language with first-class functions and prototype-based object orientation. Its design is a unique synthesis of three distinct lineages:</p>
+<ul>
+    <li><strong>Scheme (Lisp dialect):</strong> First-class functions, lexical scoping, and dynamic typing.</li>
+    <li><strong>Self (Smalltalk dialect):</strong> Prototype-based inheritance instead of class-based classical inheritance.</li>
+    <li><strong>C / Java:</strong> Algol-like syntax (curly braces, statement keywords, operator precedence) to appeal to mainstream enterprise developers.</li>
+</ul>
+
+<p>JavaScript was designed around the principle of <em>forgiveness and fault tolerance</em> on the client side. Rather than crashing execution upon encountered anomalies, the language heavily relies on type coercion and sentinel values like <code>NaN</code>, <code>undefined</code>, and <code>null</code>. This philosophy prioritized system uptime in the browser interface over strict type safety.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>JavaScript uses explicit C-style syntax with curly braces <code>{}</code> defining statement blocks, parentheses <code>()</code> for expression grouping and parameter lists, and semicolons <code>;</code> for statement termination. However, the language engine incorporates <strong>Automatic Semicolon Insertion (ASI)</strong>, a parser feature that attempts to infer missing semicolons at line breaks, though relying on ASI can introduce subtle bugs (such as restricted production rules with <code>return</code> statements).</p>
+
+<p>Variable binding and scoping are governed by three primary keywords:</p>
+<ul>
+    <li><code>var</code>: Function-scoped or globally scoped, hoisted to the top of its enclosing scope during execution context creation, initialized to <code>undefined</code>.</li>
+    <li><code>let</code>: Block-scoped, hoisted but kept in a "Temporal Dead Zone" (TDZ) until evaluation, preventing access before declaration.</li>
+    <li><code>const</code>: Block-scoped, subjected to TDZ, requires initialization at declaration, and enforces immutable variable bindings (though the underlying object value remains mutable).</li>
+</ul>
+
+<p>Code is structured using <strong>ECMAScript Modules (ESM)</strong> (<code>import</code> / <code>export</code>), which feature static module resolution, enabling dead-code elimination (tree-shaking) by static analyzers. Historically, Node.js relied on CommonJS (<code>require</code> / <code>module.exports</code>), a runtime-evaluated synchronous module specification.</p>
+
+<h3>3. Memory Management</h3>
+<p>JavaScript abstracts manual memory management (such as C's <code>malloc</code>/<code>free</code> or Rust's compile-time ownership semantics). Memory is automatically allocated when objects, arrays, closures, or primitives are created, and reclaimed through an automated <strong>Garbage Collector (GC)</strong>.</p>
+
+<p>Modern JavaScript engines (such as V8 or JavaScriptCore) employ advanced <strong>Generational Garbage Collection</strong> algorithms</div><hr><div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
 <p><strong>Timestamp:</strong> 2026-09-17 23:12 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1535,17 +1565,7 @@ val result: String = optionValue match
     <li><strong>Block Structure:</strong> Code is structured using mandatory curly braces <code>{}</code>. Indentation is standardized across the entire ecosystem using the canonical formatting tool <code>gofmt</code>, completely eliminating style debates.</li>
     <li><strong>Semicolon Insertion:</strong> Go uses automatic semicolon insertion at the lexer level. Standard line breaks act as statements terminations, enforcing specific syntactic layouts (e.g., opening braces must sit on the same line as the statement control block).</li>
     <li><strong>Variable & Type Order:</strong> Declarations read left-to-right with the name preceding the type: <code>var x int = 10</code> or type-inferred short declaration <code>x := 10</code>. Function signatures place return types at the end, supporting multiple return values naturally: <code>func compute(a int) (int, error)</code>.</li>
-    <li><strong>Package and Visibility Mechanics:</strong> Code is organized into packages. Identifiers starting with a capital letter (e.g., <code>ExportedSymbol</code>) are public/exported; lowercase identifiers (e.g., <code>internalSymbol</code>) are package-private. There are no <code>public</code>, <code>private</code>,</div><hr><div class='lesson'><h2>🔍 Deep Dive: Python</h2>
-<p><strong>Timestamp:</strong> 2026-09-09 00:49 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Python was created in the late 1980s by Guido van Rossum as a successor to the ABC language, designed to bridge the gap between shell scripting and C systems programming within the Amoeba distributed operating system. Its primary architectural goal is high-level developer velocity through code readability and cognitive simplicity ("executable pseudocode").</p>
-<p>The core philosophy is codified in PEP 20 (The Zen of Python), emphasizing explicit declarations over implicit magic, simplicity over complexity, and the idea that "there should be one—and preferably only one—obvious way to do it."</p>
-<p>Python is a strongly, dynamically typed multi-paradigm language:</p>
-<ul>
-    <li><strong>Object-Oriented:</strong> Pure OOP at its foundation; every runtime entity—including primitive integers, functions, modules, and classes themselves—is an instance of a heap-allocated class inheriting from <code>object</code>.</li>
-    <li><strong>Procedural:</strong> Supports imperative, top-down structured programming with clean control-flow constructs.</li>
-    <li><strong>Functional:</strong> Provides first-class and higher-order functions, closures, list/dict/set comprehensions, and lazy evaluation via generators. However, it explicitly rejects pure functional language invariants like mandatory immutability</div><hr>
+    <li><strong>Package and Visibility Mechanics:</strong> Code is organized into packages. Identifiers starting with a capital letter (e.g., <code>ExportedSymbol</code>) are public/exported; lowercase identifiers (e.g., <code>internalSymbol</code>) are package-private. There are no <code>public</code>, <code>private</code>,</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
