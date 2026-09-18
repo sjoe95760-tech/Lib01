@@ -17,7 +17,41 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<p><strong>Timestamp:</strong> 2026-09-18 07:00 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Swift was designed at Apple by Chris Lattner and his team (beginning in 2010, released in 2014) as a modern replacement for Objective-C. Objective-C was built on Smalltalk-style dynamic message passing layered over C; while flexible, it suffered from verbose syntax, weak type safety, pointer exposure, and heavy runtime overhead.</p>
+
+<p>Swift was engineered around three primary tenets: <strong>Safe, Fast, and Expressive</strong>.</p>
+<ul>
+    <li><strong>Safety:</strong> Eliminates entire classes of runtime errors through static typing, strict nullability handling (Optionals), mandatory variable initialization, and array bounds checking.</li>
+    <li><strong>Performance:</strong> Compiles directly to native machine code via LLVM. Swift avoids dynamic message dispatch where possible, defaulting to static dispatch and vtables, yielding execution speeds comparable to C++.</li>
+    <li><strong>Expressiveness:</strong> Syntactic sugar, type inference, and modern language features (generics, pattern matching, macros) allow clean, declarative code without sacrificing low-level execution control.</li>
+</ul>
+
+<p>From a programming language theory standpoint, Swift is a <strong>multi-paradigm language</strong>. While it supports traditional Object-Oriented Programming (OOP) and imperative procedural programming, its defining structural feature is <strong>Protocol-Oriented Programming (POP)</strong> alongside heavy adoption of functional idioms (immutability, higher-order functions, algebraic data types).</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Swift's syntax borrows from C, Rust, Haskell, and Python. It uses standard C-style curly braces <code>{}</code> for block scoping, but omits mandatory semicolons at line endings and does not require parentheses around conditional expressions.</p>
+
+<p>Key structural mechanics include:</p>
+<ul>
+    <li><strong>Type Inference:</strong> The compiler (swiftc) uses constraint-based type inference. Variable types can be explicitly stated or left for the compiler to deduce: <code>let count = 42</code>.</li>
+    <li><strong>Mutability Contracts:</strong> Immutability is enforced at the language level using <code>let</code> (immutable bind) and <code>var</code> (mutable bind). Immutable value types are fundamentally thread-safe.</li>
+    <li><strong>Optionals (Algebraic Data Type):</strong> Swift handles nullability explicitly using an enum wrapper <code>Optional&lt;Wrapped&gt;</code> with cases <code>.none</code> and <code>.some(Wrapped)</code>. Unwrapping requires explicit semantics like <code>if let</code>, <code>guard let</code>, the null-coalescing operator <code>??</code>, or the nil-shortcircuiting optional chain <code>?</code>.</li>
+    <li><strong>Control Flow & Pattern Matching:</strong> The <code>switch</code> statement is exhaustive and supports advanced pattern matching across tuples, ranges, types, and enum associated values with optional <code>where</code> clauses. The <code>guard</code> statement enforces early exits, binding variables to the current scope beyond the block.</li>
+    <li><strong>Code Organization:</strong> Swift does not split interface and implementation into separate files (unlike C/C++ header files). Symbols are namespaced by <strong>Modules</strong>. Code is structurally enhanced via <code>extension</code> blocks, allowing developers to add methods, computational properties, and protocol conformances to existing types without subclassing or source access.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Swift deliberately avoids tracing Garbage Collection (GC) to ensure predictable latency, low memory overhead, and suitability for real-time systems and mobile devices.</p>
+
+<p>Instead, Swift uses <strong>Automatic Reference Counting (ARC)</strong> for reference types (classes, closures) combined with a stack-heavy allocation strategy for value types (structs, enums).</p>
+
+<ul>
+    <li><strong>Value Types vs Reference Types:</strong> Structs and enums are copied on assignment (passing by value). They are allocated on the stack or inline inside containing objects. Swift optimizes large value types via <strong>Copy-on-Write (CoW)</strong>, sharing the underlying buffer until mutation occurs. Classes are reference types allocated on the heap and managed by ARC.</li>
+    <li><strong>Reference Cycle Mitigation:</strong> Ret</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
 <p><strong>Timestamp:</strong> 2026-09-18 01:58 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1544,28 +1578,7 @@ val result: String = optionValue match
 </ul>
 
 <h3>3. Memory Management</h3>
-<p>Ruby manages memory dynamically using an automated runtime garbage collector (GC), relieving the developer from manual memory allocation or</div><hr><div class='lesson'><h2>🔍 Deep Dive: Go</h2>
-<p><strong>Timestamp:</strong> 2026-09-09 05:29 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Go (or Golang) was designed at Google in 2007 by Robert Griesemer, Rob Pike, and Ken Thompson to solve a specific infrastructural problem: software software engineering at scale. As codebases grew to millions of lines and teams expanded to thousands of engineers, existing languages like C++ and Java exhibited severe failure modes—excessive compile times, overly complex type hierarchies, difficult dependency management, and high barrier-to-entry concurrency models.</p>
-
-<p>Go's design philosophy is rooted in intentional minimalism, explicit behavior, and orthogonal features. It prioritizes compilation speed, readability, and predictable runtime behavior over theoretical expressiveness.</p>
-
-<ul>
-    <li><strong>Pragmatic Procedural Core:</strong> Go is primarily an imperative, statically typed, compiled procedural language. It deliberately rejects class-based inheritance, operator overloading, explicit pointer arithmetic (by default), and complex metaprogramming primitives.</li>
-    <li><strong>Structural Typing:</strong> Go rejects nominal subtyping in favor of compile-time structural subtyping (implicit interfaces). A type satisfies an interface simply by implementing its methods, without explicit declaration.</li>
-    <li><strong>Communicating Sequential Processes (CSP):</strong> Rather than relying solely on shared-memory multi-threading with mutexes, Go implements C.A.R. Hoare's CSP model as a first-class language feature, treating concurrent execution units as isolated processes communicating over synchronized queues (channels).</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Go syntax is heavily derived from the C family, stripped of redundancy and designed to be deterministically parseable without dynamic symbol tables. The grammar is so simple that Go can be parsed without type information.</p>
-
-<ul>
-    <li><strong>Block Structure:</strong> Code is structured using mandatory curly braces <code>{}</code>. Indentation is standardized across the entire ecosystem using the canonical formatting tool <code>gofmt</code>, completely eliminating style debates.</li>
-    <li><strong>Semicolon Insertion:</strong> Go uses automatic semicolon insertion at the lexer level. Standard line breaks act as statements terminations, enforcing specific syntactic layouts (e.g., opening braces must sit on the same line as the statement control block).</li>
-    <li><strong>Variable & Type Order:</strong> Declarations read left-to-right with the name preceding the type: <code>var x int = 10</code> or type-inferred short declaration <code>x := 10</code>. Function signatures place return types at the end, supporting multiple return values naturally: <code>func compute(a int) (int, error)</code>.</li>
-    <li><strong>Package and Visibility Mechanics:</strong> Code is organized into packages. Identifiers starting with a capital letter (e.g., <code>ExportedSymbol</code>) are public/exported; lowercase identifiers (e.g., <code>internalSymbol</code>) are package-private. There are no <code>public</code>, <code>private</code>,</div><hr>
+<p>Ruby manages memory dynamically using an automated runtime garbage collector (GC), relieving the developer from manual memory allocation or</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
