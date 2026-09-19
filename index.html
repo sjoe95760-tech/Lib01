@@ -17,7 +17,28 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: TypeScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
+<p><strong>Timestamp:</strong> 2026-09-19 13:32 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>HTML and CSS are not general-purpose programming languages; they are specialized, non-Turing complete (in their base forms) Domain-Specific Languages (DSLs) designed around the fundamental principle of <strong>Separation of Concerns</strong>. HTML acts as a declarative structural and semantic document layout definition language, while CSS functions as a rule-based declarative stylesheet language for visual constraint resolution.</p>
+<p>They were created to solve the problem of cross-platform document distribution across heterogeneous user agents (browsers, screen readers, printers) without requiring imperative rendering instructions. Rather than executing procedural code or defining classes and methods (OOP), HTML constructs a hierarchical Node Tree (the Document Object Model), and CSS defines pattern-matching rules and box-model constraints that are mapped onto that tree to determine geometry, layout, and visual presentation.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>HTML utilizes an XML/SGML-derived markup syntax consisting of tags, attributes, and text nodes. Whitespace is largely ignored or collapsed according to visual context rules. Execution flow does not exist in the procedural sense; instead, parsing follows a deterministic streaming pipeline:</p>
+<p><code>Raw Bytes → Characters → Tokens → Nodes → DOM Tree</code></p>
+<p>CSS uses a rule-set syntax structured around pattern selectors and declaration blocks bounded by curly braces (<code>{ property: value; }</code>), with declarations terminated by semicolons. CSS flow is dictated by the <strong>Cascade Engine</strong>, which resolves styles through a deterministic multi-stage priority algorithm:</p>
+<ul>
+    <li><strong>Origin & Importance:</strong> User Agent styles vs. User styles vs. Author styles (plus <code>!important</code> flag processing).</li>
+    <li><strong>Specificity Calculation:</strong> Evaluated as a tuple <code>(Inline, IDs, Classes/Attributes/Pseudo-classes, Elements)</code>.</li>
+    <li><strong>Source Order:</strong> Final ties are broken by document lexical order (last rule defined wins).</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Memory management in HTML and CSS is entirely implicit and offloaded to the host environment's C++ / Rust layout engine (e.g., Blink, Gecko, WebKit). Declarative markup does not expose direct pointers, stack frame allocations, or manual memory allocation semantics.</p>
+<p>Under the hood, HTML elements map to C++ objects (such as <code>HTMLElement</code> or <code>LayoutObject</code>) allocated on the browser heap. Memory reclamation relies on cyclic reference-counting and tracing garbage collectors (such as Chrome's Oilpan GC) bound to the runtime JavaScript engine bindings. When a DOM node is removed from the active tree and no JavaScript references retain it, the browser engine automatically deallocates the element, its associated computed CSS styles, and any cached render layers (GPU textures).</p>
+
+<h3></div><hr><div class='lesson'><h2>🔍 Deep Dive: TypeScript</h2>
 <p><strong>Timestamp:</strong> 2026-09-19 09:51 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1544,21 +1565,7 @@ Error dispatch relies primarily on synchronous exception bubbling via <code>try.
 <p>Perl uses C-style block structures with explicit curly braces <code>{}</code> and mandatory statement-terminating semicolons <code>;</code>. Indentation is purely cosmetic. However, its surface syntax is radically shaped by <em>sigils</em> and <em>evaluation contexts</em>.</p>
 
 <h4>Sigils & Variable Naming</h4>
-<p>Variables are prefixed with sigils that indicate the structural type being accessed:</p</div><hr><div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
-<p><strong>Timestamp:</strong> 2026-09-10 11:56 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>PHP (originally "Personal Home Page", now the recursive acronym "PHP: Hypertext Preprocessor") was created by Rasmus Lerdorf in 1994 as a set of C CGI binaries to track web traffic. It evolved into a full programming language when Zeev Suraski and Andi Gutmans rewritten the core parser, establishing the Zend Engine.</p>
-<p>Unlike general-purpose languages adapted for the web, PHP was built specifically for web request processing. Its underlying architecture enforces a <strong>shared-nothing execution model</strong>: every HTTP request initializes a completely clean runtime environment, executes code, generates a response, and tears down all allocated state. This design guarantees isolation between requests, eliminating shared-memory state corruption across web interactions without requiring explicit application-level thread synchronization.</p>
-<p>PHP is a pragmatically multi-paradigm language. While it began as an imperative procedural templating language, modern PHP (v7.0 through v8.x) is dominated by a strict, Java-like class-based Object-Oriented paradigm augmented by functional programming primitives (first-class functions, closures, arrow functions, and pure expressions).</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>PHP’s syntax derives from C, C++, and Perl. It operates as an embedded language: execution begins inside script tags (<code>&lt;?php ... ?&gt;</code>), allowing raw text or HTML outside tags to stream directly to output.</p>
-<ul>
-  <li><strong>Variable Identifiers:</strong> Variables are explicitly denoted by a leading dollar sign (<code>$variable</code>). Sigils differentiate variable evaluation from function calls or structural keywords.</li>
-  <li><strong>Blocks &amp; Statements:</strong> C-style braces (<code>{}</code>) delimit control blocks; semicolons (<code>;</code>) strictly terminate statements.</li>
-  <li><strong>Scope Model:</strong> PHP features explicit lexical scope. Global variables are not automatically accessible inside function scopes unless explicitly bound via the <code>global</code> keyword or imported into closures via the <code>use</code> statement.</li>
-  <li><strong>Type System:</strong> PHP implements gradual, dynamic typing with runtime scalar type enforcement. Modern PHP supports precise type annotations, including union types (<code>string|int</code>), intersection types (<code>ClassA&amp;InterfaceB</code>), Disjunctive Normal Form (DNF) types (<code>(A&amp;B)|C</code>), non-nullable types, properties marked as <code>readonly</code>, and strict mode declaration (<code>declare(strict_types=1);</code>) which turns off coercion</div><hr>
+<p>Variables are prefixed with sigils that indicate the structural type being accessed:</p</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
