@@ -17,7 +17,26 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Go</h2>
+<div class='lesson'><h2>🔍 Deep Dive: TypeScript</h2>
+<p><strong>Timestamp:</strong> 2026-09-19 09:51 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>TypeScript was designed by Anders Hejlsberg at Microsoft to solve the structural vulnerabilities of JavaScript when scaling to enterprise codebases. At its core, TypeScript is a <strong>statically typed, compile-time superset of JavaScript</strong> that provides complete type safety during development while compiling down to idiomatic, untyped JavaScript (a process known as <em>type erasure</em>).</p>
+<p>Unlike languages with nominal type systems (e.g., Java, C#), TypeScript utilizes a <strong>structural type system</strong> (formalized duck typing). Assignability and equivalence are determined entirely by the shape and members of a type, rather than explicit inheritance declarations. The language is explicitly multi-paradigm, supporting Object-Oriented, Functional, and Procedural styles. Its design philosophy prioritizes developer ergonomics, zero runtime overhead, complete compatibility with standard JavaScript syntax, and powerful type inference capabilities.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>TypeScript inherits C-style syntax directly from JavaScript, utilizing curly braces <code>{}</code> for code blocks and block-scoped variable declarations (<code>const</code> and <code>let</code>). Semicolons are optional due to JavaScript's Automatic Semicolon Insertion (ASI), though explicit usage remains common practice in large systems.</p>
+<p>Code is organized into ES Modules (using <code>import</code> and <code>export</code> statements). TypeScript extends JavaScript's syntax with type annotations placed after identifiers (e.g., <code>const id: string = "001"</code>). Key structural constructs include:</p>
+<ul>
+    <li><strong>Interfaces & Type Aliases:</strong> Contracts defining structural shapes and object topologies.</li>
+    <li><strong>Generics:</strong> Parameterized types that enable parametric polymorphism (e.g., <code>List&lt;T&gt;</code>).</li>
+    <li><strong>Union and Intersection Types:</strong> Set-theoretic operators (<code>|</code> and <code>&amp;</code>) for composing types dynamically.</li>
+    <li><strong>Enums & Decorators:</strong> Language features that generate actual runtime code constructs alongside type annotations.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>TypeScript possesses no distinct runtime engine or native memory management abstraction. Because TypeScript compiles down to JavaScript, its memory lifecycle is managed entirely by the underlying JavaScript engine's runtime (such as V8 in Node.js/Chrome, JavaScriptCore, or SpiderMonkey).</p>
+<p>Memory is allocated automatically when objects or primitives are created and reclaimed using an automated <strong>Garbage Collector (GC)</strong>. Modern engines employ generational mark-and-sweep algorithms, dividing the heap into new (nursery) and old generations. Because type annotations undergo absolute <em>type erasure</em> during transpilation, TypeScript introduces zero memory overhead compared to equivalent hand-written JavaScript.</p></div><hr><div class='lesson'><h2>🔍 Deep Dive: Go</h2>
 <p><strong>Timestamp:</strong> 2026-09-19 05:14 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1539,15 +1558,7 @@ Error dispatch relies primarily on synchronous exception bubbling via <code>try.
   <li><strong>Variable Identifiers:</strong> Variables are explicitly denoted by a leading dollar sign (<code>$variable</code>). Sigils differentiate variable evaluation from function calls or structural keywords.</li>
   <li><strong>Blocks &amp; Statements:</strong> C-style braces (<code>{}</code>) delimit control blocks; semicolons (<code>;</code>) strictly terminate statements.</li>
   <li><strong>Scope Model:</strong> PHP features explicit lexical scope. Global variables are not automatically accessible inside function scopes unless explicitly bound via the <code>global</code> keyword or imported into closures via the <code>use</code> statement.</li>
-  <li><strong>Type System:</strong> PHP implements gradual, dynamic typing with runtime scalar type enforcement. Modern PHP supports precise type annotations, including union types (<code>string|int</code>), intersection types (<code>ClassA&amp;InterfaceB</code>), Disjunctive Normal Form (DNF) types (<code>(A&amp;B)|C</code>), non-nullable types, properties marked as <code>readonly</code>, and strict mode declaration (<code>declare(strict_types=1);</code>) which turns off coercion</div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
-<p><strong>Timestamp:</strong> 2026-09-10 06:46 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Rust was designed by Graydon Hoare at Mozilla to resolve a fundamental false dichotomy in software engineering: the choice between high-level memory safety (guaranteed by Garbage Collection at the cost of latency, memory footprint, and predictability) and low-level control (provided by C/C++ at the cost of catastrophic memory safety vulnerabilities and concurrency bugs). Its governing philosophy is <strong>empowerment through static guarantees</strong>, summarized by the mantra of <em>"zero-cost abstractions"</em> and <em>"fearless concurrency."</em></p>
-<p>From a programming language theory perspective, Rust rejects classic class-based Object-Oriented Programming (no implementation inheritance or vtables by default) in favor of a pragmatic synthesis of:</p>
-<ul>
-  <li><strong>Functional Programming:</strong> Expressive algebraic data types (enums), pattern matching, parametric polymorphism, higher-order functions, immutable-by-default bindings, and monadic error handling.</li>
-  <li><strong>Systems Procedural/Imperative Programming:</strong> Explicit, fine-grained control over memory layouts, stack vs. heap allocation, cache locality, inline assembly</div><hr>
+  <li><strong>Type System:</strong> PHP implements gradual, dynamic typing with runtime scalar type enforcement. Modern PHP supports precise type annotations, including union types (<code>string|int</code>), intersection types (<code>ClassA&amp;InterfaceB</code>), Disjunctive Normal Form (DNF) types (<code>(A&amp;B)|C</code>), non-nullable types, properties marked as <code>readonly</code>, and strict mode declaration (<code>declare(strict_types=1);</code>) which turns off coercion</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
