@@ -17,7 +17,32 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Java</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<p><strong>Timestamp:</strong> 2026-09-20 07:59 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Swift was designed at Apple by Chris Lattner and his team, debuting in 2014 to replace Objective-C as the core language for Apple ecosystem development. Objective-C was burdened by its 1980s Smalltalk-on-C dynamic architecture, which suffered from unsafe C pointer arithmetic, fragile base classes, dynamic message dispatch overhead, and null-pointer dereference vulnerabilities.</p>
+
+<p>Swift was constructed around three foundational pillars: <strong>Safe</strong>, <strong>Fast</strong>, and <strong>Expressive</strong>. Rather than incrementally patching C legacy, Swift abandoned pointer arithmetic and implicit nullability entirely, drawing heavy inspiration from modern language theory—specifically Rust, Haskell, C#, and ML. Swift is a <strong>multi-paradigm</strong> language built primarily on a core philosophy known as <strong>Protocol-Oriented Programming (POP)</strong>, complemented by strong value-type Functional paradigms and Object-Oriented capabilities for system integration.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Swift employs a clean, modern syntax using brace-delimited block structures (`{}`). Semicolons are optional and omitted in idiomatic code, reserved only for separating multiple statements on a single line.</p>
+
+<ul>
+    <li><strong>Type System:</strong> Swift is strictly and statically typed with advanced local type inference. Variables declared with <code>let</code> are immutable (constants), while those declared with <code>var</code> are mutable.</li>
+    <li><strong>Explicit Nullability (Optionals):</strong> Swift enforces explicit handling of absent values using the <code>Optional&lt;Wrapped&gt;</code> enum type (syntactic sugar: <code>T?</code>). A non-optional variable can never hold a <code>nil</code> value, eradicating dynamic null pointer exceptions at compile time. Unwrapping requires safe patterns like <code>if let</code>, <code>guard let</code>, or the nil-coalescing operator (<code>??</code>).</li>
+    <li><strong>Control Flow:</strong> Control structures omit parens around conditions (e.g., <code>if x &gt; 10 { ... }</code>). Swift introduces the <code>guard</code> statement to enforce early exits, maintaining clean scope layout without deeply nested conditional checks.</li>
+    <li><strong>Pattern Matching:</strong> The <code>switch</code> statement is exhaustive and supports advanced pattern matching across tuple states, type casts, ranges, and enum payload bindings.</li>
+    <li><strong>Code Organization:</strong> Swift code is organized into <strong>Modules</strong> (targets/libraries) containing source files. There are no header files (`.h`); symbol visibility is managed natively across files within the same module via access levels (<code>private</code>, <code>fileprivate</code>, <code>internal</code>, <code>package</code>, <code>public</code>, <code>open</code>).</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Swift relies on <strong>Automatic Reference Counting (ARC)</strong> for reference types (classes) rather than a tracing Garbage Collector (GC). ARC deterministic overhead means there are no unpredictable "stop-the-world" collection pauses, making Swift suited for real-time graphics and low-latency systems.</p>
+
+<ul>
+    <li><strong>Value Types vs. Reference Types:</strong> 
+        <ul>
+            <li><code>struct</code>, <code>enum</code>, and primitive types (<code>Int</code>, <code>String</code>, <code>Array</code>) are <strong>Value Types</strong>. They live on the stack or inline inside containing structs, allocation/deallocation is</div><hr><div class='lesson'><h2>🔍 Deep Dive: Java</h2>
 <p><strong>Timestamp:</strong> 2026-09-20 02:07 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1577,27 +1602,7 @@ Error dispatch relies primarily on synchronous exception bubbling via <code>try.
 <ul>
     <li><strong>Procedural/Imperative:</strong> Execution flow relies on explicit block scopes, loops, and function invocations with low-level hardware control.</li>
     <li><strong>Functional:</strong> Strongly influenced by ML/OCaml. Immutability by default, algebraic data types (enums), pattern matching, higher-order functions, and expression-oriented syntax are foundational.</li>
-    <li><strong>Trait-Based Object-Oriented:</strong> Rust intentionally rejects traditional class-based inheritance, instead favoring ad-hoc polymorphism via structural interfaces called <em>traits</em>,</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
-<p><strong>Timestamp:</strong> 2026-09-11 01:51 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>JavaScript was created in 1995 by Brendan Eich at Netscape in just ten days. Originally conceived as a lightweight "glue language" for web designers to manipulate DOM elements, its core design is a fusion of three distinct programming language lineages:</p>
-<ul>
-    <li><strong>Scheme (Lisp dialect):</strong> Supplied first-class functions, lexical scoping, and dynamic typing.</li>
-    <li><strong>Self (Smalltalk dialect):</strong> Provided prototype-based object orientation instead of classical class-based inheritance.</li>
-    <li><strong>Java/C:</strong> Provided the imperative syntax, brace-delimited block structure, and control flow primitives (primarily for marketing alignment with Java at the time).</li>
-</ul>
-<p>JavaScript solves the problem of high-concurrency, interactive execution in a constrained, heterogeneous client environment (the browser) without requiring full page reloads or compilation steps. It has since evolved into a universal runtime language powering backend servers (Node.js, Deno, Bun), desktop software (Electron), and embedded environments.</p>
-<p>From a programming language theory (PLT) perspective, JavaScript is a <strong>multi-paradigm, dynamically typed, weakly typed, single-threaded, event-driven scripting language</strong> with automatic memory management and JIT (Just-In-Time) compilation capabilities.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>JavaScript uses explicit standard C-style block syntax delimited by curly braces (<code>{}</code>). Statements can be terminated with semicolons (<code>;</code>), though the engine features Automatic Semicolon Insertion (ASI), a compiler feature that inferentially injects missing semicolons during parsing (a common source of subtle logic bugs if mismanaged).</p>
-
-<p>Code layout is organized through modern ECMAScript Modules (ESM) using static <code>import</code> and <code>export</code> constructs, superseding older runtime module specifications like CommonJS (<code>require</code>/<code>module.exports</code>).</p>
-
-<h4>Variable Bindings & Scoping</h4>
-<p>Scoping mechanics operate on three tiers:</p>
-<ul></div><hr>
+    <li><strong>Trait-Based Object-Oriented:</strong> Rust intentionally rejects traditional class-based inheritance, instead favoring ad-hoc polymorphism via structural interfaces called <em>traits</em>,</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
