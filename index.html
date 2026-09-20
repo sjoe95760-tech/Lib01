@@ -17,7 +17,46 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
+<p><strong>Timestamp:</strong> 2026-09-20 12:54 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Structured Query Language (SQL) was conceived in the early 1970s by Donald Chamberlin and Raymond Boyce at IBM, rooted directly in Edgar F. Codd’s formalization of the <strong>Relational Model</strong>. Prior to SQL, database management systems relied on navigational structures (such as CODASYL or hierarchical models) where developers had to manually write procedural routines navigating physical pointers, disk locations, and record-at-a-time traversals.</p>
+<p>SQL solved this coupling by operating on a foundational paradigm shift: <strong>Declarative Programming based on Relational Algebra and First-Order Predicate Logic</strong>. Instead of specifying <em>how</em> to fetch data (procedural algorithms), a SQL query specifies <em>what</em> set of data is desired (declarative invariant). The underlying engine handles access-path optimization, execution planning, and memory layout. SQL is fundamentally neither Object-Oriented nor Functional in the traditional programming language sense; it is a specialized domain-specific language (DSL) built for set manipulation, tuple transformation, and relational predicate evaluation.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>SQL syntax is designed to resemble natural English sentences, utilizing reserved keywords, sub-clauses, and explicit logical operators. It is whitespace-insensitive and block-neutral, using semicolons (<code>;</code>) as mandatory or optional statement terminators depending on the dialect implementation.</p>
+<p>Code organization is divided into sub-languages:</p>
+<ul>
+  <li><strong>DDL (Data Definition Language):</strong> Schema creation and structure (<code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>).</li>
+  <li><strong>DML (Data Manipulation Language):</strong> Tuple querying and mutations (<code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>).</li>
+  <li><strong>DCL (Data Control Language):</strong> Access control (<code>GRANT</code>, <code>REVOKE</code>).</li>
+  <li><strong>TCL (Transaction Control Language):</strong> Boundaries of atomic execution (<code>BEGIN</code>, <code>COMMIT</code>, <code>ROLLBACK</code>).</li>
+</ul>
+<p>Crucially, SQL exhibits a sharp divergence between its <strong>lexical/syntactic order</strong> and its <strong>logical execution order</strong>. A query written as:</p>
+<pre>
+SELECT status, COUNT(*)
+FROM orders
+WHERE created_at &gt;= '2026-01-01'
+GROUP BY status
+HAVING COUNT(*) &gt; 100
+ORDER BY status ASC;
+</pre>
+<p>Is logically evaluated by the database engine in the following sequence:</p>
+<ol>
+  <li><code>FROM</code> &amp; <code>JOIN</code> (Materialize base relations/cartesian products)</li>
+  <li><code>WHERE</code> (Filter tuples based on predicates)</li>
+  <li><code>GROUP BY</code> (Partition tuples into buckets)</li>
+  <li><code>HAVING</code> (Filter bucket aggregates)</li>
+  <li><code>SELECT</code> (Project columns, compute expressions)</li>
+  <li><code>DISTINCT</code> (Deduplicate remaining tuples)</li>
+  <li><code>ORDER BY</code> (Sort the result set)</li>
+  <li><code>LIMIT / OFFSET</code> (Slice window of tuples)</li>
+</ol>
+
+<h3>3. Memory Management</h3>
+<p>Standard ANSI SQL abstracts memory management completely away from the application programmer. Memory allocation, heap usage, pointer arithmetic, and garbage collection do not exist at the language tier. However, at the engine (RDBMS) architecture level, memory management is one of the most critical subsystems.</p>
+</div><hr><div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
 <p><strong>Timestamp:</strong> 2026-09-20 07:59 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1590,19 +1629,7 @@ Error dispatch relies primarily on synchronous exception bubbling via <code>try.
 <ul>
   <li><strong>Credential Attacks & Lateral Movement:</strong>
     <ul>
-      <li><em>Offense</div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
-<p><strong>Timestamp:</strong> 2026-09-11 06:46 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Rust was created at Mozilla (originally designed by Graydon Hoare) to solve a fundamental, historical dilemma in software engineering: the trade-off between <strong>safety</strong> (offered by garbage-collected languages like Java, Go, or Python) and <strong>control/performance</strong> (offered by systems languages like C and C++). Prior to Rust, memory-safe execution required a runtime garbage collector or interpreter, which introduced non-deterministic latency, memory overhead, and lack of bare-metal control.</p>
-
-<p>Rust eliminates spatial and temporal memory safety bugs—such as null pointer dereferences, double frees, use-after-free, buffer overflows, and data races—entirely at <em>compile time</em>, without requiring a garbage collector. It operates on the philosophy of <strong>zero-cost abstractions</strong>: higher-level language constructs (like iterators, closures, and async blocks) compile down to machine code equivalent to, or faster than, hand-written C.</p>
-
-<p>From a programming language theory (PLT) perspective, Rust is a multi-paradigm language:</p>
-<ul>
-    <li><strong>Procedural/Imperative:</strong> Execution flow relies on explicit block scopes, loops, and function invocations with low-level hardware control.</li>
-    <li><strong>Functional:</strong> Strongly influenced by ML/OCaml. Immutability by default, algebraic data types (enums), pattern matching, higher-order functions, and expression-oriented syntax are foundational.</li>
-    <li><strong>Trait-Based Object-Oriented:</strong> Rust intentionally rejects traditional class-based inheritance, instead favoring ad-hoc polymorphism via structural interfaces called <em>traits</em>,</div><hr>
+      <li><em>Offense</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
