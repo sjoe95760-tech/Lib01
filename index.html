@@ -17,7 +17,29 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<p><strong>Timestamp:</strong> 2026-09-21 00:36 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Python was created in late 1989 by Guido van Rossum as a successor to the ABC language, designed with an explicit emphasis on human readability and developer productivity. Its foundational philosophy—crystallized in the "Zen of Python" (PEP 20)—asserts that <em>"Explicit is better than implicit,"</em> <em>"Simple is better than complex,"</em> and <em>"There should be one—and preferably only one—obvious way to do it."</em></p>
+<p>Python was designed to bridge the gap between low-level system languages (C/C++) and high-level shell scripts, offering high abstraction without sacrificing code clarity. It is a multi-paradigm language that supports:</p>
+<ul>
+    <li><strong>Object-Oriented Programming (OOP):</strong> Everything in Python is an object at runtime, including classes, functions, and primitive types.</li>
+    <li><strong>Procedural Programming:</strong> Allows top-down, script-like execution without mandatory class abstractions (unlike Java).</li>
+    <li><strong>Functional Programming:</strong> Provides first-class functions, higher-order functions, immutability options (tuples, frozensets), and constructs like <code>map()</code>, <code>filter()</code>, and list comprehensions.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Python enforces structural readability using the off-side rule, where code blocks are defined by <strong>significant whitespace (indentation)</strong> rather than curly braces (<code>{}</code>) or keywords (<code>begin/end</code>). Statements end with a newline; semicolons are syntactically valid for line-chaining but are heavily discouraged in standard code style (PEP 8).</p>
+<p>Key structural elements include:</p>
+<ul>
+    <li><strong>Dynamic & Gradual Typing:</strong> Variables are untyped references bound to typed objects. Since Python 3.5, PEP 484 introduced static type hints, which are ignored at runtime by the CPython interpreter but enforced by static analysis tools like <code>mypy</code>.</li>
+    <li><strong>Code Organization:</strong> Code is modularized into <em>Modules</em> (single <code>.py</code> files) and <em>Packages</em> (directories containing a <code>__init__.py</code> file or conforming to namespace package specifications).</li>
+    <li><strong>Control Flow:</strong> Standard constructs include <code>if/elif/else</code>, <code>while</code>, and <code>for...in</code> (which operates natively on the Iterator Protocol). Structural Pattern Matching (<code>match/case</code>) was introduced in Python 3.10, providing powerful algebraic data type decompounding.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Python (specifically the reference implementation, CPython) manages memory automatically</div><hr><div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
 <p><strong>Timestamp:</strong> 2026-09-20 12:54 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1606,30 +1628,7 @@ Error dispatch relies primarily on synchronous exception bubbling via <code>try.
         </ul>
     </li>
     <li>
-        <strong>Cross-Site Request Forgery (CSRF</div><hr><div class='lesson'><h2>🔍 Deep Dive: Penetration Testing</h2>
-<p><strong>Timestamp:</strong> 2026-09-11 18:50 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p><strong>Penetration Testing</strong> (or ethical hacking) is a controlled, authorized simulation of a real-world cyberattack against an organization's IT infrastructure, applications, networks, or human defenses. Unlike malicious hacking, it is performed with explicit permission, defined scope, and strictly enforced rules of engagement.</p>
-<p>While automated vulnerability scanners identify potential surface-level security flaws, they cannot evaluate how an actual human threat actor chains multiple minor vulnerabilities together to achieve high-impact compromise. Penetration testing bridges this gap by validating existing security controls, proving real-world operational risk, ensuring compliance with strict regulatory mandates (such as PCI-DSS, ISO 27001, and HIPAA), and providing actionable, prioritized remediation guidance before real threat actors strike.</p>
-
-<h3>2. How It Works</h3>
-<p>A structured penetration test follows a repeatable, methodology-driven lifecycle divided into clear operational phases:</p>
-<ul>
-  <li><strong>1. Planning & Scope Definition:</strong> Establishing the Rules of Engagement (RoE), defining targets (IP ranges, domain names, applications), setting test windows, and determining testing style (Black-Box, Grey-Box, or White-Box).</li>
-  <li><strong>2. Reconnaissance & Intelligence Gathering:</strong> Collecting passive and active information using Open Source Intelligence (OSINT), DNS enumeration, employee profiling, and network mapping to identify potential attack vectors.</li>
-  <li><strong>3. Scanning & Enumeration:</strong> Identifying live hosts, open ports, running services, operating system versions, and known software vulnerabilities using both manual probing and specialized scanners.</li>
-  <li><strong>4. Exploitation (Gaining Access):</strong> Safely weaponizing identified vulnerabilities—such as unpatched software flaws, default credentials, misconfigurations, or web injection vulnerabilities—to breach the security perimeter.</li>
-  <li><strong>5. Post-Exploitation & Lateral Movement:</strong> Determining the extent of access by escalating privileges, dumping stored credentials, establishing persistence, moving laterally across the network, and simulating data exfiltration.</li>
-  <li><strong>6. Analysis & Reporting:</strong> Documenting finding narratives, technical proof-of-concepts (PoC), CVSS severity scores, executive summaries, and practical remediation recommendations for defense teams.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<p>Offensive security practitioners leverage various technical vectors to test resilience, while defensive teams implement corresponding controls to mitigate risks:</p>
-<ul>
-  <li><strong>Credential Attacks & Lateral Movement:</strong>
-    <ul>
-      <li><em>Offense</div><hr>
+        <strong>Cross-Site Request Forgery (CSRF</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
