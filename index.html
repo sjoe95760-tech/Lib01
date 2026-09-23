@@ -17,7 +17,32 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Perl</h2>
+<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<p><strong>Timestamp:</strong> 2026-09-23 01:00 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>JavaScript was designed in 1995 by Brendan Eich at Netscape in just ten days. Its primary mission was to render static HTML pages dynamic directly inside the browser, bypassing costly client-server roundtrips. Architecturally, Eich synthesized three distinct computational traditions: Scheme (first-class functions and lexical scoping), Self (prototype-based object orientation without classes), and Java (C-style syntax and naming conventions forced by Netscape's marketing leadership).</p>
+
+<p>JavaScript solves the problem of high-concurrency, user-interface orchestration over unpredictable networks. It operates as a dynamic, weakly typed, multi-paradigm language. Rather than forcing developers into rigid class hierarchies, JavaScript treats functions as first-class citizens and objects as flexible key-value dictionaries connected by delegation links. It seamlessly spans Functional Programming (pure functions, higher-order functions, immutability patterns), Prototype-Based OOP, and Event-Driven Procedural Execution.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>JavaScript inherits C-style syntactic structure using curly braces <code>{}</code> to define execution blocks and parentheses <code>()</code> for argument lists. Statement termination relies on semicolons, though the runtime includes Automatic Semicolon Insertion (ASI), a parser mechanism that injects missing semicolons based on strict grammar rules (often considered a design footgun).</p>
+
+<p>Variable scoping evolved through three primitives: legacy <code>var</code> (function-scoped, hoisted to the top of its scope and initialized as <code>undefined</code>), alongside modern <code>let</code> and <code>const</code> (block-scoped, hoisted but trapped inside a Temporal Dead Zone until declared). Code organization evolved from global scripts to Closures (i.e., the Module Pattern), CommonJS (<code>require</code>/<code>module.exports</code>), and standard ECMAScript Modules (ESM using <code>import</code>/<code>export</code>). Control flow uses standard conditional branches and loops, enhanced by modern control expressions like optional chaining (<code>?.</code>) and nullish coalescing (<code>??</code>).</p>
+
+<h3>3. Memory Management</h3>
+<p>JavaScript abstracts hardware memory through automatic memory management executed by runtime engines (such as V8, JavaScriptCore, or SpiderMonkey). Memory allocation occurs automatically when variables, object literals, closures, or primitives are created. Primitives reside on the Call Stack or inline within V8's pointer-tagged structures, while complex objects are allocated dynamically on the Managed Heap.</p>
+
+<p>Garbage collection relies primarily on a non-deterministic <strong>Mark-and-Sweep</strong> algorithm:
+<ul>
+  <li><strong>Roots:</strong> The engine identifies root objects (global context, active call stack frames, DOM trees).</li>
+  <li><strong>Mark Phase:</strong> The engine traverses references starting from roots, marking every reachable object graph node as live.</li>
+  <li><strong>Sweep Phase:</strong> Unreachable, un-marked memory locations are reclaimed. Modern engines use generational garbage collection (splitting the heap into "Nursery" and "Tenured" spaces) alongside parallel and incremental sweeping to eliminate main-thread rendering jank.</li>
+</ul>
+Memory leaks occur when references persist unintentionally—typically via uncleaned event listeners, uncleared <code>setInterval</code> handlers, unreferenced DOM node bindings, or stale outer-scope variable references inside active closures.</p>
+
+<h3>4. Paradigms & Tactics</h3>
+<p><strong>Object-Oriented Programming:</strong> JavaScript utilizes prototype-based delegation. Objects</div><hr><div class='lesson'><h2>🔍 Deep Dive: Perl</h2>
 <p><strong>Timestamp:</strong> 2026-09-22 15:12 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1553,28 +1578,7 @@ Perl syntax relies on C-</div><hr><div class='lesson'><h2>🔍 Deep Dive: Kotlin
 <h3>4. Paradigms & Tactics</h3>
 
 <h4>Object-Oriented Programming (OOP)</h4>
-<p>PHP features a unified class model with single inheritance, interfaces, abstract classes</div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
-<p><strong>Timestamp:</strong> 2026-09-12 06:45 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Rust was designed by Graydon Hoare and backed by Mozilla to bridge a long-standing divide in systems programming: the choice between absolute bare-metal performance with unsafe manual memory management (C/C++) and memory safety enforced by a language runtime or Garbage Collector (Java, Go, Haskell). Rust’s core philosophy is <em>zero-cost abstractions</em>—meaning what you don't use, you don't pay for, and abstractions should compile down to code as efficient as hand-written assembly.</p>
-
-<p>From a programming language theory (PLT) perspective, Rust is a multi-paradigm language built upon an <strong>affine type system</strong>. It draws heavy inspiration from functional programming (ML family) for its type system, expression-based syntax, algebraic data types (ADTs), and pattern matching, while retaining the raw layout control, pointers, and deterministic performance of procedural systems languages. Rust explicitly rejects classical Object-Oriented Programming (OOP) class-based inheritance in favor of composition, structural data modeling, and parametric polymorphism via ad-hoc interface definitions (Traits).</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Rust utilizes block-scoped C-style syntax using curly braces <code>{}</code> and explicit scope delimiters. However, its semantics are overwhelmingly <strong>expression-oriented</strong> rather than statement-oriented. Almost every construct—including <code>if</code> blocks, <code>match</code> statements, and plain code blocks—evaluates to a value.</p>
-
-<pre><code>// Semicolon suppresses the return value, making it a statement (evaluating to unit tuple `()`)
-let value = if condition {
-    42 // No semicolon: expression evaluates to 42
-} else {
-    0  // Expression evaluates to 0
-};
-</code></pre>
-
-<p>Key syntactic and structural mechanics include:</p>
-<ul>
-    <li><strong>Explicit S</div><hr>
+<p>PHP features a unified class model with single inheritance, interfaces, abstract classes</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
