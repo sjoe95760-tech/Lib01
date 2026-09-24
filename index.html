@@ -17,7 +17,35 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<p><strong>Timestamp:</strong> 2026-09-24 07:19 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Swift was designed by Chris Lattner and Apple engineers (first released in 2014) as a modern replacement for Objective-C. Objective-C was constrained by its strict C heritage, manual dynamic dispatch overhead, unsafe pointers, fragile base class problems, and verbose dynamic message passing syntax (`[object method:arg]`).</p>
+
+<p>Swift's core philosophical imperative is <strong>"Safe by default, fast by design, expressive by nature."</strong> It addresses decades of software vulnerabilities by eliminating entire classes of common developer errors at compile time—most notably null pointer dereferences, array bounds violations, and integer overflows.</p>
+
+<p>From a language theory perspective, Swift is a multi-paradigm language that blends:</p>
+<ul>
+  <li><strong>Protocol-Oriented Programming (POP):</strong> Prioritizes composition over object-oriented inheritance via protocols and protocol extensions.</li>
+  <li><strong>Functional Programming:</strong> Value types, immutability by default, first-class functions, higher-order functions (`map`, `filter`, `reduce`), generics, algebraic data types (enums with associated values), and pattern matching.</li>
+  <li><strong>Object-Oriented Programming (OOP):</strong> Single-inheritance classes with dynamic dispatch, access control, and reference semantics.</li>
+  <li><strong>Systems Programming Ergonomics:</strong> Compiles natively to machine code via LLVM without a virtual machine or heavy runtime, yielding C/C++ competitive performance while providing high-level syntax abstractions.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Swift adopts C-style syntax familiar to C++, Java, and C# developers, but strips away legacy syntactic noise:</p>
+<ul>
+  <li><strong>Braces vs. Indentation:</strong> Code blocks are bounded by explicit curly braces `{}`. Indentation is aesthetic, but standard community conventions dictate 4 spaces.</li>
+  <li><strong>Semicolons:</strong> Optional at line endings; strictly required only when chaining multiple statements on a single line.</li>
+  <li><strong>No Header Files:</strong> Swift unifies declaration and implementation into single `.swift` files. Public APIs and symbols are exposed automatically via a module-based visibility system rather than include/import directives.</li>
+  <li><strong>Explicit Variable Binding:</strong> Immutability is enforced via `let` (constants) and mutability via `var` (variables). The type checker enforces assignment safety statically.</li>
+  <li><strong>Optionals (`Optional<T>`):</strong> Pointer nullability is lifted into the static type system. A type `T` can never hold a `nil` value. If nullability is needed, it must be declared explicitly as `T?`, which is syntactically sugar for an enum `Optional.some(T)` or `Optional.none`. Unwrapping requires explicit constructs like `if let`, `guard let`, or the nil-coalescing operator `??`.</li>
+  <li><strong>Exhaustive Pattern Matching:</strong> Control flow mechanisms, particularly `switch` statements, must evaluate all possible branches or supply a `default` case. Enums with associated values enable pattern matching over complex structural payloads.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Swift explicitly avoids tracing Garbage Collection (GC) to ensure predictable performance, zero "stop-the-world" latency spikes, and low battery/memory footprints on mobile and embedded target hardware.</p></div><hr><div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
 <p><strong>Timestamp:</strong> 2026-09-23 23:16 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1592,31 +1620,7 @@ Perl syntax relies on C-</div><hr><div class='lesson'><h2>🔍 Deep Dive: Kotlin
   <li><strong>Phishing / Spear Phishing / Whaling:</strong> Generic mass emails, highly targeted emails built on victim profile data, or tailored attacks targeting high-value C-level executives.</li>
   <li><strong>Vishing (Voice Phishing):</strong> Impersonating IT support or financial institutions over the phone, increasingly augmented by AI voice clones.</li>
   <li><strong>Smishing (SMS Phishing):</strong> Text message-based malicious links or prompts to capture credentials or two-factor authentication (2FA) codes.</li>
-  <li><strong>Baiting / Quid Pro Quo</div><hr><div class='lesson'><h2>🔍 Deep Dive: Cryptography</h2>
-<p><strong>Timestamp:</strong> 2026-09-12 17:30 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>Cryptography is the mathematical science of transforming data into unreadable forms to protect its confidentiality, integrity, authenticity, and non-repudiation. In modern cybersecurity, it serves as the fundamental trust layer underlying all digital communications, identity verification, and data storage.</p>
-<p>Without cryptography, digital architecture collapses into inherent insecurity. It directly mitigates critical real-world risks, including:</p>
-<ul>
-  <li><strong>Eavesdropping & Interception:</strong> Preventing unauthorized adversaries from reading sensitive data in transit over untrusted networks (e.g., Man-in-the-Middle attacks on public Wi-Fi).</li>
-  <li><strong>Data Tampering:</strong> Detecting unauthorized modifications to files, software packages, or network packets during transmission or storage.</li>
-  <li><strong>Identity Impersonation:</strong> Verifying the true identity of servers, users, and code authors to block spoofing and unauthorized access.</li>
-  <li><strong>Exfiltration Exposure:</strong> Ensuring that even if an attacker breaches storage media (Data at Rest), the stolen databases or backups remain unreadable without key access.</li>
-</ul>
-
-<h3>2. How It Works</h3>
-<p>Cryptography relies on complex mathematical primitives categorized into three core mechanisms, backed by robust key management systems.</p>
-
-<h4>A. Symmetric Encryption (Secret Key Cryptography)</h4>
-<p>Uses a single shared key for both encryption and decryption. It offers high throughput and low computational overhead, making it ideal for bulk data encryption.</p>
-<ul>
-  <li><strong>Common Algorithms:</strong> Advanced Encryption Standard (AES-128/256), ChaCha20.</li>
-  <li><strong>Modes of Operation:</strong> Block ciphers operate on fixed-size blocks of data using modes such as GCM (Galois/Counter Mode, which provides authenticated encryption) or CBC (Cipher Block Chaining).</li>
-</ul>
-
-<h4>B. Asymmetric Encryption (Public Key Cryptography)</h4>
-<p>Uses a mathematically linked key pair: a <em>public key</em> (distributed freely for encryption/signature verification) and a <em>private key</em> (kept</div><hr>
+  <li><strong>Baiting / Quid Pro Quo</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
