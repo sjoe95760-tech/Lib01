@@ -17,7 +17,31 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Java</h2>
+<p><strong>Timestamp:</strong> 2026-09-25 02:16 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Java was designed at Sun Microsystems in 1995 primarily to solve the software engineering challenges of portability, memory safety, and code maintainability present in C and C++. Its core mandate was embodied in the principle <em>"Write Once, Run Anywhere"</em> (WORA), achieved through a two-stage compilation pipeline: source code is compiled into an intermediate, platform-agnostic bytecode (`.class`), which is subsequently interpreted and compiled to native machine instruction at runtime by the <strong>Java Virtual Machine (JVM)</strong>.</p>
+
+<p>Architecturally, Java prioritizes safety and predictability over absolute raw execution speed or syntactic conciseness:</p>
+<ul>
+    <li><strong>Elimination of Pointer Arithmetic:</strong> Java abstracts raw memory addresses behind object references, eliminating entire classes of security vulnerabilities such as buffer overflows and dangling pointers.</li>
+    <li><strong>Class-Based Object-Oriented Paradigm:</strong> Almost every execution unit is bound to a class. Java enforces nominal typing and single class inheritance to prevent the "Diamond Problem" associated with C++ multiple inheritance, offering interface implementation as the dynamic contract mechanism.</li>
+    <li><strong>Managed Virtual Machine Architecture:</strong> By decoupling the user code from the operating system, the JVM provides runtime reflection, Just-In-Time (JIT) compilation (e.g., HotSpot C1/C2 compilers), dynamic class loading, and profiling-guided optimization (PGO).</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Java inherits its basic syntax from the C family, relying on explicit statements terminated by semicolons (<code>;</code>) and block-scoped code delineated by curly braces (<code>{}</code>). Whitespace and indentation are purely stylistic and carry no semantic meaning.</p>
+
+<p>Code organization is strictly hierarchical and maps directly to the filesystem:</p>
+<ul>
+    <li><strong>Packages:</strong> Namespaces (e.g., <code>com.enterprise.service</code>) that organize classes and prevent naming collisions, mirroring the underlying directory structure.</li>
+    <li><strong>Compilation Units:</strong> A top-level class, interface, enum, or record typically resides in its own source file (`.java`) matching the public type's name.</li>
+    <li><strong>Type System:</strong> A static, nominal type system divided into <strong>primitive types</strong> (<code>int</code>, <code>boolean</code>, <code>double</code>, etc., stored directly on the stack or inline) and <strong>reference types</strong> (objects, arrays, stored on the heap). Modern Java includes local variable type inference (<code>var</code>), records (immutable data carriers), and sealed interfaces for sum-type algebraic domain modeling.</li>
+    <li><strong>Control Flow:</strong> Standard imperatival constructs (<code>if/else</code>, <code>for</code>, <code>while</code>, <code>try-catch-finally</code>) augmented by modern functional expression-based <code>switch</code> constructs supporting pattern matching and destructuring.</li>
+</ul>
+
+<h3>3. Memory</div><hr><div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
 <p><strong>Timestamp:</strong> 2026-09-24 23:37 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1613,34 +1637,7 @@ Perl syntax relies on C-</div><hr><div class='lesson'><h2>🔍 Deep Dive: Kotlin
 </ul>
 
 <h3>3. Memory Management</h3>
-<p>Rust's defining innovation is its compile-time memory model</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
-<p><strong>Timestamp:</strong> 2026-09-13 01:50 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>JavaScript was designed in 1995 by Brendan Eich at Netscape under an extreme 10-day constraint. Its original mission was to serve as a lightweight, dynamic scripting companion to Java for non-programmer web designers. To achieve rapid developer adoption while maintaining deep computational flexibility, Eich synthesized three distinct language lineages into a single runtime:</p>
-<ul>
-    <li><strong>C/Java Syntax:</strong> Provided a familiar structural shell (curly braces, control flow keywords) to ease the learning curve.</li>
-    <li><strong>Self-inspired Prototypes:</strong> Abandoned rigid class hierarchies in favor of dynamic prototype delegation, allowing objects to inherit directly from other instances.</li>
-    <li><strong>Scheme-inspired First-Class Functions:</strong> Treated functions as primitive values capable of being assigned, passed as arguments, returned, and nested to create lexical closures.</li>
-</ul>
-<p>JavaScript solves the fundamental problem of interactive client-side application state without requiring full-page roundtrips to the server. Over three decades, it evolved from an embedded web-browser script into a universal, multi-paradigm language (Functional, Event-Driven, Imperative, and Prototype-based Object-Oriented) powering backend servers (Node.js/Bun), desktop software (Electron), and native mobile applications.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>JavaScript uses a C-style block syntax (`{}`) combined with dynamic, weak typing and automatic type coercion. Execution flows top-to-bottom, modified by standard control structures (conditional branching, `for`/`while` loops, pattern matching via `switch`).</p>
-<ul>
-    <li><strong>Lexical Scope & Binding:</strong> Modern JS distinguishes between block-scoped bindings (<code>let</code> and <code>const</code>) and legacy function-scoped bindings (<code>var</code>). Variables and functions undergo "hoisting"—their declarations are registered in memory during the execution context creation phase prior to code evaluation.</li>
-    <li><strong>Semicolons & ASI:</strong> Statement termination typically uses semicolons (<code>;</code>), but the language engine contains an Automatic Semicolon Insertion (ASI) parser. ASI automatically infers missing semicolons at line breaks according to specific grammatical rules, though relying on it can introduce subtle edge-case bugs.</li>
-    <li><strong>Module Architecture:</strong> Originally reliant on global scopes and IIFEs (Immediately Invoked Function Expressions), modern JavaScript relies on standardized ECMAScript Modules (ESM) using static <code>import</code> and <code>export</code> declarations, alongside legacy CommonJS (<code>require</code>/<code>module.exports</code>) in server runtimes.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>JavaScript manages memory automatically through runtime-level abstractions, eliminating direct pointer arithmetic or explicit manual allocation/deallocation (such as <code>malloc</code>/<code>free</code> or Rust-style compile-time ownership semantics).</p>
-<ul>
-    <li><strong>Execution Stack vs. Managed Heap:</strong> Primitive types (<code>number</code>, <code>string</code>, <code>boolean</code>, <code>bigint</code>, <code>symbol</code>, <code>null</code>, <code>undefined</code>) are immutably allocated on the stack or inline. Complex structures (<code>Object</code>, <code>Array</code>, <code>Function</code>, <code>Map</code>) are stored dynamically on the heap.</li>
-    <li><strong>Garbage Collection (GC):</strong> Modern engines (e.g., V8, JavaScriptCore, SpiderMonkey) employ generational, mark-and-sweep garbage collection:
-        <ul>
-            <li><em>Young Generation (Scavenger):</em> Frequently collects short-lived allocations using copying algorithms.</li>
-            </div><hr>
+<p>Rust's defining innovation is its compile-time memory model</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
