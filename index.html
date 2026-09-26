@@ -17,7 +17,34 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Kotlin</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<p><strong>Timestamp:</strong> 2026-09-26 06:46 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Rust was created by Graydon Hoare and refined by Mozilla to solve a fundamental dilemma in systems programming: the choice between <strong>control/performance</strong> (C/C++) and <strong>safety</strong> (Java, Go, C#). Traditional systems languages sacrifice safety, leading to critical memory vulnerabilities (use-after-free, double frees, buffer overflows) and multi-threading data races. Higher-level languages achieve safety via runtime overheads like Garbage Collection (GC) or managed runtimes, sacrificing predictable latency and raw performance.</p>
+
+<p>Rust's core thesis is that <strong>memory safety and data-race freedom can be guaranteed at compile time without a garbage collector</strong> through formal compile-time invariants. It bridges several programming paradigms:</p>
+
+<ul>
+  <li><strong>Functional Foundations:</strong> Heavily influenced by ML and OCaml (Rust's original compiler was written in OCaml). It features algebraic data types (enums), pattern matching, algebraic type systems, traits, immutability by default, and expressions over statements.</li>
+  <li><strong>Procedural & Systems Power:</strong> Low-level layout control, deterministic resource destruction, direct memory pointers, and zero-cost abstractions that compile down to LLVM bitcode without hidden runtime costs.</li>
+  <li><strong>Rejection of Inheritance-based OOP:</strong> Rust abandons class-based object-oriented hierarchies in favor of composition, encapsulation, and trait-based parametric polymorphism.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Rust inherits C-family block syntax using curly braces (<code>{}</code>) for scope boundaries and semicolons (<code>;</code>) for statement termination. However, its control flow logic is fundamentally <strong>expression-oriented</strong> rather than statement-oriented.</p>
+
+<ul>
+  <li><strong>Expression-Oriented Architecture:</strong> Blocks, <code>if/else</code> constructs, and <code>match</code> statements evaluate to values. The presence or absence of a trailing semicolon determines a block's output:
+    <pre><code>let status = if binary_flag {
+    "active" // No semicolon = return value of block
+} else {
+    "inactive"
+};</code></pre>
+  </li>
+  <li><strong>Code Organization:</strong> Code is organized into <em>Crates</em> (compilation units, yielding a binary or library) and <em>Modules</em> (hierarchical namespaces within crates). Cargo is the standard build system and package manager.</li>
+  <li><strong>Immutability by Default:</strong> Variables are immutable unless explicitly declared with the <code>mut</code> keyword:
+    <pre</div><hr><div class='lesson'><h2>🔍 Deep Dive: Kotlin</h2>
 <p><strong>Timestamp:</strong> 2026-09-25 08:16 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1635,40 +1662,7 @@ Perl syntax relies on C-</div><hr><div class='lesson'><h2>🔍 Deep Dive: Kotlin
     <li><strong>Man-in-the-Middle (MitM) & ARP/DNS Spoofing</strong>
         <br><em>Offense:</em> Attackers manipulate network layer protocols (e.g., poisoning ARP caches or spoofing DNS responses) to intercept, modify, or eavesdrop on cleartext transit traffic.
         <br><em>Defense:</em> Enforce strict cryptographic transit standards (TLS 1.3, IPsec), implement Dynamic ARP Inspection (DAI), DHCP Snooping, and DNSSEC.</li>
-    <li><strong>Distributed Denial of Service (DDoS</div><hr><div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
-<p><strong>Timestamp:</strong> 2026-09-13 12:26 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Structured Query Language (SQL) was designed in the early 1970s by Donald Chamberlin and Raymond Boyce at IBM, rooted directly in Edgar F. Codd’s formal relational model of data. Its primary design goal was to decouple logical data access from physical data storage representation—allowing developers and analysts to query data without writing imperative procedural logic to traverse B-trees, linked lists, or pointers on disk.</p>
-
-<p>SQL is fundamentally a <strong>declarative, domain-specific programming language (DSL)</strong> based on <em>relational algebra</em> and <em>tuple relational calculus</em>. Unlike imperative paradigms (OOP, Functional, Procedural), SQL shifts the burden of execution strategy from the developer to an optimizing compiler (the Query Optimizer). You specify <em>what</em> result set you need, and the underlying Relational Database Management System (RDBMS) determines <em>how</em> to retrieve, index, join, filter, and stream that data efficiently.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>SQL syntax is designed to approximate natural English clauses, but it possesses a strict logical execution model that diverges radically from its written lexical order.</p>
-
-<p><strong>Lexical Syntax vs. Logical Execution Flow:</strong></p>
-
-<p>A typical written SQL query follows this lexical structure:</p>
-
-<p><code>SELECT cols FROM table JOIN table2 ON condition WHERE filter GROUP BY keys HAVING group_filter ORDER BY cols;</code></p>
-
-<p>However, the internal query engine executes these clauses in a completely different order to logically evaluate candidate sets:</p>
-
-<ol>
-  <li><strong>FROM &amp; JOIN:</strong> The engine identifies target relations and builds Cartesian products/joins (evaluating <code>ON</code> filters).</li>
-  <li><strong>WHERE:</strong> Filters individual rows prior to grouping (eliminating non-matching tuples early).</li>
-  <li><strong>GROUP BY:</strong> Groups remaining rows into equivalence classes based on specified keys.</li>
-  <li><strong>HAVING:</strong> Filters aggregated groups (operates on post-group summary values).</li>
-  <li><strong>SELECT:</strong> Evaluates expressions, aliases, and projects specific columns from the set.</li>
-  <li><strong>DISTINCT:</strong> Deduplicates remaining row instances.</li>
-  <li><strong>ORDER BY:</strong> Sorts the projected set (converting the mathematical <em>unordered set</em> into an ordered sequence).</li>
-  <li><strong>LIMIT / OFFSET:</strong> Slices the final result vector.</li>
-</ol>
-
-<p>SQL is block-scoped through subqueries and Common Table Expressions (CTEs), ignores arbitrary whitespace, relies on single-quotes for string literals, and uses semicolons as statement terminators to demarcate distinct commands within transactional blocks.</p>
-
-<h3>3. Memory Management</h3>
-<p>SQL as a language abstractly presents an infinite memory pool. The programmer does not allocate memory,</div><hr>
+    <li><strong>Distributed Denial of Service (DDoS</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
