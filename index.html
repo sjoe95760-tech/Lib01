@@ -17,7 +17,27 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<p><strong>Timestamp:</strong> 2026-09-27 00:00 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Python was created in the late 1980s by Guido van Rossum as a successor to the ABC language, designed to bridge the gap between shell scripting and C systems programming. Its fundamental design goal is to maximize developer velocity and code readability by reducing cognitive overhead and visual noise.</p>
+
+<p>The philosophical backbone of the language is captured in the <em>Zen of Python</em> (PEP 20), which emphasizes principles such as "Readability counts," "Explicit is better than implicit," and "There should be one—and preferably only one—obvious way to do it."</p>
+
+<p>From a language theory perspective, Python is a high-level, interpreted (byte-compiled), dynamically typed, late-bound language with support for multiple paradigms:</p>
+<ul>
+    <li><strong>Object-Oriented Programming (OOP):</strong> Pure object model where everything—including primitive types, functions, modules, and classes themselves—is a first-class object (an instance of a type derived from <code>object</code>).</li>
+    <li><strong>Procedural:</strong> Allows straightforward linear execution, global functions, and structural isolation without forcing boilerplate class constructs (unlike Java or C#).</li>
+    <li><strong>Functional Programming:</strong> Provides first-class functions, closures, higher-order functions, lazy evaluation constructs (generators), and expressions like <code>map</code>, <code>filter</code>, and list/dict/set comprehensions.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Python's syntax relies heavily on the <strong>off-side rule</strong>, utilizing mandatory visual indentation (whitespace) to delineate code blocks rather than explicit delimiters like curly braces (<code>{}</code>) or <code>begin/end</code> keywords. Semicolons are valid for statement termination but are idiomatically discouraged.</p>
+
+<p>Key structural principles include:</p>
+<ul>
+    <li><strong>Namespaces & Scope (LEGB Rule):</strong> Variable lookup resolves sequentially across four scopes: <strong>L</strong>ocal, <strong>E</strong>nclosing (nonlocal), <strong>G</strong>lobal, and <strong>B</strong>uilt-in. Names</div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
 <p><strong>Timestamp:</strong> 2026-09-26 06:46 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1637,32 +1657,7 @@ Perl syntax relies on C-</div><hr><div class='lesson'><h2>🔍 Deep Dive: Kotlin
             <li><em>Offense:</em> Broad, automated email campaigns aimed at harvesting credentials or delivering malware.</li>
             <li><em>Defense:</em> Robust email filtering (SPF, DKIM, DMARC enforcement), Secure Email Gateways (SEGs), and automated link re-writing/sandboxing.</li>
         </ul>
-    </li></div><hr><div class='lesson'><h2>🔍 Deep Dive: Network Security</h2>
-<p><strong>Timestamp:</strong> 2026-09-13 16:43 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>Network security encompasses the policies, processes, technologies, and practices designed to protect the integrity, confidentiality, availability, and accessibility of computer networks and data. It safeguards both software and hardware environments against unauthorized access, misuse, modification, or destruction.</p>
-<p>Because modern digital operations rely entirely on interconnected systems—spanning on-premises datacenters, cloud environments, remote endpoints, and IoT devices—the network serves as the primary transport mechanism for an organization's critical assets. Unsecured networks allow attackers to gain initial access, move laterally across environments, exfiltrate sensitive data, and deploy destructive payloads like ransomware. Network security is the foundational border and internal highway control that prevents single-point compromises from becoming cataclysmic organization-wide breaches.</p>
-
-<h3>2. How It Works</h3>
-<p>Network security operates through a model known as <strong>Defense-in-Depth</strong>, placing multiple defensive layers across the OSI (Open Systems Interconnection) model. Rather than relying on a single perimeter fence, it regulates traffic ingress, egress, and internal lateral movement through three primary controls: physical, technical, and administrative.</p>
-<ul>
-    <li><strong>Ingress/Egress Filtering & Inspection:</strong> Firewalls and Deep Packet Inspection (DPI) engines analyze packet headers and payloads at Layers 3, 4, and 7. They evaluate IP addresses, ports, protocols, and application state to drop unauthorized or malicious traffic.</li>
-    <li><strong>Network Segmentation & Microsegmentation:</strong> Network architects divide networks into isolated zones using Virtual Local Area Networks (VLANs), Virtual Routing and Forwarding (VRF), or software-defined overlays. Microsegmentation applies granular security policies to individual workloads, ensuring an infected server cannot communicate with adjacent assets without explicit authorization.</li>
-    <li><strong>Access Control & Authentication:</strong> Network Access Control (NAC) systems enforce strict identity and health checks (via 802.1X protocols) before allowing devices to join the network. VPNs and Zero Trust Network Access (ZTNA) gateways encrypt end-to-end traffic and continuously authenticate users before granting access to specific micro-resource tunnels.</li>
-    <li><strong>Traffic Monitoring & Anomaly Detection:</strong> Network Detection and Response (NDR) tools consume netflow data, packet captures, and tap signals. Using statistical baselines and behavioral threat detection, these engines flag abnormal spikes in data transfers, unusual port usage, or beaconing behavior indicative of Command and Control (C2) communication.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<p>Network security is a continuous battle between adversary exploitation tactics and defensive mitigations:</p>
-<ul>
-    <li><strong>Adversary Reconnaissance & Port Scanning</strong>
-        <br><em>Offense:</em> Threat actors use tools to scan subnets for open ports, vulnerable services, and network topology mapped to potential entry points.
-        <br><em>Defense:</em> Disable unused services, implement strict ingress firewall rules, hide internal network topologies using NAT, and utilize network tarpits/honeypots to distract and catch scanners.</li>
-    <li><strong>Man-in-the-Middle (MitM) & ARP/DNS Spoofing</strong>
-        <br><em>Offense:</em> Attackers manipulate network layer protocols (e.g., poisoning ARP caches or spoofing DNS responses) to intercept, modify, or eavesdrop on cleartext transit traffic.
-        <br><em>Defense:</em> Enforce strict cryptographic transit standards (TLS 1.3, IPsec), implement Dynamic ARP Inspection (DAI), DHCP Snooping, and DNSSEC.</li>
-    <li><strong>Distributed Denial of Service (DDoS</div><hr>
+    </li></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
