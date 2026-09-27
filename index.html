@@ -17,7 +17,68 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: C#</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
+<p><strong>Timestamp:</strong> 2026-09-27 10:15 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Ruby was designed in 1993 by Yukihiro "Matz" Matsumoto and released in 1995. Matz sought a scripting language more powerful than Perl and more object-oriented than Python. The core philosophy of Ruby revolves around <strong>developer happiness, human-centric design, and expressiveness</strong>, often epitomized by the Principle of Least Surprise (POLS).</p>
+
+<p>From a language design perspective, Ruby is a <strong>pure, dynamic, imperative, Object-Oriented Programming (OOP) language with heavy functional programming capabilities</strong>. In Ruby, <em>everything is an object</em> without exception—primitive integers, booleans, methods, and even `nil` (representing null) are fully fledged instances of classes residing in an object hierarchy.</p>
+
+<p>Ruby solves the problem of rigid syntactic friction. It abstracts low-level mechanics to allow developers to construct domain-specific languages (DSLs) that read almost like English, trading raw execution performance for rapid prototyping capability and conceptual clarity.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Ruby’s syntax borrows heavily from Smalltalk, Lisp, Perl, and Eiffel. It relies on clean, human-readable blocks rather than visual noise.</p>
+
+<ul>
+  <li><strong>Structure & Blocks:</strong> Indentation is conventionally 2 spaces, but not semantically enforced (unlike Python). Statements do not require semicolons unless placed on a single line. Code blocks are defined using `do...end` for multi-line logic or `{ ... }` for inline execution.</li>
+  <li><strong>Dynamic Typing & Duck Typing:</strong> Types are bound to values, not variables. Ruby enforces "duck typing" ("if it walks like a duck and quacks like a duck, it is a duck"), relying on object capability (methods supported) rather than explicit interface inheritance.</li>
+  <li><strong>Everything is an Expression:</strong> There is no strict division between statements and expressions. Constructs like `if`, `case`, and class definitions evaluate to the value of their final executed line.</li>
+  <li><strong>Syntactic Sugar:</strong> Parentheses around method arguments are optional when unambiguous. Operators are actually method calls under the hood (`a + b` is sugar for `a.+(b)`).</li>
+  <li><strong>Open Classes & Metaprogramming:</strong> Classes are mutable at runtime. Developers can re-open built-in core classes (like `String` or `Array`) and monkey-patch or inject new behavior dynamically.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Ruby abstracts memory management entirely away from the developer through dynamic heap allocation and automatic <strong>Garbage Collection (GC)</strong>.</p>
+
+<ul>
+  <li><strong>Reference Model:</strong> All variables are object references stored on the stack pointing to memory locations on the Ruby heap. There are no manual pointers or value semantics for complex data types.</li>
+  <li><strong>Generational Tri-color Mark-and-Sweep:</strong> Modern Ruby (MRI/CRuby 3.x) uses a advanced GC known as <em>RGenGC</em> (Restricted Generational GC). It categorizes objects into "young" and "old" generations to optimize sweep cycles based on the empirical observation that most objects die young.</li>
+  <li><strong>Compaction & Variable Width Allocation:</strong> To minimize memory fragmentation inherent in mark-and-sweep collectors, modern Ruby features explicit heap compaction (`GC.compact`) and Variable Width Allocation (VWA), allowing variable-sized slot memory structures to improve CPU cache locality.</li>
+  <li><strong>Native C-Extensions:</strong> When interacting with C-extensions, memory must be explicitly guarded against the GC using `RB_GC_GUARD` macros to prevent reference collection while C functions operate on internal pointers.</li>
+</ul>
+
+<h3>4. Paradigms & Tactics</h3>
+<p>Ruby provides a flexible toolkit combining pure object orientation with powerful concurrent execution strategies and defensive error handling.</p>
+
+<ul>
+  <li><strong>OOP Strategy:</strong> Single class inheritance augmented with <strong>Mixins via Modules</strong> (`include`, `prepend`, `extend`). Instead of multiple inheritance, Ruby linearizes module inclusion order into an object's ancestors array. It utilizes <em>Eigenclasses</em> (singleton classes) for object-level metaprogramming and class methods.</li>
+  <li><strong>Concurrency & Parallelism:</strong>
+    <ul>
+      <li><em>GVL (Global VM Lock):</em> CRuby utilizes a GVL, preventing multiple OS native threads from executing Ruby bytecode simultaneously on separate CPU cores. Ruby threads are native OS threads, suitable for multi-threading I/O-bound tasks, but not CPU-bound parallelism.</li>
+      <li><em>Fibers:</em> Lightweight, cooperatively scheduled coroutines ideal for non-blocking asynchronous event loops without the overhead of thread context-switching.</li>
+      <li><em>Ractors:</em> Introduced in Ruby 3 to achieve parallel CPU execution. Ractors share no mutable state; communication between isolated parallel workers happens via thread-safe message passing.</li>
+    </ul>
+  </li>
+  <li><strong>Error Handling:</strong> Exception-driven control flow structured around `begin...rescue...else...ensure...end` blocks. Uncaught exceptions propagate up the call stack. All custom error classes derive from `StandardError` (reserving `Exception` for system-level panics like memory or interrupt errors).</li>
+</ul>
+
+<h3>5. Unique Patterns & Ecosystem</h3>
+<p>Ruby’s ecosystem relies heavily on automated package management through <strong>RubyGems</strong> and <strong>Bundler</strong>, prioritizing declarative configuration and opinionated design patterns.</p>
+
+<ul>
+  <li><strong>Convention over Configuration (CoC):</strong> Made famous by <strong>Ruby on Rails</strong> (the dominant Web Application Framework), CoC reduces decision fatigue by enforcing structural naming conventions instead of requiring extensive XML/YAML setup.</li>
+  <li><strong>Internal DSLs:</strong> Ruby’s flexible syntax allows creation of seamless Domain Specific Languages. Frameworks like <em>RSpec</em> (BDD testing) and <em>Sidekiq</em> (background processing) leverage block evaluation (`instance_eval`) to make code read like structured specifications.</li>
+  <li><strong>Active Record Pattern:</strong> Encapsulates database tables into Ruby classes where attributes are dynamically mapped from database metadata at boot time without manual mapping files.</li>
+  <li><strong>Method Missing Strategy:</strong> Utilizing `method_missing` and `respond_to_missing?` hooks to intercept undefined method calls dynamically, giving rise to virtual attributes and dynamic query builders.</li>
+</ul>
+
+<h3>6. How it "Makes Sense" (Internal Logic)</h3>
+<p>To master Ruby, a developer must shift from thinking about "functions operating on memory structs" to <strong>"sending messages to independent runtime actors."</strong></p>
+
+<p>In Ruby, you do not invoke a function on an object; you <strong>send a message (symbol)</strong> to a receiver object (e.g., `object.send(:method_name)`). The receiver receives the message, looks up its internal dispatch table (traversing its class, mixed-in modules, parent classes, and finally `method_missing`), and decides how to react. If an object does not understand a message, it fails gracefully at runtime, not at compile-time.</p>
+
+<p>The code is not a static blueprint evaluated by a passive runtime system. Instead, <strong>the environment is a live, dynamic workspace</strong>. Defining a class actually executes code that creates a instances of the class `Class`. Methods, constants, and variables can be queried, added, intercepted, or removed on the fly while the application runs. Once a developer understands that execution is simply continuous runtime object instantiation and message passing via dynamic dispatch, Ruby's behavior becomes completely coherent and highly predictable.</p></div><hr><div class='lesson'><h2>🔍 Deep Dive: C#</h2>
 <p><strong>Timestamp:</strong> 2026-09-27 04:18 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1667,36 +1728,7 @@ Perl syntax relies on C-</div><hr><div class='lesson'><h2>🔍 Deep Dive: Kotlin
   </thead>
   <tbody>
     <tr>
-      <td><strong>Lateral Movement (T1021 / T1550)</strong><br><em>Pass-the-Hash, Golden Ticket,</div><hr><div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
-<p><strong>Timestamp:</strong> 2026-09-13 21:53 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>Web Application Security encompasses the processes, controls, technologies, and practices designed to protect web applications, web services, and APIs from security threats, unauthorized access, and malicious exploitation throughout the Software Development Lifecycle (SDLC).</p>
-<p>Because web applications must be publicly accessible to serve users, they inherently expose an entry point through network firewalls directly into an organization's internal data stores and application logic. A single flaw in application logic or input handling can bypass traditional perimeter controls, leading to high-impact consequences including massive data breaches, unauthorized financial transactions, operational downtime, severe regulatory fines (e.g., GDPR, PCI-DSS), and long-term brand damage.</p>
-
-<h3>2. How It Works</h3>
-<p>Web application security works by establishing multi-layered technical boundaries across the interaction model between the client (usually a web browser or mobile client), the network transport tier, the web/application server, and back-end resources (databases, microservices, file systems).</p>
-<ul>
-    <li><strong>Trust Boundaries & Input Validation:</strong> The foundational rule of web application security is that the client cannot be trusted. All incoming data (GET/POST parameters, headers, cookies, file uploads) must cross a trust boundary and undergo strict input sanitization, strict type checking, and boundary validation on the server side before execution or storage.</li>
-    <li><strong>State & Session Management:</strong> HTTP is natively a stateless protocol. Applications rely on tokens, session IDs, or cookies to maintain state. Secure session management ensures that session tokens are cryptographically strong, randomly generated, transmitted exclusively over HTTPS (using flags like <code>Secure</code>, <code>HttpOnly</code>, and <code>SameSite</code>), and properly invalidated upon logout or timeout.</li>
-    <li><strong>Authentication & Authorization:</strong> Authentication verifies identity (e.g., passwords, Multi-Factor Authentication/MFA, OAuth 2.0/OIDC), while authorization ensures that an authenticated entity has explicit permissions to view or mutate specific resources (Role-Based Access Control / Attribute-Based Access Control).</li>
-    <li><strong>Transport Layer Security (TLS):</strong> Encrypts payload data in transit using TLS 1.3, mitigating Man-In-The-Middle (MITM) attacks, credential sniffing, and session hijacking.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<ul>
-    <li>
-        <strong>SQL Injection (SQLi)</strong>
-        <ul>
-            <li><em>Attack:</em> Malicious SQL statements are inserted into entry fields to manipulate backend database queries, extracting or destroying data.</li>
-            <li><em>Defense:</em> Use Parameterized Queries (Prepared Statements) or Object-Relational Mapping (ORM) frameworks. Never concatenate user input directly into SQL strings.</li>
-        </ul>
-    </li>
-    <li>
-        <strong>Cross-Site Scripting (XSS)</strong>
-        <ul>
-            <li><em>Attack:</em> Injecting client-side scripts into web pages viewed by other users (Reflected, Stored, or DOM-based), allowing attackers to steal session cookies or perform actions on behalf of the victim.</li>
-            <li><em>Defense:</em> Implement context-aware output encoding (HTML, JavaScript, CSS encoding), deploy</div><hr>
+      <td><strong>Lateral Movement (T1021 / T1550)</strong><br><em>Pass-the-Hash, Golden Ticket,</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
