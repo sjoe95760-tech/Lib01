@@ -17,7 +17,40 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<p><strong>Timestamp:</strong> 2026-09-30 00:50 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Python was created in the late 1980s by Guido van Rossum as a successor to the ABC language, designed to bridge the gap between low-level system languages like C and shell scripting tools. Its foundational core logic prioritizes <strong>developer ergonomics, code readability, and expressiveness over raw execution performance</strong>. Codified in <em>The Zen of Python (PEP 20)</em>, core maxims like "Explicit is better than implicit" and "Readability counts" drive its architectural decisions.</p>
+
+<p>The language is fundamentally <strong>multi-paradigm</strong>:</p>
+<ul>
+  <li><strong>Object-Oriented:</strong> Pure OOP at its core; everything in Python is a heap-allocated runtime object—including integers, functions, types, and modules.</li>
+  <li><strong>Procedural:</strong> Allows straightforward linear execution and standard imperative control structures without forcing object boilerplate (unlike Java).</li>
+  <li><strong>Functional-Lite:</strong> Supports first-class functions, higher-order functions, lambdas, comprehensions, and lazy evaluation semantics via generators, though it avoids strict immutability or tail-call optimization.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Python uses the <strong>off-side rule</strong>, employing lexically significant indentation (spaces) rather than curly braces (<code>{}</code>) or explicit block keywords (e.g., <code>begin/end</code>) to define scope boundaries. Statements are delimited by newlines; semicolons exist strictly for rare inline statement compounding and are universally discouraged.</p>
+
+<p>Code organization follows a clear hierarchy: <em>Expressions → Statements → Functions/Classes → Modules (single <code>.py</code> files) → Packages (directories with <code>__init__.py</code>)</em>.</p>
+
+<p>Variable resolution follows the strict <strong>LEGB scope rule</strong>:</p>
+<ol>
+  <li><strong>L</strong>ocal: Names bound inside the current function/lambda.</li>
+  <li><strong>E</strong>nclosing: Names in enclosing function scopes (lexical closures via <code>nonlocal</code>).</li>
+  <li><strong>G</strong>lobal: Names defined at the module top-level (via <code>global</code>).</li>
+  <li><strong>B</strong>uilt-in: Names pre-loaded into the global standard namespace.</li>
+</ol>
+
+<h3>3. Memory Management</h3>
+<p>Python (specifically the reference implementation, CPython) uses a dual memory strategy combining <strong>deterministic Reference Counting</strong> with a secondary <strong>Generational Cyclic Garbage Collector (GC)</strong>.</p>
+
+<ul>
+  <li><strong>Reference Counting:</strong> Every object's header (<code>PyObject</code>) contains a reference counter (<code>ob_refcnt</code>). When a pointer to an object is copied, its counter increments; when a variable goes out of scope or is reassigned, it decrements. When a counter reaches zero, memory is instantly deallocated.</li>
+  <li><strong>Generational GC:</strong> To resolve circular references (e.g., Object A references Object B and vice-versa), Python runs an asynchronous 3-generation cyclic collector. It targets container objects that are reachable only by internal cycles, sweeping them periodically based on allocation thresholds.</li>
+  <li><strong>PyMalloc & Pools:</strong> For performance, CPython includes a specialized small-object allocator (<code>PyMalloc</code>) that pre-allocates memory blocks (arenas and pools) to avoid expensive operating system <code>malloc</code> calls for tiny dynamic allocations.</li>
+  <li><strong>The GIL (Global Interpreter Lock):</strong> CPython enforces memory safety across threads using a mutex known as the GIL. The GIL prevents multiple native threads from executing Python bytecodes simultaneously, ensuring that internal reference count increments/decrements remain thread-</div><hr><div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
 <p><strong>Timestamp:</strong> 2026-09-29 21:07 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1834,25 +1867,7 @@ Go’s paradigm is shaped by implicit interfaces, Communicating Sequential Proce
 
 <h4>Firewall Architecture Mechanics</h4>
 <ul>
-    <li><strong>Stateless Packet Filtering (Layer 3/4):</strong> Evaluates individual packets in isolation against static ACLs (Access</div><hr><div class='lesson'><h2>🔍 Deep Dive: Malware Analysis</h2>
-<p><strong>Timestamp:</strong> 2026-09-14 20:00 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>Malware analysis is the practice of dissecting malicious software—such as ransomware, trojans, worms, rootkits, and spyware—to understand its structure, functionality, origin, and intended impact. It is a foundational discipline within cybersecurity that bridges incident response, threat intelligence, and security engineering.</p>
-<p>Without malware analysis, security teams operate blindly during a breach. Performing malware analysis solves several critical real-world problems:</p>
-<ul>
-  <li><strong>Incident Response & Scoping:</strong> Determines what actions an attacker took on a compromised system, what data was accessed or exfiltrated, and how far the infection spread.</li>
-  <li><strong>Indicator Generation (IoCs):</strong> Extracts actionable indicators of compromise, such as malicious domain names, command-and-control (C2) IP addresses, file hashes, registry keys, and mutexes.</li>
-  <li><strong>Detection Engineering:</strong> Enables the creation of resilient detection signatures (e.g., YARA rules, Sigma rules, Snort/Suricata rules) to defend against current and future variants.</li>
-  <li><strong>Threat Intelligence & Attribution:</strong> Uncovers code overlap, compilation artifacts, and tradecraft that map directly to known Advanced Persistent Threat (APT) groups.</li>
-</ul>
-
-<h3>2. How It Works</h3>
-<p>Malware analysis is conducted through a structured, multi-layered methodology, typically progressing from low-risk high-level inspection to deep, resource-intensive reverse engineering:</p>
-
-<ol>
-  <li><strong>Static Analysis (Basic):</strong> Inspecting the binary without executing it. Analysts examine PE (Portable Executable) headers, imports/exports, compilation timestamps, cryptographic hashes, embedded resources, and plain-text/obfuscated strings using static inspection tools.</li>
-  <li><strong>Dynamic Analysis (Basic):</strong> Executing the malware in a controlled, isolated sandbox (e.g., Cuckoo, ANY.</div><hr>
+    <li><strong>Stateless Packet Filtering (Layer 3/4):</strong> Evaluates individual packets in isolation against static ACLs (Access</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
