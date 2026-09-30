@@ -17,7 +17,26 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<p><strong>Timestamp:</strong> 2026-09-30 06:06 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Rust was created by Graydon Hoare at Mozilla to resolve a foundational dilemma in systems programming: the choice between safety (provided by managed, garbage-collected languages like Java or Go) and performance/control (provided by unmanaged languages like C and C++). Historically, writing high-performance network infrastructure or browser engines required C++, accepting memory corruption bugs (use-after-free, double free, dangling pointers, buffer overflows) and dynamic data races as inevitable costs.</p>
+
+<p>Rust's core design philosophy is <strong>zero-cost abstractions and compile-time guarantees</strong>. It aims to eliminate entire classes of runtime safety bugs without introducing runtime overhead, such as a tracing garbage collector or a stop-the-world VM. Paradigmatically, Rust is a pragmatically unified language:</p>
+
+<ul>
+  <li><strong>Functional Foundations:</strong> Heavily influenced by ML and Haskell, featuring algebraic data types (enums), exhaustive pattern matching, traits (type classes), default immutability, and an affine type system.</li>
+  <li><strong>Procedural / Systems Core:</strong> C-like control flow, explicit pointer semantics, deterministic memory layouts, and direct hardware accessibility via inline assembly and foreign function interfaces (FFI).</li>
+  <li><strong>Object-Oriented (without inheritance):</strong> Support for encapsulation and polymorphism via structs and traits, explicitly rejecting class-based implementation inheritance in favor of composition.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Rust uses C-family block syntax with curly braces <code>{}</code> and semicolons <code>;</code>. However, its semantics are overwhelmingly <strong>expression-based</strong> rather than statement-based.</p>
+
+<ul>
+  <li><strong>Expressions vs. Statements:</strong> Blocks evaluate to their final expression if no semicolon is appended. For instance, <code>let x = if condition { 5 } else { 10 };</code> treats the <code>if</code> block as a value-producing expression.</li>
+  <li><strong>Type Inference & System:</strong> Rust is statically typed with strong, Hindley-Milner-derived type inference. Variable bindings are introduced via </div><hr><div class='lesson'><h2>🔍 Deep Dive: Python</h2>
 <p><strong>Timestamp:</strong> 2026-09-30 00:50 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1850,24 +1869,7 @@ Go’s paradigm is shaped by implicit interfaces, Communicating Sequential Proce
 
 <p>Code organization operates on a lexical scope hierarchy:</p>
 <ul>
-    <li><strong>Variable Binding:</strong> Modern JavaScript utilizes <code>let</code> (block</div><hr><div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
-<p><strong>Timestamp:</strong> 2026-09-14 22:59 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>In network security, <strong>Firewalls</strong> and <strong>Intrusion Detection/Prevention Systems (IDS/IPS)</strong> serve as the primary perimeter and segmentation controls. While often paired together in modern Next-Generation Firewalls (NGFW), they address distinct security requirements:</p>
-<ul>
-    <li><strong>Firewalls:</strong> Act as policy-driven gatekeepers that enforce traffic boundary controls. They permit or deny network traffic based on configured rules (source, destination, port, protocol, or application layer contextual data).</li>
-    <li><strong>IDS (Intrusion Detection System):</strong> A passive security monitor that inspects network traffic or system logs for malicious signatures, policy violations, or anomalous behavior, triggering alerts without interrupting traffic flow.</li>
-    <li><strong>IPS (Intrusion Prevention System):</strong> An active, inline device that dynamically detects and blocks malicious activity in real-time by dropping packets, resetting TCP connections, or dynamically updating firewall tables.</li>
-</ul>
-<p><strong>Why It Matters:</strong> Without robust network boundaries and inspection engines, networks are subject to unhindered initial access, automated exploit propagation, and unrestricted lateral movement. Firewalls define trust zones (e.g., DMZ vs. Internal Corporate), while IDS/IPS perform the deep packet analysis required to block zero-day exploits, command-and-control (C2) beaconing, and unauthorized data exfiltration.</p>
-
-<h3>2. How It Works</h3>
-<p>Both technologies operate across various layers of the OSI model using distinct analysis engines:</p>
-
-<h4>Firewall Architecture Mechanics</h4>
-<ul>
-    <li><strong>Stateless Packet Filtering (Layer 3/4):</strong> Evaluates individual packets in isolation against static ACLs (Access</div><hr>
+    <li><strong>Variable Binding:</strong> Modern JavaScript utilizes <code>let</code> (block</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
