@@ -17,7 +17,39 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<p><strong>Timestamp:</strong> 2026-10-02 00:17 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Python was created in the late 1980s by Guido van Rossum as a successor to the ABC language, designed to bridge the gap between shell scripting and C. Its overarching core philosophy—codified in the <em>Zen of Python</em> (PEP 20)—prioritizes developer productivity, readability, and explicit design over sheer execution speed. Python operates on the belief that "code is read much more often than it is written" and "there should be one—and preferably only one—obvious way to do it."</p>
+<p>From a language design perspective, Python is a dynamically typed, garbage-collected, multi-paradigm language. Rather than forcing a single paradigm, it pragmatically unifies:</p>
+<ul>
+    <li><strong>Object-Oriented Programming (OOP):</strong> Everything in Python is a first-class object at runtime—including integers, functions, classes, and modules.</li>
+    <li><strong>Procedural Programming:</strong> Simple linear execution scripts can be written without boilerplate classes or structural overhead.</li>
+    <li><strong>Functional Programming:</strong> Supports higher-order functions, lambda expressions, map/filter primitives, list comprehensions, and immutable primitives (like tuples and frozensets).</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Python relies on structural visual semantics, famously replacing traditional block-delimiting curly braces (<code>{}</code>) or keyword blocks (<code>begin...end</code>) with the <strong>off-side rule</strong> (significant indentation). Statements are terminated by newlines rather than semicolons.</p>
+<p>Key syntactic characteristics include:</p>
+<ul>
+    <li><strong>Dynamic & Strong Typing:</strong> Variable names are bound to values at runtime without type declarations (dynamic), but implicit type coercion between incompatible types is rejected (strong typing, e.g., <code>"5" + 2</code> raises a <code>TypeError</code>). Gradual typing is supported via type annotations (PEP 484) checked statically by tools like <code>mypy</code>.</li>
+    <li><strong>Code Organization:</strong> Executable code is organized into <em>modules</em> (single <code>.py</code> files) and <em>packages</em> (directories containing a <code>__init__.py</code> or namespace configurations). Namespaces are explicitly managed via <code>import</code> statements to prevent global scope pollution.</li>
+    <li><strong>Control Flow:</strong> Standard constructs include <code>if/elif/else</code>, <code>while</code> loops, and <code>for</code> loops (which operate exclusively over abstract iterators). Loops natively feature an <code>else</code> block executed when no <code>break</code> statement triggers. Structural Pattern Matching (<code>match/case</code>) provides full algebraic-style pattern matching.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>CPython (the standard reference implementation) handles memory automatically using a dual-strategy architecture combining <strong>Reference Counting</strong> and a <strong>Generational Cyclic Garbage Collector (GC)</strong>.</p>
+<ul>
+    <li><strong>Reference Counting:</strong> Every object contains a header field (<code>ob_refcnt</code>). When a variable references an object, the count increments; when a reference goes out of scope or is deleted, it decrements. Once <code>ob_refcnt</code> hits zero, memory is deallocated immediately.</li>
+    <li><strong>Cyclic Garbage Collector:</strong> To clean up isolated graphs of objects containing circular references (where reference counts never drop to zero), CPython runs a background generational GC. It categorizes objects into three generations (Gen 0, Gen 1, Gen 2) based on survival across collection cycles, inspecting them with pointer-tracking heuristics.</li>
+    <li><strong>Allocator Architecture (PyMalloc):</strong> Python bypasses direct system-level allocations for small objects (&le; 512 bytes) using a custom allocator layered over <code>malloc</code>. Memory is segmented into Arenas (256 KB), Pools (4 KB), and Blocks, mitigating fragmentations caused by high-frequency object creation.</li>
+</ul>
+
+<h3>4. Paradigms & Tactics</h3>
+<p>Python handles system-level paradigms through flexible runtime semantics:</p>
+<ul>
+    <li><strong>Object-Oriented Architecture:</strong> Supports multiple inheritance using <strong>C3 Linearization</strong> to deterministically calculate the Method Resolution Order (MRO</div><hr><div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
 <p><strong>Timestamp:</strong> 2026-10-01 07:56 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1899,28 +1931,7 @@ Go’s paradigm is shaped by implicit interfaces, Communicating Sequential Proce
 
 <p>SQL is predominantly a <strong>declarative, domain-specific language (DSL)</strong> grounded in predicate calculus and relational algebra. Instead of defining step-by-step control flow (how to fetch data), a SQL query expresses the mathematical constraints and properties of the desired result set (what data to fetch). The language abstracts the execution mechanics entirely to a database engine's query optimizer. While dialects include procedural extensions (e.g., PL/SQL, T-SQL), core SQL is neither pure Object-Oriented, Functional, nor Procedural—it is set-theoretic.</p>
 
-</div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
-<p><strong>Timestamp:</strong> 2026-09-15 06:54 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Rust was designed by Graydon Hoare and backed by Mozilla to resolve a historic software engineering dilemma: the tradeoff between low-level performance/control (C/C++) and high-level safety/productivity (Java, C#, Go). Prior to Rust, system programming languages achieved maximum speed by requiring manual memory management—a primary source of severe security bugs like buffer overflows, use-after-free, and data races. Conversely, safe languages relied on a Garbage Collector (GC), introducing non-deterministic latency spikes and memory overhead.</p>
-
-<p>Rust's core thesis is <strong>"Memory safety without garbage collection"</strong> achieved via static analysis at compile time, operating under the principle of <strong>Zero-Cost Abstractions</strong> (what you don't use, you don't pay for; and abstractions compile down to code as efficient as handwritten assembly).</p>
-
-<p>Paradigm-wise, Rust is a multi-paradigm language:</p>
-<ul>
-  <li><strong>Functional:</strong> Strongly expression-based, heavy reliance on Algebraic Data Types (enums with data), pattern matching, closures, and lazy iterators.</li>
-  <li><strong>Procedural & Systems:</strong> Direct hardware control, explicit memory layouts, low-level pointers (`*const T`, `*mut T`), and zero runtime tax.</li>
-  <li><strong>Trait-Based Polymorphism:</strong> Rejects traditional object-oriented inheritance in favor of generic programming constrained by traits (similar to Haskell typeclasses or interfaces).</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Rust belongs to the C-family in syntax, utilizing curly braces <code>{}</code> for scope block encapsulation and semicolons <code>;</code> for statement termination. However, its semantics are deeply expression-oriented.</p>
-
-<ul>
-  <li><strong>Statements vs. Expressions:</strong> In Rust, almost everything is an expression that yields a value. If an expression is not followed by a semicolon, its value is implicitly returned from the enclosing block. Adding a semicolon converts the expression into a statement returning the unit type <code>()</code>.</li>
-  <li><strong>Variables and Mutability:</strong> Variables are immutable by default (declared via <code>let x = 5;</code>). To allow mutation, the developer must explicitly opt-in using the <code>mut</code> keyword (<code>let mut x = 5;</code>).</li>
-  <li><strong>Code Organization:</strong> Code is organized into functions (<code>fn</div><hr>
+</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
