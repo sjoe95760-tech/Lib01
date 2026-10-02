@@ -17,7 +17,33 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
+<p><strong>Timestamp:</strong> 2026-10-02 13:18 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>HTML (HyperText Markup Language) and CSS (Cascading Style Sheets) are domain-specific declarative languages designed to solve the problem of cross-platform document structuring and layout rendering. They are neither Object-Oriented, Functional, nor Procedural in the classical imperative sense.</p>
+
+<p><strong>HTML</strong> was created to describe the semantic hierarchy and intent of information via a tree structure. Its design philosophy centers on context-free markup and forgiving parsing (guided by Postel’s Law: "Be conservative in what you do, be liberal in what you accept from others"). It decouples content structure from runtime execution and visual representation.</p>
+
+<p><strong>CSS</strong> was created to solve the presentation coupling issue inherent in early HTML. CSS operates as a declarative pattern-matching constraint system. It applies visual rules to nodes in the Document Object Model (DOM) through an ascending/descending specificity algorithm (the Cascade) and a rule inheritance tree. Together, they achieve strict separation of concerns: HTML dictates structural semantics, CSS dictates spatial and visual constraints, and JavaScript governs dynamic behavior.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Both languages use explicit declarative syntax without traditional sequential execution flow control (such as loops or branches), relying instead on tree transformation and continuous evaluation.</p>
+
+<p><strong>HTML Syntax & Parsing Flow:</strong></p>
+<ul>
+  <li><strong>Tree Construction:</strong> Syntactically structured using angle brackets to define tags and attributes (<code>&lt;element attribute="value"&gt;child&lt;/element&gt;</code>).</li>
+  <li><strong>Fault Isolation:</strong> HTML uses a custom deterministic context-free parsing algorithm defined by the WHATWG standard. Unclosed tags or malformed elements do not halt execution; the parser uses recovery state machines to insert implicit elements and force tree construction.</li>
+</ul>
+
+<p><strong>CSS Syntax & Cascading Flow:</strong></p>
+<ul>
+  <li><strong>Structure:</strong> Rulesets consist of selectors and declaration blocks enclosed in braces: <code>selector { property: value; }</code>. Statements are delimited by semicolons. Indentation is ignored.</li>
+  <li><strong>Evaluation Pipeline:</strong> CSS flows through a deterministic evaluation pipeline:
+    <ol>
+      <li><strong>Filtering & Matching:</strong> Selectors match DOM nodes using pattern recognition (tag, class, ID, pseudo-states).</li>
+      <li><strong>Cascade Resolution:</strong> Conflicting declarations are ordered by origin (User Agent, User, Author), explicit importance (<code>!important</code>), specificity score vector tuple <code>(Inline, ID, Class/Attr, Type)</code>, and source order.</li>
+      <li><strong>Inheritance & Computation:</strong> Specified values are transformed into</div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
 <p><strong>Timestamp:</strong> 2026-10-02 06:23 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1883,51 +1909,7 @@ Go’s paradigm is shaped by implicit interfaces, Communicating Sequential Proce
 <h3>6. How it "Makes Sense" (Internal Logic)</h3>
 <p>To think in Java is to view systems as networks of strongly-typed domain abstractions whose lifecycles and contracts are validated strictly at compile-time and optimized at runtime.</p>
 <p>The compiler (`javac`) processes source code into platform-independent intermediate bytecodes (`.class` files). When executed, the JVM loads these bytecodes into memory, verifying security constraints and stack execution semantics. Initially, the bytecode is interpreted. As code pathways reach execution thresholds ("hotspots"), the JVM’s Just-In-Time (JIT) compilers—Tiered Compilation using C1 (Client) and C2 (Server) compilers—dynamically translate bytecode into highly optimized native machine instructions tailored to the underlying processor microarchitecture, performing optimizations such as method inlining, loop unrolling, and escape analysis.</p>
-<p>Thus, Java balances the dynamic adaptability and memory safety of a managed runtime with performance characteristics competitive with natively compiled languages, structured inside a rigid, predictable nominal type system.</</div><hr><div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
-<p><strong>Timestamp:</strong> 2026-09-15 23:16 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p><strong>Zero Trust Architecture (ZTA)</strong> is a strategic cybersecurity paradigm based on the fundamental principle: <em>"Never trust, always verify."</em> Unlike traditional network security models that relied on a "castle-and-moat" perimeter—where everything inside the corporate intranet was implicitly trusted—Zero Trust assumes that threats exist both outside and inside the network environment at all times.</p>
-
-<p>Zero Trust directly addresses modern architectural realities that rendered perimeter security obsolete:</p>
-<ul>
-    <li><strong>Dissolution of the Perimeter:</strong> Hybrid cloud environments, SaaS applications, remote workforces, and BYOD initiatives mean assets no longer sit behind a physical firewall.</li>
-    <li><strong>Lateral Movement Risk:</strong> In legacy networks, once an attacker bypassed the boundary (e.g., via compromised VPN credentials), they possessed unhindered movement across flattened internal networks.</li>
-    <li><strong>Insider Threats & Supply Chain Attacks:</strong> Malicious insiders or compromised third-party vendor accounts exploit implicit network trust to exfiltrate critical data undetected.</li>
-</ul>
-
-<h3>2. How It Works</h3>
-<p>Zero Trust enforces strict identity verification, dynamic authorization, and structural control across five primary pillars: <strong>Identity, Devices, Networks, Applications/Workloads, and Data</strong>.</p>
-
-<p>The mechanics rely on a dynamic access-control architecture defined by NIST SP 800-207:</p>
-<ul>
-    <li><strong>Policy Decision Point (PDP):</strong> Evaluates access requests against organizational policies, real-time threat intelligence, user dynamic risk scores, and device health attributes to grant or deny session tokens.</li>
-    <li><strong>Policy Enforcement Point (PEP):</strong> Gatekeepers (e.g., reverse proxies, local agents) that intercept, inspect, and terminate connections, enforcing the PDP's decisions at runtime.</li>
-    <li><strong>Micro-segmentation:</strong> Segregating workloads into isolated, granular zones to prevent unauthorized communication between systems, even within the same subnet.</li>
-    <li><strong>Explicit & Continuous Verification:</strong> Authentication and authorization are never a one-time event at login. Session state is continuously re-evaluated based on contextual changes (e.g., sudden IP change, altered device compliance state).</li>
-    <li><strong>Least Privilege Access:</strong> Users and services receive Just-In-Time (JIT) and Just-Enough-Access (JEA) permissions required strictly for the task at hand.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<p>Zero Trust shifts the cyber risk landscape by neutering traditional network exploitation methods while forcing attackers to adapt to identity-centric vectors.</p>
-
-<h4>Offensive Vectors Target:</h4>
-<ul>
-    <li><strong>Identity-Centric Exploitation:</strong> Attackers focus heavily on identity provider (IdP) compromise through MFA fatigue, SIM swapping, and phishing-resistant MFA bypass via Adversary-in-the-Middle (AiTM) frameworks (e.g., Evilginx).</li>
-    <li><strong>Session Hijacking & Token Theft:</strong> Stealing valid OAuth/session tokens directly from endpoint memory or browser caches to bypass initial authentication controls.</li>
-    <li><strong>Targeting Control Planes:</strong> Exploiting misconfigurations or vulnerabilities in Central Policy Decision Points, hypervisors, or API management platforms.</li>
-</ul>
-
-<h4>Defensive Engineering Countermeasures:</h4>
-<ul>
-    <li><strong>Phishing-Resistant MFA:</strong> Replacing push notifications and SMS OTPs with FIDO2/WebAuthn hardware tokens (e.g., YubiKeys) paired with device-bound credentials.</li>
-    <li><strong>Zero Trust Network Access (ZTNA):</strong> Replacing legacy VPNs with application-level SDP (Software-Defined Perimeter) tunnels that hide infrastructure from public visibility (dark cloud).</li>
-    <li><strong>Conditional Access Policies:</strong> Requiring mandatory compliance checks—such as verified EDR presence, up-to-date OS patches, and trusted disk encryption—before granting access to sensitive data repositories.</li>
-</ul>
-
-<h3>4. Real-World Examples</h3>
-<ul>
-    <li><strong>Google BeyondCorp:</strong></div><hr>
+<p>Thus, Java balances the dynamic adaptability and memory safety of a managed runtime with performance characteristics competitive with natively compiled languages, structured inside a rigid, predictable nominal type system.</</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
