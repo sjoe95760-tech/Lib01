@@ -17,7 +17,42 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
+<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<p><strong>Timestamp:</strong> 2026-10-03 01:31 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>JavaScript was created in 1995 by Brendan Eich at Netscape under an extreme 10-day deadline. Its original mandate was to serve as a lightweight, accessible scripting language for non-programmers to manipulate Web documents, operating alongside Java (which was targeted at professional enterprise software). This dynamic birthed a unique hybrid language: C-like syntax to appeal to Java developers, first-class functions inspired by Scheme, and prototype-based object orientation borrowed from Self.</p>
+
+<p>JavaScript is a dynamically and weakly typed, interpreted or Just-In-Time (JIT) compiled, multi-paradigm programming language. It solves the core problem of client-side document orchestration and non-blocking state synchronization. Rather than forcing a single structural discipline, it accommodates procedural scriptwriting, object-oriented design via prototype delegation, and functional programming idioms through closures and higher-order functions. The governing design constraint of JavaScript has always been backward compatibility—the principle of "don't break the Web"—which means design mistakes from the 1990s (such as dynamic coercion rules and legacy globals) persist alongside cutting-edge modern features.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>JavaScript adopts C-style lexical syntax using curly braces <code>{}</code> to define statement blocks and operators like <code>+</code>, <code>=</code>, and <code>===</code>. Unlike indentation-sensitive languages like Python, whitespace is mostly non-syntactic.</p>
+
+<ul>
+  <li><strong>Semicolons & ASI:</strong> Statements are typically terminated with semicolons (<code>;</code>). However, JavaScript engines feature Automatic Semicolon Insertion (ASI), a parser mechanism that implicitly inserts semicolons based on line breaks and grammar rules. This leads to stylistic debates (explicit vs. implicit semicolons) and edge-case syntax bugs (e.g., multiline return statements).</li>
+  <li><strong>Scoping & Declarations:</strong> Modern JavaScript operates on explicit lexical scope. Variable binding semantics are determined by declaration keywords:
+    <ul>
+      <li><code>const</code>: Block-scoped, immutable identifier binding (though the bound value itself may be mutable).</li>
+      <li><code>let</code>: Block-scoped, re-assignable binding, subject to the Temporal Dead Zone (TDZ) before declaration.</li>
+      <li><code>var</code>: Legacy function-scoped or globally-scoped binding that undergoes variable hoisting without block constraints.</li>
+    </ul>
+  </li>
+  <li><strong>Code Organization:</strong> Code organization has evolved from single-file procedural scripts to strict ES Modules (ESM) defined by <code>import</code> and <code>export</code> statements. ESM enforces static module resolution, deferred execution, and strict mode by default.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>JavaScript delegates memory management entirely to the runtime engine (e.g., V8, JavaScriptCore, SpiderMonkey) using automatic <strong>Garbage Collection (GC)</strong>. Developers do not perform manual allocation or deallocation, nor does JavaScript enforce Rust-style compile-time ownership tracking.</p>
+
+<ul>
+  <li><strong>Tracing Garbage Collection:</strong> Modern engines primarily employ a generational, mark-and-sweep GC algorithm combined with Cheney's copying algorithm for young generations. Objects are allocated in the "Nursery" or "Young Generation" heap. Objects that survive multiple collection passes are promoted to the "Old Generation" heap, which is scanned less frequently via incremental and concurrent marking.</li>
+  <li><strong>Reference Reachability:</strong> An object is eligible for garbage collection when it becomes unreachable from any root context (e.g., the global object, current call stack execution contexts, or active closures). Simple reference counting is insufficient due to circular references, which tracing GC successfully resolves.</li>
+  <li><strong>Memory Leaks:</strong> Common memory leaks in JavaScript stem from unintended references retained in long-lived closures, dangling DOM nodes attached to global objects, uncleared timers (<code>setInterval</code>), or unmanaged <code>Map</code>/<code>Set</code> references. To mitigate this, ECMAScript provides weak references via <code>WeakMap</code> and <code>WeakSet</code>, where keys are held weakly and do not prevent GC.</li>
+</ul>
+
+<h3>4. Paradigms & Tactics</h3>
+
+<p><strong>Object-Oriented Programming (OOP): Prototype Delegation</strong><br>
+JavaScript does not use classical, class-based inheritance at the runtime level. Instead, it relies on prototypal inheritance. Every object maintains an internal link (<code>[[Prototype]]</code>) to another object. Property access delegates up this "prototype chain" until the property is found or <code>null</code> is reached. The ES6 <code>class</code>, <code>extends</code></div><hr><div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
 <p><strong>Timestamp:</strong> 2026-10-02 13:18 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1859,57 +1894,7 @@ Go’s paradigm is shaped by implicit interfaces, Communicating Sequential Proce
 <ul>
     <li><strong>Braces vs. Indentation:</strong> Swift uses explicit curly braces <code>{}</code> for scope block boundary, while whitespace and indentation carry no semantic meaning. Semicolons are entirely optional and discouraged unless separating multiple statements on a single line.</li>
     <li><strong>Variables & Immutability:</strong> Immutability is enforced at the language level: <code>let</code> declares compile-time immutable bindings, while <code>var</code> declares mutable state. Mutation of value types declared with <code>let</code> is explicitly forbidden.</li>
-    <li><strong>Null Safety (Optionals):</strong> Types are non-nullable by default. A variable of type <code>String</code></div><hr><div class='lesson'><h2>🔍 Deep Dive: Java</h2>
-<p><strong>Timestamp:</strong> 2026-09-16 02:07 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Java was engineered at Sun Microsystems in the early 1990s to solve critical operational problems of native languages like C and C++: platform dependence, manual memory management vulnerabilities, and binary incompatibility across hardware architecture. Its foundational directive was "Write Once, Run Anywhere" (WORA), achieved by targeting a virtualized execution environment—the Java Virtual Machine (JVM)—rather than direct machine architectures.</p>
-<p>Architecturally, Java is a strongly typed, statically typed, class-based object-oriented language. It rejected C++ features deemed prone to developer error, such as manual pointer arithmetic, multiple implementation inheritance, and operator overloading. Java enforces nominal subtyping, where type relationships are explicitly declared via class inheritance and interface implementation. Modern Java (post-Java 8 through modern Java 21+ LTE releases) has evolved into a multi-paradigm language, layering functional constructs (lambdas, method references, streams, immutable data records) on top of its core OOP substrate.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Java inherits C-style syntactic conventions, using explicit semicolons as statement terminators and curly braces `{}` to define lexical block scopes. White space and indentation are syntactically non-significant, serving purely for human readability.</p>
-<p>Code layout enforces strict structural organization:
-<ul>
-  <li><strong>Compilation Units:</strong> Each `.java` source file contains at most one top-level `public` class, whose identifier must identically match the file name.</li>
-  <li><strong>Namespaces & Packages:</strong> Packages reflect directory paths on disk (e.g., `com.example.service`), mitigating global namespace collision via hierarchical domain reverse-mapping.</li>
-  <li><strong>Control Flow:</strong> Flow is governed by traditional imperative structures (`if/else`, `while`, `for`, enhanced `for-each`) alongside modernized `switch` expressions that support exhaustiveness checking and pattern matching.</li>
-</ul>
-</p>
-
-<h3>3. Memory Management</h3>
-<p>Java isolates developers entirely from direct memory allocation and deallocation. All dynamic objects are allocated on the managed Heap, whereas primitives and object references reside on execution Stacks within their respective thread call stacks.</p>
-<p>Memory reclamation is governed entirely by dynamic Garbage Collection (GC):
-<ul>
-  <li><strong>Generational Heap Model:</strong> Standard JVM runtimes categorize memory into the Young Generation (Eden and Survivor spaces) and Old/Tenured Generation, relying on the Weak Generational Hypothesis (most objects die young).</li>
-  <li><strong>Metaspace:</strong> Off-heap native memory used for class metadata runtime definitions, replacing the legacy Permanent Generation (PermGen).</li>
-  <li><strong>Collectors:</strong> Modern production environments deploy concurrent, low-latency collectors such as G1GC, ZGC, or Shenandoah, which perform mark-sweep-compact routines with minimal Stop-The-World (STW) pauses.</li>
-  <li><strong>No Manual Pointers:</strong> References act as safe, opaque object handles managed by the JVM runtime, preventing use-after-free, double-free, and buffer overflow vulnerabilities.</li>
-</ul>
-</p>
-
-<h3>4. Paradigms & Tactics</h3>
-<p>Java organizes software systems using established theoretical paradigms:
-<ul>
-  <li><strong>Object-Oriented Architecture:</strong> Strict encapsulation via access modifiers (`private`, `package-private`, `protected`, `public`), behavioral polymorphism through interface contracts, and single implementation inheritance combined with interface multi-inheritance. Java 14+ introduces `record` types for pure data modeling without boilerplate.</li>
-  <li><strong>Concurrency Models:</strong> Historically relied on standard OS-backed OS native threads (`java.lang.Thread`) and synchronization primitives (`synchronized`, `volatile`, locks, atomics). Modern Java (Project Loom) introduces <em>Virtual Threads</em>—lightweight, user-mode threads managed by the JVM runtime that decouple execution units from kernel threads, enabling high-throughput structured concurrency over cooperative carrier threads.</li>
-  <li><strong>Error Handling:</strong> Structured exception handling separates operational failures into Checked Exceptions (subclasses of `java.lang.Exception` enforced by the compiler to ensure caller mitigation) and Unchecked Exceptions (subclasses of `java.lang.RuntimeException` indicating unrecoverable program faults).</li>
-</ul>
-</p>
-
-<h3>5. Unique Patterns & Ecosystem</h3>
-<p>Java’s enterprise prevalence has yielded deep architectural design standardizations:
-<ul>
-  <li><strong>Dependency Injection & IoC:</strong> The Inversion of Control (IoC) pattern decouples component creation from runtime resolution, dominant in enterprise frameworks like the Spring Framework / Spring Boot and Jakarta EE (formerly Java EE).</li>
-  <li><strong>GoF Design Patterns:</strong> Creational, structural, and behavioral patterns (e.g., Factory Method, Singleton, Builder, Strategy, Observer) are deeply ingrained in Java standard libraries and idiomatic application architectures.</li>
-  <li><strong>Object-Relational Mapping (ORM):</strong> Technologies like Hibernate bridge relational databases and domain-driven object structures via declarative metadata interfaces (JPA).</li>
-  <li><strong>Build Systems:</strong> Standardized declarative dependency and build management powered by Apache Maven and Gradle.</li>
-</ul>
-</p>
-
-<h3>6. How it "Makes Sense" (Internal Logic)</h3>
-<p>To think in Java is to view systems as networks of strongly-typed domain abstractions whose lifecycles and contracts are validated strictly at compile-time and optimized at runtime.</p>
-<p>The compiler (`javac`) processes source code into platform-independent intermediate bytecodes (`.class` files). When executed, the JVM loads these bytecodes into memory, verifying security constraints and stack execution semantics. Initially, the bytecode is interpreted. As code pathways reach execution thresholds ("hotspots"), the JVM’s Just-In-Time (JIT) compilers—Tiered Compilation using C1 (Client) and C2 (Server) compilers—dynamically translate bytecode into highly optimized native machine instructions tailored to the underlying processor microarchitecture, performing optimizations such as method inlining, loop unrolling, and escape analysis.</p>
-<p>Thus, Java balances the dynamic adaptability and memory safety of a managed runtime with performance characteristics competitive with natively compiled languages, structured inside a rigid, predictable nominal type system.</</div><hr>
+    <li><strong>Null Safety (Optionals):</strong> Types are non-nullable by default. A variable of type <code>String</code></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
