@@ -17,7 +17,104 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<p><strong>Timestamp:</strong> 2026-10-03 07:12 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Swift was designed by Chris Lattner and Apple engineers (introduced in 2014) to replace Objective-C. Objective-C was constrained by its reliance on C's dynamic, untyped runtime, raw pointers, and macro preprocessors. Swift was engineered with three primary goals: <strong>Safety</strong>, <strong>Speed</strong>, and <strong>Expressiveness</strong>.</p>
+
+<p>Swift's foundational paradigm is <strong>Protocol-Oriented Programming (POP)</strong> alongside heavy utilization of <strong>Value Semantics</strong>. Rather than forcing everything into object-oriented reference hierarchies (like Java or Objective-C), Swift asserts that software architecture should default to immutable or copy-on-write value types (structs and enums), composing behavior via protocols (interfaces with default implementations).</p>
+
+<ul>
+    <li><strong>Type Safety & Memory Safety:</strong> Swift eliminates entire classes of undefined behavior. Pointers are abstracted away, variables must be initialized before use, array bounds are checked, and null references are replaced by explicit, type-checked Optionals.</li>
+    <li><strong>Multi-Paradigm Engine:</strong> Unifies imperative, object-oriented, functional (first-class functions, map/filter/reduce, tail call optimizations), and generic programming into a single compiled language backed by LLVM.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Swift adopts C-family syntax (braces <code>{}</code> for scope) while eliminating legacy noise like semicolons (<code>;</code>) and header files (<code>.h</code>). Code organization is module-based rather than file-based.</p>
+
+<ul>
+    <li><strong>Pattern Matching & Control Flow:</strong> Control flow heavily leans on pattern matching via <code>switch</code> statements, <code>if let</code>, and <code>guard</code> statements. The <code>guard</code> statement enforces early exits, reducing nested "pyramids of doom" in functions.</li>
+    <li><strong>Type Inference & Declarations:</strong> Constants are declared with <code>let</code> (immutable), variables with <code>var</code> (mutable). Strong type inference reduces boilerplate while preserving rigid compile-time checking:
+    <pre><code>let name = "Ada" // Inferred as String
+var count: Int = 42 // Explicit type annotation</code></pre></li>
+    <li><strong>Optionals:</strong> Expressed as <code>Optional&lt;Wrapped&gt;</code> (or <code>T?</code> syntax). An optional explicitly states that a value may either be <code>.some(Wrapped)</code> or <code>.none</code> (nil). Unwrapping requires explicit language constructs like <code>guard let</code>, <code>if let</code>, or the nil-coalescing operator <code>??</code>.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Unlike managed languages using garbage collectors (e.g., Go, Java, C#), Swift uses deterministic <strong>Automatic Reference Counting (ARC)</strong> for reference types (Classes), avoiding runtime "stop-the-world" garbage collection pauses.</p>
+
+<ul>
+    <li><strong>Reference Types vs Value Types:</strong>
+        <ul>
+            <li><strong>Classes:</strong> Allocated on the heap; managed via ARC. Retain counts increase on reference assignment and decrease when leaving scope.</li>
+            <li><strong>Structs and Enums:</strong> Allocated on the stack (or inline in enclosing allocations); pass-by-value. Standard collection types (<code>Array</code>, <code>Dictionary</code>, <code>String</code>) use efficient <strong>Copy-on-Write (COW)</strong> optimization, meaning data is copied only when mutation occurs on a shared reference.</li>
+        </ul>
+    </li>
+    <li><strong>Cycle Resolution:</strong> Strong reference cycles between heap objects are mitigated using explicit ownership annotations:
+        <ul>
+            <li><code>weak</code>: Non-owning reference that automatically becomes <code>nil</code> if the referenced instance is deallocated (must be declared optional).</li>
+            <li><code>unowned</code>: Non-owning reference assuming the target object will never be nil while accessed; crashes if accessed post-deallocation.</li>
+        </ul>
+    </li>
+    <li><strong>Modern Ownership Controls (Swift 5.9+):</strong> Introduced Rust-like explicit lifetime management with non-copyable types (<code>~Copyable</code>), <code>consuming</code>, and <code>borrowing</code> parameter specifiers for absolute control over allocation and moves without ARC overhead.</li>
+</ul>
+
+<h3>4. Paradigms & Tactics</h3>
+
+<p><strong>1. Protocol-Oriented Programming (POP):</strong> Instead of sub-classing base classes, architectures are constructed using small, focused protocols extended with default behavior using protocol extensions:</p>
+<pre><code>protocol Serializable {
+    func serialize() -&gt; Data
+}
+extension Serializable {
+    func serialize() -&gt; Data {
+        // Default execution logic
+        return Data()
+    }
+}</code></pre>
+
+<p><strong>2. Structured Concurrency:</strong> Swift features modern <code>async/await</code>, Task groups, and an <code>Actor</code> model. Actors protect mutable state via isolation, enforcing single-threaded access to internal state at compile time without manual lock primitive management. The <code>Sendable</code> protocol ensures data passed across concurrent boundaries cannot introduce data races.</p>
+
+<p><strong>3. Error Handling:</strong> Swift handles errors via typed model exceptions using standard flow control, converting operations to <code>throws</code>, executed within a <code>do-catch</code> block using <code>try</code> keywords. Under the hood, this is treated as a low-cost returned error result value rather than an unwinding stack call (unlike C++ or Java exceptions):</p>
+<pre><code>func fetchData() throws -&gt; Data { ... }
+do {
+    let data = try fetchData()
+} catch {
+    print(error)
+}</code></pre>
+
+<h3>5. Unique Patterns & Ecosystem</h3>
+<ul>
+    <li><strong>Property Wrappers:</strong> Meta-programming constructs like <code>@propertyWrapper</code> allow custom logic to wrap state storage access (e.g., <code>@State</code>, <code>@Binding</code>, <code>@Published</code> inside reactive frameworks).</li>
+    <li><strong>Result Builders:</strong> Domain-specific language (DSL) creation tools powered by static type system builders. This allows declarative UI declarations seen in <strong>SwiftUI</strong>:
+    <pre><code>VStack {
+    Text("Hello")
+    Button("Click") { }
+}</code></pre></li>
+    <li><strong>Primary Frameworks:</strong>
+        <ul>
+            <li><em>SwiftUI:</em> Modern declarative UI paradigm.</li>
+            <li><em>Combine:</em> Reactive event-processing framework based on Publisher-Subscriber paradigms.</li>
+            <li><em>Vapor:</em> Server-side web framework leveraging Swift's non-blocking I/O event loops (built on SwiftNIO).</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>6. How it "Makes Sense" (Internal Logic)</h3>
+<p>To think natively in Swift, a programmer must invert traditional OOP instincts:</p>
+
+<ol>
+    <li><strong>Value Semantics First:</strong> Design domain entities as <code>struct</code>s and <code>enum</code>s. This guarantees thread safety, immutability by default, and local reasoning without unexpected side effects from implicit object sharing.</li>
+    <li><strong>Protocols Over Class Inheritance:</strong> Model common interface patterns via protocols, expanding functionality through protocol extensions instead of monolithic hierarchy trees. Use classes only when single-identity persistence or precise lifecycle allocation is strictly required.</li>
+    <li><strong>Make Invalid States Unrepresentable:</strong> Leverage Enums with associated values. Enums in Swift are algebraic data types (sum types) capable of encapsulating execution states safely:
+    <pre><code>enum NetworkState {
+    case idle
+    case loading
+    case success(Data)
+    case failure(Error)
+}</code></pre> This forces the compiler to check all code paths exhaustively via <code>switch</code> statements.</li>
+    <li><strong>Progressive Disclosure:</strong> The language design allows simple script-like code at the surface, while exposing low-level systems mechanics (generics constraints, low-level pointers, custom allocation ownership) to developers as performance demands scale up.</li>
+</ol></div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
 <p><strong>Timestamp:</strong> 2026-10-03 01:31 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1876,25 +1973,7 @@ Go’s paradigm is shaped by implicit interfaces, Communicating Sequential Proce
 
 <h3>6. How it "Makes Sense" (Internal Logic)</h3>
 <p>To master HTML and CSS as an engineer, one must shift from an <em>imperative execution model</em> to a <em>spatial-constraint document model</em>. The internal logic operates on the core concept of the <strong>Box Model</strong> and <strong>Formatting Contexts</strong>.</p>
-<p>An</div><hr><div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
-<p><strong>Timestamp:</strong> 2026-09-16 07:59 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Swift was created by Apple (led by Chris Lattner) and introduced in 2014 to displace Objective-C as the primary language for Apple platform development. Objective-C, burdened by its 1980s Smalltalk-on-C legacy, suffered from dynamic message-dispatch overhead, brittle pointer arithmetic, verbose syntax, and a total lack of modern compile-time safety guarantees.</p>
-<p>The core philosophy of Swift can be summarized in three words: <strong>Safe, Fast, and Expressive</strong>.</p>
-<ul>
-    <li><strong>Safety through strict typing:</strong> Swift eliminates entire classes of runtime bugs (such as null-pointer dereferences and uninitialized memory access) at compile time via strong typing and mandatory explicit handling of missing values.</li>
-    <li><strong>Speed via LLVM:</strong> Swift uses the LLVM toolchain, compiling directly to native machine code. It defaults to static dispatch over dynamic dispatch wherever possible, yielding performance comparable to C++.</li>
-    <li><strong>Multi-Paradigm Engine:</strong> Swift is fundamentally a <em>Protocol-Oriented Language</em>, while blending high-level functional concepts (first-class functions, pattern matching, value semantics, monads via optionals) with classical object-oriented abstraction.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Swift adopts a C-family syntax clean of legacy C cruft—headers are removed, syntax overhead is minimized, and source files define cohesive modules.</p>
-
-<ul>
-    <li><strong>Braces vs. Indentation:</strong> Swift uses explicit curly braces <code>{}</code> for scope block boundary, while whitespace and indentation carry no semantic meaning. Semicolons are entirely optional and discouraged unless separating multiple statements on a single line.</li>
-    <li><strong>Variables & Immutability:</strong> Immutability is enforced at the language level: <code>let</code> declares compile-time immutable bindings, while <code>var</code> declares mutable state. Mutation of value types declared with <code>let</code> is explicitly forbidden.</li>
-    <li><strong>Null Safety (Optionals):</strong> Types are non-nullable by default. A variable of type <code>String</code></div><hr>
+<p>An</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
