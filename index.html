@@ -17,7 +17,41 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<p><strong>Timestamp:</strong> 2026-10-05 07:50 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Swift was designed by Apple (led by Chris Lattner) and introduced in 2014 to replace Objective-C. Objective-C was built on top of Smalltalk-style dynamic message passing over a C base, which made it highly flexible but prone to runtime crashes, pointer misuse, overhead from dynamic dispatch, and verbose syntax.</p>
+
+<p>Swift's core philosophy centers on three pillars: <strong>Safe, Fast, and Expressive</strong>.</p>
+<ul>
+    <li><strong>Safety by Default:</strong> Eliminate entire classes of common bugs at compile time. Null pointers are strictly eliminated via explicit non-optional types and the <code>Optional&lt;Wrapped&gt;</code> algebraic data type. Variables must be initialized before use, array bounds are checked, and integers are checked for overflow by default.</li>
+    <li><strong>Protocol-Oriented Programming (POP):</strong> While Swift supports Object-Oriented Programming (OOP), Functional Programming (FP), and Procedural paradigms, its signature paradigm is Protocol-Oriented Programming. Instead of deep class hierarchies relying on reference semantics, Swift emphasizes lightweight value types (structs, enums) conforming to protocols with default implementations provided via extensions.</li>
+    <li><strong>Performance (LLVM Integration):</strong> Swift compiles directly to native machine code via LLVM and the Swift Intermediate Language (SIL). It aims for C-like performance by favoring static dispatch, monomorphization of generics, and inline stack allocations over heap-allocated dynamic dispatch whenever possible.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Swift features a clean, modernized C-family syntax that removes unnecessary boilerplate like legacy C parenthetical constraints and line-terminating semicolons.</p>
+
+<ul>
+    <li><strong>Block Scope & Braces:</strong> Swift uses curly braces <code>{}</code> to define execution scopes. Indentation is purely for readability; code structure is explicitly bound by braces.</li>
+    <li><strong>Semicolons:</strong> Semicolons are optional and generally omitted, used only to separate multiple distinct statements on a single physical line.</li>
+    <li><strong>Variables vs. Constants:</strong> Immutability is a first-class citizen. Bindings declared with <code>let</code> are immutable (constants), while <code>var</code> denotes mutable bindings. The compiler strictly enforces immutability down to type properties for value types.</li>
+    <li><strong>Type System & Inference:</strong> Swift is strongly and statically typed, leveraging an advanced type inference engine based on the Hindley-Milner type system model. You rarely need to write explicit types unless disambiguating.</li>
+    <li><strong>Exhaustive Pattern Matching & Flow Control:</strong> Control flow mechanisms like <code>switch</code> are required to be exhaustive. Swift features powerful pattern matching against enums, ranges, tuples, and types. Conditional bindings like <code>if let</code> and early-exit assertions via <code>guard let</code> force explicit handling of missing values.</li>
+    <li><strong>Code Organization:</strong> Swift discards C/Objective-C header files (<code>.h</code>). Code is organized into modules. File structure is flat within a module; access control modifier keywords (<code>open</code>, <code>public</code>, <code>package</code>, <code>internal</code>, <code>fileprivate</code>, <code>private</code>) govern symbol visibility rather than namespace header imports.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Swift deliberately avoids tracing Garbage Collection (GC) to ensure deterministic resource destruction, predictable latency, and low memory overhead without pause-the-world spikes.</p>
+
+<ul>
+    <li><strong>Automatic Reference Counting (ARC):</strong> Reference types (classes, closures) are managed via ARC. The compiler automatically inserts reference counting operations (<code>retain</code> and <code>release</code>) during compilation at SIL optimization phases.</li>
+    <li><strong>Reference Lifetimes & Cycle Prevention:</strong> To prevent strong reference cycles (memory leaks), Swift provides explicit pointer relationship qualifiers:
+        <ul>
+            <li><code>strong</code>: Standard incrementing reference count ownership.</li>
+            <li><code>weak</code>: Non-owning, zeroing reference. Must always be an optional variable (<code>var</code>) that automatically becomes <code>nil</code> when the referenced object deallocates.</li>
+            <li><code>unowned</code>: Non-owning, non-zeroing reference. Used when the lifetime of the reference equals or exceeds the caller. Accessing a dangling <code>unowned</code> reference triggers a runtime trap,</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
 <p><strong>Timestamp:</strong> 2026-10-05 01:21 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1949,30 +1983,7 @@ Go’s paradigm is shaped by implicit interfaces, Communicating Sequential Proce
     
     <li><strong>Cryptographic Hash Functions:</strong> One-way, deterministic mathematical functions that transform arbitrary-length input into a fixed-length output (digest). They are collision-resistant and irreversible. Examples include <code>SHA-256</code>, <code>SHA-3</code>, and dedicated password-hashing functions like <code>Argon2id</code> and <code>bcrypt</code>.</li>
     
-    <li><strong>Digital Signatures & Key Exchange:</strong> Protocols use asymmetric keys to securely negotiate session keys across untrusted channels (e.g., <code>ECDHE</code>—Elliptic Curve Diffie-Hellman Ephemeral) and sign data to prove origin via Public Key Infrastructure (PKI).</div><hr><div class='lesson'><h2>🔍 Deep Dive: Kotlin</h2>
-<p><strong>Timestamp:</strong> 2026-09-17 08:05 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Kotlin was designed by JetBrains in 2011 to solve developer productivity bottlenecks in large-scale Java codebases. Rather than acting as an academic experiment in type theory, Kotlin was built on <strong>pragmatism, safety, and seamless interoperability</strong>. Its primary goal was to drastically cut boilerplate, eliminate entire classes of runtime bugs (most notably null pointer exceptions), and maintain 100% two-way interoperability with existing Java codebases and JVM libraries without incurring performance runtime penalties.</p>
-
-<p>From a language design perspective, Kotlin rejects strict paradigm purity in favor of a hybrid multi-paradigm approach:</p>
-<ul>
-  <li><strong>Pragmatic Object-Oriented Programming (OOP):</strong> It retains classes, interfaces, and dynamic dispatch, but cleans up inheritance hierarchies by making classes <code>final</code> by default (adhering to Joshua Bloch’s principle of <em>"design and document for inheritance or else prohibit it"</em>).</li>
-  <li><strong>Functional Programming (FP):</strong> Kotlin adopts key FP constructs—first-class and higher-order functions, immutable data declarations (<code>val</code>), pattern matching via expression-based <code>when</code> clauses, and extension functions—without forcing strict algebraic purity or total immutability (like Haskell).</li>
-  <li><strong>Imperative & Procedural:</strong> Developers can write straightforward procedural code when necessary, supported by top-level functions and properties without requiring dummy wrapper classes.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Kotlin's syntax is concise, expression-oriented, and strongly statically typed. Key syntactic characteristics include:</p>
-
-<ul>
-  <li><strong>Braces vs. Indentation:</strong> Kotlin uses standard C-style curly braces (<code>{}</code>) for block scoping and lexical bounds. Whitespace and indentation are purely stylistic.</li>
-  <li><strong>Optional Semicolons:</strong> Semicolons are optional and idiomatic Kotlin omits them entirely, using newlines as natural statement terminators.</li>
-  <li><strong>Expression-Oriented Flow:</strong> Idiomatic Kotlin treats control flow constructs like <code>if</code>, <code>when</code>, and <code>try</code> as expressions that evaluate to a value, enabling clean assignment patterns:
-<pre><code>val status = if (code == 200) "OK" else "ERROR"</code></pre>
-  </li>
-  <li><strong>Top-Level Declarations:</strong> Functions, properties, and constants can exist at the root package level; they do not need to be wrapped inside class declarations.</li>
-  <li><strong>Type Inference & Null Safety in Syntax:</strong> Variable declarations distinguish immutability (<code>val</code>) from mutability (</div><hr>
+    <li><strong>Digital Signatures & Key Exchange:</strong> Protocols use asymmetric keys to securely negotiate session keys across untrusted channels (e.g., <code>ECDHE</code>—Elliptic Curve Diffie-Hellman Ephemeral) and sign data to prove origin via Public Key Infrastructure (PKI).</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
