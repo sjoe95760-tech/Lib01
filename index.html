@@ -17,7 +17,54 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
+<p><strong>Timestamp:</strong> 2026-10-06 21:20 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p><strong>Web Application Security</strong> is the practice of protecting web applications, web services, and Application Programming Interfaces (APIs) from security threats, unauthorized access, and malicious exploitation throughout their operational lifecycle. Because modern web applications sit squarely on the network perimeter and are publicly accessible via standard HTTP/HTTPS ports (80/443), they serve as the primary digital storefront—and primary target—for threat actors.</p>
+<p>In traditional network security, firewalls and intrusion prevention systems guarded static perimeters. Modern web applications, however, process complex business logic, handle sensitive data (PII, financial records, healthcare info), and interface directly with backend databases and internal microservices. A single software vulnerability in web logic can bypass perimeter controls, leading to catastrophic data exfiltration, service disruption, compliance non-compliance (GDPR, PCI-DSS, HIPAA), and severe reputational damage.</p>
+
+<h3>2. How It Works</h3>
+<p>Web application security operates at the Application Layer (Layer 7 of the OSI model). Understanding it requires analyzing the interaction between three main components: the client (browser/mobile app), the transport layer (HTTP/HTTPS), and the server-side architecture (web server, application server, backend database, microservices).</p>
+<ul>
+    <li><strong>Client-Side Environment:</strong> Browsers execute HTML, CSS, and JavaScript within a client-side execution sandbox. Security relies heavily on browser enforcement mechanisms like the Same-Origin Policy (SOP), Content Security Policy (CSP), and secure storage attributes for cookies (<code>HttpOnly</code>, <code>Secure</code>, <code>SameSite</code>).</li>
+    <li><strong>Stateless Protocol & State Management:</strong> HTTP is inherently stateless. Web apps manage session state using HTTP cookies, JSON Web Tokens (JWTs), or custom session identifiers. Flaws in how state is issued, stored, or verified allow attackers to hijack user sessions.</li>
+    <li><strong>Server-Side Logic & Processing:</strong> The application server receives unsanitized input from HTTP requests (headers, parameters, cookies, request bodies). Flaws manifest when the server implicitly trusts this input and passes it into command interpreters, database query engines, file systems, or external API endpoints.</li>
+</ul>
+
+<h3>3. Common Attack/Defense Techniques</h3>
+<p>Security analysts categorize web application risks primarily through frameworks like the <strong>OWASP Top 10</strong>. Key attack vectors and their defensive countermeasures include:</p>
+
+<ul>
+    <li><strong>Injection Attacks (e.g., SQL Injection, Command Injection)</strong>
+        <ul>
+            <li><em>Offense:</em> An attacker supplies malicious data inside an input field or parameter, tricking the backend interpreter into executing arbitrary commands or unintended SQL queries.</li>
+            <li><em>Defense:</em> Use parameterized queries (prepared statements), Object-Relational Mapping (ORM) abstractions, and strict input validation via allowlists.</li>
+        </ul>
+    </li>
+    <li><strong>Cross-Site Scripting (XSS)</strong>
+        <ul>
+            <li><em>Offense:</em> Injected malicious scripts execute within the victim's browser context, stealing session tokens or performing unauthorized actions.</li>
+            <li><em>Defense:</em> Apply contextual output encoding (HTML, JavaScript, CSS contexts), enforce a robust <code>Content-Security-Policy</code> header, and set the <code>HttpOnly</code> attribute on session cookies.</li>
+        </ul>
+    </li>
+    <li><strong>Broken Access Control / Insecure Direct Object References (IDOR)</strong>
+        <ul>
+            <li><em>Offense:</em> An attacker modifies an parameter (e.g., changing <code>/user?id=1001</code> to <code>/user?id=1002</code>) to access or alter data belonging to another user.</li>
+            <li><em>Defense:</em> Enforce strict, centralized server-side authorization checks based on Role-Based (RBAC) or Attribute-Based Access Control (ABAC) for every request. Never rely on client-side hiding.</li>
+        </ul>
+    </li>
+    <li><strong>Server-Side Request Forgery (SSRF)</strong>
+        <ul>
+            <li><em>Offense:</em> An attacker abuses server functionality to force the back-end application to make HTTP requests to arbitrary domains, internal microservices, or cloud metadata endpoints (e.g., <code>169.254.169.254</code>).</li>
+            <li><em>Defense:</em> Implement strict URL parsing, egress network filtering, strict allowlisting of destination domains/IPs, and disable access to internal network interfaces from public web hosts.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>4. Real-World Examples</h3>
+<ul>
+    <li><strong>Equifax Data Breach (2017):</strong> Threat actors exploited a known Remote Code Execution (RCE) vulnerability in the Apache Struts web framework (CVE-2017-5638). Because the web application was unpatched and lacked adequate internal segmentation, attackers gained access to personal sensitive data of</div><hr><div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
 <p><strong>Timestamp:</strong> 2026-10-05 07:50 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1959,31 +2006,7 @@ Go’s paradigm is shaped by implicit interfaces, Communicating Sequential Proce
   <li><strong>Memory Analysis & Pattern Matching:</strong>
     <ul>
       <li><code>Volatility Framework</code> (Memory forensic extraction tool)</li>
-      <li><code>YARA</code> (Pattern</div><hr><div class='lesson'><h2>🔍 Deep Dive: Cryptography</h2>
-<p><strong>Timestamp:</strong> 2026-09-17 17:48 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p><strong>Cryptography</strong> is the discipline of using mathematical algorithms to secure information at rest, in transit, and in use. It converts readable plain text into unintelligible cipher text (encryption) and provides mechanisms to verify data origin and integrity.</p>
-
-<p>In modern cybersecurity, cryptography addresses the core problem of operating over untrusted networks like the Internet. Without cryptography, every piece of data transmitted—passwords, financial transactions, medical records, and state secrets—would be vulnerable to ambient sniffing, modification, or spoofing. It provides four fundamental security guarantees:</p>
-<ul>
-    <li><strong>Confidentiality:</strong> Ensuring only authorized entities can read data.</li>
-    <li><strong>Integrity:</strong> Guaranteeing data has not been altered or tampered with in transit or storage.</li>
-    <li><strong>Authentication:</strong> Verifying the true identity of the sender or system.</li>
-    <li><strong>Non-repudiation:</strong> Ensuring a party cannot deny the authenticity of their signature or transaction.</li>
-</ul>
-
-<h3>2. How It Works</h3>
-<p>Cryptography relies on distinct mathematical primitives combined into higher-level protocols:</p>
-
-<ul>
-    <li><strong>Symmetric Cryptography:</strong> Uses a single shared secret key for both encryption and decryption. Fast and computationally efficient, making it ideal for bulk data encryption. Common algorithms include <code>AES-GCM</code> (Advanced Encryption Standard with Galois/Counter Mode) and <code>ChaCha20-Poly1305</code>.</li>
-    
-    <li><strong>Asymmetric Cryptography (Public Key Cryptography):</strong> Uses a mathematically linked key pair: a <em>Public Key</em> (distributed freely to encrypt or verify) and a <em>Private Key</em> (kept secret to decrypt or sign). It solves the key-distribution problem. Common schemes include <code>RSA</code>, <code>ECC</code> (Elliptic Curve Cryptography), and <code>Ed25519</code>.</li>
-    
-    <li><strong>Cryptographic Hash Functions:</strong> One-way, deterministic mathematical functions that transform arbitrary-length input into a fixed-length output (digest). They are collision-resistant and irreversible. Examples include <code>SHA-256</code>, <code>SHA-3</code>, and dedicated password-hashing functions like <code>Argon2id</code> and <code>bcrypt</code>.</li>
-    
-    <li><strong>Digital Signatures & Key Exchange:</strong> Protocols use asymmetric keys to securely negotiate session keys across untrusted channels (e.g., <code>ECDHE</code>—Elliptic Curve Diffie-Hellman Ephemeral) and sign data to prove origin via Public Key Infrastructure (PKI).</div><hr>
+      <li><code>YARA</code> (Pattern</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
