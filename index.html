@@ -17,7 +17,35 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<p><strong>Timestamp:</strong> 2026-10-07 07:50 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Swift was designed by Chris Lattner and Apple to replace Objective-C—a language burdened by decades of Smalltalk-style dynamic dispatch and C legacy. Swift’s core design objective is <strong>safety by default, speed by execution, and expressiveness by design</strong>.</p>
+<p>Architecturally, Swift is a multi-paradigm language, but its fundamental identity is anchored in <strong>Protocol-Oriented Programming (POP)</strong> alongside strong functional and imperative foundations:</p>
+<ul>
+    <li><strong>Safety over Dynamism:</strong> Objective-C relied heavily on runtime messaging (untyped pointers, `nil` messaging). Swift shifts error detection from runtime to compile-time through strict static typing and explicit nullability representation.</li>
+    <li><strong>Value Semantics over Reference Semantics:</strong> Instead of default pointer manipulation, Swift emphasizes immutable structures (`struct`) and algebraic data types (`enum`) copied on mutation, drastically reducing shared mutable state bugs.</li>
+    <li><strong>Zero-Cost Abstractions:</strong> Utilizing the LLVM compiler infrastructure, Swift abstracts complex concepts (like generics and protocols) with minimal runtime overhead, matching C++ performance in optimized builds.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Swift adopts a clean, C-family derivative syntax heavily influenced by languages like Rust, Haskell, and Python. It eliminates visual noise like mandatory semicolons, parenthesized conditions, and header files.</p>
+<ul>
+    <li><strong>Scope & Layout:</strong> Code blocks are bounded by curly braces <code>{}</code>. Whitespace is insignificant, but formatting conventions prioritize clean, readable blocks.</li>
+    <li><strong>Explicit Nullability:</strong> Null pointers do not exist at the language runtime layer. Instead, optionality is modeled via the <code>Optional&lt;Wrapped&gt;</code> algebraic type (an enum of <code>.none</code> or <code>.some(Wrapped)</code>), forced into syntax via shorthand <code>T?</code>.</li>
+    <li><strong>Control Flow:</strong> Control flow is pattern-matching driven. The <code>switch</code> statement is exhaustive and supports complex pattern decomposition. Swift introduces first-class control constructs like <code>guard</code> statements, enforcing early returns and flattening nested code structures (avoiding the "Pyramid of Doom").</li>
+    <li><strong>Extensions:</strong> Code organization is modular and decoupled. Developers extend types—even built-in system types—to conform to protocols, add methods, or organize functionality without sub-classing or altering source code.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Unlike languages utilizing tracing Garbage Collectors (e.g., Java, Go) or compile-time borrow checkers enforcing manual Lifetimes (e.g., standard Rust), Swift uses <strong>Automatic Reference Counting (ARC)</strong> for reference types (`class`).</p>
+<ul>
+    <li><strong>Deterministic Allocation:</strong> Objects are allocated on the heap, and their reference counts are incremented/decremented inline by compiler-inserted instructions. When the count hits zero, deallocation is instantaneous and deterministic.</li>
+    <li><strong>Retain Cycles & Ownership:</strong> To prevent memory leaks caused by strong reference cycles, Swift provides explicit object ownership annotations:
+        <ul>
+            <li><code>strong</code>: Default reference incrementing the retain count.</li>
+            <li><code>weak</code>: Non-owning reference that automatically becomes <code></div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
 <p><strong>Timestamp:</strong> 2026-10-07 01:05 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1879,64 +1907,7 @@ Go’s paradigm is shaped by implicit interfaces, Communicating Sequential Proce
 <h3>3. Memory Management</h3>
 <p>JavaScript abstracts manual memory management (such as C's <code>malloc</code>/<code>free</code> or Rust's compile-time ownership semantics). Memory is automatically allocated when objects, arrays, closures, or primitives are created, and reclaimed through an automated <strong>Garbage Collector (GC)</strong>.</p>
 
-<p>Modern JavaScript engines (such as V8 or JavaScriptCore) employ advanced <strong>Generational Garbage Collection</strong> algorithms</div><hr><div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
-<p><strong>Timestamp:</strong> 2026-09-17 23:12 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>Zero Trust Architecture (ZTA) is a cybersecurity strategic framework built on the fundamental premise of <strong>"never trust, always verify."</strong> Unlike legacy security models that relied on a "castle-and-moat" approach—where anything inside the internal network perimeter was implicitly trusted—Zero Trust assumes that threats exist both outside and inside the network environment at all times.</p>
-<p><strong>The Real-World Problem Addressed:</strong> Modern enterprise environments no longer have a physical perimeter. Cloud adoption, remote work, mobile devices, and third-party SaaS integrations have dissolved traditional network boundaries. When an attacker gains access to a traditional network (e.g., via a compromised VPN account or phishing), implicit trust allows them to move laterally across systems unabated. ZTA eliminates implicit trust, preventing single-point compromises from turning into catastrophic enterprise-wide breaches.</p>
-
-<h3>2. How It Works</h3>
-<p>Zero Trust operates by continuously assessing risk and requiring explicit authentication and authorization for every access request, regardless of where the request originates or what resource it targets.</p>
-
-<p><strong>Core Guiding Principles (NIST SP 800-207):</strong></p>
-<ul>
-    <li><strong>Verify Explicitly:</strong> Always authenticate and authorize based on all available data points, including user identity, location, device health, service or workload, data classification, and anomalies.</li>
-    <li><strong>Use Least Privilege Access:</strong> Limit user access with Just-In-Time (JIT) and Just-Enough-Access (JEA) models, Risk-Based Adaptive Policies, and data protection mechanisms.</li>
-    <li><strong>Assume Breach:</strong> Minimize blast radius and segment access. Encrypt all sessions end-to-end. Utilize analytics to gain visibility, drive threat detection, and improve defenses.</li>
-</ul>
-
-<p><strong>Architectural Components:</strong></p>
-<ul>
-    <li><strong>Policy Engine (PE):</strong> The decision-making brain responsible for ultimately deciding whether to grant, deny, or revoke access to a resource based on enterprise policy and risk scoring.</li>
-    <li><strong>Policy Administrator (PA):</strong> Communicates with the Policy Engine and issues commands to the Policy Enforcement Point to establish or terminate the session.</li>
-    <li><strong>Policy Enforcement Point (PEP):</strong> The gatekeeper component (e.g., an API gateway, reverse proxy, or agent) that terminates connections, inspects traffic, and enforces decisions made by the PE/PA.</li>
-    <li><strong>Micro-segmentation:</strong> Breaking networks into granular isolated zones to restrict East-West traffic lateral movement.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<p>Transitioning to Zero Trust alters the dynamics between threat actors and defensive teams.</p>
-
-<table>
-    <thead>
-        <tr>
-            <th>Offensive Attack Technique</th>
-            <th>Zero Trust Defensive Countermeasure</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <li><strong>Lateral Movement via Compromised VPN:</strong> Attackers use stolen credentials to access internal subnets and pivot to critical databases.</li>
-            <li><strong>Micro-segmentation & Software-Defined Perimeter (SDP):</strong> Eliminates network-level visibility. Users are routed only to specific applications via isolated proxies, never the underlying network.</li>
-        </tr>
-        <tr>
-            <li><strong>MFA Fatigue / Prompt Bombing:</strong> Repeatedly pushing MFA notifications until a user accepts out of frustration.</li>
-            <li><strong>FIDO2 / WebAuthn Phishing-Resistant MFA:</strong> Mandating hardware security keys or device-bound passkeys that bind authentication to the domain URL, rendering push attacks useless.</li>
-        </tr>
-        <tr>
-            <li><strong>Session Token Hijacking:</strong> Stealing active cookies or OAuth tokens to bypass MFA.</li>
-            <li><strong>Continuous Adaptive Risk & Trust Assessment (CARTA):</strong> Re-evaluating risk mid-session. If device posture drops (e.g., EDR detects malware) or location shifts abruptly, tokens are invalidated immediately.</li>
-        </tr>
-    </tbody>
-</table>
-
-<h3>4. Real-World Examples</h3>
-<ul>
-    <li><strong>Google BeyondCorp:</strong> Initiated after Operation Aurora (2009), Google abandoned internal privileged networks entirely. Every Google employee accesses internal applications over the public Internet via context-aware proxies, enforcing strict device posture and identity validation.</li>
-    <li><strong>SolarWings Supply Chain Breach Countermeasures:</strong> In traditional networks, compromised internal service accounts allowed unmonitored lateral pivoting. Under a mature ZTA implementation, even authenticated service accounts are restricted by strict application-to-application micro-segmentation and short-lived ephemeral certificates.</li>
-    <li><strong>Scenario Comparison:</strong> 
-        <ul>
-            <li></div><hr>
+<p>Modern JavaScript engines (such as V8 or JavaScriptCore) employ advanced <strong>Generational Garbage Collection</strong> algorithms</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
