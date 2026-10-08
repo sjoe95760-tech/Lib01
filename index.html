@@ -17,7 +17,39 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<p><strong>Timestamp:</strong> 2026-10-08 06:45 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Rust was created by Graydon Hoare at Mozilla to resolve a fundamental trade-off in programming language design: the choice between <strong>control</strong> (as in C/C++, with raw pointers and manual memory management) and <strong>safety</strong> (as in Java/Go, with garbage collection and runtime overhead). Rust proves that memory safety and thread safety do not require a garbage collector, achieving high performance and low-level control while providing compile-time guarantees against undefined behavior.</p>
+<p>Rust is a pragmatic, multi-paradigm language. While its syntax resembles procedural C-family languages, its type system and core mechanics are heavily borrowed from functional programming—specifically the ML family (OCaml, Haskell). It rejects classical Object-Oriented Programming (OOP) mechanics like class inheritance and dynamic dispatch by default, favoring algebraic data types, parametric polymorphism via traits, explicit composition, and strict immutability by default.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Rust uses C-style block syntax with braces <code>{}</code> and explicit control structures, but it is fundamentally an <strong>expression-based language</strong> rather than a statement-based one. Almost every construct—including <code>if</code> blocks, <code>match</code> statements, and block scopes—evaluates to a value.</p>
+
+<p>Key syntactic mechanics include:</p>
+<ul>
+    <li><strong>Semicolons as Omission Operators:</strong> Omitting a semicolon at the final line of a block or function designates that expression as the block's implicit return value. Appending a semicolon turns the expression into a statement that returns the unit tuple <code>()</code>.</li>
+    <li><strong>Type Inference & Annotations:</strong> Rust uses Hindley-Milner-style local type inference. Explicit annotations are mandatory at function boundaries (signatures) to ensure local, deterministic compilation and clear contract boundaries, but are optional within function bodies.</li>
+    <li><strong>Module Organization:</strong> Code is structured into <code>crates</code> (compilation units), which contain tree-like <code>module</code> hierarchies. Scope visibility is explicitly enforced using the <code>pub</code> keyword (e.g., <code>pub(crate)</code>, <code>pub(super)</code>). Cargo serves as the standard package manager and build orchestrator.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Rust introduces a novel memory management model based on an <strong>Affine Type System</strong>, executed entirely at compile time without a garbage collector or mandatory manual <code>malloc/free</code> operations.</p>
+
+<p>The system rests on three foundational rules enforced by the <strong>Borrow Checker</strong>:</p>
+<ol>
+    <li><strong>Ownership:</strong> Every value in Rust has a single variable that acts as its owner. When the owner goes out of scope, the value is deterministically destroyed via the standard Resource Acquisition Is Initialization (RAII) pattern (the <code>Drop</code> trait).</li>
+    <li><strong>Move Semantics:</strong> Assigning a value to another variable or passing it to a function transfers ownership (moves the data) by default, invalidating the original binding unless the type implements the bitwise <code>Copy</code> trait.</li>
+    <li><strong>Aliasing XOR Mutability:</strong> You may have either any number of immutable references (<code>&amp;T</code>) OR exactly one mutable reference (<code>&amp;mut T</code>) to a resource at a given point in time, but never both simultaneously. This prevents data races and dangling pointers entirely at compile time.</li>
+</ol>
+<p>When references cross stack frames, Rust tracks their lifetimes using compile-time annotations (e.g., <code>'a</code>) to ensure no reference outlives the data it points to.</p>
+
+<h3>4. Paradigms & Tactics</h3>
+<p>Rust approaches software engineering challenges through explicit, system-level mechanisms:</p>
+<ul>
+    <li><strong>Object-Oriented Programming:</strong> Rust discards class inheritance in favor of <em>Traits</em> (interfaces that can include default method implementations) and <em>Structs/Enums</em> (data containers). Trait implementations can be static (monomorphization via generics, yielding zero-cost abstractions) or dynamic (via trait objects <code>dyn Trait</code> using vtables).</li>
+    <li><strong>Concurrency:</strong> Rust enables "Fearless Concurrency" by leveraging its ownership rules. The type system encodes thread capabilities using marker traits: <code>Send</code> (transferable across threads) and <code>Sync</code> (shareable across threads via immutable references). Asynchronous programming uses a polling-based, zero-cost state-machine model powered by the <code>Future</code> trait, typically driven by an external multithreaded runtime like <code>tokio</div><hr><div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
 <p><strong>Timestamp:</strong> 2026-10-07 07:50 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1877,37 +1909,7 @@ Go’s paradigm is shaped by implicit interfaces, Communicating Sequential Proce
 
 <ul>
     <li><strong>Value Types vs Reference Types:</strong> Structs and enums are copied on assignment (passing by value). They are allocated on the stack or inline inside containing objects. Swift optimizes large value types via <strong>Copy-on-Write (CoW)</strong>, sharing the underlying buffer until mutation occurs. Classes are reference types allocated on the heap and managed by ARC.</li>
-    <li><strong>Reference Cycle Mitigation:</strong> Ret</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
-<p><strong>Timestamp:</strong> 2026-09-18 01:58 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>JavaScript was created in 1995 by Brendan Eich at Netscape, famously prototyped in just 10 days. Its original purpose was to serve as a lightweight, dynamic scripting language for the web browser, allowing non-professional developers to manipulate document structures and handle user input without the compilation overhead of C++ or Java.</p>
-
-<p>From a programming language theory perspective, JavaScript is a multi-paradigm, dynamically typed, weakly typed, interpreted (or JIT-compiled) language with first-class functions and prototype-based object orientation. Its design is a unique synthesis of three distinct lineages:</p>
-<ul>
-    <li><strong>Scheme (Lisp dialect):</strong> First-class functions, lexical scoping, and dynamic typing.</li>
-    <li><strong>Self (Smalltalk dialect):</strong> Prototype-based inheritance instead of class-based classical inheritance.</li>
-    <li><strong>C / Java:</strong> Algol-like syntax (curly braces, statement keywords, operator precedence) to appeal to mainstream enterprise developers.</li>
-</ul>
-
-<p>JavaScript was designed around the principle of <em>forgiveness and fault tolerance</em> on the client side. Rather than crashing execution upon encountered anomalies, the language heavily relies on type coercion and sentinel values like <code>NaN</code>, <code>undefined</code>, and <code>null</code>. This philosophy prioritized system uptime in the browser interface over strict type safety.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>JavaScript uses explicit C-style syntax with curly braces <code>{}</code> defining statement blocks, parentheses <code>()</code> for expression grouping and parameter lists, and semicolons <code>;</code> for statement termination. However, the language engine incorporates <strong>Automatic Semicolon Insertion (ASI)</strong>, a parser feature that attempts to infer missing semicolons at line breaks, though relying on ASI can introduce subtle bugs (such as restricted production rules with <code>return</code> statements).</p>
-
-<p>Variable binding and scoping are governed by three primary keywords:</p>
-<ul>
-    <li><code>var</code>: Function-scoped or globally scoped, hoisted to the top of its enclosing scope during execution context creation, initialized to <code>undefined</code>.</li>
-    <li><code>let</code>: Block-scoped, hoisted but kept in a "Temporal Dead Zone" (TDZ) until evaluation, preventing access before declaration.</li>
-    <li><code>const</code>: Block-scoped, subjected to TDZ, requires initialization at declaration, and enforces immutable variable bindings (though the underlying object value remains mutable).</li>
-</ul>
-
-<p>Code is structured using <strong>ECMAScript Modules (ESM)</strong> (<code>import</code> / <code>export</code>), which feature static module resolution, enabling dead-code elimination (tree-shaking) by static analyzers. Historically, Node.js relied on CommonJS (<code>require</code> / <code>module.exports</code>), a runtime-evaluated synchronous module specification.</p>
-
-<h3>3. Memory Management</h3>
-<p>JavaScript abstracts manual memory management (such as C's <code>malloc</code>/<code>free</code> or Rust's compile-time ownership semantics). Memory is automatically allocated when objects, arrays, closures, or primitives are created, and reclaimed through an automated <strong>Garbage Collector (GC)</strong>.</p>
-
-<p>Modern JavaScript engines (such as V8 or JavaScriptCore) employ advanced <strong>Generational Garbage Collection</strong> algorithms</div><hr>
+    <li><strong>Reference Cycle Mitigation:</strong> Ret</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
