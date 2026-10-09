@@ -17,7 +17,81 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<p><strong>Timestamp:</strong> 2026-10-09 06:54 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Rust was created by Graydon Hoare and sponsored by Mozilla to resolve a fundamental dichotomy in systems programming: the choice between high-level safety (managed languages with garbage collection overhead) and low-level control (C/C++ with zero-cost abstractions but high risks of memory corruption and concurrency bugs). Rust eliminates this trade-off by achieving <strong>memory safety and concurrency safety without a garbage collector</strong>.</p>
+<p>From a PL theory perspective, Rust is a multi-paradigm language sitting at the intersection of imperative systems programming and functional programming:</p>
+<ul>
+    <li><strong>Rejection of Classical OOP:</strong> Rust rejects class-based inheritance, virtual method tables by default, and implicit mutability. Instead, it uses a composition-driven data-behavior split (Structs + Traits).</li>
+    <li><strong>Functional Roots:</strong> Rust heavily draws from ML-family languages. It features strong type inference, algebraic data types (enums), pattern matching, higher-order iterators, and expression-based semantics.</li>
+    <li><strong>Zero-Cost Abstractions:</strong> Rust's core axiom (inherited from C++) dictates that what you don't use, you don't pay for. High-level abstractions like iterators, generic traits, and async state machines compile down to low-level code equivalent to—or faster than—handwritten assembly.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Rust utilizes C-style block syntax (`{}`) for scope control, but its internal flow is strictly expression-oriented.</p>
+<ul>
+    <li><strong>Expressions vs. Statements:</strong> Almost every construct in Rust yields a value. An expression becomes a statement when terminated with a semicolon (`;`). Omitting the semicolon at the end of a block implicitly returns that expression's value.
+<pre><code>let x = if condition { 5 } else { 10 }; // 'if' is an expression</code></pre>
+    </li>
+    <li><strong>Immutability by Default:</strong> Bindings created with <code>let</code> are immutable. Mutability must be explicitly declared using <code>let mut</code>.
+<pre><code>let x = 5;      // Immutable
+let mut y = 10; // Mutable</code></pre>
+    </li>
+    <li><strong>Code Organization:</strong> Rust eschews header files. Code is organized into hierarchical units: <em>Items</em>, <em>Modules</em> (`mod`), <em>Crates</em> (compilation units), and <em>Workspaces</em>. Visibility is private by default and exposed explicitly via the <code>pub</code> keyword.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Rust manages memory neither through runtime Garbage Collection (like Go, Java) nor unconstrained manual allocation/deallocation (like C/C++). Instead, it enforces compile-time resource tracking based on an <strong>Affine Type System</strong> via its core mechanism: <strong>Ownership, Borrowing, and Lifetimes</strong>.</p>
+
+<h4>A. Ownership Rules</h4>
+<ol>
+    <li>Each value in memory has a single binding known as its <em>owner</em>.</li>
+    <li>There can only be one owner at a time. Assigning a value to another binding or passing it to a function transfers ownership (a <em>move</em> operation).</li>
+    <li>When the owner goes out of scope, the memory occupied by the value is automatically freed via its <code>Drop</code> implementation (RAII - Resource Acquisition Is Initialization).</li>
+</ol>
+
+<h4>B. Borrowing Rules (Aliasing XOR Mutability)</h4>
+<p>To access data without taking ownership, Rust allows references (borrowing). At any given scope, code must adhere to the core aliasing theorem:</p>
+<ul>
+    <li>You may have <strong>any number of immutable references</strong> (<code>&amp;T</code>) to a resource, OR</li>
+    <li>You may have <strong>exactly one mutable reference</strong> (<code>&amp;mut T</code>) to a resource.</li>
+    <li>You cannot have both simultaneously. This prevents data races at compile time.</li>
+</ul>
+
+<h4>C. Lifetimes</h4>
+<p>Lifetimes (<code>'a</code>) are generic parameters used by the compiler's <em>Borrow Checker</em> to track the exact scope for which references are valid, ensuring that no reference ever outlives the underlying data (preventing dangling pointers and use-after-free bugs).</p>
+
+<h3>4. Paradigms & Tactics</h3>
+
+<h4>Polymorphism & OOP Alternative</h4>
+<p>Rust separates state from behavior:</p>
+<ul>
+    <li><strong>State:</strong> Represented by <code>struct</code> and <code>enum</code> types.</li>
+    <li><strong>Behavior:</strong> Implemented in <code>impl</code> blocks or unified via <code>Trait</code> interfaces (akin to Haskell Typeclasses or Java Interfaces).</li>
+    <li><strong>Static vs. Dynamic Dispatch:</strong> Polymorphism can be resolved at compile time using generics and trait bounds (monomorphization, zero-cost) or at runtime using Trait Objects (<code>dyn Trait</code>) via fat pointers containing dynamic dispatch vtables.</li>
+</ul>
+
+<h4>Concurrency Model</h4>
+<p>Rust enforces "Fearless Concurrency" by leveraging its type system to propagate memory safety guarantees across thread boundaries:</p>
+<ul>
+    <li><code>Send</code>: Marker trait indicating that ownership of a type can be transferred across thread boundaries safely.</li>
+    <li><code>Sync</code>: Marker trait indicating that it is safe for multiple threads to access a type through shared references (<code>&amp;T</code>).</li>
+    <li><strong>Async/Await:</strong> Asynchronous operations compile into cooperative zero-allocation state machines driven by explicit executors (like <code>tokio</code>). Futures do nothing unless polled.</li>
+</ul>
+
+<h4>Error Handling</h4>
+<p>Rust eliminates exceptions entirely. Errors are explicit first-class domain values:</p>
+<ul>
+    <li><strong>Recoverable Errors:</strong> Represented using the monadic <code>Result&lt;T, E&gt;</code> enum (containing <code>Ok(T)</code> or <code>Err(E)</code>). The <code>?</code> operator allows concise error propagation.</li>
+    <li><strong>Unrecoverable Errors:</strong> Handled by <code>panic!</code>, which aborts the execution thread or triggers a controlled stack unwind.</li>
+</ul>
+
+<h3>5. Unique Patterns & Ecosystem</h3>
+<ul>
+    <li><strong>The Type-State Pattern:</strong> Encodes finite state machines into the Rust type system. States are distinct structs, preventing invalid state transitions at compile time.
+<pre><code></div><hr><div class='lesson'><h2>🔍 Deep Dive: Python</h2>
 <p><strong>Timestamp:</strong> 2026-10-09 00:46 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1885,18 +1959,7 @@ Go’s paradigm is shaped by implicit interfaces, Communicating Sequential Proce
 <p>Security professionals utilize a combination of open-source and commercial tooling alongside standardized frameworks:</p>
 <ul>
   <li><strong>Analysis & Reconnaissance Tools:</strong> Wireshark (packet analysis), Nmap (network discovery), Zeek/Bro (network security monitoring/telemetry generation).</li>
-  <li><strong>Prevention & Detection Systems:</strong> Snort, Suricata (NIDS</div><hr><div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
-<p><strong>Timestamp:</strong> 2026-09-18 12:25 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Structured Query Language (SQL) was created in the early 1970s by Donald Chamberlin and Raymond Boyce at IBM. It was designed to implement Edgar F. Codd’s <strong>Relational Model</strong>, which grounded database organization in set theory and first-order predicate logic.</p>
-
-<p>Prior to SQL, database management systems (such as CODASYL or network databases) were imperative and navigational. Developers had to write low-level code explicitly traversing physical pointers and index paths to locate data. SQL solved this by enforcing <strong>Physical Data Independence</strong>—decoupling the logical definition of data from its physical storage and access paths.</p>
-
-<p>SQL is neither Object-Oriented, purely Functional, nor imperative Procedural. It is a domain-specific <strong>Declarative Language</strong>. The primary philosophical pillar of SQL is: <em>express WHAT data you want, not HOW to retrieve it</em>. The task of determining the optimal execution path (indexing, join algorithms, memory allocation) is delegated entirely to the database engine's Query Planner and Optimizer.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>SQL syntax</div><hr>
+  <li><strong>Prevention & Detection Systems:</strong> Snort, Suricata (NIDS</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
