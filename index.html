@@ -17,7 +17,46 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
+<p><strong>Timestamp:</strong> 2026-10-09 13:57 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>HTML (HyperText Markup Language) and CSS (Cascading Style Sheets) form the declarative backbone of the modern Web Open Platform. Unlike general-purpose imperative languages (such as C, Java, or Python), HTML and CSS are Domain-Specific Languages (DSLs) designed around <strong>declarative structure</strong> and <strong>constraint-based rule application</strong>.</p>
+<ul>
+    <li><strong>Why standard HTML was created:</strong> Developed by Tim Berners-Lee in 1990, HTML solved the problem of sharing structural, hyperlinked documents across heterogeneous computer systems. It abstracts away machine-specific layout logic into semantic abstractions (e.g., headings, paragraphs, anchors).</li>
+    <li><strong>Why CSS was created:</strong> Introduced by Håkon Wium Lie and Bert Bos in 1996, CSS solved the structural-presentational coupling crisis. Early HTML was becoming polluted with styling tags (e.g., <code>&lt;font&gt;</code>, <code>&lt;center&gt;</code>) and table-based layouts, destroying accessibility and network efficiency. CSS decoupled presentation from structural semantics.</li>
+    <li><strong>Paradigm Classification:</strong> Neither HTML nor CSS falls under Object-Oriented, Functional, or Procedural paradigms in the traditional sense:
+        <ul>
+            <li><strong>HTML:</strong> A context-free structural markup language that serializes a hierarchical tree structure (the Document Object Model, or DOM).</li>
+            <li><strong>CSS:</strong> A declarative, pattern-matching rule system evaluated by a specialized constraint solver (the layout engine). While CSS3/CSS4 features custom properties (variables), functional functions (e.g., <code>calc()</code>, <code>clamp()</code>), and media queries, it remains a rule-based declarative language.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>The syntax and execution flow of HTML and CSS differ radically from step-by-step imperative execution models.</p>
+
+<p><strong>HTML Syntax & Structure:</strong></p>
+<ul>
+    <li>Composed of nested <strong>Elements</strong> bounded by start tags (<code>&lt;div&gt;</code>), optional attributes (<code>id="main"</code>), content, and end tags (<code>&lt;/div&gt;</code>), alongside self-closing void elements (<code>&lt;img&gt;</code>, <code>&lt;input&gt;</code>).</li>
+    <li>Whitespace is largely collapsed according to the HTML tokenization specification. Indentation is purely stylistic and non-semantic.</li>
+</ul>
+
+<p><strong>CSS Syntax & Structure:</strong></p>
+<ul>
+    <li>Structured around <strong>Rulesets</strong>: a <em>Selector</em> (pattern matcher) paired with a <em>Declaration Block</em> delimited by curly braces <code>{}</code>. Declarations consist of <code>property: value;</code> pairs terminated by semicolons.</li>
+    <li>Like HTML, CSS is whitespace-insensitive outside of string literals and specific functional parameters.</li>
+</ul>
+
+<p><strong>Parsing and Execution Flow:</strong></p>
+<p>Execution is non-linear and non-procedural. Browsers execute a multi-stage compilation and layout pipeline:</p>
+<ol>
+    <li><strong>HTML Parsing:</strong> Bytes &rarr; Characters &rarr; Tokens &rarr; Nodes &rarr; <strong>DOM Tree</strong>.</li>
+    <li><strong>CSS Parsing:</strong> Bytes &rarr; Characters &rarr; Tokens &rarr; Rules &rarr; <strong>CSSOM Tree</strong> (CSS Object Model).</li>
+    <li><strong>Render Tree Construction:</strong> The DOM and CSSOM combine to compute visible nodes and their calculated styles.</li>
+    <li><strong>Layout (Reflow):</strong> Geometric layout algorithms compute exact coordinate spaces and bounding boxes for every render tree node.</li>
+    <li><strong>Paint & Composite:</strong> Rasterization of vector geometric representations into pixel arrays, layered and combined on the GPU.</li>
+</ol></div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
 <p><strong>Timestamp:</strong> 2026-10-09 06:54 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1904,62 +1943,7 @@ Go’s paradigm is shaped by implicit interfaces, Communicating Sequential Proce
     <li><strong>Evasion & Attack Techniques:</strong>
         <ul>
             <li><em>Fragmentation Attacks:</em> Splitting malicious payloads across tiny IP fragments so signatures fail to trigger on single packets.</li>
-            <li><em>Protocol Encapsulation & Tunneling:</em> Tunneling restricted</div><hr><div class='lesson'><h2>🔍 Deep Dive: Network Security</h2>
-<p><strong>Timestamp:</strong> 2026-09-18 16:46 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>Network security encompasses the policies, processes, technologies, and practices designed to protect the integrity, confidentiality, availability, and accessibility of computer networks and data in transit. In a modern enterprise, the network serves as the digital central nervous system; it connects workstations, cloud environments, IoT endpoints, and databases.</p>
-<p>Without robust network security, organizations face catastrophic risks including unauthorized data exfiltration, ransomware propagation across internal subnets, rogue device interception, and service denial. Network security addresses the fundamental problem that open, interconnected systems are inherently untrusted and exposed to adversary reconnaissance, interception, and lateral movement.</p>
-
-<h3>2. How It Works</h3>
-<p>Network security relies on a multivariant approach aligned with the OSI model (Layers 2 through 7) and operates on the core principle of <strong>Defense-in-Depth</strong>. Modern implementations are shifting from traditional perimeter-based ("castle-and-moat") security to a <strong>Zero Trust Architecture (ZTA)</strong> where no traffic is inherently trusted regardless of its location.</p>
-<p>Key operational mechanics include:</p>
-<ul>
-  <li><strong>Traffic Inspection & Filtering:</strong> Devices evaluate network packets against established rule sets, state tables, or deep packet inspection (DPI) engines to allow, drop, or reset connections.</li>
-  <li><strong>Network Segmentation & Isolation:</strong> Dividing a physical network into logical subnets using Virtual Local Area Networks (VLANs) or software-defined microsegmentation to constrain blast radiuses.</li>
-  <li><strong>Cryptographic Controls:</strong> Securing data in transit across public and untrusted networks using protocols like TLS 1.3 and IPsec tunnels.</li>
-  <li><strong>Identity & Access Control:</strong> Enforcing Network Access Control (NAC) via 802.1X protocols to validate device posture and identity before granting network-layer access.</li>
-  <li><strong>Telemetry & Monitoring:</strong> Collecting NetFlow, IPFIX, packet captures (PCAP), and DNS logs to establish baseline operational behavior and flag anomalies.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<p>Understanding network security requires contrasting threat actor TTPs (Tactics, Techniques, and Procedures) with tactical countermeasures:</p>
-<ul>
-  <li><strong>Reconnaissance & Scanning:</strong>
-    <ul>
-      <li><em>Attack:</em> Adversaries use TCP SYN scans, UDP sweeps, and banner grabbing to map active hosts and vulnerable services.</li>
-      <li><em>Defense:</em> Drop unexpected probe traffic at the network edge, disable unnecessary services, and implement deceptive network assets (canaries/honeypots).</li>
-    </ul>
-  </li>
-  <li><strong>Man-in-the-Middle (MitM) & Spoofing:</strong>
-    <ul>
-      <li><em>Attack:</em> ARP poisoning, DNS cache poisoning, or Rogue DHCP servers intercept and modify raw traffic.</li>
-      <li><em>Defense:</em> Enforce Dynamic ARP Inspection (DAI), DHCP Snooping, DNSSEC, and mandatory TLS with strict certificate pinning.</li>
-    </ul>
-  </li>
-  <li><strong>Lateral Movement & Pivoting:</strong>
-    <ul>
-      <li><em>Attack:</em> Threat actors breach an edge device and use SMB, SSH, or RDP to traverse the internal network.</li>
-      <li><em>Defense:</em> Implement host-based firewalls, microsegmentation, disable administrative protocols across non-adjacent subnets, and enforce Zero Trust Network Access (ZTNA).</li>
-    </ul>
-  </li>
-  <li><strong>Distributed Denial of Service (DDoS):</strong>
-    <ul>
-      <li><em>Attack:</em> Volumetric (SYN floods, NTP amplification) or Layer 7 (HTTP floods) attacks exhaust link bandwidth or server resources.</li>
-      <li><em>Defense:</em> Upstream scrubbing centers, rate-limiting, Web Application Firewalls (WAF), and Anycast routing networks.</li>
-    </ul>
-  </li>
-</ul>
-
-<h3>4. Real-World Examples</h3>
-<p><strong>The Target Breach (2013):</strong> Threat actors initially gained network credentials through a third-party HVAC vendor. Because the internal network lacked adequate segmentation, attackers pivoted from vendor-accessible subnets directly into the Payment Card Industry (PCI) environment, compromising over 40 million payment cards. This incident highlighted the critical necessity of network segmentation and third-party access isolation.</p>
-<p><strong>The Dyn DDoS Attack (2016):</strong> A massive botnet composed of Mirai-infected IoT devices launched a coordinated volumetric attack against Dyn, a major DNS provider. By flooding Dyn's network infrastructure with DNS lookup requests, major platforms including Twitter, Netflix, and Reddit became unreachable. This demonstrated how upstream infrastructure failures impact the network security ecosystem.</p>
-
-<h3>5. Tools & Frameworks</h3>
-<p>Security professionals utilize a combination of open-source and commercial tooling alongside standardized frameworks:</p>
-<ul>
-  <li><strong>Analysis & Reconnaissance Tools:</strong> Wireshark (packet analysis), Nmap (network discovery), Zeek/Bro (network security monitoring/telemetry generation).</li>
-  <li><strong>Prevention & Detection Systems:</strong> Snort, Suricata (NIDS</div><hr>
+            <li><em>Protocol Encapsulation & Tunneling:</em> Tunneling restricted</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
