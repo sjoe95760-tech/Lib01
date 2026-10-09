@@ -17,7 +17,28 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<p><strong>Timestamp:</strong> 2026-10-09 00:46 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>
+    Python was conceived in late 1989 by Guido van Rossum as a successor to the ABC language, explicitly engineered to bridge the gap between low-level shell scripting and heavy systems languages like C/C++. Its overarching design philosophy is codified in the <em>Zen of Python</em> (PEP 20), emphasizing developer ergonomics, readability, and explicit intent over syntactic brevity or raw execution speed ("Readability counts", "Explicit is better than implicit").
+</p>
+<p>
+    Python addresses the high cognitive overhead and software fragility associated with explicit memory management and verbose syntax. It shifts the economic trade-off of software engineering: prioritizing <strong>human developer time over CPU cycles</strong>.
+</p>
+<p>
+    From a language theory perspective, Python is a highly dynamic, general-purpose multi-paradigm language:
+</p>
+<ul>
+    <li><strong>Object-Oriented:</strong> Pure OO at its core. Every value—including primitive integers, functions, modules, and classes themselves—is a first-class object derived from <code>PyObject</code>.</li>
+    <li><strong>Imperative/Procedural:</strong> Allows straightforward linear execution and scriptable control flow without mandatory class boilerplate (unlike Java).</li>
+    <li><strong>Functional:</strong> Features first-class functions, higher-order functions, closures, lazy evaluation primitives (generators), and functional map/filter/reduce semantics alongside list/dict/set comprehensions.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>
+    Python employs the <strong>off-side rule</strong>, using lexical indentation (significant whitespace) rather than explicit block markers like curly braces (<code>{}</code>) or <code>begin/end</code> keywords. Statements are terminated</div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
 <p><strong>Timestamp:</strong> 2026-10-08 06:45 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1875,41 +1896,7 @@ Go’s paradigm is shaped by implicit interfaces, Communicating Sequential Proce
 <p>SQL is neither Object-Oriented, purely Functional, nor imperative Procedural. It is a domain-specific <strong>Declarative Language</strong>. The primary philosophical pillar of SQL is: <em>express WHAT data you want, not HOW to retrieve it</em>. The task of determining the optimal execution path (indexing, join algorithms, memory allocation) is delegated entirely to the database engine's Query Planner and Optimizer.</p>
 
 <h3>2. Syntax, Structure & Flow</h3>
-<p>SQL syntax</div><hr><div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
-<p><strong>Timestamp:</strong> 2026-09-18 07:00 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Swift was designed at Apple by Chris Lattner and his team (beginning in 2010, released in 2014) as a modern replacement for Objective-C. Objective-C was built on Smalltalk-style dynamic message passing layered over C; while flexible, it suffered from verbose syntax, weak type safety, pointer exposure, and heavy runtime overhead.</p>
-
-<p>Swift was engineered around three primary tenets: <strong>Safe, Fast, and Expressive</strong>.</p>
-<ul>
-    <li><strong>Safety:</strong> Eliminates entire classes of runtime errors through static typing, strict nullability handling (Optionals), mandatory variable initialization, and array bounds checking.</li>
-    <li><strong>Performance:</strong> Compiles directly to native machine code via LLVM. Swift avoids dynamic message dispatch where possible, defaulting to static dispatch and vtables, yielding execution speeds comparable to C++.</li>
-    <li><strong>Expressiveness:</strong> Syntactic sugar, type inference, and modern language features (generics, pattern matching, macros) allow clean, declarative code without sacrificing low-level execution control.</li>
-</ul>
-
-<p>From a programming language theory standpoint, Swift is a <strong>multi-paradigm language</strong>. While it supports traditional Object-Oriented Programming (OOP) and imperative procedural programming, its defining structural feature is <strong>Protocol-Oriented Programming (POP)</strong> alongside heavy adoption of functional idioms (immutability, higher-order functions, algebraic data types).</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Swift's syntax borrows from C, Rust, Haskell, and Python. It uses standard C-style curly braces <code>{}</code> for block scoping, but omits mandatory semicolons at line endings and does not require parentheses around conditional expressions.</p>
-
-<p>Key structural mechanics include:</p>
-<ul>
-    <li><strong>Type Inference:</strong> The compiler (swiftc) uses constraint-based type inference. Variable types can be explicitly stated or left for the compiler to deduce: <code>let count = 42</code>.</li>
-    <li><strong>Mutability Contracts:</strong> Immutability is enforced at the language level using <code>let</code> (immutable bind) and <code>var</code> (mutable bind). Immutable value types are fundamentally thread-safe.</li>
-    <li><strong>Optionals (Algebraic Data Type):</strong> Swift handles nullability explicitly using an enum wrapper <code>Optional&lt;Wrapped&gt;</code> with cases <code>.none</code> and <code>.some(Wrapped)</code>. Unwrapping requires explicit semantics like <code>if let</code>, <code>guard let</code>, the null-coalescing operator <code>??</code>, or the nil-shortcircuiting optional chain <code>?</code>.</li>
-    <li><strong>Control Flow & Pattern Matching:</strong> The <code>switch</code> statement is exhaustive and supports advanced pattern matching across tuples, ranges, types, and enum associated values with optional <code>where</code> clauses. The <code>guard</code> statement enforces early exits, binding variables to the current scope beyond the block.</li>
-    <li><strong>Code Organization:</strong> Swift does not split interface and implementation into separate files (unlike C/C++ header files). Symbols are namespaced by <strong>Modules</strong>. Code is structurally enhanced via <code>extension</code> blocks, allowing developers to add methods, computational properties, and protocol conformances to existing types without subclassing or source access.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Swift deliberately avoids tracing Garbage Collection (GC) to ensure predictable latency, low memory overhead, and suitability for real-time systems and mobile devices.</p>
-
-<p>Instead, Swift uses <strong>Automatic Reference Counting (ARC)</strong> for reference types (classes, closures) combined with a stack-heavy allocation strategy for value types (structs, enums).</p>
-
-<ul>
-    <li><strong>Value Types vs Reference Types:</strong> Structs and enums are copied on assignment (passing by value). They are allocated on the stack or inline inside containing objects. Swift optimizes large value types via <strong>Copy-on-Write (CoW)</strong>, sharing the underlying buffer until mutation occurs. Classes are reference types allocated on the heap and managed by ARC.</li>
-    <li><strong>Reference Cycle Mitigation:</strong> Ret</div><hr>
+<p>SQL syntax</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
