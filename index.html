@@ -17,7 +17,35 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: C++</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Perl</h2>
+<p><strong>Timestamp:</strong> 2026-10-10 15:58 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Perl was created in 1987 by Larry Wall—a linguist and systems administrator—to bridge the gap between low-level C programming and high-level shell scripting (awk, sed, sh). It was designed around the core principle of human expressiveness rather than machine-centric elegance, encapsulated by the famous motto: <em>"There's More Than One Way To Do It"</em> (TMTOWTDI).</p>
+
+<p>From a programming language theory (PLT) perspective, Perl is a dynamic, interpreted, multi-paradigm language with strong linguistic influences. It prioritizes pragmatism, text manipulation, and glue-code orchestration. Its core design logic relies on <strong>contextual evaluation</strong>—meaning the behavior of an expression changes based on where and how it is invoked (e.g., expecting a single value vs. a sequence of values). Perl supports procedural, functional, and object-oriented paradigms, treating functions and symbol table entries as first-class manipulables via typeglobs and code references.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Perl syntax uses explicit sigils to denote variable types and container mechanics, combining C-like block structures with shell-like convenience:</p>
+<ul>
+    <li><code>$scalar</code>: Represents singular values (strings, integers, floats, or references).</li>
+    <li><code>@array</code>: Represents ordered lists of scalars indexed by integers.</li>
+    <li><code>%hash</code>: Represents unordered key-value associative arrays.</li>
+    <li><code>&subroutine</code>: Represents code blocks (the sigil is optional during invocation).</li>
+    <li><code>*typeglob</code>: Represents full symbol table entries for namespace manipulation.</li>
+</ul>
+
+<p>Perl uses curly braces <code>{}</code> for block scoping and requires semicolons <code>;</code> as statement terminators. Indentation is purely stylistic. Code execution flows sequentially, but flow control is enriched by statement modifiers (e.g., <code>do_something() if $condition;</code>), loop control keywords (<code>next</code>, <code>last</code>, <code>redo</code>), and explicit context awareness (<code>wantarray</code>).</p>
+
+<p>Code organization relies on <code>packages</code> to establish namespaces, and modules (<code>.pm</code> files) loaded via <code>use</code> (compile-time) or <code>require</code> (runtime). Pragmas such as <code>use strict;</code> and <code>use warnings;</code> alter compiler behavior, forcing explicit variable declarations via <code>my</code> (lexical scope) or <code>our</code> (package scope).</p>
+
+<h3>3. Memory Management</h3>
+<p>Perl manages memory primarily through <strong>Reference Counting</strong> augmented by a sweep phase during interpreter teardown:</p>
+<ul>
+    <li><strong>Ref-Count Tracking:</strong> Every internal structure (SV = Scalar Value, AV = Array Value, HV = Hash Value) maintains an internal reference count. When a variable's scope ends or references to it drop to zero, its memory is immediately reclaimed and returned to Perl's internal memory pool (not necessarily to the OS kernel immediately).</li>
+    <li><strong>Deterministic Destruction:</strong> Because of pure reference counting, destructors (the <code>DESTROY</code> or modern <code>DEMOLISH</code> methods) trigger deterministically the precise moment an object goes out of scope.</li>
+    <li><strong>Circular Reference Resolution:</strong> Pure reference counting suffers from memory leaks when circular references occur. Perl solves this via weak references provided by <code>Scalar::Util::weaken</code>, which decrements the reference count without destroying the referent.</li>
+</div><hr><div class='lesson'><h2>🔍 Deep Dive: C++</h2>
 <p><strong>Timestamp:</strong> 2026-10-10 03:07 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1944,51 +1972,7 @@ ORDER BY status ASC;
 
 <h3>3. Memory Management</h3>
 <p>TypeScript possesses no distinct runtime engine or native memory management abstraction. Because TypeScript compiles down to JavaScript, its memory lifecycle is managed entirely by the underlying JavaScript engine's runtime (such as V8 in Node.js/Chrome, JavaScriptCore, or SpiderMonkey).</p>
-<p>Memory is allocated automatically when objects or primitives are created and reclaimed using an automated <strong>Garbage Collector (GC)</strong>. Modern engines employ generational mark-and-sweep algorithms, dividing the heap into new (nursery) and old generations. Because type annotations undergo absolute <em>type erasure</em> during transpilation, TypeScript introduces zero memory overhead compared to equivalent hand-written JavaScript.</p></div><hr><div class='lesson'><h2>🔍 Deep Dive: Go</h2>
-<p><strong>Timestamp:</strong> 2026-09-19 05:14 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>
-Go (often referred to as Golang) was designed at Google in 2007 by Robert Griesemer, Rob Pike, and Ken Thompson to solve systemic software engineering problems at scale. It was built as a direct response to the complexity, slow build times, and concurrency pain points of C++ and Java in large-scale distributed systems.
-</p>
-<p>
-At its core, Go is a **procedural, statically typed, compiled language** with a minimalist bias. It intentionally rejects many advanced abstractions found in modern multi-paradigm languages.
-</p>
-<ul>
-    <li><strong>Procedural at heart:</strong> Go prioritizes flat, linear execution over deep abstraction hierarchies.</li>
-    <li><strong>Structural Typing over Inheritance:</strong> Go discards traditional Class-based Object-Oriented Programming (OOP). There are no classes, no inheritance, and no dynamic method dispatch by default. Instead, it uses concrete `struct` types and implicit interfaces.</li>
-    <li><strong>Anti-Metaprogramming Stance:</strong> Go minimizes compiler magic. It deliberately lacks operator overloading, custom macros, and implicit type conversions to ensure that code readability remains local and explicit.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>
-Go's syntax is derived from the C family, stripped of redundancy and designed to be parsed rapidly by both human engineers and compilers.
-</p>
-<ul>
-    <li><strong>Braces and Automatic Semicolon Insertion:</strong> Go uses standard curly braces `{}`. Semicolons exist in the formal grammar but are automatically inserted by the lexer at the end of lines based on strict rules. Consequently, brace placement is enforced by the compiler (e.g., opening braces must sit on the same line as the control statement).</li>
-    <li><strong>Minimalist Keywords:</strong> Go contains only 25 keywords, reducing cognitive load and syntax variance across codebases.</li>
-    <li><strong>Control Flow Simplicity:</strong> There is only one looping keyword: <code>for</code>. It handles single-condition loops (while-equivalent), traditional three-part loops, infinite loops, and iterator loops (<code>range</code>).</li>
-    <li><strong>Visibility via Capitalization:</strong> Go has no <code>public</code>, <code>private</code>, or <code>protected</code> keywords. Identifier exportability is determined by casing: an initial uppercase letter (e.g., <code>ExportedFunc</code>) makes an identifier visible outside its package; lowercase (e.g., <code>internalFunc</code>) restricts visibility to the defining package.</li>
-    <li><strong>Code Organization:</strong> Code lives inside packages. A directory corresponds to a single package, and compilation units are strictly mapped to package boundaries.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>
-Go combines low-level memory layout controls with high-level runtime memory management.
-</p>
-<ul>
-    <li><strong>Value vs. Pointer Semantics:</strong> Developers explicitly control whether a data structure is passed by value (copied) or passed by reference using pointers (<code>*T</code>). Unlike C/C++, Go enforces strict type safety around pointers and forbids pointer arithmetic (unless using the escape-hatch <code>unsafe</code> package).</li>
-    <li><strong>Escape Analysis:</strong> The Go compiler performs static escape analysis during compilation. If the lifetime of a variable can be proven to remain within the calling function's stack frame, it is allocated on the high-performance stack. If a reference "escapes" the stack frame (e.g., returned as a pointer), it automatically moves to the heap.</li>
-    <li><strong>Garbage Collection (GC):</strong> Go uses a concurrent, tri-color mark-and-sweep garbage collector. The GC is specifically tuned for **ultra-low latency** (sub-millisecond Stop-The-World pauses) rather than maximizing maximum throughput, making it ideal for network servers.</li>
-</ul>
-
-<h3>4. Paradigms & Tactics</h3>
-<p>
-Go’s paradigm is shaped by implicit interfaces, Communicating Sequential Processes (CSP) concurrency, and explicit control flows.
-</p>
-<ul>
-    <li><strong>Implicit Interfaces (Duck Typing at Compile-Time):</strong> Interfaces are satisfied implicitly. A type implements an interface simply by declaring its methods with matching signatures—no <code>implements</code> keyword is required. This decoupling enables late-bound abstraction without fragile base-class problems.</li>
-    <li><strong>Concurrency Model (CSP):</strong> Go replaces traditional thread-per-request models with cheap, lightweight user-space threads called **Goroutines** (multiplexed onto OS threads by the Go runtime's M:N</div><hr>
+<p>Memory is allocated automatically when objects or primitives are created and reclaimed using an automated <strong>Garbage Collector (GC)</strong>. Modern engines employ generational mark-and-sweep algorithms, dividing the heap into new (nursery) and old generations. Because type annotations undergo absolute <em>type erasure</em> during transpilation, TypeScript introduces zero memory overhead compared to equivalent hand-written JavaScript.</p></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
