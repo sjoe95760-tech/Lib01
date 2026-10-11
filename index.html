@@ -17,7 +17,82 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Java</h2>
+<div class='lesson'><h2>🔍 Deep Dive: TypeScript</h2>
+<p><strong>Timestamp:</strong> 2026-10-11 09:25 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>TypeScript was created by Anders Hejlsberg at Microsoft in 2012 to address a fundamental architectural challenge: JavaScript was designed as a lightweight scripting language for small browser tasks, but was increasingly being used to build massive, multi-million-line enterprise applications. JavaScript's dynamic, weak typing and prototype-based nature made large-scale refactoring, code navigation, and static analysis notoriously fragile.</p>
+
+<p>The core philosophy of TypeScript is defined by three architectural tenets:</p>
+<ul>
+    <li><strong>Structural Subtyping (Duck Typing):</strong> Compatibility is determined by a type's shape/structure, not its explicit nominal declaration (unlike Java or C#). If an object has the required properties of a given type, it satisfies that type.</li>
+    <li><strong>Gradual & Pragmatic Soundness:</strong> TypeScript intentionally sacrifices absolute mathematical type soundness (e.g., allowing explicit casts via <code>any</code> or unsound array covariance) to prioritize developer ergonomics and seamless interoperability with legacy, un-typed JavaScript.</li>
+    <li><strong>Zero Runtime Overhead (Type Erasure):</strong> TypeScript is strictly a compile-time meta-layer. It introduces zero proprietary runtime object representations, garbage collectors, or execution models. The compilation output is clean, standard ECMAScript.</li>
+</ul>
+
+<p>TypeScript is multi-paradigm by design. It provides first-class primitives for Object-Oriented Programming (classes, interfaces, access modifiers), Functional Programming (higher-order functions, immutability contracts, algebraic data types), and Procedural Programming.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>TypeScript extends ECMAScript syntax by grafting static type annotations onto existing JavaScript constructs using a C-style syntax tree.</p>
+
+<ul>
+    <li><strong>Lexical Grammar:</strong> Blocks are demarcated by curly braces <code>{}</code>. Semicolons are technically optional due to JavaScript's Automatic Semicolon Insertion (ASI), though explicit usage remains an architectural best practice.</li>
+    <li><strong>Type Algebra:</strong> Types can be composed using logical set operations:
+        <ul>
+            <li><code>Union Types (|)</code>: Represents set disjunction (A or B).</li>
+            <li><code>Intersection Types (&)</code>: Represents set conjunction (A and B merged).</li>
+            <li><code>Generics (&lt;T&gt;)</code>: Parametric polymorphism allowing types to act as functions operating on other types.</li>
+        </ul>
+    </li>
+    <li><strong>Control Flow Analysis (CFA):</strong> The TypeScript compiler features a flow-sensitive type inference engine. As code executes sequentially through branching logic (e.g., <code>if</code>, <code>switch</code>, <code>typeof</code>, <code>instanceof</code>, custom type predicates), the compiler continuously performs automatic type narrowing, recalculating the precise set of possible types at any given AST node.</li>
+    <li><strong>Code Organization:</strong> Uses standard ES Modules (<code>import</code> / <code>export</code>). Type definitions can be bundled alongside executable code or maintained in ambient declaration files (<code>.d.ts</code>).</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>TypeScript features no independent memory allocation models or manual pointers, nor does it implement ownership semantics like Rust or explicit reference counting.</p>
+
+<p>Because TypeScript compiles down to JavaScript, memory management is entirely delegated to the host execution environment's JavaScript engine (e.g., Google V8, SpiderMonkey, or JavaScriptCore):</p>
+<ul>
+    <li><strong>Garbage Collection:</strong> V8 utilizes a Generational Garbage Collector combining a "Scavenger" (Cheney's copying algorithm) for young-generation allocations and a "Mark-Sweep-Compact" collector for old-generation objects.</li>
+    <li><strong>Stack vs. Heap:</strong> Primitive values (numbers, booleans) and stack frames reside on the execution stack, while object literals, instances, arrays, and functions are allocated on the managed heap.</li>
+    <li><strong>Compile-Time Memory Footprint:</strong> Types exist purely in the memory space of the TypeScript compiler (<code>tsc</code>) during build time. Upon compilation, type annotations are stripped entirely via Type Erasure, leaving the runtime memory footprint identical to hand-written JavaScript.</li>
+</ul>
+
+<h3>4. Paradigms & Tactics</h3>
+
+<p>TypeScript enables high-level architecture across multiple functional and structural paradigms:</p>
+
+<ul>
+    <li><strong>Object-Oriented Programming (OOP):</strong> Classes support access modifiers (<code>public</code>, <code>private</code>, <code>protected</code>), abstract classes, parameter properties, and explicit interface implementation. TypeScript also supports hard JavaScript-level private fields using the standard <code>#field</code> prefix.</li>
+    <li><strong>Functional Programming (FP):</strong> Functions are first-class constructs. Immutability can be enforced statically via the <code>readonly</code> modifier, <code>Readonly&lt;T&gt;</code> utility types, and <code>as const</code> assertions. Algebraic Data Types (ADTs) are routinely modeled via <em>Discriminated Unions</em> (unions with a common literal "tag" property).</li>
+    <li><strong>Concurrency Model:</strong> TypeScript inherits the single-threaded, non-blocking event loop model of JavaScript. Concurrency is handled asynchronously via the Microtask and Macrotask queues using native <code>Promise&lt;T&gt;</code> wrappers and <code>async/await</code> syntax. True parallelism is achieved through process isolation (e.g., Web Workers or Node.js <code>worker_threads</code>), passing typed messages across <code>ArrayBuffer</code> or structured clone boundaries.</li>
+    <li><strong>Error Handling:</strong> Standard runtime error handling relies on imperative <code>try / catch</code> blocks. Catch clause variables default to the <code>unknown</code> type under strict compiler settings, forcing developers to explicitly narrow the error type before accessing properties. Advanced functional codebases frequently utilize custom <code>Result&lt;T, E&gt;</code> monadic types to handle expected domain errors as typed values rather than unhandled exceptions.</li>
+</ul>
+
+<h3>5. Unique Patterns & Ecosystem</h3>
+
+<p>TypeScript has spawned a massive ecosystem driven by static metaprogramming patterns unique to structural type engines:</p>
+
+<ul>
+    <li><strong>Key Ecosystem Technologies:</strong>
+        <ul>
+            <li><em>Runtimes:</em> Node.js, Deno (native TS execution), Bun (native TS execution).</li>
+            <li><em>Frameworks:</em> React, Angular (built natively on TS), NestJS (enterprise DI pattern), Next.js.</li>
+            <li><em>Validation & ORMs:</em> Zod (schema-driven static inference), Prisma (type-safe database clients generated from schemas).</li>
+        </ul>
+    </li>
+    <li><strong>Dominant Design Patterns:</strong>
+        <ul>
+            <li><strong>Discriminated Unions:</strong> Exhaustive pattern matching over state shapes (e.g., combining state management with compiler safety).</li>
+            <li><strong>Branded Types (Nominal Typing Simulation):</strong> Modifying structural types with unique symbol tags (e.g., <code>type UserId = string & { readonly __brand: unique symbol }</code>) to prevent accidental assignment of plain strings to domain identifiers.</li>
+            <li><strong>Template Literal Types:</strong> Manipulating and validating string formats directly within the type system (e.g., <code>type Event = `${Category}:${Action}`</code>).</li>
+            <li><strong>Conditional & Mapped Types:</strong> Metaprogramming constructs that transform existing types using structural mapping operations (e.g., <code>[K in keyof T]: T[K]</code>).</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>6. How it "Makes Sense" (Internal Logic)</h3>
+<p>To master TypeScript</div><hr><div class='lesson'><h2>🔍 Deep Dive: Java</h2>
 <p><strong>Timestamp:</strong> 2026-10-11 02:39 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1968,28 +2043,7 @@ ORDER BY status ASC;
     <tbody>
         <tr>
             <td><strong>Phishing / Spear Phishing</strong></td>
-</div><hr><div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
-<p><strong>Timestamp:</strong> 2026-09-19 13:32 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>HTML and CSS are not general-purpose programming languages; they are specialized, non-Turing complete (in their base forms) Domain-Specific Languages (DSLs) designed around the fundamental principle of <strong>Separation of Concerns</strong>. HTML acts as a declarative structural and semantic document layout definition language, while CSS functions as a rule-based declarative stylesheet language for visual constraint resolution.</p>
-<p>They were created to solve the problem of cross-platform document distribution across heterogeneous user agents (browsers, screen readers, printers) without requiring imperative rendering instructions. Rather than executing procedural code or defining classes and methods (OOP), HTML constructs a hierarchical Node Tree (the Document Object Model), and CSS defines pattern-matching rules and box-model constraints that are mapped onto that tree to determine geometry, layout, and visual presentation.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>HTML utilizes an XML/SGML-derived markup syntax consisting of tags, attributes, and text nodes. Whitespace is largely ignored or collapsed according to visual context rules. Execution flow does not exist in the procedural sense; instead, parsing follows a deterministic streaming pipeline:</p>
-<p><code>Raw Bytes → Characters → Tokens → Nodes → DOM Tree</code></p>
-<p>CSS uses a rule-set syntax structured around pattern selectors and declaration blocks bounded by curly braces (<code>{ property: value; }</code>), with declarations terminated by semicolons. CSS flow is dictated by the <strong>Cascade Engine</strong>, which resolves styles through a deterministic multi-stage priority algorithm:</p>
-<ul>
-    <li><strong>Origin & Importance:</strong> User Agent styles vs. User styles vs. Author styles (plus <code>!important</code> flag processing).</li>
-    <li><strong>Specificity Calculation:</strong> Evaluated as a tuple <code>(Inline, IDs, Classes/Attributes/Pseudo-classes, Elements)</code>.</li>
-    <li><strong>Source Order:</strong> Final ties are broken by document lexical order (last rule defined wins).</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Memory management in HTML and CSS is entirely implicit and offloaded to the host environment's C++ / Rust layout engine (e.g., Blink, Gecko, WebKit). Declarative markup does not expose direct pointers, stack frame allocations, or manual memory allocation semantics.</p>
-<p>Under the hood, HTML elements map to C++ objects (such as <code>HTMLElement</code> or <code>LayoutObject</code>) allocated on the browser heap. Memory reclamation relies on cyclic reference-counting and tracing garbage collectors (such as Chrome's Oilpan GC) bound to the runtime JavaScript engine bindings. When a DOM node is removed from the active tree and no JavaScript references retain it, the browser engine automatically deallocates the element, its associated computed CSS styles, and any cached render layers (GPU textures).</p>
-
-<h3></div><hr>
+</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
