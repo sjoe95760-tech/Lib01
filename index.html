@@ -17,7 +17,21 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Network Security</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<p><strong>Timestamp:</strong> 2026-10-12 00:03 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Python was conceived in late 1989 by Guido van Rossum as a successor to the ABC programming language. Its core motivation was to bridge the gap between bare-metal C programming and shell scripting by maximizing <strong>developer velocity</strong> and <strong>code readability</strong> without sacrificing expressiveness.</p>
+<p>Language theorists categorize Python as a <strong>dynamically typed, multi-paradigm, interpreted (bytecode-compiled) language</strong>. It inherently blends:</p>
+<ul>
+  <li><strong>Object-Oriented Programming (OOP):</strong> Pure object instantiation where <em>everything</em>—including functions, modules, and primitive types—is a first-class object living on the heap.</li>
+  <li><strong>Procedural Programming:</strong> Top-down scriptable execution without requiring boilerplate class definitions (unlike Java or C#).</li>
+  <li><strong>Functional Programming:</strong> Support for higher-order functions, anonymous lambda expressions, list comprehensions, and pure mathematical operations (via modules like <code>functools</code> and <code>itertools</code>).</li>
+</ul>
+<p>Python's core philosophy is encapsulated in the <em>Zen of Python (PEP 20)</em>. It prioritizes explicit operations over implicit side effects ("Explicit is better than implicit") and aims for a unified language design ("There should be one—and preferably only one—obvious way to do it"). It intentionally avoids C++-style syntactic complexity, choosing predictable runtime mechanics over static compilation performance.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Python’s syntax relies heavily on the <strong>off-side rule</strong>, using significant whitespace (indentation) instead of curly braces <code>{}</code> or <code>begin/end</code> blocks to define lexical scope. Semicolons exist to separate multi-statement lines,</div><hr><div class='lesson'><h2>🔍 Deep Dive: Network Security</h2>
 <p><strong>Timestamp:</strong> 2026-10-11 16:01 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1986,64 +2000,7 @@ ORDER BY status ASC;
 
 <h3>1. What It Is & Why It Matters</h3>
 <p>Zero Trust Architecture (ZTA) is an enterprise cybersecurity paradigm rooted in a simple core principle: <strong>"Never trust, always verify."</strong> Unlike legacy perimeter-based security models—often referred to as the "castle-and-moat" approach—Zero Trust assumes that threats exist both outside and inside the network environment. It eliminates implicit trust based solely on a user's physical location, IP address, or ownership of a asset.</p>
-<p>In modern enterprise environments, the network perimeter has dissolved. The rapid adoption of multi-cloud infrastructures, SaaS applications, and hybrid remote workforces means data no longer resides within a single firewall protected boundary.</div><hr><div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
-<p><strong>Timestamp:</strong> 2026-09-19 21:52 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>Web Application Security is the discipline of protecting web applications, APIs, and underlying services from cyber threats throughout their entire development and operational lifecycle. Modern enterprises rely heavily on web applications to process sensitive transactions, handle personally identifiable information (PII), and power core business logic. Because web apps are publicly accessible by design and process untrusted user input, they constitute the largest exposed attack surface for most organizations. A single vulnerability can lead to catastrophic data breaches, regulatory non-compliance fines (GDPR, PCI-DSS), reputational damage, and business disruption.</p>
-
-<h3>2. How It Works</h3>
-<p>Web application security operates at the application layer (Layer 7 of the OSI model). It relies on understanding the request-response model of HTTP/HTTPS and how data flows from the browser/client through web servers, application runtimes, and back-end database systems.</p>
-<p>Achieving security requires integrating defensive controls into every layer of the application architecture:</p>
-<ul>
-  <li><strong>Input Handling & Contextual Output Encoding:</strong> Treating every incoming HTTP request (headers, cookies, query parameters, POST body) as inherently malicious until validated and sanitized. Output must be encoded based on rendering context (HTML, JavaScript, CSS, SQL).</li>
-  <li><strong>Identity & Access Management:</strong> Implementing robust authentication mechanisms (OAuth 2.0, OIDC, Multi-Factor Authentication) and fine-grained authorization (RBAC/ABAC) at the server layer.</li>
-  <li><strong>Secure Development Lifecycle (SDLC):</strong> Implementing automated security checks, including Static Application Security Testing (SAST) during code compilation, Dynamic Application Security Testing (DAST) on running instances, and Software Composition Analysis (SCA) to manage third-party dependencies.</li>
-  <li><strong>Runtime Protection:</strong> Employing Web Application Firewalls (WAF) and Runtime Application Self-Protection (RASP) agents to inspect, filter, and block malicious L7 traffic before it hits application logic.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<p>Web app security is a constant cat-and-mouse game between offensive exploitation and defensive engineering. Key techniques include:</p>
-<ul>
-  <li><strong>Injection Attacks (e.g., SQLi, Command Injection):</strong>
-    <ul>
-      <li><em>Attack:</em> Attackers supply malicious input that gets executed as unintended interpreter commands, bypassing application logic or dumping entire databases.</li>
-      <li><em>Defense:</em> Use parameterized queries/prepared statements, Object-Relational Mapping (ORM) frameworks, and strict input validation.</li>
-    </ul>
-  </li>
-  <li><strong>Cross-Site Scripting (XSS):</strong>
-    <ul>
-      <li><em>Attack:</em> Injecting malicious JavaScript into web pages viewed by other users to steal session tokens or manipulate DOM contexts.</li>
-      <li><em>Defense:</em> Apply context-aware output encoding, utilize strict Content Security Policies (CSP), and set <code>HttpOnly</code> and <code>SameSite</code> flags on session cookies.</li>
-    </ul>
-  </li>
-  <li><strong>Broken Access Control (e.g., IDOR/BOLA):</strong>
-    <ul>
-      <li><em>Attack:</em> Modifying parameters (e.g., changing <code>/api/user/1001</code> to <code>/api/user/1002</code>) to access or modify records belonging to other users without authorization.</li>
-      <li><em>Defense:</em> Enforce strict access control checks on every endpoint on the server side, validating that the authenticated session owns the requested resource.</li>
-    </ul>
-  </li>
-  <li><strong>Server-Side Request Forgery (SSRF):</strong>
-    <ul>
-      <li><em>Attack:</em> Abuse of web app functionality to force the server to make unintended HTTP requests to internal, non-public resources (e.g., cloud metadata endpoints).</li>
-      <li><em>Defense:</em> Restrict outbound server connections using egress filtering, enforce URL allowlists, and disable non-standard network protocols.</li>
-    </ul>
-  </li>
-</ul>
-
-<h3>4. Real-World Examples</h3>
-<p>Examining major security events illustrates the critical nature of these vulnerabilities:</p>
-<ul>
-  <li><strong>Equifax Breach (2017):</strong> Attackers exploited an unpatched Remote Code Execution (RCE) vulnerability in the Apache Struts web framework, allowing them to breach internal networks and exfiltrate the sensitive personal data of over 147 million individuals.</li>
-  <li><strong>Capital One Breach (2019):</strong> A misconfigured Web Application Firewall running on an AWS EC2 instance was exploited via a Server-Side Request Forgery (SSRF) vulnerability. The attacker queried the internal AWS metadata service to obtain temporary IAM credentials and exfiltrated over 100 million customer records stored in S3 buckets.</li>
-  <li><strong>British Airways Magecart Attack (2018):</strong> Attackers compromised third-party JavaScript libraries loaded by the web application, injecting a script that skimmed payment card details directly from user browsers, affecting over 380,000 transactions.</li>
-</ul>
-
-<h3>5. Tools & Frameworks</h3>
-<p>Security professionals utilize a robust suite of industry-standard tools and frameworks to audit, secure, and defend web applications:</p>
-<ul>
-  <li><strong>Standards & Frameworks:</strong>
-    <ul></div><hr>
+<p>In modern enterprise environments, the network perimeter has dissolved. The rapid adoption of multi-cloud infrastructures, SaaS applications, and hybrid remote workforces means data no longer resides within a single firewall protected boundary.</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
