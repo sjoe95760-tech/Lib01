@@ -17,7 +17,35 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
+<div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
+<p><strong>Timestamp:</strong> 2026-10-13 12:16 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Structured Query Language (SQL) was designed in the 1970s by Donald Chamberlin and Raymond Boyce at IBM, rooted in Edgar F. Codd’s mathematical paper on the relational model. Unlike imperative programming languages (OOP, Functional, or Procedural) that focus on <em>how</em> to achieve a result via explicit algorithms and control flow, SQL is fundamentally a <strong>declarative, set-based domain-specific language</strong> based on tuple relational calculus and relational algebra.</p>
+<p>SQL was designed to solve the problem of physical data independence. In legacy navigational databases (such as CODASYL or IMS), developers had to manually write code to traverse physical pointers on disk. SQL abstracts physical storage, indexing, and access paths entirely. The developer describes <em>what</em> dataset is required, and an underlying Query Optimizer evaluates statistics, cost models, and algebraic equivalents to derive the optimal physical execution plan (e.g., choosing between a Hash Join, Index Scan, or Nested Loop).</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>SQL query syntax is structured human-readable English text, but its physical order of writing diverges significantly from its logical execution order. SQL is whitespace-insensitive, uses semicolons (<code>;</code>) as statement terminators, and does not use indentation or braces for structural logic (procedural extensions use <code>BEGIN...END</code> blocks).</p>
+
+<p><strong>Logical Query Execution Order:</strong></p>
+
+<p>While a standard query is written as: <code>SELECT -&gt; FROM -&gt; WHERE -&gt; GROUP BY -&gt; HAVING -&gt; ORDER BY</code>, the database engine processes it logically in this sequence:</p>
+<ol>
+  <li><code>FROM</code> &amp; <code>JOIN</code>: Evaluates source relations and computes Cartesian products or join predicates to build working sets.</li>
+  <li><code>WHERE</code>: Filters individual rows based on boolean predicates before aggregation.</li>
+  <li><code>GROUP BY</code>: Partitions remaining rows into equivalence classes based on unique grouping keys.</li>
+  <li><code>HAVING</code>: Filters aggregate groups based on group-level predicates.</li>
+  <li><code>SELECT</code>: Evaluates expressions, aliases, and projection of columns.</li>
+  <li><code>DISTINCT</code>: Eliminates duplicate tuples from the projected set.</li>
+  <li><code>ORDER BY</code>: Sorts the resulting set (converting the mathematical <em>set/bag</em> into an ordered array/cursor).</li>
+  <li><code>LIMIT / OFFSET</code>: Truncates the sorted tuple stream for pagination.</li>
+</ol>
+
+<h3>3. Memory Management</h3>
+<p>SQL has no language-level memory constructs, manual memory management, explicit allocation, pointers, or garbage collection exposed to the developer. Memory management is entirely delegated to the Database Management System (DBMS) engine and its storage component.</p>
+<ul>
+  <li><strong>Buffer Pool Management:</strong> The engine allocates physical memory (RAM) into fixed-size buffer pools (cached data pages). Page eviction algorithms (like LRU or CLOCK) handle bringing disk pages into memory and flushing dirty pages back to disk.</li>
+  <li><strong>Execution Memory Allocation:</strong> During complex query execution, engines allocate memory per-operation (e.g., PostgreSQL's <code>work_mem</code> or MySQL's <code>sort_buffer_size</code>) for building hash tables or performing external sort-merge operations. If execution memory is exceeded, the engine spills temporary data to disk (Temp</div><hr><div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
 <p><strong>Timestamp:</strong> 2026-10-12 23:19 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -2028,32 +2056,7 @@ ORDER BY status ASC;
 
 <h3>3. Memory Management</h3>
 <p>Standard ANSI SQL abstracts memory management completely away from the application programmer. Memory allocation, heap usage, pointer arithmetic, and garbage collection do not exist at the language tier. However, at the engine (RDBMS) architecture level, memory management is one of the most critical subsystems.</p>
-</div><hr><div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
-<p><strong>Timestamp:</strong> 2026-09-20 07:59 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Swift was designed at Apple by Chris Lattner and his team, debuting in 2014 to replace Objective-C as the core language for Apple ecosystem development. Objective-C was burdened by its 1980s Smalltalk-on-C dynamic architecture, which suffered from unsafe C pointer arithmetic, fragile base classes, dynamic message dispatch overhead, and null-pointer dereference vulnerabilities.</p>
-
-<p>Swift was constructed around three foundational pillars: <strong>Safe</strong>, <strong>Fast</strong>, and <strong>Expressive</strong>. Rather than incrementally patching C legacy, Swift abandoned pointer arithmetic and implicit nullability entirely, drawing heavy inspiration from modern language theory—specifically Rust, Haskell, C#, and ML. Swift is a <strong>multi-paradigm</strong> language built primarily on a core philosophy known as <strong>Protocol-Oriented Programming (POP)</strong>, complemented by strong value-type Functional paradigms and Object-Oriented capabilities for system integration.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Swift employs a clean, modern syntax using brace-delimited block structures (`{}`). Semicolons are optional and omitted in idiomatic code, reserved only for separating multiple statements on a single line.</p>
-
-<ul>
-    <li><strong>Type System:</strong> Swift is strictly and statically typed with advanced local type inference. Variables declared with <code>let</code> are immutable (constants), while those declared with <code>var</code> are mutable.</li>
-    <li><strong>Explicit Nullability (Optionals):</strong> Swift enforces explicit handling of absent values using the <code>Optional&lt;Wrapped&gt;</code> enum type (syntactic sugar: <code>T?</code>). A non-optional variable can never hold a <code>nil</code> value, eradicating dynamic null pointer exceptions at compile time. Unwrapping requires safe patterns like <code>if let</code>, <code>guard let</code>, or the nil-coalescing operator (<code>??</code>).</li>
-    <li><strong>Control Flow:</strong> Control structures omit parens around conditions (e.g., <code>if x &gt; 10 { ... }</code>). Swift introduces the <code>guard</code> statement to enforce early exits, maintaining clean scope layout without deeply nested conditional checks.</li>
-    <li><strong>Pattern Matching:</strong> The <code>switch</code> statement is exhaustive and supports advanced pattern matching across tuple states, type casts, ranges, and enum payload bindings.</li>
-    <li><strong>Code Organization:</strong> Swift code is organized into <strong>Modules</strong> (targets/libraries) containing source files. There are no header files (`.h`); symbol visibility is managed natively across files within the same module via access levels (<code>private</code>, <code>fileprivate</code>, <code>internal</code>, <code>package</code>, <code>public</code>, <code>open</code>).</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Swift relies on <strong>Automatic Reference Counting (ARC)</strong> for reference types (classes) rather than a tracing Garbage Collector (GC). ARC deterministic overhead means there are no unpredictable "stop-the-world" collection pauses, making Swift suited for real-time graphics and low-latency systems.</p>
-
-<ul>
-    <li><strong>Value Types vs. Reference Types:</strong> 
-        <ul>
-            <li><code>struct</code>, <code>enum</code>, and primitive types (<code>Int</code>, <code>String</code>, <code>Array</code>) are <strong>Value Types</strong>. They live on the stack or inline inside containing structs, allocation/deallocation is</div><hr>
+</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
