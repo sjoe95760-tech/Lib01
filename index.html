@@ -17,7 +17,38 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Java</h2>
+<p><strong>Timestamp:</strong> 2026-10-14 02:30 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Java was engineered at Sun Microsystems (led by James Gosling) in 1995 to solve two foundational problems of 1990s systems development: platform dependency and memory unsafe practices inherent in C/C++. Its primary architectural directive was <strong>"Write Once, Run Anywhere" (WORA)</strong>, realized by decoupling source code from execution targets through an intermediate representation (bytecode) executed by a virtual machine (JVM).</p>
+
+<p>At its core, Java is a strongly typed, class-based, object-oriented programming (OOP) language. Its design philosophy prioritizes safety, portability, predictability, and backward compatibility over syntactic brevity or raw bare-metal execution speed. While historically rigid in its classic OOP paradigm, modern Java has evolved into a multi-paradigm language, integrating functional programming capabilities (lambdas, streams, immutability constructs like records) while rigorously preserving its legacy contract invariants.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Java inherits its syntactic lineage directly from C and C++, employing block-scoped semantics enforced by curly braces (<code>{}</code>) and statement termination via mandatory semicolons (<code>;</code>). It is completely whitespace-agnostic.</p>
+
+<p>Code organization in Java is strictly structured and nominal:</p>
+<ul>
+    <li><strong>Compilation Units:</strong> Every executable piece of code must reside inside a class, interface, record, or enum. A source file typically contains exactly one top-level public class whose name strictly matches the file name (e.g., <code>OrderProcessor.java</code> defines <code>public class OrderProcessor</code>).</li>
+    <li><strong>Namespaces:</strong> Modularity is managed via explicit <code>package</code> declarations mapped directly to directory hierarchies on the file system, combined with <code>import</code> statements to resolve dependencies.</li>
+    <li><strong>Control Flow:</strong> Standard imperative constructs control flow (<code>if/else</code>, <code>while</code>, <code>for</code> loops), augmented by modern expression-based <code>switch</code> statements featuring pattern matching and value extraction.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Java eliminates manual memory management (such as C-style <code>malloc</code>/<code>free</code> or explicit pointer manipulation) in favor of a runtime-managed memory ecosystem governed by a <strong>Tracing Garbage Collector (GC)</strong>.</p>
+
+<ul>
+    <li><strong>Stack vs. Heap:</strong> Execution threads maintain individual stack frames storing local primitive values and object reference pointers. All object instances reside dynamically on a shared heap.</li>
+    <li><strong>Garbage Collection Mechanics:</strong> Java's GC implementations (such as G1, ZGC, or Shenandoah) rely on the <em>Weak Generational Hypothesis</em>—the empirical observation that most objects die short deaths. The heap is typically segregated into Young and Old generations. Unreachable objects (determined via reachability analysis from GC roots like active thread stacks and static references) are reclaimed asynchronously.</li>
+    <li><strong>No Manual Pointers or Ownership Rules:</strong> Unlike Rust's compile-time ownership model or C++'s RAII, Java uses reference semantics. Memory safety is maintained runtime-side via array bounds checking, null-pointer checks, and safe object reference isolation.</li>
+</ul>
+
+<h3>4. Paradigms & Tactics</h3>
+<p>Java combines classic enterprise architectural patterns with modern operational capabilities:</p>
+
+<ul>
+    <li><strong>Object-Oriented Rigor:</strong> Java relies on strict nominal subtyping, single implementation inheritance for classes, multiple interface inheritance, and runtime virtual method dispatch. Ab</div><hr><div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
 <p><strong>Timestamp:</strong> 2026-10-13 12:16 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -2017,46 +2048,7 @@ Memory leaks occur when references persist unintentionally—typically via uncle
 </ul>
 
 <h3>3. Memory Management</h3>
-<p>Python (specifically the reference implementation, CPython) manages memory automatically</div><hr><div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
-<p><strong>Timestamp:</strong> 2026-09-20 12:54 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Structured Query Language (SQL) was conceived in the early 1970s by Donald Chamberlin and Raymond Boyce at IBM, rooted directly in Edgar F. Codd’s formalization of the <strong>Relational Model</strong>. Prior to SQL, database management systems relied on navigational structures (such as CODASYL or hierarchical models) where developers had to manually write procedural routines navigating physical pointers, disk locations, and record-at-a-time traversals.</p>
-<p>SQL solved this coupling by operating on a foundational paradigm shift: <strong>Declarative Programming based on Relational Algebra and First-Order Predicate Logic</strong>. Instead of specifying <em>how</em> to fetch data (procedural algorithms), a SQL query specifies <em>what</em> set of data is desired (declarative invariant). The underlying engine handles access-path optimization, execution planning, and memory layout. SQL is fundamentally neither Object-Oriented nor Functional in the traditional programming language sense; it is a specialized domain-specific language (DSL) built for set manipulation, tuple transformation, and relational predicate evaluation.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>SQL syntax is designed to resemble natural English sentences, utilizing reserved keywords, sub-clauses, and explicit logical operators. It is whitespace-insensitive and block-neutral, using semicolons (<code>;</code>) as mandatory or optional statement terminators depending on the dialect implementation.</p>
-<p>Code organization is divided into sub-languages:</p>
-<ul>
-  <li><strong>DDL (Data Definition Language):</strong> Schema creation and structure (<code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>).</li>
-  <li><strong>DML (Data Manipulation Language):</strong> Tuple querying and mutations (<code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>).</li>
-  <li><strong>DCL (Data Control Language):</strong> Access control (<code>GRANT</code>, <code>REVOKE</code>).</li>
-  <li><strong>TCL (Transaction Control Language):</strong> Boundaries of atomic execution (<code>BEGIN</code>, <code>COMMIT</code>, <code>ROLLBACK</code>).</li>
-</ul>
-<p>Crucially, SQL exhibits a sharp divergence between its <strong>lexical/syntactic order</strong> and its <strong>logical execution order</strong>. A query written as:</p>
-<pre>
-SELECT status, COUNT(*)
-FROM orders
-WHERE created_at &gt;= '2026-01-01'
-GROUP BY status
-HAVING COUNT(*) &gt; 100
-ORDER BY status ASC;
-</pre>
-<p>Is logically evaluated by the database engine in the following sequence:</p>
-<ol>
-  <li><code>FROM</code> &amp; <code>JOIN</code> (Materialize base relations/cartesian products)</li>
-  <li><code>WHERE</code> (Filter tuples based on predicates)</li>
-  <li><code>GROUP BY</code> (Partition tuples into buckets)</li>
-  <li><code>HAVING</code> (Filter bucket aggregates)</li>
-  <li><code>SELECT</code> (Project columns, compute expressions)</li>
-  <li><code>DISTINCT</code> (Deduplicate remaining tuples)</li>
-  <li><code>ORDER BY</code> (Sort the result set)</li>
-  <li><code>LIMIT / OFFSET</code> (Slice window of tuples)</li>
-</ol>
-
-<h3>3. Memory Management</h3>
-<p>Standard ANSI SQL abstracts memory management completely away from the application programmer. Memory allocation, heap usage, pointer arithmetic, and garbage collection do not exist at the language tier. However, at the engine (RDBMS) architecture level, memory management is one of the most critical subsystems.</p>
-</div><hr>
+<p>Python (specifically the reference implementation, CPython) manages memory automatically</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
