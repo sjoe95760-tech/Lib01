@@ -17,7 +17,23 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Java</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<p><strong>Timestamp:</strong> 2026-10-16 07:36 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Swift was designed by Apple (led by Chris Lattner) and unveiled in 2014 to completely replace Objective-C. Objective-C carried thirty years of legacy: C's unsafe pointer mechanics, manual memory pitfalls, dynamic message-passing performance overheads, and a lack of modern compile-time safety guarantees. Swift was engineered from the ground up on top of the LLVM compiler infrastructure to achieve three primary pillars: <strong>Safety, Speed, and Expressiveness</strong>.</p>
+
+<p>From a programming language theory (PLT) perspective, Swift is a compiled, statically typed, multi-paradigm language. It synthesizes elements from functional programming ( algebraic data types, immutable values, pattern matching, first-class functions), object-oriented programming (classes, inheritance, runtime polymorphism), and procedural programming. However, its defining architectural contribution is <strong>Protocol-Oriented Programming (POP)</strong>. Rather than relying on rigid, deeply nested class hierarchies, Swift encourages composition through interfaces (protocols) paired with default implementations via protocol extensions.</p>
+
+<p>Swift’s core design logic resolves the tension between high-level developer ergonomics and low-level execution efficiency. It eliminates undefined behavior by default: variables must be initialized before use, array bounds are checked at runtime, integer overflows trap by default, and pointers are encapsulated behind safe abstractions unless explicitly marked <code>Unsafe</code>.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Swift features a clean, C-family syntax heavily influenced by languages like Rust, Haskell, and Scala. It removes syntactic noise traditional to C and Objective-C while enforcing strict structural rules.</p>
+
+<ul>
+    <li><strong>Braces vs. Indentation:</strong> Swift uses explicit curly braces <code>{}</code> to delimit execution blocks. Indentation is purely convention, but parenthesis around control flow conditions (e.g., <code>if</code>, <code>while</code>) are omitted.</li>
+    <li><strong>Semicolons:</strong> Terminating semicolons (<code>;</code>) are optional and universally omitted by convention, required only when separating multiple distinct statements on a single physical line.</li>
+    <li><strong>Type System & Inference:</strong> Declarations rely on two core keywords: <code>let</code> for</div><hr><div class='lesson'><h2>🔍 Deep Dive: Java</h2>
 <p><strong>Timestamp:</strong> 2026-10-16 02:01 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -2032,25 +2048,7 @@ Memory leaks occur when references persist unintentionally—typically via uncle
 <p>Perl utilizes a deterministic <strong>Reference Counting Garbage Collection</strong> model supplemented by a internal C-struct hierarchy (SVs/Scalars, AVs/Arrays, HVs/Hashes):</p>
 
 <ul>
-    <li><strong>Automatic Reclamation:</strong> Every value tracks its reference count. When the count drops to zero, the object's destructor (the <code>DESTROY</code> method, if present) is immediately invoked, and memory is reclaimed deterministically without waiting for a stop-the</div><hr><div class='lesson'><h2>🔍 Deep Dive: Go</h2>
-<p><strong>Timestamp:</strong> 2026-09-22 05:33 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Go (or Golang) was designed at Google in 2007 by Robert Griesemer, Rob Pike, and Ken Thompson to solve large-scale software engineering problems. At the time, Google faced massive codebases, multi-core computing scaling challenges, and sluggish C++ build times. The core philosophy of Go is hyper-pragmatism, orthogonality, and extreme simplicity—deliberately prioritizing readability, fast compilation, and ease of maintenance over syntactic expressiveness or language feature density.</p>
-<p>From a programming language theory standpoint, Go is an <strong>imperative, statically typed, compiled procedural language with implicit structural subtyping and built-in concurrency primitives based on Communicating Sequential Processes (CSP)</strong>. It rejects class-based Object-Oriented Programming (OOP) in favor of composition and interfaces, and it rejects complex Functional Programming abstractions (such as monads, high-level map/filter chains, or dynamic macro systems) to keep the control flow strictly visible and explicit.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Go’s syntax belongs to the C family, but it was heavily streamlined to eliminate redundancy and reduce cognitive load during code reviews:</p>
-<ul>
-    <li><strong>Block Structure:</strong> Go uses standard curly braces <code>{}</code> for control blocks. Braces are mandatory even for single-line statements, preventing ambiguity bugs.</li>
-    <li><strong>Semicolons:</strong> Semicolons are formally part of Go's grammar, but they are automatically injected by the lexer using strict line-break rules. As a result, idiomatic Go code omits them entirely.</li>
-    <li><strong>Code Organization:</strong> Code is organized into <code>packages</code>. Symbol visibility is strictly controlled by casing: identifiers starting with an uppercase letter are public (exported), while those starting with a lowercase letter are private (package-internal). There are no access modifiers like <code>public</code> or <code>private</code>.</li>
-    <li><strong>Control Flow Simplicity:</strong> Go intentionally features only <em>one</em> looping construct: <code>for</code>. It serves as a traditional loop, a <code>while</code> loop, an infinite loop, and a range iterator (<code>for range</code>).</li>
-    <li><strong>Short Variable Declarations:</strong> Type inference is available via the short-declaration operator <code>:=</code> inside functions, while explicit typing (<code>var name type</code>) is used at the package level or when initial zero-values are desired.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Go features automatic memory management provided by a runtime environment that includes a low-latency, concurrent garbage collector (GC). The GC uses a <strong>tri-color mark-and-sweep engine</strong> with write barriers, optimized specifically to prioritize low pause times (sub-millisecond target) over raw throughput</div><hr>
+    <li><strong>Automatic Reclamation:</strong> Every value tracks its reference count. When the count drops to zero, the object's destructor (the <code>DESTROY</code> method, if present) is immediately invoked, and memory is reclaimed deterministically without waiting for a stop-the</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
