@@ -17,7 +17,34 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<p><strong>Timestamp:</strong> 2026-10-17 06:24 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Rust was designed by Graydon Hoare at Mozilla to resolve the fundamental trade-off in systems programming: the choice between safety (managed languages like Java or Go) and control/performance (unmanaged languages like C and C++). Historically, C and C++ allowed developers maximum hardware control at the cost of pervasive runtime vulnerabilities—specifically memory corruption bugs such as use-after-free, double frees, buffer overflows, and data races. Rust's core design philosophy is to achieve <strong>zero-cost abstractions</strong> and <strong>guaranteed memory and thread safety at compile time</strong> without relying on a garbage collector.</p>
+<p>From a programming language theory perspective, Rust is a pragmatically typed modern systems language. It drops classical class-based Object-Oriented Programming (OOP) in favor of a strong, static affine type system inspired by ML-family functional languages. It blends functional idioms (algebraic data types, parametric polymorphism, immutable-by-default variables, pattern matching) with procedural hardware control (explicit layout, pointer manipulation via unsafe blocks, direct syscall execution).</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Rust uses C-style block syntax using curly braces <code>{}</code> for scoping and explicit control flow. Indentation is purely convention, but idiomatic code strictly follows standard layout guidelines enforced by <code>rustfmt</code>.</p>
+<p>Key syntactic characteristics include:</p>
+<ul>
+    <li><strong>Expression-Oriented Design:</strong> Almost every block in Rust is an expression that evaluates to a value. Statements explicitly end with semicolons (<code>;</code>). Omitting the trailing semicolon from the final line of a function or block transforms it into an implicit return expression.</li>
+    <li><strong>Variable Binding & Mutability:</strong> Bindings are declared with <code>let</code> and are immutable by default. Mutability must be explicitly opted into using the <code>mut</code> keyword (e.g., <code>let mut count = 0;</code>), forcing developers to explicitly signal state mutability in the AST.</li>
+    <li><strong>Module & Package Hierarchy:</strong> Code is organized into units called <strong>crates</strong> (compiling down to binary or library artifacts). Modules (<code>mod</code>) establish namespaces and encapsulate visibility, which defaults to private unless explicitly marked with <code>pub</code>. Dependencies, builds, and metadata are declared declaratively via Cargo (<code>Cargo.toml</code>).</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Rust eliminates both runtime garbage collection (GC) overhead and explicit manual memory management (<code>malloc</code>/<code>free</code>) through a compile-time affine type system known as the <strong>Ownership and Borrowing system</strong>.</p>
+<p>This system operates on three invariant rules enforced strictly by the compiler's <strong>Borrow Checker</strong>:</p>
+<ol>
+    <li><strong>Ownership:</strong> Each value in memory has a single owner (a variable binding). When the owner goes out of scope, Rust automatically drops the value and reclaims memory using the RAII (Resource Acquisition Is Initialization) pattern via the automatically invoked <code>Drop</code> trait.</li>
+    <li><strong>Borrowing:</strong> Values can be accessed via references without transferring ownership. References are categorized into two mutually exclusive types:
+        <ul>
+            <li>Aliased Immutable References (<code>&T</code>): Multiple readers are allowed simultaneously.</li>
+            <li>Exclusive Mutable References (<code>&mut T</code>): Exactly one writer is allowed, with zero co-existing readers.</li>
+        </ul>
+    </li>
+    <li><strong>Lifetimes:</strong> Every reference has a static compile-time lifetime parameter</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
 <p><strong>Timestamp:</strong> 2026-10-17 01:56 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -2051,57 +2078,7 @@ The inner loop of a C# programmer's logic moves continuously between two tiers:<
 </ul>
 
 <h3>3. Memory Management</h3>
-<p>Swift explicitly avoids tracing Garbage Collection (GC) to ensure predictable performance, zero "stop-the-world" latency spikes, and low battery/memory footprints on mobile and embedded target hardware.</p></div><hr><div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
-<p><strong>Timestamp:</strong> 2026-09-23 23:16 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p><strong>Zero Trust Architecture (ZTA)</strong> is an enterprise security paradigm built on a fundamental axiom: <em>never trust, always verify</em>. Unlike traditional "castle-and-moat" security models that implicitly trust any user or device located inside the corporate network perimeter, Zero Trust assumes that threats exist both outside and inside the network at all times.</p>
-<p>The imperative for ZTA stems from the collapse of the traditional network boundary. Modern enterprise operations rely heavily on cloud infrastructures (IaaS, PaaS, SaaS), remote workforces, and mobile endpoints. Relying on network location as a proxy for trust creates massive vulnerability: once an attacker breaches the perimeter—whether via stolen credentials, phishing, or a compromised supply chain—they can move laterally across the internal network unhindered. ZTA addresses this systematic failure by removing implicit trust and continuously validating every access request at every layer.</p>
-
-<h3>2. How It Works</h3>
-<p>Zero Trust operates through three foundational tenets defined by NIST SP 800-207:</p>
-<ul>
-    <li><strong>Verify Explicitly:</strong> Always authenticate and authorize based on all available data points, including user identity, geographic location, device health, service or workload context, data classification, and real-time operational anomalies.</li>
-    <li><strong>Use Least Privilege Access:</strong> Limit user and system access with Just-In-Time (JIT) and Just-Enough-Access (JEA) controls, risk-based adaptive policies, and strict data protection mechanisms.</li>
-    <li><strong>Assume Breach:</strong> Minimize the blast radius by segmenting access by network, user, device, and application awareness. Encrypt all end-to-end sessions and leverage continuous telemetry to detect anomalies.</li>
-</ul>
-<p>Architecturally, ZTA relies on a control plane and a data plane. Key functional components include:</p>
-<ul>
-    <li><strong>Policy Engine (PE):</strong> The decision-maker responsible for deciding whether to grant access to a resource based on organizational policy and real-time risk assessment.</li>
-    <li><strong>Policy Administrator (PA):</strong> The control mechanism that communicates with the Policy Engine and issues commands to establish or terminate the session between the client and resource.</li>
-    <li><strong>Policy Enforcement Point (PEP):</strong> The gateway or agent that enables, monitors, and terminates connection sessions between a subject and an enterprise resource.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<p>Understanding Zero Trust requires analyzing how adversaries attempt to bypass it and how defensive controls counteract those attempts:</p>
-
-<table>
-    <thead>
-        <tr>
-            <th>Offensive Attack Technique</th>
-            <th>Defensive Zero Trust Countermeasure</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><strong>MFA Fatigue / Push Spam:</strong> Bombarding a user with push notifications to force an accidental MFA approval.</td>
-            <td><strong>Phishing-Resistant MFA:</strong> Enforcing FIDO2/WebAuthn hardware keys or certificate-based authentication (CBA) that binds the authentication request to the origin domain.</td>
-        </tr>
-        <tr>
-            <td><strong>Session Token Hijacking:</strong> Exfiltrating valid session cookies via Infostealer malware to bypass initial authentication.</td>
-            <td><strong>Continuous Adaptive Trust:</strong> Monitoring continuous endpoint telemetry (e.g., sudden IP jumps, process injection, cookie reuse from unknown devices) to revoke sessions mid-stream.</td>
-        </tr>
-        <tr>
-            <td><strong>Lateral Movement via Microservices:</strong> Pivoting across unsegmented internal microservices or cloud workloads.</td>
-            <td><strong>Micro-segmentation & mTLS:</strong> Enforcing Mutual TLS (mTLS) and strict Service-to-Service authorization policies, restricting internal communication strictly to explicit dependency paths.</td>
-        </tr>
-    </tbody>
-</table>
-
-<h3>4. Real-World Examples</h3>
-<ul>
-    <li><strong>Google's BeyondCorp:</strong> Initiated following Operation Aurora in 2009, Google completely shifted away from traditional VPNs to BeyondCorp. Every Google employee accesses internal applications directly from untrusted networks, with access granted based solely on user identity, device state, and policy compliance.</li>
-    <li><strong>The SolarWinds Cyberattack (2020):</strong> Attackers compromised internal build infrastructure to push backdoored software updates. Organizations with traditional network trust suffered lateral movement across domain controllers. Organizations operating under Zero Trust principles mitigated impact because internal assets required explicit identity and device verification regardless</div><hr>
+<p>Swift explicitly avoids tracing Garbage Collection (GC) to ensure predictable performance, zero "stop-the-world" latency spikes, and low battery/memory footprints on mobile and embedded target hardware.</p></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
