@@ -17,7 +17,25 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
+<p><strong>Timestamp:</strong> 2026-10-17 11:14 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>PHP (originally <em>Personal Home Page</em>, now a recursive acronym for <em>PHP: Hypertext Preprocessor</em>) was created by Rasmus Lerdorf in 1994. Unlike languages engineered in academic environments with overarching type systems or formal formalisms, PHP was born out of pragmatic web-engineering necessity: it was designed as a macro processor over C binaries to manage dynamic web pages and execute CGI scripts seamlessly embedded directly within HTML markup.</p>
+
+<p>The foundational design philosophy of PHP rests on three pillars:</p>
+<ul>
+    <li><strong>Pragmatism Over Theoretical Purity:</strong> PHP favors immediate, practical solutions for web-native execution over strict theoretical syntax or paradigm adherence. If a language feature makes web development faster, it is integrated.</li>
+    <li><strong>The "Share-Nothing" Execution Model:</strong> PHP requests operate in isolated execution contexts. Every incoming HTTP request boots up a script execution state, runs code, returns output, and destroys its state entirely. There is no shared context between requests at the language runtime layer.</li>
+    <li><strong>Gradual Pragmatic Evolution:</strong> Starting as an imperative macro engine, PHP transitioned into a procedural dynamic runtime (PHP 3/4), gained a complete object model (PHP 5), introduced performance JIT capabilities (PHP 8), and adopted gradual, strict, nominal static typing (PHP 7/8).</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Syntactically, PHP inherits heavy influence from C, Perl, and C++. It utilizes explicit block scoping denoted by curly braces <code>{}</code> and demands explicit statement termination with semicolons <code>;</code>. Variable names are sigil-prefixed (e.g., <code>$variable</code>), reflecting its early Perl heritage.</p>
+
+<p>Code execution flow is governed by the following mechanics:</p>
+<ul>
+    <li><strong>Embedding Contexts:</strong> PHP parsing operates via open (<code>&lt;?php</code>) and close (<code>?&gt;</code>) tags. Text outside these tags is passed directly to the output</div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
 <p><strong>Timestamp:</strong> 2026-10-17 06:24 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -2050,35 +2068,7 @@ The inner loop of a C# programmer's logic moves continuously between two tiers:<
 <h3>4. Real-World Examples</h3>
 <ul>
   <li><strong>Google BeyondCorp (Origins):</strong> Developed following "Operation Aurora" in 2009—a sophisticated state-sponsored campaign that compromised Google's internal network. Google abandoned the traditional intranet model entirely, shifting to BeyondCorp, where access depends exclusively on device state and user credentials, regardless of physical network location.</li>
-  <li><strong>The SolarWinds Supply Chain Attack (2020):</strong> Attackers</div><hr><div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
-<p><strong>Timestamp:</strong> 2026-09-24 07:19 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Swift was designed by Chris Lattner and Apple engineers (first released in 2014) as a modern replacement for Objective-C. Objective-C was constrained by its strict C heritage, manual dynamic dispatch overhead, unsafe pointers, fragile base class problems, and verbose dynamic message passing syntax (`[object method:arg]`).</p>
-
-<p>Swift's core philosophical imperative is <strong>"Safe by default, fast by design, expressive by nature."</strong> It addresses decades of software vulnerabilities by eliminating entire classes of common developer errors at compile time—most notably null pointer dereferences, array bounds violations, and integer overflows.</p>
-
-<p>From a language theory perspective, Swift is a multi-paradigm language that blends:</p>
-<ul>
-  <li><strong>Protocol-Oriented Programming (POP):</strong> Prioritizes composition over object-oriented inheritance via protocols and protocol extensions.</li>
-  <li><strong>Functional Programming:</strong> Value types, immutability by default, first-class functions, higher-order functions (`map`, `filter`, `reduce`), generics, algebraic data types (enums with associated values), and pattern matching.</li>
-  <li><strong>Object-Oriented Programming (OOP):</strong> Single-inheritance classes with dynamic dispatch, access control, and reference semantics.</li>
-  <li><strong>Systems Programming Ergonomics:</strong> Compiles natively to machine code via LLVM without a virtual machine or heavy runtime, yielding C/C++ competitive performance while providing high-level syntax abstractions.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Swift adopts C-style syntax familiar to C++, Java, and C# developers, but strips away legacy syntactic noise:</p>
-<ul>
-  <li><strong>Braces vs. Indentation:</strong> Code blocks are bounded by explicit curly braces `{}`. Indentation is aesthetic, but standard community conventions dictate 4 spaces.</li>
-  <li><strong>Semicolons:</strong> Optional at line endings; strictly required only when chaining multiple statements on a single line.</li>
-  <li><strong>No Header Files:</strong> Swift unifies declaration and implementation into single `.swift` files. Public APIs and symbols are exposed automatically via a module-based visibility system rather than include/import directives.</li>
-  <li><strong>Explicit Variable Binding:</strong> Immutability is enforced via `let` (constants) and mutability via `var` (variables). The type checker enforces assignment safety statically.</li>
-  <li><strong>Optionals (`Optional<T>`):</strong> Pointer nullability is lifted into the static type system. A type `T` can never hold a `nil` value. If nullability is needed, it must be declared explicitly as `T?`, which is syntactically sugar for an enum `Optional.some(T)` or `Optional.none`. Unwrapping requires explicit constructs like `if let`, `guard let`, or the nil-coalescing operator `??`.</li>
-  <li><strong>Exhaustive Pattern Matching:</strong> Control flow mechanisms, particularly `switch` statements, must evaluate all possible branches or supply a `default` case. Enums with associated values enable pattern matching over complex structural payloads.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Swift explicitly avoids tracing Garbage Collection (GC) to ensure predictable performance, zero "stop-the-world" latency spikes, and low battery/memory footprints on mobile and embedded target hardware.</p></div><hr>
+  <li><strong>The SolarWinds Supply Chain Attack (2020):</strong> Attackers</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
