@@ -17,7 +17,58 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Social Engineering</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
+<p><strong>Timestamp:</strong> 2026-10-17 21:49 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p><strong>Web Application Security</strong> is the practice of protecting web applications, web services, APIs, and their underlying infrastructure against malicious exploits, unauthorized access, and data breaches throughout the entire Software Development Life Cycle (SDLC). Unlike traditional network security, which focuses on perimeter controls like firewalls, web application security operates at Layer 7 (Application Layer) of the OSI model.</p>
+<p>Because web applications are fundamentally designed to be accessible to the public internet via standard ports (80/443), they represent an organization's most exposed attack surface. A breach at this layer can lead to direct access to backend databases, intellectual property theft, severe financial extortion via ransomware, breach of regulatory mandates (GDPR, PCI-DSS, HIPAA), and devastating loss of customer trust.</p>
+
+<h3>2. How It Works</h3>
+<p>Web application security works by enforcing controls across the client-server interaction model, analyzing data flows, and verifying state and access at every boundary:</p>
+<ul>
+    <li><strong>Request/Response Protocol Mechanics:</strong> Web communication relies on stateless HTTP/HTTPS transactions. Security mechanisms intercept, analyze, and sanitize these transactions at multiple control points (browsers, proxies, web application firewalls, and application code).</li>
+    <li><strong>Input Validation & Sanitization:</strong> Applications accept user input via URL parameters, headers, cookies, POST bodies, and API payloads. Security controls ensure that data is treated strictly as data, never as executable code or database commands.</li>
+    <li><strong>Session Management & Authentication:</strong> Since HTTP is stateless, applications use session tokens, JWTs (JSON Web Tokens), or secure cookies to maintain user state. Secure application logic ensures these tokens are cryptographically random, resistant to tampering, and restricted by security attributes (<code>Secure</code>, <code>HttpOnly</code>, <code>SameSite</code>).</li>
+    <li><strong>Access Control Verification:</strong> Before processing a request, the backend verifies both who the user is (Authentication) and whether they have explicit permissions to access or modify the requested resource (Authorization).</li>
+    <li><strong>Layered Defense Architecture:</strong> Modern setups deploy Web Application Firewalls (WAFs) for pattern-matching and rate-limiting at the perimeter, Runtime Application Self-Protection (RASP) within the app runtime, and rigorous secure coding practices within the application layer itself.</li>
+</ul>
+
+<h3>3. Common Attack/Defense Techniques</h3>
+<p>Application security requires matching offensive techniques with precise defensive countermeasures:</p>
+<ul>
+    <li><strong>SQL Injection (SQLi)</strong>
+        <ul>
+            <li><em>Offense:</em> Malicious input is injected into database queries to manipulate SQL logic, allowing attackers to dump database contents or execute arbitrary commands.</li>
+            <li><em>Defense:</em> Use Parameterized Queries (Prepared Statements) or Object-Relational Mapping (ORM) frameworks. Never concatenate user input directly into dynamic queries.</li>
+        </ul>
+    </li>
+    <li><strong>Cross-Site Scripting (XSS)</strong>
+        <ul>
+            <li><em>Offense:</em> Injecting malicious scripts (JavaScript) into trusted web pages, which then execute in victim browsers to steal session tokens or perform actions on their behalf.</li>
+            <li><em>Defense:</em> Apply context-aware output encoding (HTML, JavaScript, CSS), implement a strong Content Security Policy (CSP), and utilize modern frontend frameworks (React, Angular) that escape output by default.</li>
+        </ul>
+    </li>
+    <li><strong>Broken Access Control</strong>
+        <ul>
+            <li><em>Offense:</em> Attackers exploit weak access checks to bypass authorization, accessing other users' records or administrative functionality (e.g., changing <code>user_id=1002</code> to <code>user_id=1001</code> in an API endpoint).</li>
+            <li><em>Defense:</em> Enforce centralized, role-based (RBAC) or attribute-based (ABAC) authorization checks server-side for every single request; deny by default.</li>
+        </ul>
+    </li>
+    <li><strong>Server-Side Request Forgery (SSRF)</strong>
+        <ul>
+            <li><em>Offense:</em> Inducing the web server to make unauthorized HTTP requests to internal networks, cloud metadata services (e.g., <code>169.254.169.254</code>), or loopback interfaces.</li>
+            <li><em>Defense:</em> Restrict outbound network access from app servers, validate and sanitize all user-supplied URLs against strict allowlists, and disable redirection following.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>4. Real-World Examples</h3>
+<p>Analyzing historical incidents demonstrates how application vulnerabilities manifest in production environments:</p>
+<ul>
+    <li><strong>Equifax Breach (2017):</strong> Caused by an unpatched Remote Code Execution (RCE) vulnerability in Apache Struts (CVE-2017-5638). Attackers exploited the application layer parser, gaining persistent access to sensitive personal and financial data of over 147 million individuals.</li>
+    <li><strong>Capital One Data Breach (2019):</strong> An attacker exploited a Server-Side Request Forgery (SSRF) vulnerability in a misconfigured open-source Web Application Firewall deployed on AWS. This allowed the attacker to reach the internal AWS Metadata Service, obtain credentials, and download over 100 million customer records from S3 buckets.</li>
+    <li><strong>British Airways Magecart Attack (2</div><hr><div class='lesson'><h2>🔍 Deep Dive: Social Engineering</h2>
 <p><strong>Timestamp:</strong> 2026-10-17 19:47 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -2002,34 +2053,7 @@ The inner loop of a C# programmer's logic moves continuously between two tiers:<
 
 <p>Key structural principles include:</p>
 <ul>
-    <li><strong>Namespaces & Scope (LEGB Rule):</strong> Variable lookup resolves sequentially across four scopes: <strong>L</strong>ocal, <strong>E</strong>nclosing (nonlocal), <strong>G</strong>lobal, and <strong>B</strong>uilt-in. Names</div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
-<p><strong>Timestamp:</strong> 2026-09-26 06:46 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Rust was created by Graydon Hoare and refined by Mozilla to solve a fundamental dilemma in systems programming: the choice between <strong>control/performance</strong> (C/C++) and <strong>safety</strong> (Java, Go, C#). Traditional systems languages sacrifice safety, leading to critical memory vulnerabilities (use-after-free, double frees, buffer overflows) and multi-threading data races. Higher-level languages achieve safety via runtime overheads like Garbage Collection (GC) or managed runtimes, sacrificing predictable latency and raw performance.</p>
-
-<p>Rust's core thesis is that <strong>memory safety and data-race freedom can be guaranteed at compile time without a garbage collector</strong> through formal compile-time invariants. It bridges several programming paradigms:</p>
-
-<ul>
-  <li><strong>Functional Foundations:</strong> Heavily influenced by ML and OCaml (Rust's original compiler was written in OCaml). It features algebraic data types (enums), pattern matching, algebraic type systems, traits, immutability by default, and expressions over statements.</li>
-  <li><strong>Procedural & Systems Power:</strong> Low-level layout control, deterministic resource destruction, direct memory pointers, and zero-cost abstractions that compile down to LLVM bitcode without hidden runtime costs.</li>
-  <li><strong>Rejection of Inheritance-based OOP:</strong> Rust abandons class-based object-oriented hierarchies in favor of composition, encapsulation, and trait-based parametric polymorphism.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Rust inherits C-family block syntax using curly braces (<code>{}</code>) for scope boundaries and semicolons (<code>;</code>) for statement termination. However, its control flow logic is fundamentally <strong>expression-oriented</strong> rather than statement-oriented.</p>
-
-<ul>
-  <li><strong>Expression-Oriented Architecture:</strong> Blocks, <code>if/else</code> constructs, and <code>match</code> statements evaluate to values. The presence or absence of a trailing semicolon determines a block's output:
-    <pre><code>let status = if binary_flag {
-    "active" // No semicolon = return value of block
-} else {
-    "inactive"
-};</code></pre>
-  </li>
-  <li><strong>Code Organization:</strong> Code is organized into <em>Crates</em> (compilation units, yielding a binary or library) and <em>Modules</em> (hierarchical namespaces within crates). Cargo is the standard build system and package manager.</li>
-  <li><strong>Immutability by Default:</strong> Variables are immutable unless explicitly declared with the <code>mut</code> keyword:
-    <pre</div><hr>
+    <li><strong>Namespaces & Scope (LEGB Rule):</strong> Variable lookup resolves sequentially across four scopes: <strong>L</strong>ocal, <strong>E</strong>nclosing (nonlocal), <strong>G</strong>lobal, and <strong>B</strong>uilt-in. Names</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
