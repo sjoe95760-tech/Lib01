@@ -17,7 +17,33 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Java</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Kotlin</h2>
+<p><strong>Timestamp:</strong> 2026-10-22 08:03 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Kotlin was designed by JetBrains in 2011 to solve a practical developer ergonomics crisis: the verbosity, boilerplate, and slow evolution of Java, without sacrificing the vast performance and library ecosystem of the Java Virtual Machine (JVM). Its primary objective is pragmatic interoperability and compile-time safety over academic theoretical purity.</p>
+
+<p>Kotlin is an industrial-grade, statically typed, multi-paradigm language. It seamlessly blends Object-Oriented Programming (OOP) and Functional Programming (FP) while targeting multiple platforms: JVM bytecode, Native binaries (via LLVM), JavaScript, and WebAssembly (Wasm). Its core design philosophy rests on four pillars:</p>
+
+<ul>
+    <li><strong>Compile-Time Null Safety:</strong> Eliminates the "Billion-Dollar Mistake" by bifurcating the type system into nullable (<code>T?</code>) and non-nullable (<code>T</code>) types at compile time.</li>
+    <li><strong>100% Interoperability:</strong> Seamlessly consumes legacy Java/Objective-C/C codebases without runtime wrapper overhead or translation degradation.</li>
+    <li><strong>Expressiveness & Brevity:</strong> Reduces line counts through features like data classes, type inference, extension functions, and operator overloading, shifting cognitive load from mechanics to logic.</li>
+    <li><strong>Pragmatic Evolution:</strong> Uses compiler plugins and language feature flags to introduce updates gracefully without fragmenting the ecosystem.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Kotlin belongs to the C-family of languages, utilizing curly braces (<code>{}</code>) for scoping. Semicolons are optional and idiomatic Kotlin omits them entirely, relying on implicit line-ending detection.</p>
+
+<p>Code is organized into packages and modules. Unlike Java, Kotlin does not enforce a rigid matching between file names and public class names; multiple top-level classes, functions, and properties can reside within a single file.</p>
+
+<ul>
+    <li><strong>Variable Binding & Mutation:</strong> Mutability is explicit at declaration using <code>val</code> (immutable/read-only reference) vs. <code>var</code> (mutable reference). Type inference allows skipping explicit types: <code>val message = "Hello"</code>.</li>
+    <li><strong>Functions as First-Class Citizens:</strong> Declared with the <code>fun</code> keyword. Single-expression functions shorten syntax: <code>fun add(a: Int, b: Int) = a + b</code>.</li>
+    <li><strong>Expression-Based Control Flow:</strong> Idiomatic Kotlin treats constructs like <code>if/else</code>, <code>try/catch</code>, and <code>when</code> as expressions returning values, eliminating the need for ternary operators:
+        <pre><code>val status = when (code) {
+    200 -&gt; "OK"
+    404 -&gt; "Not Found</div><hr><div class='lesson'><h2>🔍 Deep Dive: Java</h2>
 <p><strong>Timestamp:</strong> 2026-10-22 02:15 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1967,26 +1993,7 @@ JavaScript does not use classical, class-based inheritance at the runtime level.
     <li><strong>Prefer Protocols over Class Hierarchies:</strong> Instead of building an abstract base class like <code>BaseAnimal</code>, define capabilities like <code>Flyable</code>, <code>Runnable</code>, or <code>Codable</code> using protocols. Compose these onto concrete structs or enums.</li>
     <li><strong>Leverage the Compiler as a Verifier:</strong> Offload invariants to the type system. Encode domain constraints directly into exhaustive <code>enum</code> associated values and non-optional types so that invalid states become literal compile errors rather than runtime exceptions.</li>
 </ol>
-<p>Under the hood, the internal execution engine translates high-level Swift source code into <strong>Swift Intermediate Language (SIL)</strong>. SIL performs domain-specific analyses—such as checking for initialization, verifying actor boundaries, evaluating escape analysis, and hoisting ARC retain/release calls outside loops—before handing down optimized representation to LLVM. This balance makes Swift feel as light and dynamic as Python at the API layer, while yielding the mechanical purity, deterministic memory control, and execution speed of C++.</p></div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
-<p><strong>Timestamp:</strong> 2026-09-30 06:06 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Rust was created by Graydon Hoare at Mozilla to resolve a foundational dilemma in systems programming: the choice between safety (provided by managed, garbage-collected languages like Java or Go) and performance/control (provided by unmanaged languages like C and C++). Historically, writing high-performance network infrastructure or browser engines required C++, accepting memory corruption bugs (use-after-free, double free, dangling pointers, buffer overflows) and dynamic data races as inevitable costs.</p>
-
-<p>Rust's core design philosophy is <strong>zero-cost abstractions and compile-time guarantees</strong>. It aims to eliminate entire classes of runtime safety bugs without introducing runtime overhead, such as a tracing garbage collector or a stop-the-world VM. Paradigmatically, Rust is a pragmatically unified language:</p>
-
-<ul>
-  <li><strong>Functional Foundations:</strong> Heavily influenced by ML and Haskell, featuring algebraic data types (enums), exhaustive pattern matching, traits (type classes), default immutability, and an affine type system.</li>
-  <li><strong>Procedural / Systems Core:</strong> C-like control flow, explicit pointer semantics, deterministic memory layouts, and direct hardware accessibility via inline assembly and foreign function interfaces (FFI).</li>
-  <li><strong>Object-Oriented (without inheritance):</strong> Support for encapsulation and polymorphism via structs and traits, explicitly rejecting class-based implementation inheritance in favor of composition.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Rust uses C-family block syntax with curly braces <code>{}</code> and semicolons <code>;</code>. However, its semantics are overwhelmingly <strong>expression-based</strong> rather than statement-based.</p>
-
-<ul>
-  <li><strong>Expressions vs. Statements:</strong> Blocks evaluate to their final expression if no semicolon is appended. For instance, <code>let x = if condition { 5 } else { 10 };</code> treats the <code>if</code> block as a value-producing expression.</li>
-  <li><strong>Type Inference & System:</strong> Rust is statically typed with strong, Hindley-Milner-derived type inference. Variable bindings are introduced via </div><hr>
+<p>Under the hood, the internal execution engine translates high-level Swift source code into <strong>Swift Intermediate Language (SIL)</strong>. SIL performs domain-specific analyses—such as checking for initialization, verifying actor boundaries, evaluating escape analysis, and hoisting ARC retain/release calls outside loops—before handing down optimized representation to LLVM. This balance makes Swift feel as light and dynamic as Python at the API layer, while yielding the mechanical purity, deterministic memory control, and execution speed of C++.</p></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
