@@ -17,7 +17,20 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Go</h2>
+<p><strong>Timestamp:</strong> 2026-10-23 05:31 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Go (Golang) was created at Google in 2007 by Robert Griesemer, Rob Pike, and Ken Thompson to address systemic software engineering pain points in massive, multi-core distributed systems. It was designed as a direct reaction against the cognitive and operational overhead of C++ and Java—specifically slow build times, complex class hierarchies, uncontrolled dependency trees, and difficult multithreading.</p>
+
+<p>From a language theory perspective, Go is a statically typed, compiled language with a modern procedural core, explicit composition-based object-oriented capabilities, and lightweight functional elements (first-class functions and closures). Its foundational philosophy is <strong>radical minimalism and orthogonality</strong>: features are kept intentionally sparse so that code written by one engineer is instantly readable by another. Rather than attempting to express every abstract pattern via syntax, Go prioritizes compiler speed, developer ergonomics, fast startup, and explicit control over runtime behavior.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Go's syntax borrows heavily from the C family, stripped of redundant tokens and syntactic fluff:</p>
+<ul>
+    <li><strong>Structure & Scope:</strong> Code is organized into packages. Visibility is determined by identifier capitalization: upper-case identifiers (e.g., <code>ExportedFunc</code>) are public to other packages; lower-case identifiers (e.g., <code>internalVar</code>) are package-private.</li>
+    <li><strong>Braces vs. Indentation:</strong> Go uses standard curly braces <code>{}</code> for block scoping. Formatting is strictly standardized across the entire ecosystem by the built-in <code>gofmt</code> tool, eliminating code-style debates.</li>
+    <li><strong>Semicolons:</strong> Formal grammar includes semicolons, but the lexer automatically injects them using strict line-break rules. This mandates specific formatting rules (e.g., opening braces must remain on the same line as statements).</li></div><hr><div class='lesson'><h2>🔍 Deep Dive: Python</h2>
 <p><strong>Timestamp:</strong> 2026-10-23 00:24 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1928,11 +1941,7 @@ JavaScript does not use classical, class-based inheritance at the runtime level.
     <ol>
       <li><strong>Filtering & Matching:</strong> Selectors match DOM nodes using pattern recognition (tag, class, ID, pseudo-states).</li>
       <li><strong>Cascade Resolution:</strong> Conflicting declarations are ordered by origin (User Agent, User, Author), explicit importance (<code>!important</code>), specificity score vector tuple <code>(Inline, ID, Class/Attr, Type)</code>, and source order.</li>
-      <li><strong>Inheritance & Computation:</strong> Specified values are transformed into</div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
-<p><strong>Timestamp:</strong> 2026-10-02 06:23 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Rust was created by Graydon Hoare at Mozilla to resolve a historic false dichotomy in software engineering: choosing between control over hardware resources (C</div><hr>
+      <li><strong>Inheritance & Computation:</strong> Specified values are transformed into</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
