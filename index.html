@@ -17,7 +17,30 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<p><strong>Timestamp:</strong> 2026-10-24 06:37 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Rust was birthed out of Mozilla Research by Graydon Hoare and a community of open-source contributors to solve a fundamental dilemma in programming language design: the trade-off between <strong>performance</strong> and <strong>memory safety</strong>. Historically, low-level control over system resources (C/C++) required manual memory management, exposing systems to ubiquitous memory corruption vulnerabilities (use-after-free, double-free, buffer overflows, and data races). High-level languages guaranteed safety, but at the cost of runtime overhead via Garbage Collection (GC) or interpreter abstractions.</p>
+
+<p>Rust solves this using a <strong>zero-cost abstraction</strong> model grounded in affine type theory. Its design philosophy can be summarized as:</p>
+<ul>
+    <li><strong>Compile-time dynamic checks replacement:</strong> Shift invariant verification from runtime to compile time.</li>
+    <li><strong>Explicit over implicit:</strong> No hidden allocations, no implicit copy constructors, and no uncontrolled control-flow jumps.</li>
+    <li><strong>Multi-paradigm pragmatism:</strong> It is primarily an imperative, functional-influenced language. It discards classic Object-Oriented Programming (OOP) inheritance in favor of composition via <strong>algebraic data types (ADTs)</strong> and <strong>type classes (Traits)</strong>.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Rust adopts a C-family lexical syntax with curly braces <code>{}</code>, explicit semicolons <code>;</code>, and standard control structures, but operates heavily on an <strong>expression-based</strong> evaluation model rather than a statement-based one.</p>
+
+<ul>
+    <li><strong>Expressions vs. Statements:</strong> In Rust, almost every block returns a value. Omitting the trailing semicolon converts an expression into a block's return value:
+        <pre><code>let y = {
+    let x = 3;
+    x + 1 // No semicolon: evaluates and returns 4
+};</code></pre>
+    </li>
+    <li><strong>Immutability by Default:</strong> Bindings declared with <code>let</code> are immutable.</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
 <p><strong>Timestamp:</strong> 2026-10-24 01:13 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1950,42 +1973,7 @@ do {
     case failure(Error)
 }</code></pre> This forces the compiler to check all code paths exhaustively via <code>switch</code> statements.</li>
     <li><strong>Progressive Disclosure:</strong> The language design allows simple script-like code at the surface, while exposing low-level systems mechanics (generics constraints, low-level pointers, custom allocation ownership) to developers as performance demands scale up.</li>
-</ol></div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
-<p><strong>Timestamp:</strong> 2026-10-03 01:31 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>JavaScript was created in 1995 by Brendan Eich at Netscape under an extreme 10-day deadline. Its original mandate was to serve as a lightweight, accessible scripting language for non-programmers to manipulate Web documents, operating alongside Java (which was targeted at professional enterprise software). This dynamic birthed a unique hybrid language: C-like syntax to appeal to Java developers, first-class functions inspired by Scheme, and prototype-based object orientation borrowed from Self.</p>
-
-<p>JavaScript is a dynamically and weakly typed, interpreted or Just-In-Time (JIT) compiled, multi-paradigm programming language. It solves the core problem of client-side document orchestration and non-blocking state synchronization. Rather than forcing a single structural discipline, it accommodates procedural scriptwriting, object-oriented design via prototype delegation, and functional programming idioms through closures and higher-order functions. The governing design constraint of JavaScript has always been backward compatibility—the principle of "don't break the Web"—which means design mistakes from the 1990s (such as dynamic coercion rules and legacy globals) persist alongside cutting-edge modern features.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>JavaScript adopts C-style lexical syntax using curly braces <code>{}</code> to define statement blocks and operators like <code>+</code>, <code>=</code>, and <code>===</code>. Unlike indentation-sensitive languages like Python, whitespace is mostly non-syntactic.</p>
-
-<ul>
-  <li><strong>Semicolons & ASI:</strong> Statements are typically terminated with semicolons (<code>;</code>). However, JavaScript engines feature Automatic Semicolon Insertion (ASI), a parser mechanism that implicitly inserts semicolons based on line breaks and grammar rules. This leads to stylistic debates (explicit vs. implicit semicolons) and edge-case syntax bugs (e.g., multiline return statements).</li>
-  <li><strong>Scoping & Declarations:</strong> Modern JavaScript operates on explicit lexical scope. Variable binding semantics are determined by declaration keywords:
-    <ul>
-      <li><code>const</code>: Block-scoped, immutable identifier binding (though the bound value itself may be mutable).</li>
-      <li><code>let</code>: Block-scoped, re-assignable binding, subject to the Temporal Dead Zone (TDZ) before declaration.</li>
-      <li><code>var</code>: Legacy function-scoped or globally-scoped binding that undergoes variable hoisting without block constraints.</li>
-    </ul>
-  </li>
-  <li><strong>Code Organization:</strong> Code organization has evolved from single-file procedural scripts to strict ES Modules (ESM) defined by <code>import</code> and <code>export</code> statements. ESM enforces static module resolution, deferred execution, and strict mode by default.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>JavaScript delegates memory management entirely to the runtime engine (e.g., V8, JavaScriptCore, SpiderMonkey) using automatic <strong>Garbage Collection (GC)</strong>. Developers do not perform manual allocation or deallocation, nor does JavaScript enforce Rust-style compile-time ownership tracking.</p>
-
-<ul>
-  <li><strong>Tracing Garbage Collection:</strong> Modern engines primarily employ a generational, mark-and-sweep GC algorithm combined with Cheney's copying algorithm for young generations. Objects are allocated in the "Nursery" or "Young Generation" heap. Objects that survive multiple collection passes are promoted to the "Old Generation" heap, which is scanned less frequently via incremental and concurrent marking.</li>
-  <li><strong>Reference Reachability:</strong> An object is eligible for garbage collection when it becomes unreachable from any root context (e.g., the global object, current call stack execution contexts, or active closures). Simple reference counting is insufficient due to circular references, which tracing GC successfully resolves.</li>
-  <li><strong>Memory Leaks:</strong> Common memory leaks in JavaScript stem from unintended references retained in long-lived closures, dangling DOM nodes attached to global objects, uncleared timers (<code>setInterval</code>), or unmanaged <code>Map</code>/<code>Set</code> references. To mitigate this, ECMAScript provides weak references via <code>WeakMap</code> and <code>WeakSet</code>, where keys are held weakly and do not prevent GC.</li>
-</ul>
-
-<h3>4. Paradigms & Tactics</h3>
-
-<p><strong>Object-Oriented Programming (OOP): Prototype Delegation</strong><br>
-JavaScript does not use classical, class-based inheritance at the runtime level. Instead, it relies on prototypal inheritance. Every object maintains an internal link (<code>[[Prototype]]</code>) to another object. Property access delegates up this "prototype chain" until the property is found or <code>null</code> is reached. The ES6 <code>class</code>, <code>extends</code></div><hr>
+</ol></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
