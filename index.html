@@ -17,7 +17,77 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Go</h2>
+<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<p><strong>Timestamp:</strong> 2026-10-24 01:13 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>JavaScript was created in 10 days in 1995 by Brendan Eich for Netscape Communications. It was designed to solve a specific problem: providing lightweight, dynamic client-side scripting inside web browsers without requiring the overhead of compiling full Java applets or making expensive, full-page round-trips to a remote web server.</p>
+<p>From a programming language theory perspective, JavaScript is a hybrid design disguised under C-style syntax. Its theoretical DNA is primarily composed of two distinct paradigms:</p>
+<ul>
+  <li><strong>Scheme (Lisp dialect):</strong> First-class functions, lexical scoping, and higher-order functions.</li>
+  <li><strong>Self (Smalltalk dialect):</strong> Prototypal inheritance rather than classical, class-based object orientation.</li>
+</ul>
+<p>Architecturally, JavaScript is dynamic, weakly/coercively typed, and garbage-collected. Rather than enforcing strict structural rigidity at compile time, it prioritizes runtime adaptability and non-blocking asynchronous execution, standardized under the ECMAScript specification (ECMA-262) managed by TC39.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>JavaScript uses C-style block syntax, using curly braces <code>{}</code> for scope definitions and block statements, and parentheses <code>()</code> for parameter list definitions and control flow evaluation. Indentation is purely stylistic and ignored by the parser.</p>
+<p>Key syntactic characteristics include:</p>
+<ul>
+  <li><strong>Semicolons & ASI:</strong> Statement terminations traditionally require a semicolon <code>;</code>. However, the engine features Automatic Semicolon Insertion (ASI), which attempts to infer missing semicolons at line breaks. ASI can lead to subtle bugs (e.g., restricted productions like an unparenthesized <code>return</code> followed by a newline returning <code>undefined</code>).</li>
+  <li><strong>Variable Binding Mechanics:</strong>
+    <ul>
+      <li><code>var</code>: Function-scoped or globally scoped, hoisted with an initial value of <code>undefined</code>.</li>
+      <li><code>let</code>: Block-scoped, hoisted to the top of the block but uninitialized (residing in the "Temporal Dead Zone" until evaluation).</li>
+      <li><code>const</code>: Block-scoped, immutable binding (the reference cannot be reassigned, though the pointed-to object remains mutable).</li>
+    </ul>
+  </li>
+  <li><strong>Control Flow:</strong> Standard imperative constructs (<code>if/else</code>, <code>switch</code>, <code>while</code>, <code>for</code>) exist alongside declarative array iteration methods (<code>map</code>, <code>filter</code>, <code>reduce</code>) and modern asynchronous iteration (<code>for await...of</code>).</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>JavaScript employs automatic memory management via a managed heap and stack system overseen by an engine-level Garbage Collector (GC). Developers do not manually allocate or free memory using raw pointers, nor does the language enforce strict compile-time ownership tracking like Rust.</p>
+<ul>
+  <li><strong>Allocation:</strong> Primitive values (numbers, booleans, symbols) and stack frames are stored directly on the stack, whereas reference types (objects, arrays, functions) are allocated on the dynamically sized heap.</li>
+  <li><strong>Garbage Collection Algorithm:</strong> Modern JS engines (such as V8 or JavaScriptCore) use a <strong>Generational Mark-and-Sweep</strong> GC algorithm:
+    <ul>
+      <li><strong>Roots:</strong> Global objects, current call stack variables, and DOM references serve as root nodes.</li>
+      <li><strong>Marking Phase:</strong> The GC traverses object references starting from roots, marking reachable objects.</li>
+      <li><strong>Sweeping Phase:</strong> Unreachable memory allocations are reclaimed.</li>
+      <li><strong>Generational Compaction:</strong> Memory is split into "Young Generation" (frequently allocated/freed ephemeral data) and "Old Generation" (surviving objects promoted for less frequent GC scans).</li>
+    </ul>
+  </li>
+  <li><strong>Weak References:</strong> To prevent memory leaks caused by lingering object references in collections, JavaScript provides <code>WeakMap</code> and <code>WeakSet</code>, which hold "weak" references that do not prevent the GC from reclaiming key objects.</li>
+</ul>
+
+<h3>4. Paradigms & Tactics</h3>
+<p>JavaScript is explicitly multi-paradigm, accommodating functional, object-oriented, and event-driven reactive styles.</p>
+
+<h4>Object-Oriented Programming (Prototypal)</h4>
+<p>Unlike Java or C++, JavaScript has no native runtime concept of traditional classes. Every object has an internal hidden link—denoted as <code>[[Prototype]]</code>—pointing to another object. Property resolution executes via delegation down the <strong>prototype chain</strong> until the key is found or <code>null</code> is reached. The ES6 <code>class</code> syntax is purely syntactic sugar over this prototype delegation mechanism.</p>
+
+<h4>Concurrency: The Event Loop</h4>
+<p>JavaScript runs on a <strong>single-threaded, non-blocking Event Loop</strong> model within a given execution agent (e.g., browser tab or Node.js thread). Concurrency is achieved asynchronously through host environments offloading I/O operations:</p>
+<ul>
+  <li><strong>Call Stack:</strong> Executes synchronous code frames (LIFO).</li>
+  <li><strong>Microtask Queue:</strong> Holds high-priority callbacks, such as resolved <code>Promise</code> jobs and <code>queueMicrotask</code>. Executes to total exhaustion after the current stack frame finishes and before the frame paints.</li>
+  <li><strong>Macrotask Queue (Task Queue):</strong> Holds standard host API callbacks like <code>setTimeout</code>, I/O events, and user inputs. Executed one per loop iteration.</li>
+</ul>
+
+<h4>Error Handling</h4>
+<p>Errors are handled imperatively through exceptions using standard <code>try...catch...finally</code> blocks. Asynchronous errors in <code>Promise</code> pipelines rely on <code>.catch()</code> rejection handlers or <code>try...catch</code> wrapping inside <code>async/await</code> syntax.</p>
+
+<h3>5. Unique Patterns & Ecosystem</h3>
+<ul>
+  <li><strong>Design Patterns:</strong>
+    <ul>
+      <li><em>Module Pattern / Closures:</li> Encapsulating private state within outer function scopes using lexical environment retention.</li>
+      <li><em>Observer / Pub-Sub:</em> The backbone of the DOM event architecture and Node.js <code>EventEmitter</code>.</li>
+      <li><em>Higher-Order Functions (HOFs):</em> Functions taking functions as arguments or returning functions to implement currying, composition, and middleware pipelines.</li>
+    </ul>
+  </li>
+  <li><strong>Ecosystem & Tooling:</strong>
+    <ul>
+      <li><em>Runtimes:</em> Web Browsers, Node.js, Deno, Bun, and V</div><hr><div class='lesson'><h2>🔍 Deep Dive: Go</h2>
 <p><strong>Timestamp:</strong> 2026-10-23 05:31 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1915,33 +1985,7 @@ do {
 <h3>4. Paradigms & Tactics</h3>
 
 <p><strong>Object-Oriented Programming (OOP): Prototype Delegation</strong><br>
-JavaScript does not use classical, class-based inheritance at the runtime level. Instead, it relies on prototypal inheritance. Every object maintains an internal link (<code>[[Prototype]]</code>) to another object. Property access delegates up this "prototype chain" until the property is found or <code>null</code> is reached. The ES6 <code>class</code>, <code>extends</code></div><hr><div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
-<p><strong>Timestamp:</strong> 2026-10-02 13:18 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>HTML (HyperText Markup Language) and CSS (Cascading Style Sheets) are domain-specific declarative languages designed to solve the problem of cross-platform document structuring and layout rendering. They are neither Object-Oriented, Functional, nor Procedural in the classical imperative sense.</p>
-
-<p><strong>HTML</strong> was created to describe the semantic hierarchy and intent of information via a tree structure. Its design philosophy centers on context-free markup and forgiving parsing (guided by Postel’s Law: "Be conservative in what you do, be liberal in what you accept from others"). It decouples content structure from runtime execution and visual representation.</p>
-
-<p><strong>CSS</strong> was created to solve the presentation coupling issue inherent in early HTML. CSS operates as a declarative pattern-matching constraint system. It applies visual rules to nodes in the Document Object Model (DOM) through an ascending/descending specificity algorithm (the Cascade) and a rule inheritance tree. Together, they achieve strict separation of concerns: HTML dictates structural semantics, CSS dictates spatial and visual constraints, and JavaScript governs dynamic behavior.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Both languages use explicit declarative syntax without traditional sequential execution flow control (such as loops or branches), relying instead on tree transformation and continuous evaluation.</p>
-
-<p><strong>HTML Syntax & Parsing Flow:</strong></p>
-<ul>
-  <li><strong>Tree Construction:</strong> Syntactically structured using angle brackets to define tags and attributes (<code>&lt;element attribute="value"&gt;child&lt;/element&gt;</code>).</li>
-  <li><strong>Fault Isolation:</strong> HTML uses a custom deterministic context-free parsing algorithm defined by the WHATWG standard. Unclosed tags or malformed elements do not halt execution; the parser uses recovery state machines to insert implicit elements and force tree construction.</li>
-</ul>
-
-<p><strong>CSS Syntax & Cascading Flow:</strong></p>
-<ul>
-  <li><strong>Structure:</strong> Rulesets consist of selectors and declaration blocks enclosed in braces: <code>selector { property: value; }</code>. Statements are delimited by semicolons. Indentation is ignored.</li>
-  <li><strong>Evaluation Pipeline:</strong> CSS flows through a deterministic evaluation pipeline:
-    <ol>
-      <li><strong>Filtering & Matching:</strong> Selectors match DOM nodes using pattern recognition (tag, class, ID, pseudo-states).</li>
-      <li><strong>Cascade Resolution:</strong> Conflicting declarations are ordered by origin (User Agent, User, Author), explicit importance (<code>!important</code>), specificity score vector tuple <code>(Inline, ID, Class/Attr, Type)</code>, and source order.</li>
-      <li><strong>Inheritance & Computation:</strong> Specified values are transformed into</div><hr>
+JavaScript does not use classical, class-based inheritance at the runtime level. Instead, it relies on prototypal inheritance. Every object maintains an internal link (<code>[[Prototype]]</code>) to another object. Property access delegates up this "prototype chain" until the property is found or <code>null</code> is reached. The ES6 <code>class</code>, <code>extends</code></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
