@@ -17,7 +17,13 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Go</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
+<p><strong>Timestamp:</strong> 2026-10-25 10:18 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Ruby was created in 1995 by Yukihiro "Matz" Matsumoto with a single core philosophy: <strong>human-centric design over machine efficiency</strong>. Matz synthesized elements from Perl (expressiveness, text processing), Smalltalk (pure object orientation), Lisp (closures and metaprogramming), and Ada (structured programming) to build a language designed specifically for developer joy and productivity, famously summarized by the community ethos <em>MINASWAN</em> ("Matz Is Nice And So We Are Nice").</p>
+
+<p>The core design principle is the <strong>Principle of Least Surprise (POLS)</strong>, meaning the language behaves in ways that mirror human intuitive expectations rather than computer architecture constraints. Ruby is a <strong>pure Object-Oriented Language</strong> where absolutely everything—including primitive literals like integers (<code>5</code>), booleans (<code>true</code>), and <code>nil</code>—is an instance of an object descending from a common ancestor (<code>Object</code> or <code>BasicObject</code>). While procedural in execution flow and strongly influenced by functional idioms (via higher-order functions and closures), its execution model remains deeply rooted in Smalltalk-style dynamic</div><hr><div class='lesson'><h2>🔍 Deep Dive: Go</h2>
 <p><strong>Timestamp:</strong> 2026-10-25 05:27 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1858,41 +1864,7 @@ let mut y = 10; // Mutable</code></pre>
 
 <h3>4. Real-World Examples</h3>
 <ul>
-    <li><strong>Equifax Data Breach (2017):</strong> Threat actors exploited a known Remote Code Execution (RCE) vulnerability in the Apache Struts web framework (CVE-2017-5638). Because the web application was unpatched and lacked adequate internal segmentation, attackers gained access to personal sensitive data of</div><hr><div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
-<p><strong>Timestamp:</strong> 2026-10-05 07:50 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Swift was designed by Apple (led by Chris Lattner) and introduced in 2014 to replace Objective-C. Objective-C was built on top of Smalltalk-style dynamic message passing over a C base, which made it highly flexible but prone to runtime crashes, pointer misuse, overhead from dynamic dispatch, and verbose syntax.</p>
-
-<p>Swift's core philosophy centers on three pillars: <strong>Safe, Fast, and Expressive</strong>.</p>
-<ul>
-    <li><strong>Safety by Default:</strong> Eliminate entire classes of common bugs at compile time. Null pointers are strictly eliminated via explicit non-optional types and the <code>Optional&lt;Wrapped&gt;</code> algebraic data type. Variables must be initialized before use, array bounds are checked, and integers are checked for overflow by default.</li>
-    <li><strong>Protocol-Oriented Programming (POP):</strong> While Swift supports Object-Oriented Programming (OOP), Functional Programming (FP), and Procedural paradigms, its signature paradigm is Protocol-Oriented Programming. Instead of deep class hierarchies relying on reference semantics, Swift emphasizes lightweight value types (structs, enums) conforming to protocols with default implementations provided via extensions.</li>
-    <li><strong>Performance (LLVM Integration):</strong> Swift compiles directly to native machine code via LLVM and the Swift Intermediate Language (SIL). It aims for C-like performance by favoring static dispatch, monomorphization of generics, and inline stack allocations over heap-allocated dynamic dispatch whenever possible.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Swift features a clean, modernized C-family syntax that removes unnecessary boilerplate like legacy C parenthetical constraints and line-terminating semicolons.</p>
-
-<ul>
-    <li><strong>Block Scope & Braces:</strong> Swift uses curly braces <code>{}</code> to define execution scopes. Indentation is purely for readability; code structure is explicitly bound by braces.</li>
-    <li><strong>Semicolons:</strong> Semicolons are optional and generally omitted, used only to separate multiple distinct statements on a single physical line.</li>
-    <li><strong>Variables vs. Constants:</strong> Immutability is a first-class citizen. Bindings declared with <code>let</code> are immutable (constants), while <code>var</code> denotes mutable bindings. The compiler strictly enforces immutability down to type properties for value types.</li>
-    <li><strong>Type System & Inference:</strong> Swift is strongly and statically typed, leveraging an advanced type inference engine based on the Hindley-Milner type system model. You rarely need to write explicit types unless disambiguating.</li>
-    <li><strong>Exhaustive Pattern Matching & Flow Control:</strong> Control flow mechanisms like <code>switch</code> are required to be exhaustive. Swift features powerful pattern matching against enums, ranges, tuples, and types. Conditional bindings like <code>if let</code> and early-exit assertions via <code>guard let</code> force explicit handling of missing values.</li>
-    <li><strong>Code Organization:</strong> Swift discards C/Objective-C header files (<code>.h</code>). Code is organized into modules. File structure is flat within a module; access control modifier keywords (<code>open</code>, <code>public</code>, <code>package</code>, <code>internal</code>, <code>fileprivate</code>, <code>private</code>) govern symbol visibility rather than namespace header imports.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Swift deliberately avoids tracing Garbage Collection (GC) to ensure deterministic resource destruction, predictable latency, and low memory overhead without pause-the-world spikes.</p>
-
-<ul>
-    <li><strong>Automatic Reference Counting (ARC):</strong> Reference types (classes, closures) are managed via ARC. The compiler automatically inserts reference counting operations (<code>retain</code> and <code>release</code>) during compilation at SIL optimization phases.</li>
-    <li><strong>Reference Lifetimes & Cycle Prevention:</strong> To prevent strong reference cycles (memory leaks), Swift provides explicit pointer relationship qualifiers:
-        <ul>
-            <li><code>strong</code>: Standard incrementing reference count ownership.</li>
-            <li><code>weak</code>: Non-owning, zeroing reference. Must always be an optional variable (<code>var</code>) that automatically becomes <code>nil</code> when the referenced object deallocates.</li>
-            <li><code>unowned</code>: Non-owning, non-zeroing reference. Used when the lifetime of the reference equals or exceeds the caller. Accessing a dangling <code>unowned</code> reference triggers a runtime trap,</div><hr>
+    <li><strong>Equifax Data Breach (2017):</strong> Threat actors exploited a known Remote Code Execution (RCE) vulnerability in the Apache Struts web framework (CVE-2017-5638). Because the web application was unpatched and lacked adequate internal segmentation, attackers gained access to personal sensitive data of</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
