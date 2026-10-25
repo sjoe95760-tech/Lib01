@@ -17,7 +17,36 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Scala</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
+<p><strong>Timestamp:</strong> 2026-10-25 22:53 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>Network security controls form the operational backbone of defensive architecture. A <strong>Firewall</strong> is a network security system that monitors and controls incoming and outgoing traffic based on predetermined security rules. It establishes a boundary between a trusted network and an untrusted network (such as the Internet).</p>
+<p>An <strong>Intrusion Detection System (IDS)</strong> acts as a passive monitoring device that analyzes network traffic for signatures of known threats or behavioral anomalies, generating alerts when suspicious activity is identified. An <strong>Intrusion Prevention System (IPS)</strong> takes this a step further: deployed inline, it actively inspects traffic and automatically takes remediation actions (such as dropping packets or resetting connections) to block detected threats in real time.</p>
+<p>Without these technologies, organizations face uncontrolled network access, unmonitored lateral movement by threat actors, unmitigated remote code execution attacks, and unconstrained data exfiltration.</p>
+
+<h3>2. How It Works</h3>
+<p>Understanding these systems requires analyzing their operational layers and detection methodologies:</p>
+<ul>
+    <li><strong>Firewall Generations & Architecture:</strong>
+        <ul>
+            <li><em>Stateless Packet Filtering (Layer 3/4):</em> Inspects individual packets against Access Control Lists (ACLs) based on source/destination IP, port, and protocol without tracking connection state.</li>
+            <li><em>Stateful Inspection (Layer 3/4):</em> Tracks the state of active network connections via a connection state table (e.g., verifying TCP three-way handshakes: SYN, SYN-ACK, ACK) to ensure incoming packets correspond to legitimate, established sessions.</li>
+            <li><em>Next-Generation Firewalls (NGFW - Layer 7):</em> Integrates traditional stateful inspection with deep packet inspection (DPI), application-level control (App-ID), user identity mapping, and SSL/TLS decryption capabilities.</li>
+        </ul>
+    </li>
+    <li><strong>IDS/IPS Deployment Models:</strong>
+        <ul>
+            <li><em>Passive/Out-of-Band (IDS):</em> Receives mirrored traffic via a TAP (Terminal Access Point) or SPAN (Switched Port Analyzer) port. It alerts administrators without impacting network latency or traffic flow.</li>
+            <li><em>Inline/In-Band (IPS):</em> Traversed directly by network traffic. It can modify or drop malicious payloads in transit but introduces potential latency and single-point-of-failure risks if not deployed with high-availability bypass hardware.</li>
+        </ul>
+    </li>
+    <li><strong>Detection Engines:</strong>
+        <ul>
+            <li><em>Signature-Based Detection:</em> Matches observed traffic byte patterns against a database of known Threat Indicators (IoCs) or attack patterns (e.g., Snort/Suricata rules). Effective against known threats; useless against zero-day exploits.</li>
+            <li><em>Anomaly-Based Detection:</em> Establishes a baseline of normal network behavior (bandwidth, protocol usage, port activity) and flags statistical deviations. Superior for zero-day identification, but prone to higher false-positive rates.</li>
+            <li><em>Heuristic & Protocol Analysis:</em> Enforces strict RFC protocol compliance, identifying malformed packets or protocol violations used by exploits to breach system memory.</li>
+</div><hr><div class='lesson'><h2>🔍 Deep Dive: Scala</h2>
 <p><strong>Timestamp:</strong> 2026-10-25 14:38 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1816,22 +1845,7 @@ let mut y = 10; // Mutable</code></pre>
     <li><strong>Retain Cycles & Ownership:</strong> To prevent memory leaks caused by strong reference cycles, Swift provides explicit object ownership annotations:
         <ul>
             <li><code>strong</code>: Default reference incrementing the retain count.</li>
-            <li><code>weak</code>: Non-owning reference that automatically becomes <code></div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
-<p><strong>Timestamp:</strong> 2026-10-07 01:05 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>JavaScript was created in 1995 by Brendan Eich at Netscape in just 10 days. Designed to bring dynamic behavior to an otherwise static Web, its primary purpose was to act as an accessible scripting language for non-professional developers, embedded directly inside document browsers.</p>
-
-<p>To achieve rapid adoption, its surface syntax was intentionally modeled after Java and C. However, its core architectural engine borrowed radically different concepts from two distinct programming paradigms:</p>
-<ul>
-    <li><strong>Scheme (Functional):</strong> First-class functions, higher-order functions, and lexical closures. Functions in JavaScript are regular objects that can be passed as arguments, returned from other functions, and stored in variables.</li>
-    <li><strong>Self (Prototype-based OOP):</strong> Delegation via prototype chains rather than class-based classical inheritance. Objects inherit properties directly from other objects without rigid class blueprints.</li>
-</ul>
-
-<p>The core design philosophy of JavaScript is <strong>pragmatism and backward compatibility</strong> ("don't break the web"). It features dynamic typing, implicit type coercion, and a non-blocking asynchronous operational model. The runtime prioritizes resilience over strictness—it attempts to execute code whenever possible through type coercion rather than throwing immediate compilation or runtime errors.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>JavaScript uses a C-style syntax defined by curly braces <code>{}</code> to delimit block scopes and statements. While semicolons <code>;</code> end statements, JavaScript includes an <em>Automatic Semic</div><hr>
+            <li><code>weak</code>: Non-owning reference that automatically becomes <code></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
