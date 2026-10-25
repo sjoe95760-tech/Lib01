@@ -17,7 +17,21 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Scala</h2>
+<p><strong>Timestamp:</strong> 2026-10-25 14:38 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Scala—short for <em>Scalable Language</em>—was designed in 2004 by Martin Odersky at EPFL. Its core thesis is that pure Object-Oriented Programming (OOP) and pure Functional Programming (FP) are not opposing paradigms, but orthogonal dimensions that can be harmoniously fused into a single type-safe language on the Java Virtual Machine (JVM).</p>
+<p>Scala was explicitly built to address the architectural limitations of Java in the early 2000s: enterprise verbosity, lack of algebraic data types, boilerplate-heavy concurrency models, and a rigid type system. By unifying OOP and FP, Scala solves two critical problems:</p>
+<ul>
+  <li><strong>Scalability of Abstraction:</strong> Small script-like constructs seamlessly scale up to large, complex enterprise systems via trait composition, higher-kinded types, and implicit/contextual parameters.</li>
+  <li><strong>Domain Modeling without Boilerplate:</strong> Through immutable data structures, pattern matching, and type inference, developers can build domain models that are expressive, concise, and mathematically verifiable at compile time.</li>
+</ul>
+<p>In Scala's theoretical framework, <strong>every value is an object</strong> (making it more purely OO than Java, which has unboxed primitives), and <strong>every function is a value</strong> (making it a first-class functional language).</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Scala syntax is expression-oriented: virtually every construct (including <code>if/else</code> statements, <code>try/catch</code> blocks, and code blocks) evaluates to a value. Semicolons are optional, as the compiler infers statement boundaries using end-of-line heuristics.</p>
+<p>With the transition from Scala 2 to Scala 3 (Martin Odersky's <em>Dotty</em> compiler project, grounded in Dependent Object Types calculus),</div><hr><div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
 <p><strong>Timestamp:</strong> 2026-10-25 10:18 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1817,54 +1831,7 @@ let mut y = 10; // Mutable</code></pre>
 <p>The core design philosophy of JavaScript is <strong>pragmatism and backward compatibility</strong> ("don't break the web"). It features dynamic typing, implicit type coercion, and a non-blocking asynchronous operational model. The runtime prioritizes resilience over strictness—it attempts to execute code whenever possible through type coercion rather than throwing immediate compilation or runtime errors.</p>
 
 <h3>2. Syntax, Structure & Flow</h3>
-<p>JavaScript uses a C-style syntax defined by curly braces <code>{}</code> to delimit block scopes and statements. While semicolons <code>;</code> end statements, JavaScript includes an <em>Automatic Semic</div><hr><div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
-<p><strong>Timestamp:</strong> 2026-10-06 21:20 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p><strong>Web Application Security</strong> is the practice of protecting web applications, web services, and Application Programming Interfaces (APIs) from security threats, unauthorized access, and malicious exploitation throughout their operational lifecycle. Because modern web applications sit squarely on the network perimeter and are publicly accessible via standard HTTP/HTTPS ports (80/443), they serve as the primary digital storefront—and primary target—for threat actors.</p>
-<p>In traditional network security, firewalls and intrusion prevention systems guarded static perimeters. Modern web applications, however, process complex business logic, handle sensitive data (PII, financial records, healthcare info), and interface directly with backend databases and internal microservices. A single software vulnerability in web logic can bypass perimeter controls, leading to catastrophic data exfiltration, service disruption, compliance non-compliance (GDPR, PCI-DSS, HIPAA), and severe reputational damage.</p>
-
-<h3>2. How It Works</h3>
-<p>Web application security operates at the Application Layer (Layer 7 of the OSI model). Understanding it requires analyzing the interaction between three main components: the client (browser/mobile app), the transport layer (HTTP/HTTPS), and the server-side architecture (web server, application server, backend database, microservices).</p>
-<ul>
-    <li><strong>Client-Side Environment:</strong> Browsers execute HTML, CSS, and JavaScript within a client-side execution sandbox. Security relies heavily on browser enforcement mechanisms like the Same-Origin Policy (SOP), Content Security Policy (CSP), and secure storage attributes for cookies (<code>HttpOnly</code>, <code>Secure</code>, <code>SameSite</code>).</li>
-    <li><strong>Stateless Protocol & State Management:</strong> HTTP is inherently stateless. Web apps manage session state using HTTP cookies, JSON Web Tokens (JWTs), or custom session identifiers. Flaws in how state is issued, stored, or verified allow attackers to hijack user sessions.</li>
-    <li><strong>Server-Side Logic & Processing:</strong> The application server receives unsanitized input from HTTP requests (headers, parameters, cookies, request bodies). Flaws manifest when the server implicitly trusts this input and passes it into command interpreters, database query engines, file systems, or external API endpoints.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<p>Security analysts categorize web application risks primarily through frameworks like the <strong>OWASP Top 10</strong>. Key attack vectors and their defensive countermeasures include:</p>
-
-<ul>
-    <li><strong>Injection Attacks (e.g., SQL Injection, Command Injection)</strong>
-        <ul>
-            <li><em>Offense:</em> An attacker supplies malicious data inside an input field or parameter, tricking the backend interpreter into executing arbitrary commands or unintended SQL queries.</li>
-            <li><em>Defense:</em> Use parameterized queries (prepared statements), Object-Relational Mapping (ORM) abstractions, and strict input validation via allowlists.</li>
-        </ul>
-    </li>
-    <li><strong>Cross-Site Scripting (XSS)</strong>
-        <ul>
-            <li><em>Offense:</em> Injected malicious scripts execute within the victim's browser context, stealing session tokens or performing unauthorized actions.</li>
-            <li><em>Defense:</em> Apply contextual output encoding (HTML, JavaScript, CSS contexts), enforce a robust <code>Content-Security-Policy</code> header, and set the <code>HttpOnly</code> attribute on session cookies.</li>
-        </ul>
-    </li>
-    <li><strong>Broken Access Control / Insecure Direct Object References (IDOR)</strong>
-        <ul>
-            <li><em>Offense:</em> An attacker modifies an parameter (e.g., changing <code>/user?id=1001</code> to <code>/user?id=1002</code>) to access or alter data belonging to another user.</li>
-            <li><em>Defense:</em> Enforce strict, centralized server-side authorization checks based on Role-Based (RBAC) or Attribute-Based Access Control (ABAC) for every request. Never rely on client-side hiding.</li>
-        </ul>
-    </li>
-    <li><strong>Server-Side Request Forgery (SSRF)</strong>
-        <ul>
-            <li><em>Offense:</em> An attacker abuses server functionality to force the back-end application to make HTTP requests to arbitrary domains, internal microservices, or cloud metadata endpoints (e.g., <code>169.254.169.254</code>).</li>
-            <li><em>Defense:</em> Implement strict URL parsing, egress network filtering, strict allowlisting of destination domains/IPs, and disable access to internal network interfaces from public web hosts.</li>
-        </ul>
-    </li>
-</ul>
-
-<h3>4. Real-World Examples</h3>
-<ul>
-    <li><strong>Equifax Data Breach (2017):</strong> Threat actors exploited a known Remote Code Execution (RCE) vulnerability in the Apache Struts web framework (CVE-2017-5638). Because the web application was unpatched and lacked adequate internal segmentation, attackers gained access to personal sensitive data of</div><hr>
+<p>JavaScript uses a C-style syntax defined by curly braces <code>{}</code> to delimit block scopes and statements. While semicolons <code>;</code> end statements, JavaScript includes an <em>Automatic Semic</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
