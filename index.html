@@ -17,7 +17,41 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Social Engineering</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<p><strong>Timestamp:</strong> 2026-10-25 00:38 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Python was conceived in the late 1980s by Guido van Rossum as a successor to the ABC language, designed to plug the gap between C (system programming) and Unix shell scripts. Its foundational design philosophy is best articulated in PEP 20 ("The Zen of Python"): <em>"Explicit is better than implicit," "Simple is better than complex,"</em> and <em>"Readability counts."</em></p>
+
+<p>Python prioritizes developer velocity, cognitive ease, and maintainability over raw bare-metal runtime execution speed. It approaches code as "executable pseudocode." From a language architecture perspective, Python is a multi-paradigm language:</p>
+<ul>
+    <li><strong>Object-Oriented:</strong> Everything in Python is a first-class object at runtime, including classes, functions, modules, and primitive types (integers, strings).</li>
+    <li><strong>Procedural:</strong> Supports imperative, top-down execution flow with structured control primitives.</li>
+    <li><strong>Functional Primitives:</strong> Features higher-order functions, lambda expressions, map/filter/reduce, and list/dict/set comprehensions, though it intentionally avoids strict purity, immutability defaults, or automatic tail-call optimization.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Python enforces structural discipline through syntactic semantics, relying heavily on lexical scoping and indentation rules.</p>
+
+<ul>
+    <li><strong>The Off-Side Rule:</strong> Instead of block-delimiters like curly braces <code>{}</code> or <code>begin/end</code> keywords, scope is defined by visual indentation (conventionally 4 spaces per nesting level). The lexer converts indentation levels into <code>INDENT</code> and <code>DEDENT</code> tokens fed to the parser.</li>
+    <li><strong>Line-Oriented Structure:</strong> Statements are terminated by newlines; trailing semicolons are syntactically valid but idiomatically forbidden except in rare inline execution contexts.</li>
+    <li><strong>Dynamic & Gradual Typing:</strong> Python is dynamically and strongly typed. Variable names are dynamic references bound to runtime typed objects (late binding). PEP 484 introduced type hints (gradual typing), which are evaluated as static metadata by external type checkers (e.g., <code>mypy</code>, <code>pyright</code>) but are not enforced at runtime by the default CPython interpreter.</li>
+    <li><strong>Code Organization:</strong> Executable code is organized into modules (single <code>.py</code> files) and packages (directories containing an <code>__init__.py</code> file or conforming to namespace package rules). Importing executes the module's top-level code once and caches the resulting namespace dictionary in <code>sys.modules</code>.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>CPython (the reference implementation) manages memory entirely under the hood using a hybrid memory management model, abstracting away manual allocation (<code>malloc</code>/<code>free</code>) and hardware pointer arithmetic.</p>
+
+<ul>
+    <li><strong>Reference Counting:</strong> Every CPython object structure (<code>PyObject</code>) contains a reference count field (<code>ob_refcnt</code>). When a name is bound to an object, passed to a function, or stored in a container, the count increments. When references go out of scope or are explicitly deleted via <code>del</code>, the count decrements. When <code>ob_refcnt</code> hits zero, the object's memory is immediately reclaimed.</li>
+    <li><strong>Cyclic Garbage Collection:</strong> Reference counting fails when isolated cyclic graphs of objects point to each other (e.g., Object A references Object B, and Object B references Object A). CPython runs an auxiliary generational, non-stop-the-world cyclic Garbage Collector (Generations 0, 1, and 2) that periodically traverses container objects to detect and break unreachable cycles using tri-color marking algorithms.</li>
+    <li><strong>Custom Allocator (pymalloc):</strong> To avoid OS-level <code>malloc</code> fragmentation overhead for small objects (&le; 512 bytes), CPython uses an internal memory manager named <code>pymalloc</code>, which organizes memory into Arenas (256 KB), Pools (4 KB), and Blocks.</li>
+    <li><strong>The Global Interpreter Lock (GIL):</strong> To protect CPython's internal reference counting mechanisms and mutable object states from race conditions, CPython enforces a global lock—the GIL. This ensures that only one native OS thread executes Python bytecode at any given instant per interpreter instance (though modern Python is introducing free-threaded builds under PEP 703 and per-interpreter GILs).</li>
+</ul>
+
+<h3>4. Paradigms & Tactics</h3>
+<p>Python</div><hr><div class='lesson'><h2>🔍 Deep Dive: Social Engineering</h2>
 <p><strong>Timestamp:</strong> 2026-10-24 19:56 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1862,33 +1896,7 @@ let mut y = 10; // Mutable</code></pre>
 
 <ul>
     <li><strong>Allocation:</strong> Memory is allocated automatically when values, objects, functions, or execution contexts are created on the Heap or Stack. Primitive values (numbers, booleans, strings) are stored directly on the stack or inline, while complex reference types (objects, arrays, functions) reside on the heap.</li>
-    <li><strong>Garbage Collection Engine:</strong> Modern engines</div><hr><div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
-<p><strong>Timestamp:</strong> 2026-10-04 22:03 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>In network security, <strong>Firewalls</strong> and <strong>Intrusion Detection/Prevention Systems (IDS/IPS)</strong> form the foundational boundary enforcement and traffic inspection layer. A firewall acts as a digital gatekeeper, deciding which network packets are permitted or denied entry based on pre-configured security policies. An IDS/IPS acts as a network guard, continuously analyzing packet payloads and traffic behavior to spot malicious patterns, policy violations, or active exploitation attempts.</p>
-<p><strong>Why It Matters:</strong> Modern enterprise networks are continuously exposed to brute-force attacks, remote code execution (RCE) exploits, lateral movement, and data exfiltration. Without robust stateful firewalls and intelligent IPS appliances, an attacker who gains access to a single low-privilege entry point could freely traverse the internal network, communicate with Command-and-Control (C2) servers, and breach sensitive databases without generating an alert or facing access controls.</p>
-
-<h3>2. How It Works</h3>
-<p>Network security controls operate across different layers of the OSI model and utilize distinct inspection methodologies:</p>
-<ul>
-    <li><strong>Firewalls (Filtering & Segmentation):</strong>
-        <ul>
-            <li><em>Stateless Filtering (Layer 3/4):</em> Inspects individual packets against static Access Control Lists (ACLs) checking source/destination IP addresses, ports, and protocols without tracking session state.</li>
-            <li><em>Stateful Inspection (Layer 3/4):</em> Tracks active TCP/UDP connections in a state table. It automatically permits returning traffic belonging to established, legitimate sessions.</li>
-            <li><em>Next-Generation Firewalls (NGFW / Layer 7):</em> Performs Deep Packet Inspection (DPI) to identify application context (e.g., distinguishing web browsing from SSH tunneling over port 80/443), enforces user identity policies, and integrates threat intelligence feeds.</li>
-        </ul>
-    </li>
-    <li><strong>IDS vs. IPS (Detection & Prevention):</strong>
-        <ul>
-            <li><em>IDS (Intrusion Detection System):</em> Typically deployed <strong>out-of-band</strong> via a network TAP or SPAN/mirror port. It operates passively, analyzing copies of network traffic and generating alerts (syslog, SNMP traps) without interfering with line-rate traffic.</li>
-            <li><em>IPS (Intrusion Prevention System):</em> Deployed <strong>in-line</strong> directly in the data flow path. When malicious traffic is detected, it actively drops bad packets, resets TCP connections (sending TCP RSTs), or dynamically injects temporary firewall rules to block the offending IP address.</li>
-        </ul>
-    </li>
-    <li><strong>Detection Engines:</strong>
-        <ul>
-            <li><em>Signature-Based Detection:</em> Compares traffic streams against known threat signatures (e.g., explicit byte sequences indicative of a known exploit payload). High accuracy, low false positives, but completely blind to zero-day attacks.</li>
-            </div><hr>
+    <li><strong>Garbage Collection Engine:</strong> Modern engines</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
