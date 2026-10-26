@@ -17,7 +17,21 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Cryptography</h2>
+<p><strong>Timestamp:</strong> 2026-10-26 17:48 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>Cryptography is the mathematical and operational discipline of securing information and communications in the presence of adversaries. Far beyond simple secret writing, modern cryptography forms the mathematical backbone of digital trust, enabling secure commerce, private communications, identity verification, and data integrity across untrusted networks like the Internet.</p>
+<p>Without cryptography, the modern digital economy would collapse under the weight of trivial eavesdropping, identity spoofing, and data tampering. It directly addresses fundamental security problems by upholding the core pillars of the CIA Triad (Confidentiality via encryption, Integrity via hashing, and Availability via authenticated protocols) along with non-repudiation and identity verification via digital signatures and Public Key Infrastructure (PKI).</p>
+
+<h3>2. How It Works</h3>
+<p>Cryptography functions through mathematically rigorous primitives categorized into several core operational models:</p>
+<ul>
+    <li><strong>Symmetric Cryptography:</strong> Uses a single shared secret key for both encryption and decryption. Algorithms like AES (Advanced Encryption Standard) in GCM mode or ChaCha20-Poly1305 offer extremely fast bulk data encryption with built-in integrity checking (Authenticated Encryption with Associated Data, or AEAD).</li>
+    <li><strong>Asymmetric Cryptography (Public Key Cryptography):</strong> Employs mathematically linked key pairs—a public key for encryption/verification and a private key for decryption/signing. Grounded in hard mathematical problems such as integer factorization (RSA) or discrete logarithms over elliptic curves (ECC/ECDSA, Ed25519), it solves the key distribution problem and enables digital signatures.</li>
+    <li><strong>Cryptographic Hash Functions:</strong> Deterministic, one-way mathematical algorithms (e.g., SHA-256, SHA-3) that map arbitrary input data to a fixed-size digest. They are collision-resistant and pre-image resistant, ensuring that even a one-bit change in input drastically alters the output hash (the avalanche effect).</li>
+    <li><strong>Key Exchange Protocols:</strong> Protocols like Diffie-Hellman (DH) and Elliptic Curve Diffie-Hellman (ECDH) allow two parties to establish a shared secret key over an insecure channel without transmitting the key itself. Ephemeral variants (ECDHE) provide Perfect Forward Secrecy (PFS), ensuring past sessions remain secure even if long-term identity keys are compromised.</li>
+    <li><strong>Post-Quantum Cryptography (PQC):</strong> Cryptographic algorithms (such as lattice-based algorithms like</div><hr><div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
 <p><strong>Timestamp:</strong> 2026-10-26 11:45 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1819,28 +1833,7 @@ let mut y = 10; // Mutable</code></pre>
 <h3>5. Unique Patterns & Ecosystem</h3>
 <ul>
     <li><strong>The Type-State Pattern:</strong> Encodes finite state machines into the Rust type system. States are distinct structs, preventing invalid state transitions at compile time.
-<pre><code></div><hr><div class='lesson'><h2>🔍 Deep Dive: Python</h2>
-<p><strong>Timestamp:</strong> 2026-10-09 00:46 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>
-    Python was conceived in late 1989 by Guido van Rossum as a successor to the ABC language, explicitly engineered to bridge the gap between low-level shell scripting and heavy systems languages like C/C++. Its overarching design philosophy is codified in the <em>Zen of Python</em> (PEP 20), emphasizing developer ergonomics, readability, and explicit intent over syntactic brevity or raw execution speed ("Readability counts", "Explicit is better than implicit").
-</p>
-<p>
-    Python addresses the high cognitive overhead and software fragility associated with explicit memory management and verbose syntax. It shifts the economic trade-off of software engineering: prioritizing <strong>human developer time over CPU cycles</strong>.
-</p>
-<p>
-    From a language theory perspective, Python is a highly dynamic, general-purpose multi-paradigm language:
-</p>
-<ul>
-    <li><strong>Object-Oriented:</strong> Pure OO at its core. Every value—including primitive integers, functions, modules, and classes themselves—is a first-class object derived from <code>PyObject</code>.</li>
-    <li><strong>Imperative/Procedural:</strong> Allows straightforward linear execution and scriptable control flow without mandatory class boilerplate (unlike Java).</li>
-    <li><strong>Functional:</strong> Features first-class functions, higher-order functions, closures, lazy evaluation primitives (generators), and functional map/filter/reduce semantics alongside list/dict/set comprehensions.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>
-    Python employs the <strong>off-side rule</strong>, using lexical indentation (significant whitespace) rather than explicit block markers like curly braces (<code>{}</code>) or <code>begin/end</code> keywords. Statements are terminated</div><hr>
+<pre><code></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
