@@ -17,7 +17,31 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<p><strong>Timestamp:</strong> 2026-10-26 00:49 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Python was created in the late 1980s by Guido van Rossum as a successor to the ABC programming language, designed to bridge the gap between shell scripting and C. Its core philosophy centers on maximizing developer velocity, code readability, and expressiveness while minimizing syntactic noise. Formulated formally in "The Zen of Python" (PEP 20), principles such as <em>"Explicit is better than implicit"</em> and <em>"There should be one—and preferably only one—obvious way to do it"</em> drive its architectural choices.</p>
+
+<p>From a language design perspective, Python is a dynamically typed, strongly typed, multi-paradigm language. It seamlessly unifies:</p>
+<ul>
+  <li><strong>Object-Oriented Programming (OOP):</strong> Everything in Python is a runtime object—including primitives, functions, classes, and modules.</li>
+  <li><strong>Procedural Programming:</strong> Simple script execution without mandatory boilerplate classes (unlike Java or C#).</li>
+  <li><strong>Functional Concepts:</strong> First-class functions, higher-order functions, anonymous functions (<code>lambda</code>), comprehensions, and lazy evaluation via generators.</li>
+</ul>
+<p>By prioritizing developer cognitive load over raw compute performance, Python delegates performance-critical workloads to low-level extensions (C/C++/Rust) while keeping the top-level orchestrator expressive and readable.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Python utilizes the <strong>off-side rule</strong>, employing mandatory indentation (whitespace) to define block structures rather than curly braces (<code>{}</code>) or explicit <code>begin</code>/<code>end</code> keywords. Statements are terminated by newlines, making semicolons optional and idiomaticly discouraged except for rare single-line multi-statement scenarios.</p>
+
+<p>Code organization operates on a hierarchical module and package system:</p>
+<ul>
+  <li><strong>Modules:</strong> Individual <code>.py</code> files containing executable code, function definitions, and class declarations.</li>
+  <li><strong>Packages:</strong> Directories containing modules and an optional <code>__init__.py</code> file, mapped directly to namespace hierarchies.</li>
+  <li><strong>Import Engine:</strong> Dynamic module loading executed at runtime, utilizing <code>sys.path</code> search paths and namespace objects stored as internal dictionaries.</li>
+</ul>
+
+<p>Execution flow parses source code into an Abstract Syntax Tree (AST), compiles it to intermediate bytecode (<code>.</div><hr><div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
 <p><strong>Timestamp:</strong> 2026-10-25 22:53 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1817,35 +1841,7 @@ let mut y = 10; // Mutable</code></pre>
 <p>Rust approaches software engineering challenges through explicit, system-level mechanisms:</p>
 <ul>
     <li><strong>Object-Oriented Programming:</strong> Rust discards class inheritance in favor of <em>Traits</em> (interfaces that can include default method implementations) and <em>Structs/Enums</em> (data containers). Trait implementations can be static (monomorphization via generics, yielding zero-cost abstractions) or dynamic (via trait objects <code>dyn Trait</code> using vtables).</li>
-    <li><strong>Concurrency:</strong> Rust enables "Fearless Concurrency" by leveraging its ownership rules. The type system encodes thread capabilities using marker traits: <code>Send</code> (transferable across threads) and <code>Sync</code> (shareable across threads via immutable references). Asynchronous programming uses a polling-based, zero-cost state-machine model powered by the <code>Future</code> trait, typically driven by an external multithreaded runtime like <code>tokio</div><hr><div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
-<p><strong>Timestamp:</strong> 2026-10-07 07:50 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Swift was designed by Chris Lattner and Apple to replace Objective-C—a language burdened by decades of Smalltalk-style dynamic dispatch and C legacy. Swift’s core design objective is <strong>safety by default, speed by execution, and expressiveness by design</strong>.</p>
-<p>Architecturally, Swift is a multi-paradigm language, but its fundamental identity is anchored in <strong>Protocol-Oriented Programming (POP)</strong> alongside strong functional and imperative foundations:</p>
-<ul>
-    <li><strong>Safety over Dynamism:</strong> Objective-C relied heavily on runtime messaging (untyped pointers, `nil` messaging). Swift shifts error detection from runtime to compile-time through strict static typing and explicit nullability representation.</li>
-    <li><strong>Value Semantics over Reference Semantics:</strong> Instead of default pointer manipulation, Swift emphasizes immutable structures (`struct`) and algebraic data types (`enum`) copied on mutation, drastically reducing shared mutable state bugs.</li>
-    <li><strong>Zero-Cost Abstractions:</strong> Utilizing the LLVM compiler infrastructure, Swift abstracts complex concepts (like generics and protocols) with minimal runtime overhead, matching C++ performance in optimized builds.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Swift adopts a clean, C-family derivative syntax heavily influenced by languages like Rust, Haskell, and Python. It eliminates visual noise like mandatory semicolons, parenthesized conditions, and header files.</p>
-<ul>
-    <li><strong>Scope & Layout:</strong> Code blocks are bounded by curly braces <code>{}</code>. Whitespace is insignificant, but formatting conventions prioritize clean, readable blocks.</li>
-    <li><strong>Explicit Nullability:</strong> Null pointers do not exist at the language runtime layer. Instead, optionality is modeled via the <code>Optional&lt;Wrapped&gt;</code> algebraic type (an enum of <code>.none</code> or <code>.some(Wrapped)</code>), forced into syntax via shorthand <code>T?</code>.</li>
-    <li><strong>Control Flow:</strong> Control flow is pattern-matching driven. The <code>switch</code> statement is exhaustive and supports complex pattern decomposition. Swift introduces first-class control constructs like <code>guard</code> statements, enforcing early returns and flattening nested code structures (avoiding the "Pyramid of Doom").</li>
-    <li><strong>Extensions:</strong> Code organization is modular and decoupled. Developers extend types—even built-in system types—to conform to protocols, add methods, or organize functionality without sub-classing or altering source code.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Unlike languages utilizing tracing Garbage Collectors (e.g., Java, Go) or compile-time borrow checkers enforcing manual Lifetimes (e.g., standard Rust), Swift uses <strong>Automatic Reference Counting (ARC)</strong> for reference types (`class`).</p>
-<ul>
-    <li><strong>Deterministic Allocation:</strong> Objects are allocated on the heap, and their reference counts are incremented/decremented inline by compiler-inserted instructions. When the count hits zero, deallocation is instantaneous and deterministic.</li>
-    <li><strong>Retain Cycles & Ownership:</strong> To prevent memory leaks caused by strong reference cycles, Swift provides explicit object ownership annotations:
-        <ul>
-            <li><code>strong</code>: Default reference incrementing the retain count.</li>
-            <li><code>weak</code>: Non-owning reference that automatically becomes <code></div><hr>
+    <li><strong>Concurrency:</strong> Rust enables "Fearless Concurrency" by leveraging its ownership rules. The type system encodes thread capabilities using marker traits: <code>Send</code> (transferable across threads) and <code>Sync</code> (shareable across threads via immutable references). Asynchronous programming uses a polling-based, zero-cost state-machine model powered by the <code>Future</code> trait, typically driven by an external multithreaded runtime like <code>tokio</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
