@@ -17,7 +17,38 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
+<p><strong>Timestamp:</strong> 2026-10-26 11:45 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>PHP (originally "Personal Home Page", now a recursive acronym for "PHP: Hypertext Preprocessor") was created by Rasmus Lerdorf in 1994. Unlike languages engineered in academic settings or corporate R&D labs, PHP was born out of immediate, pragmatic necessity: simplifying the creation of dynamic web pages written as C CGI scripts.</p>
+<p>The fundamental design philosophy of PHP is <strong>pragmatic web-first execution</strong> operating under a <em>"shared-nothing" architecture</em>. Its core problem domain is handling HTTP requests, rendering dynamic content, and terminating as efficiently as possible. Rather than forcing a singular paradigm, PHP evolved organically from an HTML-embedded templating tool into a highly flexible, multi-paradigm (object-oriented, functional, procedural) language with strong modern typing primitives.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>PHP uses a C-style syntax heavily influenced by Perl. It utilizes curly brace `{}` scoping, explicit line termination via semicolons `;`, and prefixes all variable identifiers with a dollar sign `$`. Variable names are contextually dynamic and hold type information in their values rather than their identifiers.</p>
+
+<p>Key structural characteristics include:</p>
+<ul>
+    <li><strong>Embedded Processing:</strong> PHP code is executed within opening <code>&lt;?php</code> and closing <code>?&gt;</code> tags, allowing raw textual or HTML content to bypass the execution parser outside these tags.</li>
+    <li><strong>Request Lifecycle Scope:</strong> Files are typically parsed and executed imperatively from top to bottom per incoming HTTP request. Modern applications route requests through a single entry point (e.g., <code>public/index.php</code>).</li>
+    <li><strong>Module Resolution:</strong> Code organization relies on <code>namespaces</code> mapped to file directories, enforced through standardized autoloading mechanisms (PSR-4) via tools like Composer.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>PHP delegates low-level allocation to the <strong>Zend Memory Manager (ZMM)</strong>, an optimized memory layer operating above standard OS C-allocators (like <code>malloc</code>). Memory within PHP relies primarily on <strong>Reference Counting with a Cyclic Garbage Collector</strong>.</p>
+
+<ul>
+    <li><strong>Zvals:</strong> Variables are stored in C structures called <code>zval</code> (Zend Values), which encapsulate the actual value, its type flag, and a reference count (`refcount`).</li>
+    <li><strong>Copy-on-Write (CoW):</strong> Arrays and strings share underlying memory buffers when reassigned. Duplication in memory occurs only when one of the variable pointers modifies the data.</li>
+    <li><strong>Cycle Collector:</strong> To clean up circular object references (e.g., Object A references Object B, which references Object A), PHP employs a synchronous background root-buffer analysis based on the Bacon & Rajan algorithm.</li>
+    <li><strong>Ephemeral Lifetime:</strong> In standard Web Server/FPM setups, the entirety of a request's memory heap is flushed upon request completion, effectively eliminating long-term memory leak risks across distinct web interactions.</li>
+</ul>
+
+<h3>4. Paradigms & Tactics</h3>
+<p>PHP spans multiple paradigms, offering advanced language features designed for enterprise-grade architecture:</p>
+
+<ul>
+    <li><strong>Object-Oriented Programming (OOP):</strong> Class-based single inheritance model with interface implementation, trait composition, static type declarations, constructors with property promotion, immutable classes (`readonly`), named arguments, and attributes (metadata annotations).</li></div><hr><div class='lesson'><h2>🔍 Deep Dive: Python</h2>
 <p><strong>Timestamp:</strong> 2026-10-26 00:49 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1809,39 +1840,7 @@ let mut y = 10; // Mutable</code></pre>
 
 <h3>2. Syntax, Structure & Flow</h3>
 <p>
-    Python employs the <strong>off-side rule</strong>, using lexical indentation (significant whitespace) rather than explicit block markers like curly braces (<code>{}</code>) or <code>begin/end</code> keywords. Statements are terminated</div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
-<p><strong>Timestamp:</strong> 2026-10-08 06:45 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Rust was created by Graydon Hoare at Mozilla to resolve a fundamental trade-off in programming language design: the choice between <strong>control</strong> (as in C/C++, with raw pointers and manual memory management) and <strong>safety</strong> (as in Java/Go, with garbage collection and runtime overhead). Rust proves that memory safety and thread safety do not require a garbage collector, achieving high performance and low-level control while providing compile-time guarantees against undefined behavior.</p>
-<p>Rust is a pragmatic, multi-paradigm language. While its syntax resembles procedural C-family languages, its type system and core mechanics are heavily borrowed from functional programming—specifically the ML family (OCaml, Haskell). It rejects classical Object-Oriented Programming (OOP) mechanics like class inheritance and dynamic dispatch by default, favoring algebraic data types, parametric polymorphism via traits, explicit composition, and strict immutability by default.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Rust uses C-style block syntax with braces <code>{}</code> and explicit control structures, but it is fundamentally an <strong>expression-based language</strong> rather than a statement-based one. Almost every construct—including <code>if</code> blocks, <code>match</code> statements, and block scopes—evaluates to a value.</p>
-
-<p>Key syntactic mechanics include:</p>
-<ul>
-    <li><strong>Semicolons as Omission Operators:</strong> Omitting a semicolon at the final line of a block or function designates that expression as the block's implicit return value. Appending a semicolon turns the expression into a statement that returns the unit tuple <code>()</code>.</li>
-    <li><strong>Type Inference & Annotations:</strong> Rust uses Hindley-Milner-style local type inference. Explicit annotations are mandatory at function boundaries (signatures) to ensure local, deterministic compilation and clear contract boundaries, but are optional within function bodies.</li>
-    <li><strong>Module Organization:</strong> Code is structured into <code>crates</code> (compilation units), which contain tree-like <code>module</code> hierarchies. Scope visibility is explicitly enforced using the <code>pub</code> keyword (e.g., <code>pub(crate)</code>, <code>pub(super)</code>). Cargo serves as the standard package manager and build orchestrator.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Rust introduces a novel memory management model based on an <strong>Affine Type System</strong>, executed entirely at compile time without a garbage collector or mandatory manual <code>malloc/free</code> operations.</p>
-
-<p>The system rests on three foundational rules enforced by the <strong>Borrow Checker</strong>:</p>
-<ol>
-    <li><strong>Ownership:</strong> Every value in Rust has a single variable that acts as its owner. When the owner goes out of scope, the value is deterministically destroyed via the standard Resource Acquisition Is Initialization (RAII) pattern (the <code>Drop</code> trait).</li>
-    <li><strong>Move Semantics:</strong> Assigning a value to another variable or passing it to a function transfers ownership (moves the data) by default, invalidating the original binding unless the type implements the bitwise <code>Copy</code> trait.</li>
-    <li><strong>Aliasing XOR Mutability:</strong> You may have either any number of immutable references (<code>&amp;T</code>) OR exactly one mutable reference (<code>&amp;mut T</code>) to a resource at a given point in time, but never both simultaneously. This prevents data races and dangling pointers entirely at compile time.</li>
-</ol>
-<p>When references cross stack frames, Rust tracks their lifetimes using compile-time annotations (e.g., <code>'a</code>) to ensure no reference outlives the data it points to.</p>
-
-<h3>4. Paradigms & Tactics</h3>
-<p>Rust approaches software engineering challenges through explicit, system-level mechanisms:</p>
-<ul>
-    <li><strong>Object-Oriented Programming:</strong> Rust discards class inheritance in favor of <em>Traits</em> (interfaces that can include default method implementations) and <em>Structs/Enums</em> (data containers). Trait implementations can be static (monomorphization via generics, yielding zero-cost abstractions) or dynamic (via trait objects <code>dyn Trait</code> using vtables).</li>
-    <li><strong>Concurrency:</strong> Rust enables "Fearless Concurrency" by leveraging its ownership rules. The type system encodes thread capabilities using marker traits: <code>Send</code> (transferable across threads) and <code>Sync</code> (shareable across threads via immutable references). Asynchronous programming uses a polling-based, zero-cost state-machine model powered by the <code>Future</code> trait, typically driven by an external multithreaded runtime like <code>tokio</div><hr>
+    Python employs the <strong>off-side rule</strong>, using lexical indentation (significant whitespace) rather than explicit block markers like curly braces (<code>{}</code>) or <code>begin/end</code> keywords. Statements are terminated</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
