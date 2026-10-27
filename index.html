@@ -17,7 +17,31 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Penetration Testing</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
+<p><strong>Timestamp:</strong> 2026-10-27 22:43 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>Network security controls form the foundational perimeter and internal boundary enforcement of any modern enterprise architecture. Among these, Firewalls and Intrusion Detection/Prevention Systems (IDS/IPS) are the core gatekeepers and surveillance mechanisms that monitor, filter, and respond to network traffic.</p>
+
+<p><strong>Firewalls</strong> act as traffic control point barriers. They inspect incoming and outgoing network packets to permit or block traffic based on an established set of security rules. They address the critical risk of exposure—preventing unauthorized external entities from accessing private networks and restricting infected internal endpoints from making unauthorized outbound connections.</p>
+
+<p><strong>IDS (Intrusion Detection System)</strong> and <strong>IPS (Intrusion Prevention System)</strong> provide deep payload and behavioral inspection. While a firewall primarily decides <em>who</em> can pass based on IP addresses, ports, and protocols, an IDS/IPS inspects <em>what</em> is inside the traffic payload to catch exploit attempts, malware, and policy violations. 
+<ul>
+    <li><strong>IDS:</strong> Operates out-of-band (passively). It monitors network traffic copies, detects malicious patterns, and generates alerts for security analysts without interfering with traffic flow.</li>
+    <li><strong>IPS:</strong> Operates inline (actively). It sits directly in the communication path, evaluating real-time traffic and dropping malicious packets, terminating connections, or resetting TCP sessions before damage occurs.</li>
+</ul>
+</p>
+
+<p>Without these technologies, networks remain flat, blind, and exposed to automated port scanning, unauthenticated remote code execution (RCE) attacks, lateral movement, and unchecked exfiltration of sensitive data.</p>
+
+<h3>2. How It Works</h3>
+
+<p>Understanding how these technologies operate requires analyzing their deployment architectures, evaluation mechanics, and inspection depth across the OSI model.</p>
+
+<h4>Firewall Mechanics & Generations</h4>
+<ul>
+    <li><strong>Packet Filtering (Layer 3/4):</strong> Stateless evaluation of packet headers against an Access Control List (ACL) checking Source/Destination IP, Source/Destination Port, and Protocol (TCP/UDP/ICMP).</li>
+    <li><strong>Stateful Inspection (Layer</div><hr><div class='lesson'><h2>🔍 Deep Dive: Penetration Testing</h2>
 <p><strong>Timestamp:</strong> 2026-10-27 18:29 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1742,35 +1766,7 @@ Analyzing physical RAM dumps captured from an infected endpoint. This reveals vo
 <p>Modern JVMs utilize sophisticated, highly optimized generational and concurrent collectors (such as G1, ZGC, and Shenandoah). These collectors organize memory into generations (Young vs. Tenured/Old) based on the empirical observation that most objects die shortly after creation. ZGC and Shenandoah provide ultra-low-latency collection by performing concurrent tracing and compacting without freezing execution threads for more than a few milliseconds, regardless of heap size.</p>
 
 <h3>4. Paradigms & Tactics</h3>
-<p>Java enforces</div><hr><div class='lesson'><h2>🔍 Deep Dive: Perl</h2>
-<p><strong>Timestamp:</strong> 2026-10-10 15:58 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Perl was created in 1987 by Larry Wall—a linguist and systems administrator—to bridge the gap between low-level C programming and high-level shell scripting (awk, sed, sh). It was designed around the core principle of human expressiveness rather than machine-centric elegance, encapsulated by the famous motto: <em>"There's More Than One Way To Do It"</em> (TMTOWTDI).</p>
-
-<p>From a programming language theory (PLT) perspective, Perl is a dynamic, interpreted, multi-paradigm language with strong linguistic influences. It prioritizes pragmatism, text manipulation, and glue-code orchestration. Its core design logic relies on <strong>contextual evaluation</strong>—meaning the behavior of an expression changes based on where and how it is invoked (e.g., expecting a single value vs. a sequence of values). Perl supports procedural, functional, and object-oriented paradigms, treating functions and symbol table entries as first-class manipulables via typeglobs and code references.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Perl syntax uses explicit sigils to denote variable types and container mechanics, combining C-like block structures with shell-like convenience:</p>
-<ul>
-    <li><code>$scalar</code>: Represents singular values (strings, integers, floats, or references).</li>
-    <li><code>@array</code>: Represents ordered lists of scalars indexed by integers.</li>
-    <li><code>%hash</code>: Represents unordered key-value associative arrays.</li>
-    <li><code>&subroutine</code>: Represents code blocks (the sigil is optional during invocation).</li>
-    <li><code>*typeglob</code>: Represents full symbol table entries for namespace manipulation.</li>
-</ul>
-
-<p>Perl uses curly braces <code>{}</code> for block scoping and requires semicolons <code>;</code> as statement terminators. Indentation is purely stylistic. Code execution flows sequentially, but flow control is enriched by statement modifiers (e.g., <code>do_something() if $condition;</code>), loop control keywords (<code>next</code>, <code>last</code>, <code>redo</code>), and explicit context awareness (<code>wantarray</code>).</p>
-
-<p>Code organization relies on <code>packages</code> to establish namespaces, and modules (<code>.pm</code> files) loaded via <code>use</code> (compile-time) or <code>require</code> (runtime). Pragmas such as <code>use strict;</code> and <code>use warnings;</code> alter compiler behavior, forcing explicit variable declarations via <code>my</code> (lexical scope) or <code>our</code> (package scope).</p>
-
-<h3>3. Memory Management</h3>
-<p>Perl manages memory primarily through <strong>Reference Counting</strong> augmented by a sweep phase during interpreter teardown:</p>
-<ul>
-    <li><strong>Ref-Count Tracking:</strong> Every internal structure (SV = Scalar Value, AV = Array Value, HV = Hash Value) maintains an internal reference count. When a variable's scope ends or references to it drop to zero, its memory is immediately reclaimed and returned to Perl's internal memory pool (not necessarily to the OS kernel immediately).</li>
-    <li><strong>Deterministic Destruction:</strong> Because of pure reference counting, destructors (the <code>DESTROY</code> or modern <code>DEMOLISH</code> methods) trigger deterministically the precise moment an object goes out of scope.</li>
-    <li><strong>Circular Reference Resolution:</strong> Pure reference counting suffers from memory leaks when circular references occur. Perl solves this via weak references provided by <code>Scalar::Util::weaken</code>, which decrements the reference count without destroying the referent.</li>
-</div><hr>
+<p>Java enforces</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
