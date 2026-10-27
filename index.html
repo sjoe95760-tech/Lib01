@@ -17,7 +17,40 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
+<p><strong>Timestamp:</strong> 2026-10-27 06:58 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Rust was birthed out of a critical crisis in modern software infrastructure: the false dichotomy between <strong>memory safety</strong> and <strong>system-level performance</strong>. Originally created by Graydon Hoare and sponsored by Mozilla, Rust was designed to power next-generation software (like browser engines) where legacy C/C++ codebases consistently introduced severe security vulnerabilities (use-after-free, buffer overflows, double frees, and data races).</p>
+<p>From a programming language theory perspective, Rust rejects class-based object-oriented programming (OOP) in favor of a <strong>multi-paradigm model</strong> anchored in functional programming, static type systems, and data-oriented design:</p>
+<ul>
+    <li><strong>No Class-Based Inheritance:</strong> Rust eliminates classical OOP inheritance hierarchies (and their attendant problems like the Fragile Base Class issue and vtable bloat) in favor of composition, traits (typeclasses), and parametric polymorphism.</li>
+    <li><strong>Algebraic Data Types (ADTs):</strong> Data and behavior are strictly decoupled. Structs represent static data structures, Enums represent sum types, and <code>impl</code> blocks define functions and trait implementations.</li>
+    <li><strong>Zero-Cost Abstractions:</strong> Inspired by C++, high-level language features (iterators, closures, async/await, generics) must compile down to machine code equivalent to hand-written assembly without runtime overhead.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Rust features a C-family imperative syntax heavily augmented by functional expressions and pattern matching:</p>
+<ul>
+    <li><strong>Expression-Based Execution:</strong> Almost everything in Rust is an expression that evaluates to a value. Blocks <code>{ ... }</code> evaluate to their final un-semicoloned expression. Adding a semicolon <code>;</code> explicitly converts an expression into a statement returning the unit type <code>()</code>.</li>
+    <li><strong>Strict Block Scope & Braces:</strong> Scoping is delimited by curly braces. Indentation is purely stylistic (enforced by <code>rustfmt</code>), but block scopes strictly govern lifetime bounds and resource cleanup.</li>
+    <li><strong>Type Inference & Annotations:</strong> Rust utilizes a local constraint-satisfaction type inference algorithm (derived from Hindley-Milner). Variable types within function bodies are inferred contextually, but explicit type signatures are mandatory at function and public interface boundaries for architectural transparency and compile-time isolation.</li>
+    <li><strong>Module System & Code Organization:</strong> Code is organized into units called <em>crates</em> (compilation units outputting a binary or library). Internal organization uses a hierarchical module system defined via <code>mod</code> files/blocks, controlled by strict visibility modifiers (<code>pub</code>, <code>pub(crate)</code>, private by default). Cargo serves as the standard build system, package manager, and test runner.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Rust's defining innovation is achieving <strong>deterministic memory safety without a runtime Garbage Collector (GC)</strong> and without requiring manual dynamic allocation management (<code>malloc</code>/<code>free</code>).</p>
+
+<h4>The Affine Type System & Ownership</h4>
+<p>Rust formalizes memory safety through an <strong>Affine Type System</strong>, where every value in memory has a single logical owner at any given point in time. The ownership rules are strict:</p>
+<ol>
+    <li>Each value in Rust has an owner (a variable binding).</li>
+    <li>There can only be one owner at a time.</li>
+    <li>When the owner goes out of scope, the value is automatically deallocated via the <strong>RAII (Resource Acquisition Is Initialization)</strong> pattern using the <code>Drop</code> trait.</li>
+</ol>
+
+<h4>Move Semantics vs. Copy</h4>
+<p>Assigning a variable or passing it to a function transfers ownership (a <em>move</em> operation), invalidating the source binding at compile-time. Types implementing the <code>Copy</code> trait (typically primitive stack-allocated types) undergo bitwise duplication instead of moving.</p</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
 <p><strong>Timestamp:</strong> 2026-10-27 01:40 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1738,50 +1771,7 @@ Analyzing physical RAM dumps captured from an infected endpoint. This reveals vo
 
 <p>Unlike managed languages (e.g., Java, C#) where variables are largely uniform reference pointers to heap-allocated objects, a C++ programmer visualizes raw bytes. Declaring a struct means layout out contiguous data in physical memory. A virtual function call is internally understood as dereferencing a pointer to an array of function pointers (vtable). An array is just contiguous memory where index lookups translate to simple offset arithmetic.</p>
 
-<p>The mental model relies on complete determinism: every object has a clearly defined beginning and end of life. By default, objects live on the stack and are destroyed in reverse order of creation. When absolute control over lifetime, locality, and performance is required, C++ provides the language mechanics to instruct the compiler on exactly how CPU registers, caches, and raw</div><hr><div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
-<p><strong>Timestamp:</strong> 2026-10-09 23:38 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>Zero Trust Architecture (ZTA) is an enterprise cybersecurity strategy based on a fundamental principle: <strong>"Never trust, always verify."</strong> Traditional network security relied on a "castle-and-moat" perimeter model, assuming that every entity inside the internal network was inherently trustworthy once it bypassed perimeter controls (like firewalls and VPNs).</p>
-
-<p>Modern enterprise environments no longer have a physical, defined perimeter. With cloud migration, remote workforce models, mobile devices, and third-party SaaS integrations, the traditional perimeter has dissolved. ZTA addresses the risk of lateral movement—a condition where an attacker breaches a weak edge device and freely navigates the internal network undetected. Zero Trust eliminates implicit trust regardless of where a request originates or what network segment a user occupies.</p>
-
-<h3>2. How It Works</h3>
-<p>Zero Trust works by evaluating every access request dynamically, using multi-factor signals before granting granular access to resources. According to NIST SP 800-207, ZTA relies on three core tenets:</p>
-<ul>
-    <li><strong>Explicit Verification:</strong> Always authenticate and authorize based on all available data points, including user identity, geographic location, device health, service or workload context, data classification, and anomalies.</li>
-    <li><strong>Least Privilege Access:</strong> Limit user and application access with Just-In-Time (JIT) and Just-Enough-Access (JEA) models, leveraging Role-Based (RBAC) and Attribute-Based Access Control (ABAC).</li>
-    <li><strong>Assume Breach:</strong> Design architecture under the assumption that adversaries already exist within the environment. Minimize blast radiuses through microsegmentation, end-to-end encryption, continuous telemetry, and automated threat response.</li>
-</ul>
-
-<p>Mechanically, a Zero Trust framework separates the control plane from the data plane using three main components:</p>
-<ul>
-    <li><strong>Policy Engine (PE):</strong> The brain responsible for making the ultimate decision to grant, revoke, or deny access to a resource based on enterprise policy and trust scores.</li>
-    <li><strong>Policy Administrator (PA):</strong> Communicates with the Policy Engine and issues commands to establish or terminate the connection between the user/device and the resource.</li>
-    <li><strong>Policy Enforcement Point (PEP):</strong> The gatekeeper component (e.g., a Zero Trust Network Access proxy) that enables, monitors, and terminates actual data path connections.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<p>The transition to Zero Trust changes the threat landscape and corresponding defensive tactics:</p>
-
-<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
-    <thead>
-        <tr style="background-color: #f2f2f2;">
-            <th style="text-align: left;">Offensive Vectors (Attacker Focus)</th>
-            <th style="text-align: left;">Defensive Countermeasures (ZTA Implementation)</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><strong>Identity & Token Theft:</strong> Adversaries target session tokens, Kerberos tickets, or use MFA fatigue attacks to bypass initial authentication.</td>
-            <td><strong>Phishing-Resistant MFA & Continuous Auth:</strong> Implementation of FIDO2/WebAuthn hardware tokens and continuous evaluation of session tokens that bind sessions to device signatures.</td>
-        </tr>
-        <tr>
-            <td><strong>Lateral Movement:</strong> Attackers use compromised credentials to scan network ports and move horizontally across internal VLANs.</td>
-            <td><strong>Microsegmentation & SDP:</strong> Software-Defined Perimeters isolate workloads into logical segments down to individual host levels, rendering internal resources invisible to unauthorized scanners.</td>
-        </tr>
-        <tr>
-            <td><strong>Device Identity</div><hr>
+<p>The mental model relies on complete determinism: every object has a clearly defined beginning and end of life. By default, objects live on the stack and are destroyed in reverse order of creation. When absolute control over lifetime, locality, and performance is required, C++ provides the language mechanics to instruct the compiler on exactly how CPU registers, caches, and raw</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
