@@ -17,7 +17,27 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
+<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<p><strong>Timestamp:</strong> 2026-10-27 01:40 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>JavaScript was created in 1995 by Brendan Eich at Netscape to make the web dynamic. Its foundational design philosophy is a synthesis of three distinct language influences: <strong>Scheme</strong> (first-class functions, lexical scoping, functional programming capabilities), <strong>Self</strong> (prototypal inheritance instead of class-based inheritance), and <strong>Java/C</strong> (syntax, basic control flow structures, and imperative operators).</p>
+
+<p>JavaScript was built to solve the problem of client-side reactivity without requiring heavy applets or full round-trip server calls. Language theorists classify JavaScript as a <strong>multi-paradigm, dynamically typed, weakly typed, prototype-based language</strong>. It favors flexibility, low friction, and lenient execution over strict static verification, making it hyper-adaptable to event-driven environments like web browsers and server runtimes.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>JavaScript uses standard C-style syntax, relying on curly braces <code>{}</code> to define execution blocks and statements bounded optionally by semicolons. Key syntactic characteristics include:</p>
+<ul>
+    <li><strong>Lexical Scope & Binding:</strong> Variables are bound using <code>const</code> (immutable reference), <code>let</code> (reassignable block-scope), or historical <code>var</code> (function-scope with hoisting). The runtime enforces a Temporal Dead Zone (TDZ) for <code>let</code> and <code>const</code> prior to initialization.</li>
+    <li><strong>Automatic Semicolon Insertion (ASI):</strong> The parser dynamically inserts semicolons at line breaks based on specific grammar rules, though idiomatic production code standardizes on explicit semicolon use (or disciplined minimalistic setups) to prevent parsing ambiguities.</li>
+    <li><strong>Module Organization:</strong> Modern JS utilizes <strong>ES Modules (ESM)</strong> using explicit <code>import</code> and <code>export</code> statements. ESM modules are evaluated asynchronously, natively tree-shakeable, and maintain isolated lexical scope trees.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>JavaScript employs fully automated memory management backed by tracing dynamic memory allocators and garbage collectors inside engine implementations (e.g., V8, JavaScriptCore, SpiderMonkey).</p>
+<ul>
+    <li><strong>Heap and Stack Allocation:</strong> Primitive types (numbers, booleans, symbols, null/undefined, BigInt) are value-allocated on the call stack or tightly inside frame objects, while reference types (Objects, Arrays, Functions) reside on the dynamic engine heap.</li>
+    <li><strong>Garbage Collection Strategy:</strong> Runtimes primarily rely on <strong>Generational Mark-and-Sweep Garbage Collection</strong>. The heap is separated into "Young Generation" (nursery,</div><hr><div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
 <p><strong>Timestamp:</strong> 2026-10-26 22:01 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1761,46 +1781,7 @@ Analyzing physical RAM dumps captured from an infected endpoint. This reveals vo
             <td><strong>Microsegmentation & SDP:</strong> Software-Defined Perimeters isolate workloads into logical segments down to individual host levels, rendering internal resources invisible to unauthorized scanners.</td>
         </tr>
         <tr>
-            <td><strong>Device Identity</div><hr><div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
-<p><strong>Timestamp:</strong> 2026-10-09 13:57 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>HTML (HyperText Markup Language) and CSS (Cascading Style Sheets) form the declarative backbone of the modern Web Open Platform. Unlike general-purpose imperative languages (such as C, Java, or Python), HTML and CSS are Domain-Specific Languages (DSLs) designed around <strong>declarative structure</strong> and <strong>constraint-based rule application</strong>.</p>
-<ul>
-    <li><strong>Why standard HTML was created:</strong> Developed by Tim Berners-Lee in 1990, HTML solved the problem of sharing structural, hyperlinked documents across heterogeneous computer systems. It abstracts away machine-specific layout logic into semantic abstractions (e.g., headings, paragraphs, anchors).</li>
-    <li><strong>Why CSS was created:</strong> Introduced by Håkon Wium Lie and Bert Bos in 1996, CSS solved the structural-presentational coupling crisis. Early HTML was becoming polluted with styling tags (e.g., <code>&lt;font&gt;</code>, <code>&lt;center&gt;</code>) and table-based layouts, destroying accessibility and network efficiency. CSS decoupled presentation from structural semantics.</li>
-    <li><strong>Paradigm Classification:</strong> Neither HTML nor CSS falls under Object-Oriented, Functional, or Procedural paradigms in the traditional sense:
-        <ul>
-            <li><strong>HTML:</strong> A context-free structural markup language that serializes a hierarchical tree structure (the Document Object Model, or DOM).</li>
-            <li><strong>CSS:</strong> A declarative, pattern-matching rule system evaluated by a specialized constraint solver (the layout engine). While CSS3/CSS4 features custom properties (variables), functional functions (e.g., <code>calc()</code>, <code>clamp()</code>), and media queries, it remains a rule-based declarative language.</li>
-        </ul>
-    </li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>The syntax and execution flow of HTML and CSS differ radically from step-by-step imperative execution models.</p>
-
-<p><strong>HTML Syntax & Structure:</strong></p>
-<ul>
-    <li>Composed of nested <strong>Elements</strong> bounded by start tags (<code>&lt;div&gt;</code>), optional attributes (<code>id="main"</code>), content, and end tags (<code>&lt;/div&gt;</code>), alongside self-closing void elements (<code>&lt;img&gt;</code>, <code>&lt;input&gt;</code>).</li>
-    <li>Whitespace is largely collapsed according to the HTML tokenization specification. Indentation is purely stylistic and non-semantic.</li>
-</ul>
-
-<p><strong>CSS Syntax & Structure:</strong></p>
-<ul>
-    <li>Structured around <strong>Rulesets</strong>: a <em>Selector</em> (pattern matcher) paired with a <em>Declaration Block</em> delimited by curly braces <code>{}</code>. Declarations consist of <code>property: value;</code> pairs terminated by semicolons.</li>
-    <li>Like HTML, CSS is whitespace-insensitive outside of string literals and specific functional parameters.</li>
-</ul>
-
-<p><strong>Parsing and Execution Flow:</strong></p>
-<p>Execution is non-linear and non-procedural. Browsers execute a multi-stage compilation and layout pipeline:</p>
-<ol>
-    <li><strong>HTML Parsing:</strong> Bytes &rarr; Characters &rarr; Tokens &rarr; Nodes &rarr; <strong>DOM Tree</strong>.</li>
-    <li><strong>CSS Parsing:</strong> Bytes &rarr; Characters &rarr; Tokens &rarr; Rules &rarr; <strong>CSSOM Tree</strong> (CSS Object Model).</li>
-    <li><strong>Render Tree Construction:</strong> The DOM and CSSOM combine to compute visible nodes and their calculated styles.</li>
-    <li><strong>Layout (Reflow):</strong> Geometric layout algorithms compute exact coordinate spaces and bounding boxes for every render tree node.</li>
-    <li><strong>Paint & Composite:</strong> Rasterization of vector geometric representations into pixel arrays, layered and combined on the GPU.</li>
-</ol></div><hr>
+            <td><strong>Device Identity</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
