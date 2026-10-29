@@ -17,7 +17,23 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: C++</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
+<p><strong>Timestamp:</strong> 2026-10-29 10:31 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Created in 1995 by Yukihiro "Matz" Matsumoto, Ruby was engineered with a primary thesis: computer systems should be designed for human ergonomics and developer happiness rather than machine execution efficiency. It embodies the <strong>Principle of Least Astonishment (POLA)</strong>, minimizing cognitive friction by making the runtime behave predictably from a human-centric mental model.</p>
+<p>Architecturally, Ruby is a <strong>pure Object-Oriented Language</strong> strongly influenced by Smalltalk, Lisp, Perl, and Eiffel:</p>
+<ul>
+  <li><strong>Pure Object Uniformity:</strong> Everything in Ruby is an object. There are no primitive scalar types decoupled from the object hierarchy. Integer literals (<code>42</code>), booleans (<code>true</code>), methods, and even classes themselves (instances of <code>Class</code>) are first-class runtime objects responding to message invocations.</li>
+  <li><strong>Extensible Domain-Specific Language (DSL) Construction:</strong> Ruby solves the problem of high-friction domain modeling by making syntax flexible enough to host internal DSLs naturally (e.g., RSpec, Active Record).</li>
+  <li><strong>Functional Hybridization:</strong> While grounded in Smalltalk-style object dynamics, Ruby seamlessly incorporates functional constructs through higher-order functions, first-class closures (<code>Proc</code>, <code>lambda</code>), and block-passing syntax.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Ruby relies on an imperative, block-structured syntax that prioritizes natural language readability over explicit punctilious boundaries:</p>
+<ul>
+  <li><strong>Delimiters & Keywords:</strong> Scopes are defined via semantic keywords (<code>class</code>, <code>module</code>, <code>def</code>, <code>if</code>, <code>do...end</code>) terminated by explicit <code>end</code> statements rather than braces or significant whitespace indentation. Braces (<code>{ ... }</code>) are conventionally reserved for single-line closures or Hash literals.</li>
+  <li><strong>Optional Syntactic Noise:</strong> Parentheses in method calls and definitions are optional where ambiguity is absent (e</div><hr><div class='lesson'><h2>🔍 Deep Dive: C++</h2>
 <p><strong>Timestamp:</strong> 2026-10-29 03:17 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1745,32 +1761,7 @@ Analyzing physical RAM dumps captured from an infected endpoint. This reveals vo
 
 <h3>4. Real-World Examples</h3>
 <p><strong>The SolarWinds Supply Chain Incident (2020):</strong> This breach demonstrated the failure of implicit internal trust. Attackers compromised an updates pipeline to infiltrate government and corporate networks. Once inside the perimeter, they moved freely between internal systems. Organizations that had adopted mature Zero Trust models limited the damage because internal services still required explicit, contextual authentication regardless of network location.</p>
-<p><strong>Practical Scenario:</strong> Consider a remote financial analyst</div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
-<p><strong>Timestamp:</strong> 2026-10-12 06:42 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Rust was created by Graydon Hoare at Mozilla Research to resolve a fundamental dichotomy in software engineering: the choice between high-level memory safety (guaranteed by garbage-collected languages like Go, Java, or Python) and low-level execution speed and deterministic control (provided by C and C++). For decades, systems programming suffered from severe vulnerabilities—such as use-after-free, double-free, buffer overflows, and null pointer dereferences—accounting for over 70% of major security flaws in large C/C++ codebases.</p>
-
-<p>Rust eliminates these vulnerabilities at compile time without relying on a garbage collector runtime. It achieves this by combining ideas from imperative systems languages with strict concepts from functional programming and type theory (specifically affine type systems). Syntactically and pragmatically, Rust is a compiled, multi-paradigm language that eschews traditional object-oriented class inheritance in favor of structured data (`struct` and `enum`) coupled with behavior contracts (`trait`).</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Rust uses C-style block syntax (`{}`) and explicit semicolons, but its evaluation engine is intensely <strong>expression-oriented</strong> rather than statement-oriented. Almost every construct in Rust—including `if` blocks, `match` statements, and block scopes (`{ ... }`)—evaluates to a value.</p>
-
-<ul>
-  <li><strong>Statements vs. Expressions:</strong> Adding a semicolon to a line turns an expression into a statement (discarding its value and returning the unit type `()`). Omitting the trailing semicolon in a block designates that expression as the block's return value.</li>
-  <li><strong>Explicit Mutability:</strong> Variables are immutable by default. Mutability must be explicitly declared using `let mut`.</li>
-  <li><strong>Pattern Matching and ADTs:</strong> Flow control relies heavily on Algebraic Data Types (Sum Types and Product Types) evaluated via exhaustive `match` expressions. The compiler forces developers to handle every possible variant of an `enum`.</li>
-  <li><strong>Code Organization:</strong> Code is organized into modules (`mod`), crates (compilation units yielding binaries or libraries), and workspaces. Modules provide strict privacy boundaries, where items are private by default and exposed via the `pub` keyword.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Rust introduces a novel memory management model centered on <strong>Ownership, Borrowing, and Lifetimes</strong>, enforcing memory safety guarantees statically at compile time through its <em>Borrow Checker</em>.</p>
-
-<ul>
-  <li><strong>Ownership:</strong> Every value in Rust has a single owner (a variable binding). When the owner goes out of scope, the memory assigned to the value is deterministically freed via the <code>Drop</code> trait, adhering to Resource Acquisition Is Initialization (RAII). Transferring ownership is called a "move."</li>
-  <li><strong>Borrowing (Aliasing XOR Mutability):</strong> Code can access data without taking ownership by borrowing references. Rust enforces a strict concurrency and safety invariant: you may have either <em>any number of immutable references (`&T`)</em> OR <em>exactly one mutable reference (`&mut T`)</em> at any given point in time, but never both. This rule prevents data races and iterator invalidation statically.</li>
-  <li><strong>Lifetimes:</strong> References carry an implicit or explicit lifetime parameter (e.g., `'a`). Lifetimes are static annotations that allow the compiler to verify that a reference never outlives the underlying memory it points to, completely eliminating dangling pointers.</li>
-  <li><strong>Zero-Cost Abstractions:</strong> High-level concepts like iterators, closures, and generics are monomorphized (expanded into specialized machine code at compile time),</div><hr>
+<p><strong>Practical Scenario:</strong> Consider a remote financial analyst</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
