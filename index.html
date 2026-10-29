@@ -17,7 +17,31 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Scala</h2>
+<div class='lesson'><h2>🔍 Deep Dive: C++</h2>
+<p><strong>Timestamp:</strong> 2026-10-29 03:17 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>C++ was created by Bjarne Stroustrup in 1979 (originally named "C with Classes") to bridge the gap between low-level hardware manipulation and high-level software abstraction. C offered raw performance and hardware control but lacked constructs for managing large-scale software complexity. C++ solved this by layering user-defined types and object-oriented abstractions directly onto C's execution model without incurring performance degradation.</p>
+
+<p>The foundational design paradigm of C++ is the <strong>Zero-Overhead Principle</strong>: <em>What you don't use, you don't pay for. And further: What you do use, you couldn't write any better by hand.</em></p>
+
+<p>C++ is fundamentally a multi-paradigm language. It does not force a single methodology but provides tools for:</p>
+
+<ul>
+  <li><strong>Procedural Programming:</strong> Direct control over flow, functions, memory, and bit-level operations.</li>
+  <li><strong>Object-Oriented Programming (OOP):</strong> Encapsulation, inheritance, and dynamic polymorphism via virtual method tables.</li>
+  <li><strong>Generic Programming:</strong> Compile-time type generation using templates, allowing algorithms to operate over arbitrary types without execution penalty.</li>
+  <li><strong>Compile-time / Functional Programming:</strong> Metaprogramming with <code>constexpr</code>, <code>consteval</code>, high-order functions, lambdas, and C++20 Ranges.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>C++ inherits its syntax from C. It is a statically typed, free-form, block-structured language where statement execution is sequential, terminated by semicolons (<code>;</code>), and scoped by curly braces (<code>{}</code>). Indentation is purely lexical and ignored by the compiler.</p>
+
+<p>Code organization is split across distinct phases and translation units:</p>
+<ul>
+  <li><strong>Header Files (<code>.h</code> / <code>.hpp</code>) & Modules (C++20):</strong> Contain type declarations, interface signatures, template definitions, and inline functions.</li>
+  <li><strong>Source Files (<code>.cpp</code>):</strong> Contain executable implementation logic.</li>
+  <li><strong>Compilation Pipeline:</strong> The preprocessor handles macros and file inclusions (`#include`), generating an intermediate translation unit. The compiler translates each unit into an object file (<code>.o</code>/<code>.obj</code>). The linker then stitches object files and</div><hr><div class='lesson'><h2>🔍 Deep Dive: Scala</h2>
 <p><strong>Timestamp:</strong> 2026-10-28 14:38 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1746,21 +1770,7 @@ Analyzing physical RAM dumps captured from an infected endpoint. This reveals vo
   <li><strong>Ownership:</strong> Every value in Rust has a single owner (a variable binding). When the owner goes out of scope, the memory assigned to the value is deterministically freed via the <code>Drop</code> trait, adhering to Resource Acquisition Is Initialization (RAII). Transferring ownership is called a "move."</li>
   <li><strong>Borrowing (Aliasing XOR Mutability):</strong> Code can access data without taking ownership by borrowing references. Rust enforces a strict concurrency and safety invariant: you may have either <em>any number of immutable references (`&T`)</em> OR <em>exactly one mutable reference (`&mut T`)</em> at any given point in time, but never both. This rule prevents data races and iterator invalidation statically.</li>
   <li><strong>Lifetimes:</strong> References carry an implicit or explicit lifetime parameter (e.g., `'a`). Lifetimes are static annotations that allow the compiler to verify that a reference never outlives the underlying memory it points to, completely eliminating dangling pointers.</li>
-  <li><strong>Zero-Cost Abstractions:</strong> High-level concepts like iterators, closures, and generics are monomorphized (expanded into specialized machine code at compile time),</div><hr><div class='lesson'><h2>🔍 Deep Dive: Python</h2>
-<p><strong>Timestamp:</strong> 2026-10-12 00:03 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Python was conceived in late 1989 by Guido van Rossum as a successor to the ABC programming language. Its core motivation was to bridge the gap between bare-metal C programming and shell scripting by maximizing <strong>developer velocity</strong> and <strong>code readability</strong> without sacrificing expressiveness.</p>
-<p>Language theorists categorize Python as a <strong>dynamically typed, multi-paradigm, interpreted (bytecode-compiled) language</strong>. It inherently blends:</p>
-<ul>
-  <li><strong>Object-Oriented Programming (OOP):</strong> Pure object instantiation where <em>everything</em>—including functions, modules, and primitive types—is a first-class object living on the heap.</li>
-  <li><strong>Procedural Programming:</strong> Top-down scriptable execution without requiring boilerplate class definitions (unlike Java or C#).</li>
-  <li><strong>Functional Programming:</strong> Support for higher-order functions, anonymous lambda expressions, list comprehensions, and pure mathematical operations (via modules like <code>functools</code> and <code>itertools</code>).</li>
-</ul>
-<p>Python's core philosophy is encapsulated in the <em>Zen of Python (PEP 20)</em>. It prioritizes explicit operations over implicit side effects ("Explicit is better than implicit") and aims for a unified language design ("There should be one—and preferably only one—obvious way to do it"). It intentionally avoids C++-style syntactic complexity, choosing predictable runtime mechanics over static compilation performance.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Python’s syntax relies heavily on the <strong>off-side rule</strong>, using significant whitespace (indentation) instead of curly braces <code>{}</code> or <code>begin/end</code> blocks to define lexical scope. Semicolons exist to separate multi-statement lines,</div><hr>
+  <li><strong>Zero-Cost Abstractions:</strong> High-level concepts like iterators, closures, and generics are monomorphized (expanded into specialized machine code at compile time),</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
