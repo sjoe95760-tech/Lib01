@@ -17,7 +17,32 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Cryptography</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
+<p><strong>Timestamp:</strong> 2026-10-29 22:09 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>In modern enterprise networks, <strong>Firewalls</strong> and <strong>Intrusion Detection/Prevention Systems (IDS/IPS)</strong> form the foundational bedrock of network security architecture. While often discussed together, they serve complementary, distinct operational roles within the security stack.</p>
+<p>A <strong>Firewall</strong> acts as a gatekeeper, enforcing access control policies by allowing or denying traffic between networks (e.g., the public Internet and an internal corporate network) based on predefined security rules. An <strong>IDS/IPS</strong> acts as an inspector, analyzing the content of allowed traffic to detect, alert on, or actively block malicious activity, unauthorized patterns, and policy violations.</p>
+<p><strong>Why It Matters:</strong> Without these controls, a network is an unmonitored environment where any host can communicate with any other host without restriction. Attackers could freely scan open ports, exploit vulnerable services, establish Command and Control (C2) channels, and exfiltrate sensitive data. Firewalls establish trust boundaries and enforce microsegmentation, while IDS/IPS provides crucial visibility into payload-level threats that pass through allowable network ports.</p>
+
+<h3>2. How It Works</h3>
+<p>Understanding how these systems operate requires examining their architectural mechanics and inspection depth across the OSI model.</p>
+
+<h4>Firewall Evolution & Mechanics</h4>
+<ul>
+  <li><strong>Packet Filtering (Layer 3/4):</strong> Statelessly inspects packet headers (source/destination IP addresses, ports, and protocols like TCP/UDP/ICMP). Very fast, but vulnerable to spoofing and lacks contextual awareness.</li>
+  <li><strong>Stateful Inspection (Layer 3/4):</strong> Tracks the state of active network connections (e.g., TCP three-way handshake: SYN, SYN-ACK, ACK). It maintains a state table to ensure incoming packets correspond to a valid, established outbound session.</li>
+  <li><strong>Next-Generation Firewalls (NGFW - Layer 7):</strong> Performs Deep Packet Inspection (DPI) to identify application context (e.g., distinguishing Skype traffic running over port 80 from standard HTTP traffic), user identity (via Active Directory/SSO integration), and decrypts TLS/SSL sessions for inspection.</li>
+</ul>
+
+<h4>IDS vs. IPS Deployment & Detection Models</h4>
+<ul>
+  <li><strong>Intrusion Detection System (IDS):</strong> Deployed <em>out-of-band</em> (passive). Receives a copy of network traffic via SPAN/mirror ports or Network TAPs. Generates alerts for SOC analysts without impacting network throughput or latency. It cannot directly block traffic.</li>
+  <li><strong>Intrusion Prevention System (IPS):</strong> Deployed <em>in-line</em> (active). Traffic physically flows through the device. Can actively drop malicious packets, reset TCP connections (sending TCP RST packets to both endpoints), or automatically update firewall rules to block offending IPs.</li>
+  <li><strong>Detection Engines:</strong>
+    <ul>
+      <li><em>Signature-Based:</em> Compares traffic streams against known patterns of attack (e.g., specific byte sequences of a CVE exploit). High accuracy for known threats, but completely blind to zero-day attacks.</li>
+      <li><em>Anomaly/Heuristic</div><hr><div class='lesson'><h2>🔍 Deep Dive: Cryptography</h2>
 <p><strong>Timestamp:</strong> 2026-10-29 17:10 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1737,35 +1762,7 @@ Analyzing physical RAM dumps captured from an infected endpoint. This reveals vo
 <p>Java combines classic enterprise architectural patterns with modern operational capabilities:</p>
 
 <ul>
-    <li><strong>Object-Oriented Rigor:</strong> Java relies on strict nominal subtyping, single implementation inheritance for classes, multiple interface inheritance, and runtime virtual method dispatch. Ab</div><hr><div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
-<p><strong>Timestamp:</strong> 2026-10-13 12:16 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Structured Query Language (SQL) was designed in the 1970s by Donald Chamberlin and Raymond Boyce at IBM, rooted in Edgar F. Codd’s mathematical paper on the relational model. Unlike imperative programming languages (OOP, Functional, or Procedural) that focus on <em>how</em> to achieve a result via explicit algorithms and control flow, SQL is fundamentally a <strong>declarative, set-based domain-specific language</strong> based on tuple relational calculus and relational algebra.</p>
-<p>SQL was designed to solve the problem of physical data independence. In legacy navigational databases (such as CODASYL or IMS), developers had to manually write code to traverse physical pointers on disk. SQL abstracts physical storage, indexing, and access paths entirely. The developer describes <em>what</em> dataset is required, and an underlying Query Optimizer evaluates statistics, cost models, and algebraic equivalents to derive the optimal physical execution plan (e.g., choosing between a Hash Join, Index Scan, or Nested Loop).</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>SQL query syntax is structured human-readable English text, but its physical order of writing diverges significantly from its logical execution order. SQL is whitespace-insensitive, uses semicolons (<code>;</code>) as statement terminators, and does not use indentation or braces for structural logic (procedural extensions use <code>BEGIN...END</code> blocks).</p>
-
-<p><strong>Logical Query Execution Order:</strong></p>
-
-<p>While a standard query is written as: <code>SELECT -&gt; FROM -&gt; WHERE -&gt; GROUP BY -&gt; HAVING -&gt; ORDER BY</code>, the database engine processes it logically in this sequence:</p>
-<ol>
-  <li><code>FROM</code> &amp; <code>JOIN</code>: Evaluates source relations and computes Cartesian products or join predicates to build working sets.</li>
-  <li><code>WHERE</code>: Filters individual rows based on boolean predicates before aggregation.</li>
-  <li><code>GROUP BY</code>: Partitions remaining rows into equivalence classes based on unique grouping keys.</li>
-  <li><code>HAVING</code>: Filters aggregate groups based on group-level predicates.</li>
-  <li><code>SELECT</code>: Evaluates expressions, aliases, and projection of columns.</li>
-  <li><code>DISTINCT</code>: Eliminates duplicate tuples from the projected set.</li>
-  <li><code>ORDER BY</code>: Sorts the resulting set (converting the mathematical <em>set/bag</em> into an ordered array/cursor).</li>
-  <li><code>LIMIT / OFFSET</code>: Truncates the sorted tuple stream for pagination.</li>
-</ol>
-
-<h3>3. Memory Management</h3>
-<p>SQL has no language-level memory constructs, manual memory management, explicit allocation, pointers, or garbage collection exposed to the developer. Memory management is entirely delegated to the Database Management System (DBMS) engine and its storage component.</p>
-<ul>
-  <li><strong>Buffer Pool Management:</strong> The engine allocates physical memory (RAM) into fixed-size buffer pools (cached data pages). Page eviction algorithms (like LRU or CLOCK) handle bringing disk pages into memory and flushing dirty pages back to disk.</li>
-  <li><strong>Execution Memory Allocation:</strong> During complex query execution, engines allocate memory per-operation (e.g., PostgreSQL's <code>work_mem</code> or MySQL's <code>sort_buffer_size</code>) for building hash tables or performing external sort-merge operations. If execution memory is exceeded, the engine spills temporary data to disk (Temp</div><hr>
+    <li><strong>Object-Oriented Rigor:</strong> Java relies on strict nominal subtyping, single implementation inheritance for classes, multiple interface inheritance, and runtime virtual method dispatch. Ab</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
