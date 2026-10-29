@@ -17,7 +17,53 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Cryptography</h2>
+<p><strong>Timestamp:</strong> 2026-10-29 17:10 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>Cryptography is the science of transforming plain information into unreadable ciphertexts and back, protecting data against unauthorized access, tampering, and impersonation. At its core, modern cryptography underpins the entire trust model of the digital world, providing four primary security services:</p>
+<ul>
+  <li><strong>Confidentiality:</strong> Ensuring that data remains unreadable to unauthorized entities (Encryption).</li>
+  <li><strong>Integrity:</strong> Verifying that data has not been altered in transit or storage (Hashing, Message Authentication Codes).</li>
+  <li><strong>Authentication:</strong> Proving the identity of a sender or endpoint (Digital Signatures, Certificates).</li>
+  <li><strong>Non-repudiation:</strong> Guaranteeing that an actor cannot deny having performed a specific action or sent a message.</li>
+</ul>
+<p>Without cryptography, every digital transaction—from accessing online banking to sending an encrypted messaging payload—would occur in plaintext across public routing infrastructure, exposing organizations and individuals to widespread eavesdropping, credential theft, and catastrophic data breaches.</p>
+
+<h3>2. How It Works</h3>
+<p>Modern cryptography relies on hard mathematical problems (e.g., discrete logarithms, integer factorization, and lattice-based math) rather than security through obscurity. The mechanisms are broken down into key domains:</p>
+
+<h4>A. Symmetric Cryptography</h4>
+<p>Uses a single secret key for both encryption and decryption. It is extremely fast and ideal for encrypting large volumes of data at rest or in bulk streams.</p>
+
+  <li><strong>Algorithms:</strong> Advanced Encryption Standard (AES-128/256 in Galois/Counter Mode (GCM) or Cipher Block Chaining (CBC)), ChaCha20-Poly1305.</li>
+  <li><strong>Use Case:</strong> Full-disk encryption (BitLocker, LUKS), database encryption, media streaming payload encryption.</li>
+
+
+<h4>B. Asymmetric Cryptography (Public-Key Cryptography)</h4>
+<p>Uses a mathematically linked key pair: a <strong>Public Key</strong> (shared openly) to encrypt or verify signatures, and a <strong>Private Key</strong> (kept strictly secret) to decrypt or create signatures.</p>
+<ul>
+  <li><strong>Algorithms:</strong> RSA, Elliptic Curve Cryptography (ECDSA, Ed25519), Diffie-Hellman (DH/ECDH key exchange).</li>
+  <li><strong>Use Case:</strong> Establishing secure communication channels (TLS handshake), SSH access, secure email (PGP/S/MIME).</li>
+</ul>
+
+<h4>C. Cryptographic Hashing & Message Authentication</h4>
+<p>One-way mathematical algorithms that convert input data of any size into a unique, fixed-size string (digest). A tiny change in input fundamentally alters the output (the avalanche effect).</p>
+<ul>
+  <li><strong>Cryptographic Hashes:</strong> SHA-256, SHA-3, BLAKE3. Used for data integrity and password storage (when salted and stretched with Argon2, bcrypt, or PBKDF2).</li>
+  <li><strong>HMACs (Hash-based Message Authentication Codes):</strong> Combines a hash function with a secret key to provide both data integrity and authentication.</li>
+</ul>
+
+<h4>D. Public Key Infrastructure (PKI) & Key Management</h4>
+<p>Cryptography fails without trust management. PKI uses Certificate Authorities (CAs) to bind public keys to digital identities using X.509 certificates. Proper Key Management Lifecycles govern secure generation, distribution, storage (via Hardware Security Modules or KMS), rotation, and revocation (CRLs, OCSP).</p>
+
+<h3>3. Common Attack/Defense Techniques</h3>
+
+<h4>Offensive Vectors (Attacks)</h4>
+<ul>
+  <li><strong>Implementation Attacks:</strong> Exploiting software bugs in cryptographic libraries rather than the math itself (e.g., buffer overflows, improper memory handling).</li>
+  <li><strong>Side-Channel Attacks:</strong> Inferring keys by measuring physical system properties such as execution timing, power consumption, or electromagnetic emissions (e.g., Specter/Meltdown variations, timing attacks on non-constant-time comparisons).</li>
+  <li><strong>Padding Oracle Attacks:</strong> Exploiting improper handling of cipher block padding validation (e.g., PKCS#7 in CBC mode)</div><hr><div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
 <p><strong>Timestamp:</strong> 2026-10-29 10:31 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1719,49 +1765,7 @@ Analyzing physical RAM dumps captured from an infected endpoint. This reveals vo
 <p>SQL has no language-level memory constructs, manual memory management, explicit allocation, pointers, or garbage collection exposed to the developer. Memory management is entirely delegated to the Database Management System (DBMS) engine and its storage component.</p>
 <ul>
   <li><strong>Buffer Pool Management:</strong> The engine allocates physical memory (RAM) into fixed-size buffer pools (cached data pages). Page eviction algorithms (like LRU or CLOCK) handle bringing disk pages into memory and flushing dirty pages back to disk.</li>
-  <li><strong>Execution Memory Allocation:</strong> During complex query execution, engines allocate memory per-operation (e.g., PostgreSQL's <code>work_mem</code> or MySQL's <code>sort_buffer_size</code>) for building hash tables or performing external sort-merge operations. If execution memory is exceeded, the engine spills temporary data to disk (Temp</div><hr><div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
-<p><strong>Timestamp:</strong> 2026-10-12 23:19 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p><strong>Zero Trust Architecture (ZTA)</strong> is a strategic cybersecurity paradigm shift based on a simple fundamental axiom: <em>"Never trust, always verify."</em> Unlike traditional network security models that rely on a "castle-and-moat" approach—where everything inside the internal enterprise network is trusted by default—Zero Trust treats all network traffic, users, devices, and applications as inherently untrusted, regardless of whether they originate from inside or outside the organizational perimeter.</p>
-<p>This model addresses a critical real-world vulnerability: once an attacker breaches the traditional network perimeter (via stolen credentials, phishing, or an unpatched VPN), they gain unrestrained lateral movement across internal systems. In modern distributed environments characterized by remote work, multi-cloud architectures, and BYOD (Bring Your Own Device), the physical network boundary no longer exists. Zero Trust solves this by enforcing explicit verification at every access request, neutralizing implicit trust, and dramatically reducing the blast radius of potential compromises.</p>
-
-<h3>2. How It Works</h3>
-<p>Zero Trust operates on three core principles defined by industry standards such as NIST SP 800-207:</p>
-<ul>
-    <li><strong>Verify Explicitly:</strong> Always authenticate and authorize based on all available data points, including user identity, location, device health, service or workload, data context, and anomaly detection.</li>
-    <li><strong>Use Least Privilege Access:</strong> Limit user access with Just-In-Time (JIT) and Just-Enough-Access (JEA) models, Risk-Based Adaptive Policies, and data protection mechanisms.</li>
-    <li><strong>Assume Breach:</strong> Minimize blast radius through microsegmentation, end-to-end encryption, continuous threat monitoring, and automated threat detection and response.</li>
-</ul>
-<p>Architecturally, ZTA decouples access control from network location using two key components: the <strong>Control Plane</strong> and the <strong>Data Plane</strong>. The Policy Decision Point (PDP) resides on the Control Plane to evaluate request context against security policies. The Policy Enforcement Point (PEP) operates on the Data Plane to establish, monitor, and terminate connections based on signals from the PDP.</p>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<table>
-    <thead>
-        <tr>
-            <th>Offensive Attack Vector</th>
-            <th>Zero Trust Defensive Countermeasure</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><strong>MFA Fatigue / Push Spam:</strong> Attackers repeatedly trigger MFA notifications until the user approves access out of frustration.</td>
-            <td><strong>FIDO2 / WebAuthn Hardware Tokens:</strong> Replacing push notifications with phishing-resistant, cryptographically bound authentication tokens (e.g., YubiKeys).</td>
-        </tr>
-        <tr>
-            <td><strong>Session Token Theft & Hijacking:</strong> Attackers steal active session cookies via InfoStealers to bypass MFA.</td>
-            <td><strong>Continuous Adaptive Risk & Trust Assessment (CARTA):</strong> Monitoring device health and behavioral telemetry during active sessions; re-authenticating or revoking access if context changes dynamically.</td>
-        </tr>
-        <tr>
-            <td><strong>Lateral Movement:</strong> Adversaries exploit flat network structures using SMB/WMI to pivot across systems.</td>
-            <td><strong>Microsegmentation & Software-Defined Perimeter (SDP):</strong> Isolating workloads into granular zones to restrict lateral communication strictly to explicitly permitted application flows.</td>
-        </tr>
-    </tbody>
-</table>
-
-<h3>4. Real-World Examples</h3>
-<p><strong>The SolarWinds Supply Chain Incident (2020):</strong> This breach demonstrated the failure of implicit internal trust. Attackers compromised an updates pipeline to infiltrate government and corporate networks. Once inside the perimeter, they moved freely between internal systems. Organizations that had adopted mature Zero Trust models limited the damage because internal services still required explicit, contextual authentication regardless of network location.</p>
-<p><strong>Practical Scenario:</strong> Consider a remote financial analyst</div><hr>
+  <li><strong>Execution Memory Allocation:</strong> During complex query execution, engines allocate memory per-operation (e.g., PostgreSQL's <code>work_mem</code> or MySQL's <code>sort_buffer_size</code>) for building hash tables or performing external sort-merge operations. If execution memory is exceeded, the engine spills temporary data to disk (Temp</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
