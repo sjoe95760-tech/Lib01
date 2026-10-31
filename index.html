@@ -17,7 +17,24 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
+<p><strong>Timestamp:</strong> 2026-10-31 13:58 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>From a programming language perspective, neither HTML nor CSS are imperative, object-oriented, or traditional functional programming languages. They are domain-specific declarative languages (DSLs) designed to solve the problem of hypermedia content structuring and presentation over distributed network nodes.</p>
+<p><strong>HTML (HyperText Markup Language)</strong> is a formal document-structure specification language derived from SGML (Standard Generalized Markup Language). Its core philosophy is semantic representation: defining *what* information exists and its hierarchical relationships, abstract from *how* it is displayed. It builds an abstract syntax tree (AST) known at runtime as the Document Object Model (DOM).</p>
+<p><strong>CSS (Cascading Style Sheets)</strong> is a constraint-based declarative rule system. It solves the problem of coupling document content with visual presentation. CSS models styling as an overlay of conditional rules evaluated against the DOM AST. Instead of imperative drawing commands (like canvas APIs), CSS declares desired aesthetic invariants (e.g., "all children of X must be arranged in a horizontal flexible container"), leaving the layout execution engine (e.g., Blink's LayoutNG, Gecko's Layout) to compute exact geometric solutions via constraint satisfaction algorithms.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>HTML utilizes a tagged XML-like hierarchical token structure composed of start tags, attributes, content text, and end tags. It maps directly to an explicit nested tree structure.</p>
+
+<p>CSS utilizes a grammar composed of selector chains, declaration blocks enclosed in curly braces (<code>{}</code>), and semicolon-terminated property-value pairs (`property: value;`).</p>
+
+<p><strong>The Parsing and Execution Pipeline:</strong></p>
+<ol>
+  <li><strong>Byte-to-DOM Parsing:</strong> The HTML parser consumes raw bytes, converts them to characters, tokenizes them, constructs Node objects, and builds the DOM tree. HTML parsing is unique because it is non-context-free and speculative; script execution can mutate the input stream (`document.write`).</li>
+  <li><strong>CSSOM Construction:</strong> The CSS parser converts raw CSS into the CSS Object Model (CSSOM), a secondary tree structure mapping selectors to calculated properties.</li>
+  <li><strong>Style Resolution & Rendering Tree:</strong> The engine merges DOM and CSSOM via the <em>Cascading Algorithm</em> to produce a Render Tree (omitting non-rendered elements like</div><hr><div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
 <p><strong>Timestamp:</strong> 2026-10-31 07:40 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1688,60 +1705,7 @@ Engineers defend applications using parameterized queries and Object-Relational 
 <p>Unlike Java or C++, JavaScript lacks true blueprinted classes. The <code>class</code> keyword introduced in ES6 is purely syntactical sugar over the Prototype Chain. Every object holds an internal link (<code>[[Prototype]]</code>) to another object. Property lookup traverses this chain recursively until it reaches <code>Object.prototype</code> or <code>null</code>.</p>
 
 <p><strong>Functional Programming:</strong></p>
-<p>Functions are first-class citizens: they can be assigned to variables, passed as arguments, and returned from other functions. Higher-Order Functions (<code>map</code>, <code>filter</code>,</div><hr><div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
-<p><strong>Timestamp:</strong> 2026-10-16 23:05 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p><strong>Zero Trust Architecture (ZTA)</strong> is a strategic cybersecurity paradigm built on a fundamental axiom: <em>"Never trust, always verify."</em> Unlike traditional security models that relied on a "castle-and-moat" philosophy—where everything inside the physical or logical network perimeter was deemed inherently trustworthy—Zero Trust assumes that threats exist both outside and inside the network at all times.</p>
-<p>The traditional perimeter model collapsed due to digital transformation, the proliferation of cloud computing, remote workforces, mobile devices, and complex third-party supply chains. Once an attacker breaches the outer perimeter in a traditional network (via phishing, stolen credentials, or unpatched software), they enjoy unrestricted lateral movement across flat networks. Zero Trust solves this by enforcing strict identity verification, granular access controls, continuous context-based risk evaluation, and micro-segmentation for every access request, regardless of where the request originates or what resource it targets.</p>
-
-<h3>2. How It Works</h3>
-<p>Zero Trust operates by shifting focus from securing network segments to securing individual resources (data, applications, services, and assets). As outlined in <strong>NIST SP 800-207</strong>, ZTA relies on three core guiding principles:</p>
-<ul>
-    <li><strong>Explicit Verification:</strong> Always authenticate and authorize based on all available data points, including user identity, geographic location, device health, service or workload status, data classification, and anomalies.</li>
-    <li><strong>Least Privilege Access:</strong> Limit user and entity access with Just-In-Time (JIT) and Just-Enough-Access (JEA) controls, risk-based adaptive policies, and data protection strategies.</li>
-    <li><strong>Assume Breach:</strong> Design architecture under the assumption that malicious actors already possess internal network access. Minimize blast radiuses by segmenting access, encrypting all communications end-to-end, and enforcing real-time threat detection.</li>
-</ul>
-
-<p>Architecturally, ZTA establishes access decisions through core control components:</p>
-<ul>
-    <li><strong>Policy Engine (PE):</strong> The logical brain responsible for making the ultimate decision to grant, deny, or revoke access to a resource based on organizational policies and input from trust algorithms.</li>
-    <li><strong>Policy Administrator (PA):</strong> Communicates with the Policy Engine and issues commands to establish or terminate the session between the subject and the resource via control-plane protocols.</li>
-    <li><strong>Policy Enforcement Point (PEP):</strong> A gatekeeper mechanism (e.g., a proxy, agent, or firewall) that inspects, enables, and monitors connections between a client and an enterprise resource.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<p>Adopting Zero Trust fundamentally changes the dynamic between adversary offensive operations and defensive counter-strategies:</p>
-
-<table>
-    <thead>
-        <tr>
-            <th>Adversary Technique (Offensive)</th>
-            <th>Zero Trust Countermeasure (Defensive)</th>
-        </tr>
-    </th>
-    <tbody>
-        <tr>
-            <td><strong>Credential Stuffing & Phishing:</strong> Stealing valid user credentials to gain an initial foothold.</td>
-            <td><strong>Phishing-Resistant MFA (FIDO2/WebAuthn) & Conditional Access:</strong> Rejects access attempts from unknown devices, unapproved locations, or unverified security posture despite valid passwords.</td>
-        </tr>
-        <tr>
-            <td><strong>Lateral Movement:</strong> Pivoting across internal systems using SMB, RDP, or SSH over flat networks.</td>
-            <td><strong>Micro-Segmentation & Software-Defined Perimeters (SDP):</strong> Network paths between workloads are isolated. Unauthorized host-to-host visibility is blocked by default.</td>
-        </tr>
-        <tr>
-            <td><strong>Session Hijacking / Token Theft:</strong> Intercepting bearer tokens or cookies to bypass active authentication.</td>
-            <td><strong>Continuous Adaptive Trust & Token Binding:</strong> Continuous assessment of active sessions. If context changes (e.g., IP address switch or novel device behavior), session tokens are revoked dynamically.</td>
-        </tr>
-        <tr>
-            <td><strong>Privilege Escalation:</strong> Leveraging over-provisioned service accounts or local admin rights.</td>
-            <td><strong>Just-In-Time (JIT) Privileged Access Management (PAM):</strong> Accounts possess zero default privileges. High-level permissions are granted temporarily upon explicit request and contextual validation.</td>
-        </tr>
-    </tbody>
-</table>
-
-<h3>4. Real-World Examples</h3>
-<p><strong>1. Google’s BeyondCorp (The Pioneer Implementation):</strong> Following the targeted cyberattack known as Operation Aurora in 2009, Google abandoned its traditional internal network trust model. Over several years, they</div><hr>
+<p>Functions are first-class citizens: they can be assigned to variables, passed as arguments, and returned from other functions. Higher-Order Functions (<code>map</code>, <code>filter</code>,</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
