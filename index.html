@@ -17,7 +17,24 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Penetration Testing</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
+<p><strong>Timestamp:</strong> 2026-10-31 22:00 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>In network security, <strong>Firewalls</strong> and <strong>Intrusion Detection/Prevention Systems (IDS/IPS)</strong> serve as the primary network perimeter controls and internal boundary enforcers.</p>
+<ul>
+    <li><strong>Firewalls:</strong> Act as traffic gatekeepers. Operating primarily at Layers 3, 4, and 7 of the OSI model, they enforce access control policies by analyzing traffic attributes (IP addresses, ports, protocols, and application signatures) to allow or deny entry.</li>
+    <li><strong>IDS (Intrusion Detection System):</strong> Acts as a passive security monitor (tap/SPAN port). It inspects packet payloads and traffic patterns to alert security analysts of malicious activity without interfering with flow.</li>
+    <li><strong>IPS (Intrusion Prevention System):</strong> Operates inline with traffic flow. It actively inspects payloads and automatically takes defensive actions (such as dropping packets, resetting TCP connections, or blocking source IPs) when a threat is detected.</li>
+</ul>
+<p><strong>Why It Matters:</strong> Without robust network filtering and deep inspection, an enterprise exposes every internal endpoint directly to the public internet. Firewalls prevent unauthorized connections, while IDS/IPS inspect the internal contents of authorized connections—combating threats like lateral movement, zero-day exploits, command-and-control (C2) beaconing, and data exfiltration.</p>
+
+<h3>2. How It Works</h3>
+<p>Network control technologies operate across varying levels of inspection depth and deployment architectures:</p>
+
+<h4>Firewall Architecture & Inspection Levels</h4>
+<ul>
+    <li><strong>Stateless Packet Filtering (Layer 3/4):</strong> Evaluates individual packets against static Access Control Lists (ACL</div><hr><div class='lesson'><h2>🔍 Deep Dive: Penetration Testing</h2>
 <p><strong>Timestamp:</strong> 2026-10-31 18:09 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1672,34 +1689,7 @@ Engineers defend applications using parameterized queries and Object-Relational 
 
 <p>Code execution flow is governed by the following mechanics:</p>
 <ul>
-    <li><strong>Embedding Contexts:</strong> PHP parsing operates via open (<code>&lt;?php</code>) and close (<code>?&gt;</code>) tags. Text outside these tags is passed directly to the output</div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
-<p><strong>Timestamp:</strong> 2026-10-17 06:24 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Rust was designed by Graydon Hoare at Mozilla to resolve the fundamental trade-off in systems programming: the choice between safety (managed languages like Java or Go) and control/performance (unmanaged languages like C and C++). Historically, C and C++ allowed developers maximum hardware control at the cost of pervasive runtime vulnerabilities—specifically memory corruption bugs such as use-after-free, double frees, buffer overflows, and data races. Rust's core design philosophy is to achieve <strong>zero-cost abstractions</strong> and <strong>guaranteed memory and thread safety at compile time</strong> without relying on a garbage collector.</p>
-<p>From a programming language theory perspective, Rust is a pragmatically typed modern systems language. It drops classical class-based Object-Oriented Programming (OOP) in favor of a strong, static affine type system inspired by ML-family functional languages. It blends functional idioms (algebraic data types, parametric polymorphism, immutable-by-default variables, pattern matching) with procedural hardware control (explicit layout, pointer manipulation via unsafe blocks, direct syscall execution).</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Rust uses C-style block syntax using curly braces <code>{}</code> for scoping and explicit control flow. Indentation is purely convention, but idiomatic code strictly follows standard layout guidelines enforced by <code>rustfmt</code>.</p>
-<p>Key syntactic characteristics include:</p>
-<ul>
-    <li><strong>Expression-Oriented Design:</strong> Almost every block in Rust is an expression that evaluates to a value. Statements explicitly end with semicolons (<code>;</code>). Omitting the trailing semicolon from the final line of a function or block transforms it into an implicit return expression.</li>
-    <li><strong>Variable Binding & Mutability:</strong> Bindings are declared with <code>let</code> and are immutable by default. Mutability must be explicitly opted into using the <code>mut</code> keyword (e.g., <code>let mut count = 0;</code>), forcing developers to explicitly signal state mutability in the AST.</li>
-    <li><strong>Module & Package Hierarchy:</strong> Code is organized into units called <strong>crates</strong> (compiling down to binary or library artifacts). Modules (<code>mod</code>) establish namespaces and encapsulate visibility, which defaults to private unless explicitly marked with <code>pub</code>. Dependencies, builds, and metadata are declared declaratively via Cargo (<code>Cargo.toml</code>).</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Rust eliminates both runtime garbage collection (GC) overhead and explicit manual memory management (<code>malloc</code>/<code>free</code>) through a compile-time affine type system known as the <strong>Ownership and Borrowing system</strong>.</p>
-<p>This system operates on three invariant rules enforced strictly by the compiler's <strong>Borrow Checker</strong>:</p>
-<ol>
-    <li><strong>Ownership:</strong> Each value in memory has a single owner (a variable binding). When the owner goes out of scope, Rust automatically drops the value and reclaims memory using the RAII (Resource Acquisition Is Initialization) pattern via the automatically invoked <code>Drop</code> trait.</li>
-    <li><strong>Borrowing:</strong> Values can be accessed via references without transferring ownership. References are categorized into two mutually exclusive types:
-        <ul>
-            <li>Aliased Immutable References (<code>&T</code>): Multiple readers are allowed simultaneously.</li>
-            <li>Exclusive Mutable References (<code>&mut T</code>): Exactly one writer is allowed, with zero co-existing readers.</li>
-        </ul>
-    </li>
-    <li><strong>Lifetimes:</strong> Every reference has a static compile-time lifetime parameter</div><hr>
+    <li><strong>Embedding Contexts:</strong> PHP parsing operates via open (<code>&lt;?php</code>) and close (<code>?&gt;</code>) tags. Text outside these tags is passed directly to the output</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
