@@ -17,7 +17,41 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Social Engineering</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
+<p><strong>Timestamp:</strong> 2026-11-01 23:14 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>Zero Trust Architecture (ZTA) is an enterprise cybersecurity framework rooted in a core operational paradigm: <strong>"Never trust, always verify."</strong> Traditional security strategies relied on perimeter-based defenses ("castle-and-moat"), assuming that any entity inside the corporate network was inherently trustworthy. Zero Trust dismantles this assumption by treating every request, user, device, and network flow as untrusted regardless of physical or logical location.</p>
+<p>ZTA addresses the vulnerabilities created by cloud migration, hybrid work environments, modern supply chain dependencies, and sophisticated threat actors. In modern networks, once an attacker bypasses the perimeter (via stolen credentials, phishing, or unpatched assets), traditional implicit trust allows unchecked lateral movement. Zero Trust mitigates this fundamental flaw by continuously authenticating, authorizing, and validating every access attempt to contain blast radiuses.</p>
+
+<h3>2. How It Works</h3>
+<p>Zero Trust operates on three foundational principles derived from standards like NIST SP 800-207:</p>
+<ul>
+  <li><strong>Explicit Verification:</strong> Every access request must be explicitly authenticated and authorized using all available telemetry—user identity, physical location, device health, workload attributes, data sensitivity, and behavioral anomalies.</li>
+  <li><strong>Least Privilege Access:</strong> Access is limited using Just-In-Time (JIT) and Just-Enough-Access (JEA) models, context-aware Risk-Based Adaptive Policies, and strict data protection controls.</li>
+  <li><strong>Assume Breach:</strong> Architecture is engineered under the assumption that adversaries are already inside the environment. This necessitates microsegmentation, end-to-end encryption (in transit and at rest), and continuous real-time monitoring.</li>
+</ul>
+<p>Architecturally, ZTA decouples the <em>Control Plane</em> from the <em>Data Plane</em> using key operational components:</p>
+<ul>
+  <li><strong>Policy Engine (PE):</strong> Evaluates enterprise policy against risk telemetry to make the final decision to grant, deny, or revoke access.</li>
+  <li><strong>Policy Administrator (PA):</strong> Communicates with the PE and sends commands to the Policy Enforcement Point to establish or terminate session connections.</li>
+  <li><strong>Policy Enforcement Point (PEP):</strong> Gatekeeper components (e.g., reverse proxies, firewalls, secure web gateways) that intercept, inspect, and enforce connection decisions made by the PA.</li>
+</ul>
+
+<h3>3. Common Attack/Defense Techniques</h3>
+<p>Offensive actors continuously evolve tactics to target Zero Trust implementations, prompting specific defensive measures:</p>
+
+<ul>
+  <li><strong>Attack Technique: Credential Spraying & MFA Fatigue (Prompt Bombing)</strong><br />
+  <em>Offense:</em> Adversaries systematically flood targeted accounts with push notifications or reuse leaked passwords to bypass basic multi-factor authentication (MFA).<br />
+  <em>ZTA Defense:</em> Enforcing phishing-resistant MFA (FIDO2/WebAuthn), continuous risk-based scoring, and mandatory device compliance checks before granting access.</li>
+
+  <li><strong>Attack Technique: Session Token Theft & Pass-the-Cookie</strong><br />
+  <em>Offense:</em> Stealing active session tokens via info-stealer malware or adversary-in-the-middle (AiTM) proxies to bypass static authentication.<br />
+  <em>ZTA Defense:</em> Continuous Access Evaluation Protocol (CAEP) and token binding. Devices must maintain an active, cryptographically tied health state (TPM attestation + EDR integration) to maintain session validity.</li>
+
+  <li><strong>Attack Technique: Lateral Movement via Over-Privileged Service Accounts</strong><br />
+  <em>Offense:</em> Compromising service principals, machine identities</div><hr><div class='lesson'><h2>🔍 Deep Dive: Social Engineering</h2>
 <p><strong>Timestamp:</strong> 2026-11-01 19:56 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1605,58 +1639,7 @@ Engineers defend applications using parameterized queries and Object-Relational 
 </table>
 
 <h3>4. Real-World Examples</h3>
-<p><strong>The SolarWinds Supply Chain Attack (2020):</strong> This breach demonstrated the lethal flaw of implicit trust. Attackers compromised trusted software updates to gain access to corporate networks and laterally moved across systems. In response, US Executive Order 1402</div><hr><div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
-<p><strong>Timestamp:</strong> 2026-10-17 21:49 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p><strong>Web Application Security</strong> is the practice of protecting web applications, web services, APIs, and their underlying infrastructure against malicious exploits, unauthorized access, and data breaches throughout the entire Software Development Life Cycle (SDLC). Unlike traditional network security, which focuses on perimeter controls like firewalls, web application security operates at Layer 7 (Application Layer) of the OSI model.</p>
-<p>Because web applications are fundamentally designed to be accessible to the public internet via standard ports (80/443), they represent an organization's most exposed attack surface. A breach at this layer can lead to direct access to backend databases, intellectual property theft, severe financial extortion via ransomware, breach of regulatory mandates (GDPR, PCI-DSS, HIPAA), and devastating loss of customer trust.</p>
-
-<h3>2. How It Works</h3>
-<p>Web application security works by enforcing controls across the client-server interaction model, analyzing data flows, and verifying state and access at every boundary:</p>
-<ul>
-    <li><strong>Request/Response Protocol Mechanics:</strong> Web communication relies on stateless HTTP/HTTPS transactions. Security mechanisms intercept, analyze, and sanitize these transactions at multiple control points (browsers, proxies, web application firewalls, and application code).</li>
-    <li><strong>Input Validation & Sanitization:</strong> Applications accept user input via URL parameters, headers, cookies, POST bodies, and API payloads. Security controls ensure that data is treated strictly as data, never as executable code or database commands.</li>
-    <li><strong>Session Management & Authentication:</strong> Since HTTP is stateless, applications use session tokens, JWTs (JSON Web Tokens), or secure cookies to maintain user state. Secure application logic ensures these tokens are cryptographically random, resistant to tampering, and restricted by security attributes (<code>Secure</code>, <code>HttpOnly</code>, <code>SameSite</code>).</li>
-    <li><strong>Access Control Verification:</strong> Before processing a request, the backend verifies both who the user is (Authentication) and whether they have explicit permissions to access or modify the requested resource (Authorization).</li>
-    <li><strong>Layered Defense Architecture:</strong> Modern setups deploy Web Application Firewalls (WAFs) for pattern-matching and rate-limiting at the perimeter, Runtime Application Self-Protection (RASP) within the app runtime, and rigorous secure coding practices within the application layer itself.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<p>Application security requires matching offensive techniques with precise defensive countermeasures:</p>
-<ul>
-    <li><strong>SQL Injection (SQLi)</strong>
-        <ul>
-            <li><em>Offense:</em> Malicious input is injected into database queries to manipulate SQL logic, allowing attackers to dump database contents or execute arbitrary commands.</li>
-            <li><em>Defense:</em> Use Parameterized Queries (Prepared Statements) or Object-Relational Mapping (ORM) frameworks. Never concatenate user input directly into dynamic queries.</li>
-        </ul>
-    </li>
-    <li><strong>Cross-Site Scripting (XSS)</strong>
-        <ul>
-            <li><em>Offense:</em> Injecting malicious scripts (JavaScript) into trusted web pages, which then execute in victim browsers to steal session tokens or perform actions on their behalf.</li>
-            <li><em>Defense:</em> Apply context-aware output encoding (HTML, JavaScript, CSS), implement a strong Content Security Policy (CSP), and utilize modern frontend frameworks (React, Angular) that escape output by default.</li>
-        </ul>
-    </li>
-    <li><strong>Broken Access Control</strong>
-        <ul>
-            <li><em>Offense:</em> Attackers exploit weak access checks to bypass authorization, accessing other users' records or administrative functionality (e.g., changing <code>user_id=1002</code> to <code>user_id=1001</code> in an API endpoint).</li>
-            <li><em>Defense:</em> Enforce centralized, role-based (RBAC) or attribute-based (ABAC) authorization checks server-side for every single request; deny by default.</li>
-        </ul>
-    </li>
-    <li><strong>Server-Side Request Forgery (SSRF)</strong>
-        <ul>
-            <li><em>Offense:</em> Inducing the web server to make unauthorized HTTP requests to internal networks, cloud metadata services (e.g., <code>169.254.169.254</code>), or loopback interfaces.</li>
-            <li><em>Defense:</em> Restrict outbound network access from app servers, validate and sanitize all user-supplied URLs against strict allowlists, and disable redirection following.</li>
-        </ul>
-    </li>
-</ul>
-
-<h3>4. Real-World Examples</h3>
-<p>Analyzing historical incidents demonstrates how application vulnerabilities manifest in production environments:</p>
-<ul>
-    <li><strong>Equifax Breach (2017):</strong> Caused by an unpatched Remote Code Execution (RCE) vulnerability in Apache Struts (CVE-2017-5638). Attackers exploited the application layer parser, gaining persistent access to sensitive personal and financial data of over 147 million individuals.</li>
-    <li><strong>Capital One Data Breach (2019):</strong> An attacker exploited a Server-Side Request Forgery (SSRF) vulnerability in a misconfigured open-source Web Application Firewall deployed on AWS. This allowed the attacker to reach the internal AWS Metadata Service, obtain credentials, and download over 100 million customer records from S3 buckets.</li>
-    <li><strong>British Airways Magecart Attack (2</div><hr>
+<p><strong>The SolarWinds Supply Chain Attack (2020):</strong> This breach demonstrated the lethal flaw of implicit trust. Attackers compromised trusted software updates to gain access to corporate networks and laterally moved across systems. In response, US Executive Order 1402</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
