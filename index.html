@@ -17,7 +17,28 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
+<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<p><strong>Timestamp:</strong> 2026-11-01 01:35 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>JavaScript was designed in 1995 by Brendan Eich at Netscape under a tight ten-day development window. Originally intended as a lightweight scripting layer for non-programmers to manipulate the Document Object Model (DOM) in web browsers, it was fundamentally constrained by Netscape's business deal with Sun Microsystems. Java was envisioned as the heavy, compiled language for enterprise application logic, while JavaScript was forced to adopt a C/Java-like syntax on the surface to look familiar, despite having fundamentally different semantics under the hood.</p>
+
+<p>Language theorists categorize JavaScript as a multi-paradigm, dynamically typed, weakly typed, interpreted (and JIT-compiled) language featuring first-class functions and dynamic prototype-based object orientation. Its foundational core was built by blending two radically different language lineages:</p>
+<ul>
+  <li><strong>Scheme (Lisp dialect):</strong> Supplied the functional foundations, including first-class functions, higher-order functions, dynamic typing, and lexical closures.</li>
+  <li><strong>Self (Smalltalk dialect):</strong> Provided prototype-based object delegation instead of class-based inheritance, treating objects as mutable key-value maps without fixed schemas.</li>
+</ul>
+
+<p>JavaScript solves the problem of ubiquitous, zero-installation, cross-platform client-side runtime execution. Its dynamic nature accepts runtime flexibility and high forgiveness (failing open rather than crashing hard) to preserve web page rendering and continuous program execution across heterogeneous client environments.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>JavaScript relies on C-style block formatting delimited by curly braces (<code>{}</code>). Statement separation structurally uses semicolons (<code>;</code>), though the runtime features standard Automatic Semicolon Insertion (ASI), a parser mechanism that programmatically infers missing semicolons at newline boundaries based on explicit lookahead rules—frequently a source of obscure parser edge-cases.</p>
+
+<p>Code organization is characterized by strict lexical scoping rules, variable declarations, and module boundaries:</p>
+<ul>
+  <li><strong>Variable Scoping & Temporal Dead Zone:</strong> Legacy declarations using <code>var</code> are function-scoped and subject to variable hoisting (moving declarations to the top of the scope). Modern JavaScript (ES6+) uses <code>let</code> and <code>const</code>, which are block-scoped. They are also hoisted internally, but accessing them before their declaration line throws a <code>ReferenceError</code> due to the <em>Temporal Dead Zone (TDZ)</em>.</li>
+  <li><strong>Type Coercion:</strong> The syntax allows implicit structural dynamic type conversion. The abstract equality operator (<code>==</code>) invokes complex language specification algorithms (<code>Abstract Equality Comparison Algorithm</code>) to coerce types before evaluating equality, whereas strict equality (<code>===</code>) enforces identity without structural type casting.</li>
+  <li><strong>Module Systems</div><hr><div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
 <p><strong>Timestamp:</strong> 2026-10-31 22:00 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1671,25 +1692,7 @@ Engineers defend applications using parameterized queries and Object-Relational 
 <p>Scala offloads its memory management entirely to the underlying runtime environment—primarily the JVM (though Scala Native compiles directly to LLVM and Scala.js targets JavaScript engines). </p>
 <ul>
   <li><strong>Garbage Collection (GC):</strong> On the JVM, heap allocation and lifetime management are handled via advanced tracing garbage collectors (e.g., G1, ZGC, Shenandoah). Primitive types are allocated on the stack where possible, while class instances and closures reside on the heap.</li>
-  <li><strong>Structural Sharing:</strong> Because Scala relies heavily on immutable data structures (like <code>Vector</code>, <code>List</code>, and <code>Map</code>), it utilizes persistent data structures under the hood. When "modifying" a data structure, the runtime reuses unmodified nodes in memory via structural sharing</div><hr><div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
-<p><strong>Timestamp:</strong> 2026-10-17 11:14 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>PHP (originally <em>Personal Home Page</em>, now a recursive acronym for <em>PHP: Hypertext Preprocessor</em>) was created by Rasmus Lerdorf in 1994. Unlike languages engineered in academic environments with overarching type systems or formal formalisms, PHP was born out of pragmatic web-engineering necessity: it was designed as a macro processor over C binaries to manage dynamic web pages and execute CGI scripts seamlessly embedded directly within HTML markup.</p>
-
-<p>The foundational design philosophy of PHP rests on three pillars:</p>
-<ul>
-    <li><strong>Pragmatism Over Theoretical Purity:</strong> PHP favors immediate, practical solutions for web-native execution over strict theoretical syntax or paradigm adherence. If a language feature makes web development faster, it is integrated.</li>
-    <li><strong>The "Share-Nothing" Execution Model:</strong> PHP requests operate in isolated execution contexts. Every incoming HTTP request boots up a script execution state, runs code, returns output, and destroys its state entirely. There is no shared context between requests at the language runtime layer.</li>
-    <li><strong>Gradual Pragmatic Evolution:</strong> Starting as an imperative macro engine, PHP transitioned into a procedural dynamic runtime (PHP 3/4), gained a complete object model (PHP 5), introduced performance JIT capabilities (PHP 8), and adopted gradual, strict, nominal static typing (PHP 7/8).</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Syntactically, PHP inherits heavy influence from C, Perl, and C++. It utilizes explicit block scoping denoted by curly braces <code>{}</code> and demands explicit statement termination with semicolons <code>;</code>. Variable names are sigil-prefixed (e.g., <code>$variable</code>), reflecting its early Perl heritage.</p>
-
-<p>Code execution flow is governed by the following mechanics:</p>
-<ul>
-    <li><strong>Embedding Contexts:</strong> PHP parsing operates via open (<code>&lt;?php</code>) and close (<code>?&gt;</code>) tags. Text outside these tags is passed directly to the output</div><hr>
+  <li><strong>Structural Sharing:</strong> Because Scala relies heavily on immutable data structures (like <code>Vector</code>, <code>List</code>, and <code>Map</code>), it utilizes persistent data structures under the hood. When "modifying" a data structure, the runtime reuses unmodified nodes in memory via structural sharing</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
