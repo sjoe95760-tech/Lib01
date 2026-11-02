@@ -17,7 +17,25 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
+<div class='lesson'><h2>🔍 Deep Dive: C++</h2>
+<p><strong>Timestamp:</strong> 2026-11-02 03:07 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>C++ was created in 1979 by Bjarne Stroustrup at Bell Labs, originally termed "C with Classes." It was designed to bridge the gap between high-level architectural abstraction and low-level hardware performance. The fundamental guiding principle of C++ is the <strong>zero-cost abstraction rule</strong>: "What you don't use, you don't pay for; and what you do use, you couldn't write better by hand."</p>
+<p>Unlike languages that impose a single paradigm or a heavy runtime engine, C++ solves the problem of building massive, high-performance systems (e.g., operating system kernels, game engines, embedded systems, and browsers) where control over memory layout, deterministic execution, and CPU cache efficiency are non-negotiable. It is fundamentally multi-paradigm, supporting:</p>
+<ul>
+  <li><strong>Procedural:</strong> Direct, raw imperative control close to assembly.</li>
+  <li><strong>Object-Oriented:</strong> Encapsulation, inheritance, and dynamic dispatch (via virtual method tables).</li>
+  <li><strong>Generic:</strong> Compile-time parametric polymorphism via templates and concepts.</li>
+  <li><strong>Functional:</strong> Stateless lambdas, pure functions, continuous evaluation, and range transformations.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>C++ inherits its statement syntax from C (Algol family), relying on block-scoped curly braces (<code>{}</code>) and mandatory semicolon (<code>;</code>) statement terminators. Whitespace is ignored by the lexer, making indentation purely stylistic, though strict idiomatic formatting (e.g., ClangFormat standards) is universally expected in production.</p>
+<p>The translation model of C++ relies on separate compilation:</p>
+<ul>
+  <li><strong>Preprocessing:</strong> Macro expansion and file inclusion (e.g., <code>#include</code> directives) textually paste interfaces before parsing. Modern C++20 introduced native <strong>Modules</strong> (<code>import std;</code>) to replace headers, isolating translation units and reducing compilation times.</li>
+  <li><strong>Translation Units:</strong> Each source file (<code>.cpp</code>) compiles into an independent object file</div><hr><div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
 <p><strong>Timestamp:</strong> 2026-11-01 23:14 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1587,59 +1605,7 @@ Engineers defend applications using parameterized queries and Object-Relational 
 <h3>6. How it "Makes Sense" (Internal Logic)</h3>
 <p>To master Rust, a developer must undergo a cognitive shift in how they conceptualize software logic. In languages like Python, Java, or C++, a developer thinks sequentially about <em>"What operations execute on what data structures?"</em></p>
 <p>In Rust, a developer must think in terms of <strong>"Who owns this memory, for how long, and who has permission to view or mutate it right now?"</strong></p>
-<p>The internal logic of Rust is built on the realization that <strong>aliasing + mutability = chaos</strong>. If multiple pointers can read from a region of memory while another alters it, non-deterministic bugs arise. Rust forces developers to negotiate memory topologies explicitly upfront. Once a programmer designs their data structures to respect clear ownership boundaries, the rest of the implementation flows with relative ease. The compiler acts not as an adversary, but as a static, automated proof assistant validating the structural integrity of the code prior to execution.</p></div><hr><div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
-<p><strong>Timestamp:</strong> 2026-10-17 23:35 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>Zero Trust Architecture (ZTA) is a strategic cybersecurity paradigm based on the fundamental principle: <strong>"Never trust, always verify."</strong> It discards the legacy "castle-and-moat" perimeter security model, which assumed that anything inside an organization's network was inherently trustworthy. Instead, Zero Trust assumes that threats exist both outside and inside the network at all times.</p>
-
-<p><strong>The Real-World Risk Addressed:</strong> Modern enterprise environments no longer have a well-defined physical perimeter. Cloud migration, remote work, SaaS adoption, and mobile devices have dissolved network boundaries. In a legacy model, if an attacker gains access to the internal network (via stolen credentials, phishing, or a compromised VPN), they enjoy unrestricted lateral movement. ZTA eliminates implicit trust, preventing an initial compromise from escalating into a catastrophic enterprise-wide breach.</p>
-
-<h3>2. How It Works</h3>
-<p>ZTA operates on three core principles defined by the National Institute of Standards and Technology (NIST SP 800-207):</p>
-
-<ul>
-    <li><strong>Verify Explicitly:</strong> Always authenticate and authorize based on all available data points, including user identity, location, device health, service or workload, data context, and anomalies.</li>
-    <li><strong>Use Least Privilege Access:</strong> Limit user access with Just-In-Time and Just-Enough Access (JIT/JEA), risk-based adaptive policies, and data protection mechanisms.</li>
-    <li><strong>Assume Breach:</strong> Minimize blast radius by segmenting access by network, user, devices, and application awareness. Encrypt all sessions end-to-end and utilize analytics to gain visibility and drive threat detection.</li>
-</ul>
-
-<p><strong>Technical Mechanics & Architecture:</strong></p>
-<p>ZTA relies on a logical control plane and data plane architecture:</p>
-<ul>
-    <li><strong>Policy Engine (PE):</strong> The brain responsible for making the ultimate decision to grant, deny, or revoke access to a resource based on enterprise policy and trust algorithms.</li>
-    <li><strong>Policy Administrator (PA):</strong> Communicates with the PE and issues commands to establish or terminate the connection between the subject and resource (e.g., generating session tokens or VPN-less tunnels).</li>
-    <li><strong>Policy Enforcement Point (PEP):</strong> The gatekeeper component (e.g., an agent, gateway, or reverse proxy) that inspects, enables, and terminates connections between a client and an enterprise resource.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<p>To understand Zero Trust, security analysts evaluate how offensive tactics interact with defensive ZTA capabilities:</p>
-
-<table>
-    <thead>
-        <tr>
-            <th>Offensive Vector (Attacker Technique)</th>
-            <th>Defensive ZTA Countermeasure</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <li><strong>Lateral Movement (SMB, WMI, Remote Desktop):</strong> Moving through internal subnets after gaining an initial foothold.</li>
-            <li><strong>Microsegmentation & Software-Defined Perimeters (SDP):</strong> Network controls isolate workloads at the granular level, blocking east-west traffic unless explicitly allowed.</li>
-        </tr>
-        <tr>
-            <li><strong>MFA Fatigue / Push Spamming:</strong> Overwhelming users with push notifications until they approve malicious logins.</li>
-            <li><strong>FIDO2 / Passwordless Authentication:</strong> Enforcing phishing-resistant hardware tokens (e.g., YubiKeys, Passkeys) and dynamic continuous risk-based authentication.</li>
-        </tr>
-        <tr>
-            <li><strong>Session Token Hijacking:</strong> Stealing active cookies or OAuth tokens to bypass authentication controls.</li>
-            <li><strong>Continuous Adaptive Risk & Trust Assessment (CARTA):</strong> Re-evaluating risk dynamically mid-session; if device posture changes or anomalies occur, the PEP terminates the token immediately.</li>
-        </tr>
-    </tbody>
-</table>
-
-<h3>4. Real-World Examples</h3>
-<p><strong>The SolarWinds Supply Chain Attack (2020):</strong> This breach demonstrated the lethal flaw of implicit trust. Attackers compromised trusted software updates to gain access to corporate networks and laterally moved across systems. In response, US Executive Order 1402</div><hr>
+<p>The internal logic of Rust is built on the realization that <strong>aliasing + mutability = chaos</strong>. If multiple pointers can read from a region of memory while another alters it, non-deterministic bugs arise. Rust forces developers to negotiate memory topologies explicitly upfront. Once a programmer designs their data structures to respect clear ownership boundaries, the rest of the implementation flows with relative ease. The compiler acts not as an adversary, but as a static, automated proof assistant validating the structural integrity of the code prior to execution.</p></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
