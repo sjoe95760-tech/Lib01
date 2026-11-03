@@ -17,7 +17,51 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Java</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
+<p><strong>Timestamp:</strong> 2026-11-03 10:13 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Created in the mid-1990s by Yukihiro "Matz" Matsumoto, Ruby was designed around human-centric computing. Matz sought a language more powerful than Perl and more object-oriented than Python. Its governing core principle is to make programmers happy and productive, emphasizing expressiveness, readability, and the "Principle of Least Surprise" (POLS).</p>
+<p>Ruby is a pure, dynamic, imperative Object-Oriented Programming (OOP) language with heavy functional programming influences. In Ruby, <em>everything is an object</em> without exception—primitive numbers, booleans, methods, and even classes themselves are instances of object types. It synthesizes elements from Smalltalk (pure object-oriented message passing), Lisp (higher-order functions, blocks, dynamic evaluation), Perl (regular expressions, concise string parsing), and Eiffel.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Ruby prioritizes human readability with a syntax that reads almost like English prose. Key structural and syntactic rules include:</p>
+<ul>
+    <li><strong>Delimiters over Braces:</strong> Code blocks inside classes and methods are delimited by keywords (<code>def...end</code>, <code>class...end</code>, <code>if...end</code>). Braces (<code>{ ... }</code>) are primarily reserved for short, single-line blocks or hash literals.</li>
+    <li><strong>Optional Syntactic Noise:</strong> Parentheses around method arguments and semicolons at line ends are optional. Newlines signify statement ends unless explicitly escaped.</li>
+    <li><strong>Expression-Based Flow:</strong> Nearly every construction in Ruby evaluates to a value. The last line evaluated in a block or method is implicitly returned; explicit <code>return</code> keywords are typically reserved for guard clauses and early exits.</li>
+    <li><strong>Identifiers & Naming Conventions:</strong> Variable scope is encoded in prefix symbols: local variables (<code>foo</code>), instance variables (<code>@foo</code>), class variables (<code>@@foo</code>), and global variables (<code>$foo</code>). Method names can end in predicate flags like <code>?</code> (returns boolean) or <code>!</code> (indicates mutation or potentially dangerous operations).</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Memory in Ruby is managed automatically by the runtime (historically CRuby/MRI) using an automatic Garbage Collector (GC):</p>
+<ul>
+    <li><strong>Allocation:</strong> Objects are allocated on a managed heap. Each object is represented internally by an <code>RVALUE</code> structure in C. Small integers (<code>Fixnum</code>) and certain symbols are directly encoded into pointer references (tagged pointers), avoiding dynamic heap allocation.</li>
+    <li><strong>Garbage Collection Evolution:</strong> CRuby originally used a simple, stop-the-world Mark-and-Sweep garbage collector. Modern Ruby (3.x+) uses <strong>RGenGC</strong>—a generational, incremental Mark-and-Sweep collector combined with a full compacting GC (introduced in Ruby 2.7) to eliminate heap fragmentation and optimize copy-on-write (CoW) memory sharing in multi-process architectures.</li>
+    <li><strong>No Manual Pointer Ownership:</strong> Unlike C++ or Rust, developers do not handle allocation, lifetimes, or explicit dynamic memory deallocation.</li>
+</ul>
+
+<h3>4. Paradigms & Tactics</h3>
+<p>Ruby's multi-paradigm architecture allows developers to choose tactics tailored to the domain:</p>
+<ul>
+    <li><strong>Object-Oriented Architecture & Mixins:</strong> Ruby implements single class inheritance paired with <em>Mixins</em>. Modules act as decoupled bundles of methods that can be included into classes using <code>include</code>, <code>prepend</code>, or <code>extend</code>, providing a clean alternative to complex multiple inheritance trees.</li>
+    <li><strong>Functional Primitives:</strong> Closures are first-class concepts via <code>Blocks</code>, <code>Procs</code>, and <code>Lambdas</code>. Enumerable operations (<code>map</code>, <code>select</code>, <code>reduce</code>) are central to iteration and data transformation.</li>
+    <li><strong>Concurrency & Parallelism:</strong> 
+        <ul>
+            <li><em>GVL (Global VM Lock):</em> CRuby utilizes a GVL to serialize execution of Ruby bytecode, meaning standard Ruby threads run on a single CPU core for CPU-bound tasks, though they execute concurrently for non-blocking I/O.</li>
+            <li><em>Ractors (Ruby 3+):</em> An implementation of the Actor model that allows true parallel CPU-bound execution by eliminating shared mutable state across isolated execution units.</li>
+            <li><em>Fibers:</em> Light-weight, cooperative co-routines (used extensively with modern Fiber Schedulers for high-concurrency non-blocking evented async I/O).</li>
+        </ul>
+    </li>
+    <li><strong>Exception Handling:</strong> Handled natively using <code>begin...rescue...else...ensure...end</code> blocks, unwinding the call stack until caught.</li>
+</ul>
+
+<h3>5. Unique Patterns & Ecosystem</h3>
+<ul>
+    <li><strong>Domain-Specific Languages (DSLs):</strong> Ruby’s relaxed syntax and flexible metaprogramming allow developers to write internal DSLs that look like plain language (e.g., RSpec for testing, Active Record for databases).</li>
+    <li><strong>Metaprogramming & Dynamic Dispatch:</strong> Ruby permits runtime class modification ("open classes" or monkey patching). It relies heavily on dynamic dispatch techniques such as <code>method_missing</code>, <code>define_method</code>, and runtime evaluation (<code>instance_eval</code>).</li>
+    <li><strong>Frameworks & Ecosystem:</strong> 
+        </div><hr><div class='lesson'><h2>🔍 Deep Dive: Java</h2>
 <p><strong>Timestamp:</strong> 2026-11-03 02:45 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1530,44 +1574,7 @@ package</div><hr><div class='lesson'><h2>🔍 Deep Dive: Kotlin</h2>
 </ul>
 
 <h3>2. Syntax, Structure & Flow</h3>
-<p>Kotlin relies on standard C-style block syntax using curly braces (<code>{}</code>). Semicolons are optional and idiomatic Kotlin omits them entirely. Code is organized into logical packages, but unlike Java</div><hr><div class='lesson'><h2>🔍 Deep Dive: Java</h2>
-<p><strong>Timestamp:</strong> 2026-10-19 02:12 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>
-  Java was created in 1995 at Sun Microsystems by James Gosling to solve critical friction points present in C/C++: platform dependency, manual memory management, pointer corruption, and high operational complexity in distributed networks. Its foundational imperative—"Write Once, Run Anywhere" (WORA)—was realized by introducing the Virtual Machine architecture, abstracting underlying CPU instructions into bytecode.
-</p>
-<p>
-  From a language design perspective, Java is a strongly typed, nominal, object-oriented programming language with imperative roots, which has progressively integrated declarative and functional paradigms (lambdas, streams, pattern matching). Its core architecture values backward compatibility, runtime safety, explicit abstractions, and conservative evolution over aggressive syntactic innovation.
-</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>
-  Java utilizes C-style block syntax where code execution boundaries are explicitly delimited by curly braces (<code>{}</code>) and statement termination requires trailing semicolons (<code>;</code>). Whitespace and indentation are syntactically non-significant, serving purely for human readability.
-</p>
-<p>
-  Code organization is structured strictly around compilation units, packages, and classes:
-</p>
-<ul>
-  <li><strong>Compilation Units:</strong> File names must strictly match their public top-level class name (e.g., <code>OrderProcessor.java</code> must house <code>public class OrderProcessor</code>).</li>
-  <li><strong>Namespaces:</strong> Packages declare logical hierarchical namespaces (e.g., <code>package com.architecture.domain;</code>), mapping directly to folder directory structures.</li>
-  <li><strong>Execution Flow:</strong> Source code is compiled by <code>javac</code> into platform-agnostic bytecode (<code>.class</code> files). At runtime, the Java Virtual Machine (JVM) interprets bytecode, using Just-In-Time (JIT) compilation (HotSpot Engine) to convert hot execution paths into native machine code dynamically.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>
-  Java eliminates manual pointer arithmetic and explicit memory allocation/deallocation (such as <code>malloc</code>/<code>free</code> or <code>delete</code>). Instead, memory is split into two primary runtime data areas managed entirely by the runtime environment:
-</p>
-<ul>
-  <li><strong>Stack Memory:</strong> Holds primitive local variables and execution frame references to objects on the heap. Allocation/deallocation is LIFO and thread-bound.</li>
-  <li><strong>Heap Memory:</strong> Houses all dynamic class instances and arrays. The heap is globally accessible across threads.</li>
-</ul>
-<p>
-  Automatic Memory Management is handled via Garbage Collection (GC). The JVM uses a generational memory model based on the empirical observation that most objects die young. Memory is divided into the Young Generation (Eden and Survivor spaces) and the Old/Tenured Generation. Modern garbage collectors (e.g., G1, ZGC, Shenandoah) rely on concurrent mark-and-sweep, regional compaction, and colored pointers/load barriers to achieve sub-millisecond stop-the-world pauses without requiring developer manual ownership semantics (unlike Rust) or deterministic reference counting (unlike Swift).
-</p>
-
-<h3>4. Paradigms & Tactics</h3>
-</div><hr>
+<p>Kotlin relies on standard C-style block syntax using curly braces (<code>{}</code>). Semicolons are optional and idiomatic Kotlin omits them entirely. Code is organized into logical packages, but unlike Java</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
