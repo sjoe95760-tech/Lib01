@@ -17,7 +17,28 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
+<div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
+<p><strong>Timestamp:</strong> 2026-11-04 11:41 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>PHP (originally <em>Personal Home Page</em>, now the recursive acronym <em>PHP: Hypertext Preprocessor</em>) was created by Rasmus Lerdorf in 1994 as a set of C CGI binaries to manage personal web pages. Unlike languages designed for general-purpose computation (such as C or Python), PHP was designed from its inception specifically for the Web context: parsing HTTP requests, managing state, rendering text/HTML, and interacting with databases.</p>
+
+<p>The fundamental architectural philosophy of traditional PHP is the <strong>Shared-Nothing Request Model</strong>. Every incoming HTTP request executes in total isolation inside a fresh process or thread context. When the request terminates, the execution environment, memory allocations, and state are completely flushed. This design trades long-running in-memory process state for stateless reliability, resilience against memory leaks, and simple horizontal scaling.</p>
+
+<p>PHP has evolved from a loosely-typed procedural templating tool into a multi-paradigm language favoring strict, class-based Object-Oriented Programming (OOP) with strong functional programming capabilities. Its design prioritizes pragmatism, rapid developer velocity, and backward compatibility over academic theoretical purity.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>PHP syntax derives heavily from C, Java, and Perl. Code is embedded directly within text streams using the <code>&lt;?php ... ?&gt;</code> tags, allowing raw template passthrough. Key syntactic rules include:</p>
+
+<ul>
+  <li><strong>Variable Identification:</strong> Variables are explicitly prefixed with a dollar sign (<code>$variable</code>), distinguishing identifiers from functions or types.</li>
+  <li><strong>Scope and Delimiters:</strong> Block scoping uses C-style braces (<code>{}</code>), and statements strictly require trailing semicolons (<code>;</code>). Indentation is purely cosmetic.</li>
+  <li><strong>Gradual & Static Typing:</strong> PHP dynamic typing has evolved into a optional, powerful static type system. Modern PHP (8.x+) supports union types (<code>int|string</code>), intersection types (<code>Countable&amp;Iterator</code>), disjunctive normal form (DNF) types, non-nullable types, <code>never</code>, and property/constructor type enforcement at runtime.</li>
+  <li><strong>Code Organization & Autoloading:</strong> Code is structured via hierarchical namespaces (<code>namespace App\Services;</code>). The modern standard (PSR-4) maps namespace paths directly to directory layout, enabling lazy-loading of class files via class autoloaders registered with <code>spl_autoload_register()</code> without manual <code>require</code> statements.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>PHP manages memory automatically through the Zend Engine using a combined engine</div><hr><div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
 <p><strong>Timestamp:</strong> 2026-11-03 23:45 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1530,41 +1551,7 @@ package</div><hr><div class='lesson'><h2>🔍 Deep Dive: Kotlin</h2>
     <li><strong>Expression-Based Control Flow:</strong> Idiomatic Kotlin treats constructs like <code>if/else</code>, <code>try/catch</code>, and <code>when</code> as expressions returning values, eliminating the need for ternary operators:
         <pre><code>val status = when (code) {
     200 -&gt; "OK"
-    404 -&gt; "Not Found</div><hr><div class='lesson'><h2>🔍 Deep Dive: Java</h2>
-<p><strong>Timestamp:</strong> 2026-10-22 02:15 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Java was engineered by James Gosling at Sun Microsystems in 1995 to solve two main software engineering bottlenecks of the C/C++ era: hardware platform dependency and memory management vulnerability. Its foundational philosophy, "Write Once, Run Anywhere" (WORA), decoupled source code from direct host ISA execution by introducing an intermediate abstraction layer: the Java Virtual Machine (JVM).</p>
-
-<p>From a programming language theory perspective, Java was designed as a statically typed, class-based, nominal OOP language with a emphasis on safety, portability, and enterprise maintainability. Rather than prioritizing syntax brevity or raw bare-metal control, Java enforces explicit typing and rigorous object boundaries. In recent years, Java has evolved into a modern multi-paradigm language, integrating functional primitives (lambdas, streams, immutability via Records, and algebraic data types via Sealed Classes) on top of its core OOP substrate.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Java inherits C-style syntax, requiring explicit block delimiters (curly braces <code>{}</code>) and statement terminators (semicolons <code>;</code>). Indentation is purely stylistic and ignored by the compiler.</p>
-
-<p>Code structure is strictly hierarchical and bound to the filesystem:</p>
-<ul>
-  <li><strong>Encapsulated Functions:</strong> Free-floating functions do not exist; every executable logic block must reside within a <code>class</code>, <code>interface</code>, or <code>enum</code>.</li>
-  <li><strong>Namespaces & Packaging:</strong> Namespaces are managed via the <code>package</code> directive, which must explicitly map to the physical directory path (e.g., <code>package com.example.service;</code> lives in <code>com/example/service/</code>).</li>
-  <li><strong>Compilation Unit Rule:</strong> A single <code>.java</code> file can contain only one top-level <code>public</code> class, matching the file name precisely.</li>
-</ul>
-
-<p>Control flow includes traditional procedural loops (<code>for</code>, <code>while</code>) and branches (<code>if</code>, <code>switch</code>). Modern Java leverages expression-based switches with pattern matching, enabling type extraction directly within control constructs.</p>
-
-<h3>3. Memory Management</h3>
-<p>Java eliminates manual memory management (such as C's <code>malloc</code>/<code>free</code> or C++ pointer arithmetic) in favor of automatic memory management executed by the JVM runtime context, organized broadly into the <strong>Stack</strong> and the <strong>Heap</strong>.</p>
-
-<ul>
-  <li><strong>Stack:</strong> Stores execution frames, primitive values, and local reference handles. Thread-scoped and popped automatically upon frame return.</li>
-  <li><strong>Heap:</strong> Holds all class instances and array objects, allocated explicitly via the <code>new</code> keyword. Shared across threads.</li>
-</ul>
-
-<p>Memory reclamation is handled via non-deterministic <strong>Tracing Garbage Collection (GC)</strong> using the Generational Hypothesis (most objects die young). Rather than relying on reference counting, Java GC builds a graph from "GC Roots" (thread stacks, static references) and performs reachability analysis. Unreachable objects are swept away during GC cycles. Advanced production collectors like <strong>G1</strong>, <strong>ZGC</strong>, and <strong>Shenandoah</strong> perform concurrent, ultra-low-latency collection across terabyte-scale heaps without stopping application execution threads for prolonged durations.</p>
-
-<h3>4. Paradigms & Tactics</h3>
-<p>Java balances strict object orientation with modern concurrency and error handling strategies:</p>
-
-<ul>
-  <li><strong>Object-Oriented Programming:</strong> Strict</div><hr>
+    404 -&gt; "Not Found</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
