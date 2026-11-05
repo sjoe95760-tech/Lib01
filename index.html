@@ -17,7 +17,87 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<p><strong>Timestamp:</strong> 2026-11-05 07:29 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Swift was designed by Apple (led by Chris Lattner) and introduced in 2014 to replace Objective-C. Objective-C carried decades of dynamic Smalltalk-style messaging baggage overlaid on top of C, making it vulnerable to unsafe pointer manipulation, null pointer dereferences, and heavy runtime overhead.</p>
+<p>Swift's design philosophy is centered around three pillars: <strong>Safety, Speed, and Expressiveness</strong>. It is a compiled, statically typed, multi-paradigm language that merges the mechanical efficiency of systems languages (via LLVM optimization) with the ergonomic abstractions of modern functional programming languages.</p>
+<ul>
+    <li><strong>Protocol-Oriented Programming (POP):</strong> Rather than relying on rigid class hierarchies, Swift encourages composition via protocols paired with default implementations in protocol extensions.</li>
+    <li><strong>Safety by Default:</strong> Undefined behavior is minimized. Variables are explicitly mutable or immutable, values must be initialized before use, array bounds are checked, and pointers are obscured behind type-safe abstractions.</li>
+    <li><strong>Algebraic Type System:</strong> Swift replaces ambiguous <code>null</code> semantics with a structural type system using Optionals (<code>Optional&lt;Wrapped&gt;</code>), forcing developers to explicitly handle the absence of a value at compile time.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Swift uses C-style curly braces (<code>{}</code>) for block scoping, but omits mandatory semicolons (<code>;</code>) and parenthetical enclosures for control flow conditions.</p>
+
+<p><strong>Code Structure & Scope:</strong> Swift discards header files (<code>.h</code>/<code>.m</code> separation). Declarations are automatically available across files within the same module/target. Module visibility is managed through explicit access modifiers: <code>private</code>, <code>fileprivate</code>, <code>internal</code> (default), <code>package</code>, <code>public</code>, and <code>open</code>.</p>
+
+<p><strong>Key Syntactic Constructs:</strong></p>
+<ul>
+    <li><strong>Explicit Mutability:</strong> Immutable bindings use <code>let</code> (value binding); mutable bindings use <code>var</code>. Immutable bindings are enforced by the compiler.</li>
+    <li><strong>Pattern Matching & Control Flow:</strong> Control structures like <code>switch</code> are exhaustive, supporting complex pattern matching, tuple decomposition, and type casting. The <code>guard</code> statement provides early-exit mechanics with scope-bound variable unwrapping.</li>
+    <li><strong>Type Inference:</strong> Swift features aggressive type inference, allowing clean code while maintaining strict type safety.</li>
+</ul>
+
+<pre><code>// Example: Guard statements and pattern matching
+func process(user: User?) {
+    guard let user = user, case .active(let role) = user.status else {
+        return // Early exit enforced by compiler
+    }
+    print("User \(user.name) is active with role: \(role)")
+}
+</code></pre>
+
+<h3>3. Memory Management</h3>
+<p>Swift uses <strong>Automatic Reference Counting (ARC)</strong> for reference-typed entities (Classes, Closures, Actors). It deliberately avoids tracing Garbage Collection (GC) to ensure deterministic destructors and prevent GC pause spikes.</p>
+
+<p><strong>Value Types vs. Reference Types:</strong></p>
+<ul>
+    <li><strong>Value Types (Structs, Enums, Tuples):</strong> Allocated on the stack or inline within containing structures. Copy operations utilize <em>Copy-on-Write (CoW)</em> optimization for data structures like <code>Array</code> and <code>Dictionary</code>, keeping copies zero-cost until a mutation occurs.</li>
+    <li><strong>Reference Types (Classes, Actors):</strong> Allocated on the heap. Managed via runtime reference count increments and decrements.</li>
+</ul>
+
+<p><strong>Retain Cycle Avoidance & Explicit Ownership:</strong></p>
+<ul>
+    <li><code>strong</code>: Default reference. Increments the reference count.</li>
+    <li><code>weak</code>: Non-owning reference stored as an <code>Optional</code>. Automatically set to <code>nil</code> by the ARC runtime when the target object is deallocated.</li>
+    <li><code>unowned</code>: Non-owning reference assuming the target object will outlive the reference. Reading an unowned reference after object destruction causes a runtime trap (preventing dangling pointer execution).</li>
+    <li><code>~Copyable</code> (Non-copyable Types): Modern Swift introduces explicit ownership mechanics (borrowing/consuming parameters and non-copyable structs/enums), allowing developers to write zero-cost systems code without ARC overhead.</li>
+</ul>
+
+<h3>4. Paradigms & Tactics</h3>
+<p>Swift seamlessly combines functional, object-oriented, and concurrent paradigms:</p>
+
+<p><strong>Object-Oriented & Protocol-Oriented:</strong> Swift supports single class inheritance, but heavily pushes developers toward static dispatch using <code>struct</code>s and <code>protocol</code>s. Dynamic dispatch (vtable or <code>objc_msgSend</code>) is minimized in favor of compile-time static dispatch and devirtualization optimizations.</p>
+
+<p><strong>Concurrency Model:</strong> Swift 5.5+ implements a modern, structured concurrency model with async/await, Tasks, TaskGroups, and Actors:</p>
+<ul>
+    <li><strong>Actors:</strong> Reference types that isolate their state, guaranteeing that only one task can access their mutable state at a time to prevent data races.</li>
+    <li><strong>Sendable:</strong> A compile-time protocol marker indicating that a type's values can be safely shared across concurrent execution domains without introduce race conditions.</li>
+</ul>
+
+<p><strong>Error Handling:</strong> Swift uses typed error throwing (<code>throws</code> keyword) backed by <code>do-catch</code> blocks. Under the hood, Swift's error handling is not implemented as costly dynamic stack unwinding (like C++ exceptions), but as an efficient return of an implicit dual-payload (Result or Error pointer) in a dedicated CPU register.</p>
+
+<h3>5. Unique Patterns & Ecosystem</h3>
+<ul>
+    <li><strong>Result Builders:</strong> Domain-Specific Language (DSL) generation features embedded directly in the language compiler. This powers declarative UI frameworks like <strong>SwiftUI</strong>.</li>
+    <li><strong>Property Wrappers:</strong> Syntactic sugar (<code>@propertyWrapper</code>) for encapsulating read/write access patterns to properties (e.g., <code>@State</code>, <code>@Binding</code>, <code>@Published</code>).</li>
+    <li><strong>Algebraic Enums with Associated Values:</strong> Enums in Swift are fully fledged algebraic data types capable of holding state, encapsulating behaviors, and implementing methods and protocols.</li>
+    <li><strong>Ecosystem:</strong> 
+        <ul>
+            <li><strong>Swift Package Manager (SPM):</strong> Integrated build and dependency management system.</li>
+            <li><strong>Vapor:</strong> High-performance server-side framework built on top of SwiftNIO.</li>
+            <li><strong>SwiftData / Foundation:</strong> Standard software architecture abstractions provided across iOS, macOS, watchOS, visionOS, and Linux.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>6. How it "Makes Sense" (Internal Logic)</h3>
+<p>To master Swift, a programmer must pivot their mental model around one core principle: <strong>"Value Types by Default, Reference Types only when Identity Matters."</strong></p>
+
+<p>In languages like Java or C#, nearly everything complex is a heap-allocated reference. In C++, value types require precise manual memory layout management. Swift bridges this divide by making</div><hr><div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
 <p><strong>Timestamp:</strong> 2026-11-04 11:41 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1525,33 +1605,7 @@ In an internal network assessment, an analyst obtains low-privileged domain acce
 </ul>
 
 <pre><code>// Scala 3 syntax featuring significant indentation and expression orientation
-package</div><hr><div class='lesson'><h2>🔍 Deep Dive: Kotlin</h2>
-<p><strong>Timestamp:</strong> 2026-10-22 08:03 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Kotlin was designed by JetBrains in 2011 to solve a practical developer ergonomics crisis: the verbosity, boilerplate, and slow evolution of Java, without sacrificing the vast performance and library ecosystem of the Java Virtual Machine (JVM). Its primary objective is pragmatic interoperability and compile-time safety over academic theoretical purity.</p>
-
-<p>Kotlin is an industrial-grade, statically typed, multi-paradigm language. It seamlessly blends Object-Oriented Programming (OOP) and Functional Programming (FP) while targeting multiple platforms: JVM bytecode, Native binaries (via LLVM), JavaScript, and WebAssembly (Wasm). Its core design philosophy rests on four pillars:</p>
-
-<ul>
-    <li><strong>Compile-Time Null Safety:</strong> Eliminates the "Billion-Dollar Mistake" by bifurcating the type system into nullable (<code>T?</code>) and non-nullable (<code>T</code>) types at compile time.</li>
-    <li><strong>100% Interoperability:</strong> Seamlessly consumes legacy Java/Objective-C/C codebases without runtime wrapper overhead or translation degradation.</li>
-    <li><strong>Expressiveness & Brevity:</strong> Reduces line counts through features like data classes, type inference, extension functions, and operator overloading, shifting cognitive load from mechanics to logic.</li>
-    <li><strong>Pragmatic Evolution:</strong> Uses compiler plugins and language feature flags to introduce updates gracefully without fragmenting the ecosystem.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Kotlin belongs to the C-family of languages, utilizing curly braces (<code>{}</code>) for scoping. Semicolons are optional and idiomatic Kotlin omits them entirely, relying on implicit line-ending detection.</p>
-
-<p>Code is organized into packages and modules. Unlike Java, Kotlin does not enforce a rigid matching between file names and public class names; multiple top-level classes, functions, and properties can reside within a single file.</p>
-
-<ul>
-    <li><strong>Variable Binding & Mutation:</strong> Mutability is explicit at declaration using <code>val</code> (immutable/read-only reference) vs. <code>var</code> (mutable reference). Type inference allows skipping explicit types: <code>val message = "Hello"</code>.</li>
-    <li><strong>Functions as First-Class Citizens:</strong> Declared with the <code>fun</code> keyword. Single-expression functions shorten syntax: <code>fun add(a: Int, b: Int) = a + b</code>.</li>
-    <li><strong>Expression-Based Control Flow:</strong> Idiomatic Kotlin treats constructs like <code>if/else</code>, <code>try/catch</code>, and <code>when</code> as expressions returning values, eliminating the need for ternary operators:
-        <pre><code>val status = when (code) {
-    200 -&gt; "OK"
-    404 -&gt; "Not Found</div><hr>
+package</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
