@@ -17,7 +17,37 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Perl</h2>
+<p><strong>Timestamp:</strong> 2026-11-05 15:52 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Perl (Practical Extraction and Report Language) was created by Larry Wall in 1987 as a Unix system administration tool designed to bridge the gap between shell scripting (sh, awk, sed) and low-level C programming. Its design philosophy is explicitly modeled after human linguistics rather than mathematical purity, encapsulated by the core axiom: <em>"There's More Than One Way To Do It"</em> (TMTOWTDI).</p>
+
+<p>Perl prioritizes authoring expressiveness, pragmatism, and context sensitivity over formal simplicity. From a programming language theory perspective, Perl is a dynamic, multiparadigm language. It is fundamentally procedural at its core, but provides rich capabilities for functional programming (first-class anonymous functions, lexically enclosed closures, list transformations) and object-oriented programming (historically package/bless based, modernly object systems like Moose or native feature classes).</p>
+
+<p>The core innovation of Perl's internal logic is <strong>Contextuality</strong>. Expressions do not have a static, intrinsic evaluation type; instead, their behavior and return types are governed dynamically by the syntactic expectation of the calling environment—primarily <em>Scalar Context</em> (expecting a single value) versus <em>List Context</em> (expecting a sequence of values).</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Perl syntax uses explicit sigils to denote variable categories, though the sigil morphs based on the context of access rather than just declaration:</p>
+
+<ul>
+  <li><code>$scalar</code>: Denotes a single value (string, integer, float, or reference).</li>
+  <li><code>@array</code>: Denotes an ordered integer-indexed list of scalars.</li>
+  <li><code>%hash</code>: Denotes an unordered key-value lookup map (string keys, scalar values).</li>
+  <li><code>&amp;subroutine</code>: Denotes a callable routine.</li>
+  <li><code>*glob</code>: Denotes a symbol table entry (typeglob) spanning all variable types for a given name.</li>
+</ul>
+
+<p>Code organization relies on C-style block structures using curly braces <code>{}</code> and mandatory statement-terminating semicolons <code>;</code>. Indentation is purely cosmetic. Perl permits statement modifiers (postfix conditionals and loops), allowing code to read like natural language: <code>do_something() if $condition;</code>.</p>
+
+<p>Perl heavily utilizes implicit default variables to minimize verbosity, most notably <code>$_</code> (the default topic variable for loops, regex matches, and built-in functions) and <code>@_</code> (the parameter array within subroutines). Scoping is explicit: <code>my</code> establishes lexically scoped variables (block-scoped static scoping), <code>our</code> declares package-scoped global aliases, and <code>local</code> provides dynamically scoped temporary overrides of package variables.</p>
+
+<h3>3. Memory Management</h3>
+<p>Perl utilizes a deterministic <strong>Reference Counting</strong> garbage collection scheme coupled with Copy-On-Write (COW) string optimization. Every value inside the Perl C-interpreter is represented by a structure (Scalar Value <code>SV</code>, Array Value <code>AV</code>, Hash Value <code>HV</code>, Code Value <code>CV</code>). Each structure contains an explicit reference counter (<code>Refcnt</code>).</p>
+
+<ul>
+  <li>When a variable reference goes out of lexical scope or is unlinked, its internal reference count is decremented immediately.</li>
+  <li>When the count hits zero, the memory allocated for that structure is synchronously reclaimed. This enables RAII (Resource Acquisition</div><hr><div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
 <p><strong>Timestamp:</strong> 2026-11-05 07:29 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1579,33 +1609,7 @@ In an internal network assessment, an analyst obtains low-privileged domain acce
 <ul>
     <li><strong>Lexical Structure:</strong> Statements are separated by line breaks; semicolons are syntactically valid for inline statement chaining but strongly discouraged. Line continuations require explicit backslashes or implicit grouping inside parentheses, brackets, or braces.</li>
     <li><strong>Code Organization:</strong> Code is hierarchically structured into <em>Modules</em> (single <code>.py</code> source files) and <em>Packages</em> (directories containing a module namespace and optional <code>__init__.py</code> anchors). Python resolves imports via a dynamic lookup mechanism through <code>sys.path</code> and caches imported modules in <code>sys.modules</code>.</li>
-    <li><strong>Type System:</strong> Strongly, dynamically typed. Types are associated with runtime values rather than variables. Since PEP 484, Python supports gradual typing through static type hints (e.g., <code>def</div><hr><div class='lesson'><h2>🔍 Deep Dive: Scala</h2>
-<p><strong>Timestamp:</strong> 2026-10-22 14:10 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Scala—short for <em>Scalable Language</em>—was created in 2004 by Martin Odersky, one of the co-designers of Java generics. The fundamental design objective was to address the rigidity, verbosity, and architectural limitations of early-2000s Java without sacrificing the performance, ecosystem, or execution target of the Java Virtual Machine (JVM).</p>
-
-<p>From a programming language theory (PLT) perspective, Scala's defining thesis is the seamless unification of <strong>Object-Oriented Programming (OOP)</strong> and <strong>Functional Programming (FP)</strong> under a single, statically typed type system. Rather than treating OOP and FP as distinct modes, Scala enforces a total equivalence:</p>
-<ul>
-    <li><strong>Every value is an object:</strong> Primitive types (integers, booleans) inherit from a root class hierarchy, removing the primitive vs. reference dual-type system found in classic Java.</li>
-    <li><strong>Every function is a value (and thus an object):</strong> Functions are first-class instances of parametric function classes (e.g., <code>Function1[A, B]</code>) possessing an <code>apply</code> invocation method.</li>
-</ul>
-
-<p>Scala eliminates imperative boilerplate by replacing imperative control structures with expression-oriented transformations on immutable data structures, while providing powerful type-system mechanics (path-dependent types, higher-kinded types, implicit context resolution) to solve complex code reuse and static verification challenges.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Scala's syntax bridges the gap between C-style ALGOL families and ML-style functional languages. With the release of Scala 3, the language evolved from traditional brace-delimited code to support optional braces using significant indentation (the off-side rule), similar to Python or Haskell.</p>
-
-<p>Key syntactic characteristics include:</p>
-<ul>
-    <li><strong>Expression-Oriented Execution:</strong> Almost every construct returns a value. Control flow blocks (<code>if/else</code>, <code>try/catch</code>, blocks wrapped in curly braces) evaluate to the result of their final expression. Statements are rare; code is built by composing expressions.</li>
-    <li><strong>Semicolon Inference:</strong> Semicolons are optional and inferred at line breaks unless multiple expressions share a single line.</li>
-    <li><strong>Variable Definitions:</strong> Immutability is first-class. Immutable bindings are declared with <code>val</code> (evaluated eagerly) or <code>lazy val</code> (evaluated on first access), whereas mutable storage cells use <code>var</code>.</li>
-    <li><strong>Code Organization:</strong> Top-level declarations (functions, types, values) are supported alongside standard <code>package</code> declarations and class definitions. Objects (singleton instances) replace the static modifier found in imperative languages.</li>
-</ul>
-
-<pre><code>// Scala 3 syntax featuring significant indentation and expression orientation
-package</div><hr>
+    <li><strong>Type System:</strong> Strongly, dynamically typed. Types are associated with runtime values rather than variables. Since PEP 484, Python supports gradual typing through static type hints (e.g., <code>def</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
