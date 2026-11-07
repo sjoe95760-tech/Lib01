@@ -17,7 +17,29 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
+<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<p><strong>Timestamp:</strong> 2026-11-07 01:24 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>
+JavaScript was designed in 1995 by Brendan Eich at Netscape under an explicit imperative: add lightweight, dynamic scriptability to the web browser. Developed in just 10 days, its theoretical foundation is an amalgam of three distinct programming language lineages:
+</p>
+<ul>
+    <li><strong>Scheme:</strong> Inspired JavaScript's core functional programming capabilities, including first-class functions, lexical scoping, and dynamic typing.</li>
+    <li><strong>Self:</strong> Provided the paradigm for object orientation via delegation-based prototypal inheritance rather than class-based inheritance.</li>
+    <li><strong>Java:</strong> Influenced the C-like syntax, keyword naming conventions, and basic visual structure to appeal to developers in the mid-1990s.</li>
+</ul>
+<p>
+Architecturally, JavaScript was built to solve the execution latency of client-server roundtrips by enabling dynamic, in-browser execution. Over three decades, it evolved from a browser-bound scripting tool into a dynamic, multi-paradigm runtime engine (ECMAScript specification) powering client-side applications, high-throughput backend services (Node.js, Bun), and embedded edge functions.
+</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>
+JavaScript utilizes a C-style syntax defined by curly braces <code>{}</code>, infix operators, and statement-ending semicolons (which can be omitted via Automatic Semicolon Insertion rules, though explicit usage is standard practice in enterprise codebases).
+</p>
+<ul>
+    <li><strong>Variable Binding & Scoping:</strong> Lexical scope is governed by three primary keywords: legacy function-scoped <code>var</code> (subject to scope hoisting), and modern block-scoped <code>let</code> (mutable binding) and <code>const</code> (immutable binding reference, though the underlying object remains mutable).</li>
+    <li><strong>Type System Dynamics:</strong> JavaScript is dynamically and weakly typed. Values hold types, not variables. Primitive types include <code>Undefined</code>, <code>Null</code>, <code>Boolean</code>, <code>Number</code></div><hr><div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
 <p><strong>Timestamp:</strong> 2026-11-06 21:50 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1614,30 +1636,7 @@ In an internal network assessment, an analyst obtains low-privileged domain acce
     <li><strong>Asynchronous & Event-Driven:</strong> Modern high-throughput applications leverage persistent async runtimes like Swoole, Workerman, or FrankenPHP. Native <strong>Fibers</strong> (introduced in PHP 8.1) provide low-level, non-blocking cooperative multitasking and coroutines, allowing non-blocking I/O operations without callback-heavy syntax.</li>
 </ul>
 
-<h4>Error Handling</h4></div><hr><div class='lesson'><h2>🔍 Deep Dive: Rust</h2>
-<p><strong>Timestamp:</strong> 2026-10-24 06:37 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Rust was birthed out of Mozilla Research by Graydon Hoare and a community of open-source contributors to solve a fundamental dilemma in programming language design: the trade-off between <strong>performance</strong> and <strong>memory safety</strong>. Historically, low-level control over system resources (C/C++) required manual memory management, exposing systems to ubiquitous memory corruption vulnerabilities (use-after-free, double-free, buffer overflows, and data races). High-level languages guaranteed safety, but at the cost of runtime overhead via Garbage Collection (GC) or interpreter abstractions.</p>
-
-<p>Rust solves this using a <strong>zero-cost abstraction</strong> model grounded in affine type theory. Its design philosophy can be summarized as:</p>
-<ul>
-    <li><strong>Compile-time dynamic checks replacement:</strong> Shift invariant verification from runtime to compile time.</li>
-    <li><strong>Explicit over implicit:</strong> No hidden allocations, no implicit copy constructors, and no uncontrolled control-flow jumps.</li>
-    <li><strong>Multi-paradigm pragmatism:</strong> It is primarily an imperative, functional-influenced language. It discards classic Object-Oriented Programming (OOP) inheritance in favor of composition via <strong>algebraic data types (ADTs)</strong> and <strong>type classes (Traits)</strong>.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Rust adopts a C-family lexical syntax with curly braces <code>{}</code>, explicit semicolons <code>;</code>, and standard control structures, but operates heavily on an <strong>expression-based</strong> evaluation model rather than a statement-based one.</p>
-
-<ul>
-    <li><strong>Expressions vs. Statements:</strong> In Rust, almost every block returns a value. Omitting the trailing semicolon converts an expression into a block's return value:
-        <pre><code>let y = {
-    let x = 3;
-    x + 1 // No semicolon: evaluates and returns 4
-};</code></pre>
-    </li>
-    <li><strong>Immutability by Default:</strong> Bindings declared with <code>let</code> are immutable.</div><hr>
+<h4>Error Handling</h4></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
