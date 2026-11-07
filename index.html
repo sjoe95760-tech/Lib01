@@ -17,7 +17,32 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<p><strong>Timestamp:</strong> 2026-11-07 07:56 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Swift was designed by Chris Lattner and Apple to systematically replace Objective-C, a 1980s-era hybrid language combining C's low-level execution model with Smalltalk's dynamic dynamic-dispatch messaging runtime. Objective-C suffered from manual pointer arithmetic, unchecked null dereferences, fragile binary interfaces, and verbose syntax. Swift was architected around three non-negotiable vectors: <strong>Safety, Speed, and Expressiveness</strong>.</p>
+<p>From a programming language theory (PLT) perspective, Swift is a compiled, strongly and statically typed, multi-paradigm language with rich type inference. It bridges high-level abstractions with zero-cost low-level performance via LLVM infrastructure. Its design philosophy centers on <em>Protocol-Oriented Programming (POP)</em> combined with heavy functional influence (monadic Optionals, immutable-by-default value semantics, first-class functions) and modern object-oriented programming (OOP). Swift explicitly forces developers to make invalid states unrepresentable at compile-time rather than relying on runtime exceptions.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Swift features a clean syntax derived from the ALGOL/C family, influenced by languages like Rust, Haskell, and CLU. Code blocks are defined by curly braces <code>{}</code>, and statement-terminating semicolons are optional and idiomaticly omitted. Code layout uses Swift Package Manager (SPM) or Xcode module systems—headers (<code>.h</code> files) are eliminated; access control and module imports define boundaries.</p>
+<p>Key syntactic mechanics include:</p>
+<ul>
+  <li><strong>Explicit Argument Labels:</strong> Function calls enforce named parameters to enhance readability at call sites (e.g., <code>func connect(to host: String, port: Int)</code> invoked as <code>connect(to: "127.0.0.1", port: 8080)</code>).</li>
+  <li><strong>Optionology & Immutability:</strong> Variables declared with <code>let</code> are immutable (constants); <code>var</code> defines mutable state. Types are non-nullable by default. Nullability is explicitly modeled via the <code>Optional&lt;Wrapped&gt;</code> monad (syntactic sugar: <code>Type?</code>).</li>
+  <li><strong>Guarded Flow Control:</strong> Control flow favors early exits via <code>guard</code> statements, which statically bind unwrapped optionals into the remaining outer block scope, avoiding nested <code>if-let</code> pyramids of doom.</li>
+  <li><strong>Pattern Matching & Switches:</strong> <code>switch</code> statements are exhaustive at compile time, supporting complex tuple destructuring, value binding, and type casting without implicit fallthrough.</li>
+  <li><strong>Access Modifiers:</strong> Ranging strictly from broadest to narrowest: <code>open</code>, <code>public</code>, <code>package</code>, <code>internal</code> (default), <code>fileprivate</code>, and <code>private</code>.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Unlike managed runtimes using tracing Garbage Collection (e.g., JVM, Go) or languages relying strictly on manual allocation (C), Swift uses <strong>Deterministic Automatic Reference Counting (ARC)</strong> for heap-allocated reference types (classes, closures).</p>
+
+<ul>
+  <li><strong>ARC Mechanics:</strong> The compiler injects inline <code>retain</code> and <code>release</code> instructions into the Swift Intermediate Language (SIL) during compilation. Memory is freed instantly when reference counts drop to zero, preventing GC latency spikes or non-deterministic pauses.</li>
+  <li><strong>Reference Cycles & Retain Cycle Mitigation:</strong> Developers must manage reference relationships to prevent memory leaks using three reference qualifiers:
+    <ul>
+      <li><code>strong</code>: Default ownership, increments the reference count.</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
 <p><strong>Timestamp:</strong> 2026-11-07 01:24 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1594,49 +1619,7 @@ In an internal network assessment, an analyst obtains low-privileged domain acce
 <ul>
     <li><strong>Garbage Collection:</strong> Scala relies on standard JVM garbage collectors (G1, ZGC, Shenandoah) through automated mark-and-sweep and generational collection strategies. There is no manual memory management or Rust-style compile-time memory ownership model.</li>
     <li><strong>Value Types vs. Reference Types:</strong> Scala unifies primitive types (`Int`, `Double`, `Boolean`) and reference types under a single root type, `Any`. To prevent unnecessary heap allocations, Scala optimizes these into raw JVM primitives where possible. `AnyVal` subclasses and Scala 3 `opaque type` aliases allow developers to build zero-cost domain wrappers around values without runtime pointer allocation.</li>
-    <li><strong>Immutability Overhead:</strong> Idiomatic Scala relies on immutable, persistent data structures (e.g., Vector, List, Map) that utilize</div><hr><div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
-<p><strong>Timestamp:</strong> 2026-10-24 11:42 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>PHP (originally Personal Home Page, now a recursive acronym for <em>PHP: Hypertext Preprocessor</em>) was created by Rasmus Lerdorf in 1994 as a set of C CGI binaries to maintain personal web pages. Its core design philosophy was grounded in radical pragmatism: solve web development problems directly at the templating level with minimal operational friction.</p>
-
-<p>Language architecture characteristics:</p>
-<ul>
-    <li><strong>Web-Native Runtime:</strong> Unlike general-purpose languages adapted for the web (e.g., Python, Ruby), PHP was engineered specifically for stateless HTTP request-response cycles. Code is inherently embedded alongside output markup unless separated architecturally.</li>
-    <li><strong>Multi-Paradigm Evolution:</strong> PHP started as an imperative/procedural dynamic scripting language. Over three decades, it evolved into a modern, strongly typed, class-based object-oriented language with functional capabilities (first-class functions, closures, arrow functions, auto-capturing lexical scopes).</li>
-    <li><strong>Gradual & Hybrid Typing:</strong> PHP uses dynamic typing by default but features an advanced, opt-in static type system supporting scalar types, union types, intersection types, generics via static analysis docblocks, and strict typing via <code>declare(strict_types=1);</code>.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>PHP’s syntax heavily borrows from C, C++, and Perl. Code blocks are delineated by opening tags (<code>&lt;?php</code>) and closing tags (<code>?&gt;</code>), enabling the execution engine to switch between raw pass-through mode and dynamic interpretation.</p>
-
-<ul>
-    <li><strong>Variable Scope & Identifiers:</strong> Variables are explicitly denoted with a leading dollar sign (<code>$variable</code>). Variable scope is local to functions by default; global variables must be explicitly imported via the <code>global</code> keyword or accessed through superglobals (e.g., <code>$_GET</code>, <code>$_POST</code>, <code>$_SERVER</code>).</li>
-    <li><strong>Formatting Rules:</strong> Statements require explicit trailing semicolons. Control structures use traditional brace-delimited blocks (<code>{ ... }</code>) or alternative colon-syntax for inline templates (<code>if (...): ... endif;</code>). Indentation is cosmetically free-form.</li>
-    <li><strong>Module Organization & Autoloading:</strong> Modern PHP abandons manual file inclusion (<code>require</code>/<code>include</code>) in favor of <strong>PSR-4 Autoloading</strong>. Namespaces map directly to file directory structures, enabling classes to be lazily loaded by the Zend Engine upon first reference via Composer-generated mapping tables.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>PHP handles memory management internally through the <strong>Zend Engine Memory Manager (ZMM)</strong>, removing manual allocation/deallocation requirements from the developer.</p>
-
-<ul>
-    <li><strong>Shared-Nothing & Request Lifecycle:</strong> The core memory philosophy is "Shared-Nothing." Memory allocated to process a single HTTP request is completely isolated. When the request terminates, the ZMM performs a complete allocation reset, wiping all request-scoped allocations instantly, rendering memory leaks transient across HTTP cycles.</li>
-    <li><strong>Reference Counting & Copy-on-Write (COW):</strong> PHP data structures (zvals) utilize reference counting. When a variable is assigned to another, memory is not duplicated; instead, the internal reference counter increments. Memory is only cloned if one of the variable handles mutates the underlying data structure (Copy-On-Write).</li>
-    <li><strong>Garbage Collection (GC):</strong> To handle cyclic dependencies (e.g., Object A references Object B, which references Object A), PHP implements a cyclic garbage collector based on the <em>Bacon & Rajan algorithm</em>. The GC identifies unreachable root buffer nodes with non-zero reference counts and sweeps cyclic memory leaks during engine run-states.</li>
-</ul>
-
-<h3>4. Paradigms & Tactics</h3>
-
-<h4>Object-Oriented Programming (OOP)</h4>
-<p>Modern PHP (PHP 8.x+) features a robust OOP model supporting single inheritance, interfaces, traits (horizontal code reuse), final/abstract modifiers, constructor property promotion, attributes (metadata annotations), and readonly classes/properties.</p>
-
-<h4>Concurrency & Execution Models</h4>
-<ul>
-    <li><strong>Traditional Process-per-Request:</strong> PHP traditionally scales horizontally using process managers like PHP-FPM (FastCGI Process Manager) or Apache Prefork. Threads are generally avoided in favor of isolated, single-threaded worker processes executing sequentially.</li>
-    <li><strong>Asynchronous & Event-Driven:</strong> Modern high-throughput applications leverage persistent async runtimes like Swoole, Workerman, or FrankenPHP. Native <strong>Fibers</strong> (introduced in PHP 8.1) provide low-level, non-blocking cooperative multitasking and coroutines, allowing non-blocking I/O operations without callback-heavy syntax.</li>
-</ul>
-
-<h4>Error Handling</h4></div><hr>
+    <li><strong>Immutability Overhead:</strong> Idiomatic Scala relies on immutable, persistent data structures (e.g., Vector, List, Map) that utilize</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
