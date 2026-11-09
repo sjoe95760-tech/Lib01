@@ -17,7 +17,30 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<p><strong>Timestamp:</strong> 2026-11-09 07:22 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Swift was created by Chris Lattner and Apple (introduced in 2014) to replace Objective-C as the primary language for Apple's platforms, while expanding into systems programming and server-side applications. Objective-C was hampered by its dynamic Smalltalk-style messaging layer built atop C, which introduced runtime overhead, poor safety guarantees, null pointer vulnerabilities, and archaic syntax.</p>
+<p>Swift’s core motto is <strong>"Safe by default, fast by design."</strong> From a programming language theory (PLT) perspective, Swift is a compiled, statically typed, multi-paradigm language that prioritizes:</p>
+<ul>
+  <li><strong>Protocol-Oriented Programming (POP):</strong> Preferring composition via protocols with default implementation extensions over traditional class-based inheritance hierarchies.</li>
+  <li><strong>Value Semantics over Reference Semantics:</strong> Emphasizing immutable data and copy-on-write structures to eliminate implicit shared mutable state.</li>
+  <li><strong>Type Safety & Expressiveness:</strong> Leveraging heavy static type inference, algebraic data types (ADTs via Enums), and compile-time null safety (Optionals).</li>
+  <li><strong>Direct LLVM Integration:</strong> Bypassing virtual machines or heavy runtimes to achieve performance on par with C++.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Swift uses a clean, modern C-family syntax heavily influenced by Rust, Haskell, and Python. It eliminates historical C syntactic boilerplate like mandatory semicolons, header files, and manual forward declarations.</p>
+<ul>
+  <li><strong>Structure:</strong> Code is organized into logical modules. Braces <code>{}</code> define scopes. Semicolons are optional and idiomatically omitted.</li>
+  <li><strong>Mutability Control:</strong> Explicit declaration of bindings via <code>let</code> (immutable value binding) and <code>var</code> (mutable variable binding). Immutable bindings are enforced strictly at compile time.</li>
+  <li><strong>Control Flow & Exhaustiveness:</strong> Statements like <code>switch</code> are mandatory-exhaustive and do not fall through by default. Control flow incorporates pattern matching directly (e.g., <code>if case</code>, <code>switch</code> over tuples, ranges, and types).</li>
+  <li><strong>Guards & Optionals:</strong> The <code>guard</code> statement enforces early exits, binding unwrapped optionals into the outer scope and reducing nested "pyramids of doom." Unwrapping uses strict patterns like <code>if let</code> or the null-coalescing operator <code>??</code>.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Swift rejects non-deterministic "stop-the-world" Garbage Collection (GC) in favor of <strong>Automatic Reference Counting (ARC)</strong> combined with aggressive <strong></div><hr><div class='lesson'><h2>🔍 Deep Dive: Python</h2>
 <p><strong>Timestamp:</strong> 2026-11-09 00:14 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1618,38 +1641,7 @@ In an internal network assessment, an analyst obtains low-privileged domain acce
     <li><strong>Asymmetric Cryptography (Public Key Cryptography):</strong> Employs mathematically linked key pairs—a public key for encryption/verification and a private key for decryption/signing. Grounded in hard mathematical problems such as integer factorization (RSA) or discrete logarithms over elliptic curves (ECC/ECDSA, Ed25519), it solves the key distribution problem and enables digital signatures.</li>
     <li><strong>Cryptographic Hash Functions:</strong> Deterministic, one-way mathematical algorithms (e.g., SHA-256, SHA-3) that map arbitrary input data to a fixed-size digest. They are collision-resistant and pre-image resistant, ensuring that even a one-bit change in input drastically alters the output hash (the avalanche effect).</li>
     <li><strong>Key Exchange Protocols:</strong> Protocols like Diffie-Hellman (DH) and Elliptic Curve Diffie-Hellman (ECDH) allow two parties to establish a shared secret key over an insecure channel without transmitting the key itself. Ephemeral variants (ECDHE) provide Perfect Forward Secrecy (PFS), ensuring past sessions remain secure even if long-term identity keys are compromised.</li>
-    <li><strong>Post-Quantum Cryptography (PQC):</strong> Cryptographic algorithms (such as lattice-based algorithms like</div><hr><div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
-<p><strong>Timestamp:</strong> 2026-10-26 11:45 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>PHP (originally "Personal Home Page", now a recursive acronym for "PHP: Hypertext Preprocessor") was created by Rasmus Lerdorf in 1994. Unlike languages engineered in academic settings or corporate R&D labs, PHP was born out of immediate, pragmatic necessity: simplifying the creation of dynamic web pages written as C CGI scripts.</p>
-<p>The fundamental design philosophy of PHP is <strong>pragmatic web-first execution</strong> operating under a <em>"shared-nothing" architecture</em>. Its core problem domain is handling HTTP requests, rendering dynamic content, and terminating as efficiently as possible. Rather than forcing a singular paradigm, PHP evolved organically from an HTML-embedded templating tool into a highly flexible, multi-paradigm (object-oriented, functional, procedural) language with strong modern typing primitives.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>PHP uses a C-style syntax heavily influenced by Perl. It utilizes curly brace `{}` scoping, explicit line termination via semicolons `;`, and prefixes all variable identifiers with a dollar sign `$`. Variable names are contextually dynamic and hold type information in their values rather than their identifiers.</p>
-
-<p>Key structural characteristics include:</p>
-<ul>
-    <li><strong>Embedded Processing:</strong> PHP code is executed within opening <code>&lt;?php</code> and closing <code>?&gt;</code> tags, allowing raw textual or HTML content to bypass the execution parser outside these tags.</li>
-    <li><strong>Request Lifecycle Scope:</strong> Files are typically parsed and executed imperatively from top to bottom per incoming HTTP request. Modern applications route requests through a single entry point (e.g., <code>public/index.php</code>).</li>
-    <li><strong>Module Resolution:</strong> Code organization relies on <code>namespaces</code> mapped to file directories, enforced through standardized autoloading mechanisms (PSR-4) via tools like Composer.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>PHP delegates low-level allocation to the <strong>Zend Memory Manager (ZMM)</strong>, an optimized memory layer operating above standard OS C-allocators (like <code>malloc</code>). Memory within PHP relies primarily on <strong>Reference Counting with a Cyclic Garbage Collector</strong>.</p>
-
-<ul>
-    <li><strong>Zvals:</strong> Variables are stored in C structures called <code>zval</code> (Zend Values), which encapsulate the actual value, its type flag, and a reference count (`refcount`).</li>
-    <li><strong>Copy-on-Write (CoW):</strong> Arrays and strings share underlying memory buffers when reassigned. Duplication in memory occurs only when one of the variable pointers modifies the data.</li>
-    <li><strong>Cycle Collector:</strong> To clean up circular object references (e.g., Object A references Object B, which references Object A), PHP employs a synchronous background root-buffer analysis based on the Bacon & Rajan algorithm.</li>
-    <li><strong>Ephemeral Lifetime:</strong> In standard Web Server/FPM setups, the entirety of a request's memory heap is flushed upon request completion, effectively eliminating long-term memory leak risks across distinct web interactions.</li>
-</ul>
-
-<h3>4. Paradigms & Tactics</h3>
-<p>PHP spans multiple paradigms, offering advanced language features designed for enterprise-grade architecture:</p>
-
-<ul>
-    <li><strong>Object-Oriented Programming (OOP):</strong> Class-based single inheritance model with interface implementation, trait composition, static type declarations, constructors with property promotion, immutable classes (`readonly`), named arguments, and attributes (metadata annotations).</li></div><hr>
+    <li><strong>Post-Quantum Cryptography (PQC):</strong> Cryptographic algorithms (such as lattice-based algorithms like</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
