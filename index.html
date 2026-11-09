@@ -17,7 +17,26 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Cryptography</h2>
+<p><strong>Timestamp:</strong> 2026-11-09 17:55 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>Cryptography is the science of using mathematical algorithms to encrypt, decrypt, authenticate, and verify data. It serves as the absolute backbone of modern information security, transforming plaintext data into unreadable ciphertext to protect information at rest, in transit, and in use.</p>
+<p>Without cryptography, the modern digital economy would collapse. Plaintext communications across networks would leave sensitive data vulnerable to widespread eavesdropping, session hijacking, and data tampering. Cryptography directly addresses core information security guarantees:</p>
+<ul>
+  <li><strong>Confidentiality:</strong> Ensures unauthorized parties cannot read sensitive data.</li>
+  <li><strong>Integrity:</strong> Ensures data has not been modified, corrupted, or tampered with in transit or storage.</li>
+  <li><strong>Authentication:</strong> Verifies the identity of users, systems, or data origins.</li>
+  <li><strong>Non-Repudiation:</strong> Provides proof of the origin and integrity of data, preventing a sender from denying they sent a message.</li>
+</ul>
+
+<h3>2. How It Works</h3>
+<p>Cryptography relies on distinct mathematical primitives and operational frameworks designed for specific security goals:</p>
+
+<ul>
+  <li><strong>Symmetric Cryptography (Secret-Key Encryption):</strong> Uses a single shared secret key for both encryption and decryption. Fast and computationally efficient, it is ideal for bulk data encryption (e.g., full-disk encryption, TLS payload data). Common ciphers include <em>AES (Advanced Encryption Standard)</em> with key sizes of 128, 192, or 256 bits, and <em>ChaCha20</em>. Symmetric ciphers operate as either <strong>Block Ciphers</strong> (processing data in fixed chunks using modes like CBC or GCM) or <strong>Stream Ciphers</strong> (processing data bit-by-bit).</li>
+
+  <li><strong>Asymmetric Cryptography (Public-Key Encryption):</div><hr><div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
 <p><strong>Timestamp:</strong> 2026-11-09 07:22 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1627,21 +1646,7 @@ In an internal network assessment, an analyst obtains low-privileged domain acce
 </ul>
 
 <h3>4. Real-World Examples</h3>
-<p><strong>WannaCry Ransomware Outbreak (2017):</strong> Organizations lacking proper network firewalls and segmentation exposed SMBv1 (port 445) directly to the Internet or between internal network zones. Lack of inline IPS protection allowed</div><hr><div class='lesson'><h2>🔍 Deep Dive: Cryptography</h2>
-<p><strong>Timestamp:</strong> 2026-10-26 17:48 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>Cryptography is the mathematical and operational discipline of securing information and communications in the presence of adversaries. Far beyond simple secret writing, modern cryptography forms the mathematical backbone of digital trust, enabling secure commerce, private communications, identity verification, and data integrity across untrusted networks like the Internet.</p>
-<p>Without cryptography, the modern digital economy would collapse under the weight of trivial eavesdropping, identity spoofing, and data tampering. It directly addresses fundamental security problems by upholding the core pillars of the CIA Triad (Confidentiality via encryption, Integrity via hashing, and Availability via authenticated protocols) along with non-repudiation and identity verification via digital signatures and Public Key Infrastructure (PKI).</p>
-
-<h3>2. How It Works</h3>
-<p>Cryptography functions through mathematically rigorous primitives categorized into several core operational models:</p>
-<ul>
-    <li><strong>Symmetric Cryptography:</strong> Uses a single shared secret key for both encryption and decryption. Algorithms like AES (Advanced Encryption Standard) in GCM mode or ChaCha20-Poly1305 offer extremely fast bulk data encryption with built-in integrity checking (Authenticated Encryption with Associated Data, or AEAD).</li>
-    <li><strong>Asymmetric Cryptography (Public Key Cryptography):</strong> Employs mathematically linked key pairs—a public key for encryption/verification and a private key for decryption/signing. Grounded in hard mathematical problems such as integer factorization (RSA) or discrete logarithms over elliptic curves (ECC/ECDSA, Ed25519), it solves the key distribution problem and enables digital signatures.</li>
-    <li><strong>Cryptographic Hash Functions:</strong> Deterministic, one-way mathematical algorithms (e.g., SHA-256, SHA-3) that map arbitrary input data to a fixed-size digest. They are collision-resistant and pre-image resistant, ensuring that even a one-bit change in input drastically alters the output hash (the avalanche effect).</li>
-    <li><strong>Key Exchange Protocols:</strong> Protocols like Diffie-Hellman (DH) and Elliptic Curve Diffie-Hellman (ECDH) allow two parties to establish a shared secret key over an insecure channel without transmitting the key itself. Ephemeral variants (ECDHE) provide Perfect Forward Secrecy (PFS), ensuring past sessions remain secure even if long-term identity keys are compromised.</li>
-    <li><strong>Post-Quantum Cryptography (PQC):</strong> Cryptographic algorithms (such as lattice-based algorithms like</div><hr>
+<p><strong>WannaCry Ransomware Outbreak (2017):</strong> Organizations lacking proper network firewalls and segmentation exposed SMBv1 (port 445) directly to the Internet or between internal network zones. Lack of inline IPS protection allowed</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
