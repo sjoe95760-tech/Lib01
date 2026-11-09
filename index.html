@@ -17,7 +17,27 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Malware Analysis</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<p><strong>Timestamp:</strong> 2026-11-09 00:14 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Python was conceived in late 1989 by Guido van Rossum as a successor to the ABC language, designed to bridge the gap between shell scripting and C. Its underlying philosophy emphasizes developer productivity, code readability, and semantic clarity over raw runtime speed, famously encapsulated in <em>The Zen of Python</em> (PEP 20): "Readability counts" and "There should be one—and preferably only one—obvious way to do it."</p>
+
+<p>From a programming language theory (PLT) perspective, Python is a high-level, dynamically typed, strongly typed, multi-paradigm language:</p>
+<ul>
+  <li><strong>Object-Oriented:</strong> Everything in Python is a first-class object at runtime—including functions, modules, classes, and primitive types.</li>
+  <li><strong>Functional:</strong> Supports higher-order functions, lambdas, lexical closures, list/dict/set comprehensions, and lazy evaluation constructs (iterators and generators).</li>
+  <li><strong>Procedural:</strong> Allows straightforward imperative execution flows without forcing boilerplate class structures.</li>
+</ul>
+<p>Python solves the problem of high cognitive load during software design by delegating memory management, system integration, and type resolution to its execution engine, acting as both an expressive domain modeling language and a universal "glue language" across heterogeneous system architectures.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Python’s syntax relies on the <strong>off-side rule</strong>, utilizing meaningful indentation (whitespace) to delimit code blocks rather than explicit lexical tokens like curly braces <code>{}</code> or <code>begin/end</code> keywords. This eliminates code formatting ambiguities at the grammar level.</p>
+
+<ul>
+  <li><strong>Statements & Semicolons:</strong> Newlines denote statement boundaries. Semicolons are grammatically supported for statement chaining on a single line, but are idiomatically avoided.</li>
+  <li><strong>Structural Organization:</strong> Code is modularized into <code>.py</code> files (Modules) and directories containing an <code>__init__.py</code> or utilizing implicit namespace packages (Packages).</li>
+  <li><strong>Type System & Gradual Typing:</strong> Python is dynamically and strongly typed (it refuses implicit type co-ercion between incompatible types, e.g., <code>"4" + 2</code> throws a <code></div><hr><div class='lesson'><h2>🔍 Deep Dive: Malware Analysis</h2>
 <p><strong>Timestamp:</strong> 2026-11-08 20:51 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1629,31 +1649,7 @@ In an internal network assessment, an analyst obtains low-privileged domain acce
 <p>PHP spans multiple paradigms, offering advanced language features designed for enterprise-grade architecture:</p>
 
 <ul>
-    <li><strong>Object-Oriented Programming (OOP):</strong> Class-based single inheritance model with interface implementation, trait composition, static type declarations, constructors with property promotion, immutable classes (`readonly`), named arguments, and attributes (metadata annotations).</li></div><hr><div class='lesson'><h2>🔍 Deep Dive: Python</h2>
-<p><strong>Timestamp:</strong> 2026-10-26 00:49 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Python was created in the late 1980s by Guido van Rossum as a successor to the ABC programming language, designed to bridge the gap between shell scripting and C. Its core philosophy centers on maximizing developer velocity, code readability, and expressiveness while minimizing syntactic noise. Formulated formally in "The Zen of Python" (PEP 20), principles such as <em>"Explicit is better than implicit"</em> and <em>"There should be one—and preferably only one—obvious way to do it"</em> drive its architectural choices.</p>
-
-<p>From a language design perspective, Python is a dynamically typed, strongly typed, multi-paradigm language. It seamlessly unifies:</p>
-<ul>
-  <li><strong>Object-Oriented Programming (OOP):</strong> Everything in Python is a runtime object—including primitives, functions, classes, and modules.</li>
-  <li><strong>Procedural Programming:</strong> Simple script execution without mandatory boilerplate classes (unlike Java or C#).</li>
-  <li><strong>Functional Concepts:</strong> First-class functions, higher-order functions, anonymous functions (<code>lambda</code>), comprehensions, and lazy evaluation via generators.</li>
-</ul>
-<p>By prioritizing developer cognitive load over raw compute performance, Python delegates performance-critical workloads to low-level extensions (C/C++/Rust) while keeping the top-level orchestrator expressive and readable.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Python utilizes the <strong>off-side rule</strong>, employing mandatory indentation (whitespace) to define block structures rather than curly braces (<code>{}</code>) or explicit <code>begin</code>/<code>end</code> keywords. Statements are terminated by newlines, making semicolons optional and idiomaticly discouraged except for rare single-line multi-statement scenarios.</p>
-
-<p>Code organization operates on a hierarchical module and package system:</p>
-<ul>
-  <li><strong>Modules:</strong> Individual <code>.py</code> files containing executable code, function definitions, and class declarations.</li>
-  <li><strong>Packages:</strong> Directories containing modules and an optional <code>__init__.py</code> file, mapped directly to namespace hierarchies.</li>
-  <li><strong>Import Engine:</strong> Dynamic module loading executed at runtime, utilizing <code>sys.path</code> search paths and namespace objects stored as internal dictionaries.</li>
-</ul>
-
-<p>Execution flow parses source code into an Abstract Syntax Tree (AST), compiles it to intermediate bytecode (<code>.</div><hr>
+    <li><strong>Object-Oriented Programming (OOP):</strong> Class-based single inheritance model with interface implementation, trait composition, static type declarations, constructors with property promotion, immutable classes (`readonly`), named arguments, and attributes (metadata annotations).</li></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
