@@ -17,7 +17,11 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Cryptography</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<p><strong>Timestamp:</strong> 2026-11-10 00:56 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Python was conceived in late 1989 by Guido van Rossum as a successor to the ABC language, designed to bridge the gap</div><hr><div class='lesson'><h2>🔍 Deep Dive: Cryptography</h2>
 <p><strong>Timestamp:</strong> 2026-11-09 17:55 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1605,48 +1609,7 @@ In an internal network assessment, an analyst obtains low-privileged domain acce
 <p>JavaScript employs fully automated memory management backed by tracing dynamic memory allocators and garbage collectors inside engine implementations (e.g., V8, JavaScriptCore, SpiderMonkey).</p>
 <ul>
     <li><strong>Heap and Stack Allocation:</strong> Primitive types (numbers, booleans, symbols, null/undefined, BigInt) are value-allocated on the call stack or tightly inside frame objects, while reference types (Objects, Arrays, Functions) reside on the dynamic engine heap.</li>
-    <li><strong>Garbage Collection Strategy:</strong> Runtimes primarily rely on <strong>Generational Mark-and-Sweep Garbage Collection</strong>. The heap is separated into "Young Generation" (nursery,</div><hr><div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
-<p><strong>Timestamp:</strong> 2026-10-26 22:01 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>Firewalls and Intrusion Detection/Prevention Systems (IDS/IPS) form the foundation of network perimeter security and internal segmentation. A <strong>Firewall</strong> acts as a gatekeeper, controlling incoming and outgoing network traffic based on predetermined security rules. An <strong>IDS (Intrusion Detection System)</strong> monitors network traffic for suspicious activity and issues alerts, while an <strong>IPS (Intrusion Prevention System)</strong> sits directly in the traffic path to actively block or reset unauthorized and malicious sessions.</p>
-<p>Without these controls, enterprise networks are exposed to unmonitored external exposure, untrusted lateral movement, and unchecked data exfiltration. They mitigate the risk of threat actors directly reaching vulnerable assets, executing remote code, or establishing Command and Control (C2) channels.</p>
-
-<h3>2. How It Works</h3>
-<p><strong>Firewall Mechanics:</strong></p>
-<ul>
-  <li><strong>Packet Filtering (Layer 3/4):</strong> Evaluates traffic based on source/destination IP addresses, ports, and protocols (e.g., stateless ACLs).</li>
-  <li><strong>Stateful Inspection:</strong> Tracks the state of active connections (e.g., TCP 3-way handshake) in a state table, ensuring incoming packets are part of an established, valid session.</li>
-  <li><strong>Next-Generation Firewalls (NGFW / Layer 7):</strong> Performs Deep Packet Inspection (DPI) to identify specific applications, users, and encrypted content (via TLS/SSL decryption proxies) regardless of the port being used.</li>
-</ul>
-
-<p><strong>IDS/IPS Mechanics:</strong></p>
-<ul>
-  <li><strong>Deployment Mode:</strong> IDS operates out-of-band using SPAN/TAP ports (passive monitoring). IPS operates in-line (active inspection and inline action).</li>
-  <li><strong>Signature-Based Detection:</strong> Matches traffic patterns against a database of known attack signatures (e.g., specific byte sequences of an exploit payload).</li>
-  <li><strong>Anomaly/Heuristic-Based Detection:</strong> Establishes a statistical baseline of "normal" network behavior and triggers alerts or blocks traffic when deviations exceed set thresholds.</li>
-  <li><strong>Active Response Actions (IPS):</strong> Drops packets, resets TCP connections (sending TCP RST flags), or dynamically adjusts firewall ACLs to isolate bad actors.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<p><strong>Offensive Techniques (Evasion):</strong></p>
-<ul>
-  <li><strong>Protocol Tunneling:</strong> Encapsulating non-standard or malicious traffic within allowed protocols like DNS (port 53) or HTTPS (port 443) to bypass Layer 4 firewalls.</li>
-  <li><strong>Fragmentation & Packet Manipulation:</strong> Breaking payloads into tiny IP fragments or altering TCP window sizes to split signatures across multiple packets, confusing signature-matching engines.</li>
-  <li><strong>SSL/TLS Encryption:</strong> Hiding malicious payloads inside encrypted sessions to prevent un-decrypted DPI engines from inspecting traffic.</li>
-  <li><strong>Slow and Low Scanning:</strong> Spreading port scans across long intervals and multiple IP sources to evade heuristic anomaly thresholds.</li>
-</ul>
-
-<p><strong>Defensive Measures:</strong></p>
-<ul>
-  <li><strong>SSL/TLS Interception & Inspection:</strong> Decrypting inbound and outbound traffic at the perimeter firewall to allow IPS DPI engines to inspect raw content.</li>
-  <li><strong>Strict Egress Filtering:</strong> Blocking all outbound traffic by default and allowing only specific, required ports and destinations to disrupt C2 communication and exfiltration.</li>
-  <li><strong>Traffic Normalization:</strong> Reassembling fragmented packets at the inline IPS before passing them through detection rules to counter fragmentation evasion.</li>
-  <li><strong>Continuous Rule Tuning:</strong> Refining signatures and anomaly baselines to suppress false positives and eliminate blind spots.</li>
-</ul>
-
-<h3>4. Real-World Examples</h3>
-<p><strong>WannaCry Ransomware Outbreak (2017):</strong> Organizations lacking proper network firewalls and segmentation exposed SMBv1 (port 445) directly to the Internet or between internal network zones. Lack of inline IPS protection allowed</div><hr>
+    <li><strong>Garbage Collection Strategy:</strong> Runtimes primarily rely on <strong>Generational Mark-and-Sweep Garbage Collection</strong>. The heap is separated into "Young Generation" (nursery,</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
