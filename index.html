@@ -17,7 +17,20 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
+<p><strong>Timestamp:</strong> 2026-11-10 07:56 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Swift was designed by Apple (led by Chris Lattner) and released in 2014 to replace Objective-C. Objective-C was built on top of Smalltalk-style dynamic message passing layered over C; while flexible, it suffered from verbose syntax, dynamic dispatch overhead, and poor compile-time type safety.</p>
+<p>Swift’s design philosophy rests on three pillars: <strong>Safety, Speed, and Expressiveness</strong>. It combines the raw performance of compiled systems languages (via LLVM) with the modern, clean ergonomics of scripting languages. From a language theory perspective, Swift is a multi-paradigm language that merges Object-Oriented Programming (OOP), Functional Programming (FP), and Generic Programming, unified under a novel meta-paradigm called <strong>Protocol-Oriented Programming (POP)</strong>.</p>
+<p>Swift prioritizes static safety: it eliminates entire classes of runtime bugs at compile time (such as null-pointer dereferences, uninitialized variables, and integer overflows) by default, forcing explicit opt-ins for unsafe operations.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Swift syntax is clean, modern, and heavily influenced by Rust, Haskell, C#, and Python. It enforces strong static typing while relying on aggressive type inference to keep code concise.</p>
+<ul>
+    <li><strong>Braces vs. Indentation:</strong> Swift uses curly braces <code>{}</code> to define execution blocks. Unlike C/C++, braces are mandatory even for single-line <code>if</code> blocks, eliminating ambiguity bugs (e.g., Apple's historical <code>goto fail</code> bug). Indentation is purely for human readability.</li>
+    <li><strong>Semicolons:</strong> Semicolons are optional and idiomatic Swift omits them entirely, using newlines as statement terminators. Semicolons are only required if writing multiple statements on a single line.</li>
+    <li><strong>Code Organization:</strong> Swift discards C-style separation of header (<code>.h</code>) and implementation (<code>.m</code>/<code>.cpp</code>) files. All code lives in <code>.swift</code> source</div><hr><div class='lesson'><h2>🔍 Deep Dive: Python</h2>
 <p><strong>Timestamp:</strong> 2026-11-10 00:56 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1589,27 +1602,7 @@ In an internal network assessment, an analyst obtains low-privileged domain acce
 </ol>
 
 <h4>Move Semantics vs. Copy</h4>
-<p>Assigning a variable or passing it to a function transfers ownership (a <em>move</em> operation), invalidating the source binding at compile-time. Types implementing the <code>Copy</code> trait (typically primitive stack-allocated types) undergo bitwise duplication instead of moving.</p</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
-<p><strong>Timestamp:</strong> 2026-10-27 01:40 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>JavaScript was created in 1995 by Brendan Eich at Netscape to make the web dynamic. Its foundational design philosophy is a synthesis of three distinct language influences: <strong>Scheme</strong> (first-class functions, lexical scoping, functional programming capabilities), <strong>Self</strong> (prototypal inheritance instead of class-based inheritance), and <strong>Java/C</strong> (syntax, basic control flow structures, and imperative operators).</p>
-
-<p>JavaScript was built to solve the problem of client-side reactivity without requiring heavy applets or full round-trip server calls. Language theorists classify JavaScript as a <strong>multi-paradigm, dynamically typed, weakly typed, prototype-based language</strong>. It favors flexibility, low friction, and lenient execution over strict static verification, making it hyper-adaptable to event-driven environments like web browsers and server runtimes.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>JavaScript uses standard C-style syntax, relying on curly braces <code>{}</code> to define execution blocks and statements bounded optionally by semicolons. Key syntactic characteristics include:</p>
-<ul>
-    <li><strong>Lexical Scope & Binding:</strong> Variables are bound using <code>const</code> (immutable reference), <code>let</code> (reassignable block-scope), or historical <code>var</code> (function-scope with hoisting). The runtime enforces a Temporal Dead Zone (TDZ) for <code>let</code> and <code>const</code> prior to initialization.</li>
-    <li><strong>Automatic Semicolon Insertion (ASI):</strong> The parser dynamically inserts semicolons at line breaks based on specific grammar rules, though idiomatic production code standardizes on explicit semicolon use (or disciplined minimalistic setups) to prevent parsing ambiguities.</li>
-    <li><strong>Module Organization:</strong> Modern JS utilizes <strong>ES Modules (ESM)</strong> using explicit <code>import</code> and <code>export</code> statements. ESM modules are evaluated asynchronously, natively tree-shakeable, and maintain isolated lexical scope trees.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>JavaScript employs fully automated memory management backed by tracing dynamic memory allocators and garbage collectors inside engine implementations (e.g., V8, JavaScriptCore, SpiderMonkey).</p>
-<ul>
-    <li><strong>Heap and Stack Allocation:</strong> Primitive types (numbers, booleans, symbols, null/undefined, BigInt) are value-allocated on the call stack or tightly inside frame objects, while reference types (Objects, Arrays, Functions) reside on the dynamic engine heap.</li>
-    <li><strong>Garbage Collection Strategy:</strong> Runtimes primarily rely on <strong>Generational Mark-and-Sweep Garbage Collection</strong>. The heap is separated into "Young Generation" (nursery,</div><hr>
+<p>Assigning a variable or passing it to a function transfers ownership (a <em>move</em> operation), invalidating the source binding at compile-time. Types implementing the <code>Copy</code> trait (typically primitive stack-allocated types) undergo bitwise duplication instead of moving.</p</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
