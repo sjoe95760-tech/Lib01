@@ -17,7 +17,41 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
+<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<p><strong>Timestamp:</strong> 2026-11-11 01:34 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>JavaScript was created in 1995 by Brendan Eich at Netscape in just ten days. Originally designed as a lightweight, interpreted scripting language to make HTML documents interactive, it was forced to adopt a C/Java-like syntax for commercial marketing reasons despite drawing its foundational mechanics from <strong>Scheme</strong> (first-class functions and lexical scoping) and <strong>Self</strong> (prototypal inheritance).</p>
+<p>JavaScript is fundamentally a multi-paradigm, dynamic, dynamically typed language. It solves the problem of runtime dynamic behavior across unpredictable execution environments. Rather than compelling developers into a strict object-oriented or purely functional structure, it provides malleable primitives that allow procedural, object-oriented (prototypal), and functional programming paradigms to coexist seamlessly. Its governing design ethos prioritizes high flexibility, backward compatibility ("don't break the web"), and non-blocking I/O.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>JavaScript inherits its block structure, braces (<code>{}</code>), and operator syntax from the C family. Statements are logically terminated by semicolons, though the engine implements Automatic Semicolon Insertion (ASI), a parser mechanism that injects implicit semicolons during parsing—a feature that remains a common vector for edge-case syntax bugs.</p>
+<p>Key syntactic rules and flow control features include:</p>
+<ul>
+  <li><strong>Lexical Scoping:</strong> Modern JavaScript uses <code>const</code> and <code>let</code> to enforce block-level scoping. The legacy <code>var</code> keyword exhibits function-level scoping and variable hoisting (where declarations are moved to the top of their execution context during parsing).</li>
+  <li><strong>Dynamic & Weak Typing:</strong> Types are bound to values, not variables. Implicit coercion rules are aggressively applied during operations (e.g., <code>'5' + 3</code> results in <code>'53'</code>, whereas <code>'5' - 3</code> yields <code>2</code>). Strict equality (<code>===</code>) is required to bypass type coercion during comparisons.</li>
+  <li><strong>Module Systems:</strong> Code structure relies on official ES Modules (ESM) using static <code>import</code> and <code>export</code> statements, replacing legacy asynchronous module formats (AMD) and server-side CommonJS (<code>require</code>/<code>module.exports</code>).</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>JavaScript delegates memory management entirely to the runtime engine (such as V8, JavaScriptCore, or SpiderMonkey). Developers do not perform explicit memory allocation or deallocation (such as C's <code>malloc</code>/<code>free</code>) nor rely on compile-time ownership tracking (like Rust).</p>
+
+<p>Engines employ automated <strong>Tracing Garbage Collection</strong>, typically implemented via a generational garbage collector:</p>
+<ul>
+  <li><strong>Mark-and-Sweep Algorithm:</strong> The GC identifies "roots" (global objects, currently executing stack frames/variables) and recursively traverses all referenced object graphs. Unreachable objects are marked for collection and freed during the sweep phase.</li>
+  <li><strong>Generational Collection:</strong> Memory is split into the <em>Young Generation</em> (short-lived allocations, collected via fast parallel scavengers) and the <em>Old Generation</em> (surviving objects, managed via full mark-sweep-compact cycles).</li>
+  <li><strong>Memory Leak Vectors:</strong> Unintended references retained via uncleaned closures, dangling event listeners, global variable pollution, or detached DOM nodes prevent the tracing collector from freeing memory.</li>
+</ul>
+
+<h3>4. Paradigms & Tactics</h3>
+<p>JavaScript's core architecture dictates specific approaches to structural layout, concurrency, and control flow:</p>
+
+<p><strong>Object-Oriented Programming (Prototypal):</strong> JavaScript does not possess traditional classical inheritance. The <code>class</code> keyword introduced in ES6 is purely syntactic sugar over standard dynamic prototype chains. Every object holds an internal link (<code>[[Prototype]]</code>) to another object. Property lookups traverse up this chain until the property is found or <code>null</code> is reached.</p>
+
+<p><strong>Concurrency & Event Loop:</strong> JavaScript operates on a <em>single-threaded, non-blocking event loop</em> execution model using a single call stack.
+<ul>
+  <li><strong>Asynchronous Tactics:</strong> Non-blocking operations rely on callbacks, Promises, and the <code>async/await</code> syntax.</li>
+  <li><strong>Microtasks vs. Macrotasks:</strong> Execution priorities are strictly scheduled. Microtasks (Promise resolutions, <code>queueMicrotask</code>) clear entirely after the</div><hr><div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
 <p><strong>Timestamp:</strong> 2026-11-10 21:35 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1594,75 +1628,7 @@ do {
 <h4>Firewall Mechanics & Generations</h4>
 <ul>
     <li><strong>Packet Filtering (Layer 3/4):</strong> Stateless evaluation of packet headers against an Access Control List (ACL) checking Source/Destination IP, Source/Destination Port, and Protocol (TCP/UDP/ICMP).</li>
-    <li><strong>Stateful Inspection (Layer</div><hr><div class='lesson'><h2>🔍 Deep Dive: Penetration Testing</h2>
-<p><strong>Timestamp:</strong> 2026-10-27 18:29 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p><strong>Penetration Testing</strong> (or "pentesting") is an authorized, simulated cyberattack conducted against an organization's IT infrastructure, applications, network, or personnel to identify and exploit security vulnerabilities. Unlike automated vulnerability scans that merely report potential flaws, a penetration test demonstrates the real-world impact of those flaws by actively attempting to breach defenses.</p>
-<p>In modern cybersecurity, penetration testing addresses a fundamental problem: <em>the gap between theoretical security and operational reality</em>. Automated tools often generate high volumes of false positives and fail to contextualize risk. Penetration testing simulates the actual behavior of skilled human threat actors, showing how minor, seemingly low-risk vulnerabilities can be chained together to achieve catastrophic compromise—such as unauthorized access to sensitive financial data, internal network control, or total system downtime.</p>
-
-<h3>2. How It Works</h3>
-<p>Penetration testing relies on a structured, methodology-driven process designed to maximize coverage while minimizing operational disruption:</p>
-<ul>
-    <li><strong>1. Scoping and Rules of Engagement (RoE):</strong> Defining the physical and logical boundaries of the test, target systems, allowed attack vectors, timing windows, emergency contact protocols, and legal authorization.</li>
-    <li><strong>2. Reconnaissance (Information Gathering):</strong> Collecting intelligence on the target using open-source intelligence (OSINT), network mapping, DNS analysis, and asset discovery (both passive and active).</li>
-    <li><strong>3. Vulnerability Analysis & Threat Modeling:</strong> Identifying potential entry points, misconfigurations, unpatched software, and flawed business logic across the target surface.</li>
-    <li><strong>4. Exploitation:</strong> Safely bypassing defenses and taking control of target systems using public or custom exploits, credential attacks, or web application manipulation.</li>
-    <li><strong>5. Post-Exploitation & Privilege Escalation:</strong> Determining the extent of control achieved, escalating local privileges, pivoting laterally through internal networks, and establishing persistence (where allowed).</li>
-    <li><strong>6. Reporting & Remediation Support:</strong> Documenting the technical findings, proof-of-concept steps, business risk analysis, and actionable mitigation strategies for both technical teams and executive leadership.</li>
-</ul>
-<p>Tests are typically executed under one of three disclosure models:</p>
-<ul>
-    <li><strong>Black-Box:</strong> Zero prior knowledge of internal target structures; simulates an external adversary.</li>
-    <li><strong>Gray-Box:</strong> Partial knowledge provided (e.g., standard user credentials, system architecture diagrams); simulates a compromised internal user or third-party partner.</li>
-    <li><strong>White-Box:</strong> Full access to source code, network diagrams, and configurations; offers maximum thoroughness.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<p>Offensive techniques continuously evolve to match modern architectures, while defenders deploy layered controls to detect and mitigate them.</p>
-<ul>
-    <li><strong>Credential Dumping vs. LSASS Protection:</strong>
-        <ul>
-            <li><em>Offensive:</em> Extracting plain-text passwords or NTLM hashes from memory using techniques like Mimikatz targeting the Local Security Authority Subsystem Service (LSASS).</li>
-            <li><em>Defensive:</em> Enabling Credential Guard, restricting local administrator privileges, and implementing LSA Protection.</li>
-        </ul>
-    </li>
-    <li><strong>Kerberoasting vs. Managed Service Accounts:</strong>
-        <ul>
-            <li><em>Offensive:</em> Requesting Active Directory Kerberos service tickets for accounts with Service Principal Names (SPNs) and cracking the passwords offline.</li>
-            <li><em>Defensive:</em> Utilizing Group Managed Service Accounts (gMSAs) and enforcing ultra-complex, automated password rotation.</li>
-        </ul>
-    </li>
-    <li><strong>SQL Injection (SQLi) vs. Parameterized Queries:</strong>
-        <ul>
-            <li><em>Offensive:</em> Injecting malicious SQL syntax into user input fields to execute raw database commands and exfiltrate records.</li>
-            <li><em>Defensive:</em> Enforcing strict parameterized queries (prepared statements), input validation, and Web Application Firewalls (WAFs).</li>
-        </ul>
-    </li>
-    <li><strong>Pivot & Lateral Movement vs. Micro-segmentation:</strong>
-        <ul>
-            <li><em>Offensive:</em> Utilizing a compromised machine as a proxy to reach isolated internal subnets and enterprise domains.</li>
-            <li><em>Defensive:</em> Implementing Zero Trust Architecture, strict internal firewall rules, network micro-segmentation, and Endpoint Detection & Response (EDR).</li>
-        </ul>
-    </li>
-</ul>
-
-<h3>4. Real-World Examples</h3>
-<p><strong>Scenario A: The Danger of "Low-Severity" Vulnerability Chaining</strong><br>
-During an enterprise web assessment, a pentester identifies an unauthenticated endpoint exposing non-sensitive application metrics (rated "Low" severity). By examining the response metadata, the tester discovers an internal hostname. Using this internal hostname, the tester crafts a Server-Side Request Forgery (SSRF) payload via a profile picture upload feature. The SSRF allows access to the cloud provider's internal Metadata Service (IMDSv1), extracting temporary IAM credentials that allow reading sensitive S3 buckets containing database backups.</p>
-
-<p><strong>Scenario B: Enterprise Active Directory Takeover via Kerberoasting</strong><br>
-In an internal network assessment, an analyst obtains low-privileged domain access via an unencrypted guest Wi-Fi network. Running active reconnaissance, the analyst performs Kerberoasting against domain accounts bound to legacy database applications. Because the service account password is weak, it is cracked offline within two hours. That service account happens to belong to the local Administrators group on a critical domain controller due to legacy operational practices, yielding full Enterprise Admin control over the entire organization.</p>
-
-<h3>5. Tools & Frameworks</h3>
-<p>Modern security analysts rely on standard methodologies and specialized software toolkits to ensure safety, repeatability, and comprehensive coverage.</p>
-<p><strong>Core Industry Methodologies & Compliance Standards:</strong></p>
-<ul>
-    <li><strong>PTES (Penetration Testing Execution Standard):</strong> Standardizes the lifecycle from pre-engagement to reporting.</li>
-    <li><strong>OWASP Web Security Testing Guide (WSTG):</strong> The standard for assessing web application controls.</li>
-    <li><strong>MITRE ATT&CK Framework:</strong> A curated knowledge base of real-world adversary tactics, techniques, and procedures (TTPs).</li>
-    <li><strong>NIST SP 800-115:</strong> Technical guide to information security testing and assessment.</li>
-    <li><strong>Regulatory Mandates:</strong> PCI-DSS v4.0 (Requirement 11.4), SOC 2</div><hr>
+    <li><strong>Stateful Inspection (Layer</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
