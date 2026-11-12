@@ -17,7 +17,32 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Network Security</h2>
+<div class='lesson'><h2>🔍 Deep Dive: C#</h2>
+<p><strong>Timestamp:</strong> 2026-11-12 04:43 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>C# was designed in 2000 by Anders Hejlsberg at Microsoft as a core component of the .NET initiative. Originally created to provide a type-safe, component-oriented, object-oriented language for business and enterprise applications, C# solved key operational issues inherent in C++ (such as manual memory allocation, complex header files, and unsafe pointer arithmetic) while avoiding the implementation lock-in and performance bottlenecks of early Java virtual machines.</p>
+
+<p>From a programming language theory perspective, C# began as a classic imperative, strongly-typed, object-oriented language (OOP). However, over two decades of rapid evolution, it has morphed into a sophisticated, multi-paradigm language that blends strong object-oriented design with first-class functional programming semantics and low-level systems capabilities:</p>
+
+<ul>
+    <li><strong>Object-Oriented Core:</strong> Strict nominal subtyping, single-class inheritance, multiple interface implementation, and explicit polymorphism.</li>
+    <li><strong>Functional Capabilities:</strong> Monadic sequence processing (LINQ), higher-order functions (delegates, lambda expressions), pattern matching, algebraic data types (records, positional patterns), and immutability primitives.</li>
+    <li><strong>Managed System Programming:</strong> Safe low-level pointer-like semantics (`Span<T>`, `Memory<T>`, `ref struct`) allowing developers to operate directly on contiguous memory without garbage collector overhead or memory safety violations.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>C# uses a C-style syntax bounded by curly braces (`{}`) and explicit statement termination with semicolons (`;`). It is whitespace-insensitive and relies on rigid structural boundaries enforced by its nominal type system.</p>
+
+<p>Code organization is top-down hierarchical:</p>
+<pre><code>Global Statements / File-Scoped Namespaces
+ └── Namespaces
+      └── Types (Classes, Structs, Interfaces, Records, Enums, Delegates)
+           └── Members (Fields, Properties, Methods, Events, Indexers)</code></pre>
+
+<p>Key syntactic mechanics include:</p>
+<ul>
+    <li><strong>Properties over Getter/Setter Boilerplate:</strong> First-class syntax for encapsulated field access</div><hr><div class='lesson'><h2>🔍 Deep Dive: Network Security</h2>
 <p><strong>Timestamp:</strong> 2026-11-11 16:43 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1559,77 +1584,7 @@ function processEntity&lt;T extends { id: number }&gt;(entity: T): string {
     <li><strong>Concurrency & Asynchrony:</strong> 
         <ul>
             <li><em>Actor Model:</em> Popularized by frameworks like Akka and Pekko, using isolated actors communicating via asynchronous message passing.</li>
-            <li><em>Functional Effect Systems:</em> Modern Scala heavily utilizes cooperative multi-threading via lightweight green threads</div><hr><div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
-<p><strong>Timestamp:</strong> 2026-10-28 07:40 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Swift was designed by Apple (led by Chris Lattner) and released in 2014 to replace Objective-C, a language burdened by 1980s Smalltalk-style dynamic message passing built on top of C. Objective-C was flexible but inherently prone to runtime crashes, pointer arithmetic errors, and null-pointer bugs.</p>
-<p>Swift's foundational axioms are <strong>Safe, Fast, and Expressive</strong>. Rather than choosing between the safety of managed, garbage-collected languages (like Java/C#) and the raw performance of unmanaged languages (like C++), Swift achieves both through aggressive static type analysis, compile-time safety checks, and deterministic memory management.</p>
-<p>Swift is a <strong>multi-paradigm</strong> language, but its primary identity is <strong>Protocol-Oriented</strong> and <strong>Value-Oriented</strong>:</p>
-<ul>
-    <li><strong>Protocol-Oriented Programming (POP):</strong> Instead of relying on rigid class inheritance hierarchies, Swift emphasizes protocols with default extensions. This provides polymorphism without forcing value types into heap allocations or class overhead.</li>
-    <li><strong>Value Semantics by Default:</strong> Swift heavily favors immutable data and stack-allocated value types over shared reference state, radically reducing side effects and race conditions.</li>
-    <li><strong>Functional Primitives:</strong> First-class functions, pattern matching, generics, monads (represented via Optionals and Results), and higher-order functions (`map`, `filter`, `reduce`) are deeply integrated.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Swift syntactically belongs to the C family but modernizes it by stripping away mandatory semicolons, header files, and structural boilerplate.</p>
-
-<p>Key syntactic characteristics include:</p>
-<ul>
-    <li><strong>Block Structure:</strong> Braces <code>{}</code> define scope. Indentation is purely convention, though four spaces are standard. No structural requirement mandates matching file names to class/struct names.</li>
-    <li><strong>Type System & Inference:</strong> Swift is strictly and statically typed. However, its type inference engine reduces visual clutter:
-        <pre><code>let name = "Swift" // Inferred as String
-var count: Int = 42 // Explicit annotation</code></pre>
-    </li>
-    <li><strong>Immutability explicit at variable level:</strong> Mutability is baked into variable bindings via <code>let</code> (immutable/constant) and <code>var</code> (mutable).</li>
-    <li><strong>Optionality as a First-Class Monad:</strong> Null pointers do not exist in Swift. Instead, non-existence is explicitly typed using <code>Optional&lt;Wrapped&gt;</code>, syntactically sugarcoated as <code>T?</code>. To operate on a potential value, developers must explicitly unwrap it using <code>if let</code>, <code>guard let</code>, optional chaining (<code>?.</code>), or pattern matching:
-        <pre><code>guard let user = currentUser else {
-    return // Early exit forced if optional is nil
-}</code></pre>
-    </li>
-    <li><strong>Extensions:</strong> Code organization relies heavily on <code>extension</code> blocks. Extensions can extend existing types (even types from third-party frameworks) with new methods, computed properties, and protocol conformances without inheritance or modifying the original source code.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Swift explicitly rejects tracing Garbage Collection (GC) due to non-deterministic latency spikes, high memory footprints, and unsuitability for system-level or high-frame-rate application rendering.</p>
-
-<p>Instead, Swift uses <strong>Automatic Reference Counting (ARC)</strong> combined with value-type optimization:</p>
-<ul>
-    <li><strong>Deterministic Destruction:</strong> ARC increments reference counts upon variable assignment and decrements them when variables fall out of scope. Destruction occurs instantly when reference counts reach zero.</li>
-    <li><strong>Reference Cycles &amp; Ownership Annotations:</strong> ARC cannot automatically resolve cyclic references (e.g., Object A holds Object B, and Object B holds Object A). To prevent memory leaks, Swift requires explicit lifetime management annotations on object references:
-        <ul>
-            <li><code>strong</code> (default): Holds an owning reference; increments count.</li>
-            <li><code>weak</code>: Non-owning reference that automatically turns into an <code>Optional</code> set to <code>nil</code> if the referenced object is deallocated.</li>
-            <li><code>unowned</code>: Non-owning reference assuming the underlying instance will never be nil while accessed; accesses after deallocation trigger runtime panics (similar to an unsafe reference).</li>
-        </ul>
-    </li>
-    <li><strong>Copy-on-Write (COW):</strong> Massive value types (like <code>Array</code>, <code>Dictionary</code>, or custom structs) are stored using COW semantics. They share standard heap memory buffers until a mutation occurs, at which point a deep copy is lazily executed—retaining value semantics without performance degradation.</li>
-    <li><strong>Modern Non-Copyable Types & Move Semantics:</strong> Swift 5.9+ introduced explicit ownership controls (<code>~Copyable</code>, <code>consuming</code>, <code>borrowing</code>) drawing inspiration from Rust's linear type system for zero-cost abstraction over resource ownership without reference counting.</li>
-</ul>
-
-<h3>4. Paradigms & Tactics</h3>
-<p>Swift implements paradigms carefully designed for efficiency, performance, and memory safety:</p>
-
-<h4>Polymorphism: Protocols vs. OOP</h4>
-<p>While Swift supports standard dynamic OOP polymorphism (single inheritance, virtual tables, override keywords), it encourages structural composition using <strong>Protocols</strong>. Protocols support dynamic dispatch via Protocol Witness Tables or direct static dispatch via Generics and monomorphization at compile time.</p>
-
-<h4>Error Handling</h4>
-<p>Swift avoids runtime exception-unwinding models found in Java or C++ due to safety and binary bloat concerns. Instead, Swift error handling uses a explicit typed error throwing system that compiles into return-code checking under the hood:</p>
-<pre><code>func readFile() throws -&gt; String { ... }
-
-do {
-    let contents = try readFile()
-} catch {
-    print("Failed: \(error)")
-}</code></pre>
-<p>For functional pipelines, Swift uses the explicit <code>Result&lt;Success, Failure&gt;</code> enum monad.</p>
-
-<h4>Concurrency Model</h4>
-<p>Swift uses modern structured concurrency featuring <code>async/await</code>, <code>Task</code>, and <code>TaskGroup</code> primitives backed by a cooperative thread pool. Compile-time data-race safety is enforced via:</p>
-<ul>
-    <li><strong>Actors:</strong> Reference types that isolate mutable state to a single thread execution context, guaranteeing synchronization without manual locks.</li>
-    <li><strong>Sendable Protocol:</strong> A marker protocol verifying that types passed</div><hr>
+            <li><em>Functional Effect Systems:</em> Modern Scala heavily utilizes cooperative multi-threading via lightweight green threads</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
