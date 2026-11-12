@@ -17,7 +17,27 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: C#</h2>
+<div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
+<p><strong>Timestamp:</strong> 2026-11-12 13:24 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>HTML (HyperText Markup Language) and CSS (Cascading Style Sheets) are not general-purpose imperative programming languages; they are declarative Domain-Specific Languages (DSLs) designed to solve the problem of document structure, web accessibility, and cross-platform user interface presentation over network boundaries.</p>
+<p>HTML was created by Tim Berners-Lee based on SGML (Standard Generalized Markup Language) to facilitate hyperlinked, semantic information sharing across disparate hardware platforms. CSS was introduced by Håkon Wium Lie to address the explicit separation of concerns: isolating document semantics and data hierarchy (HTML) from visual presentation and spatial layout (CSS).</p>
+<p>Neither language adheres to Object-Oriented (OOP), Functional, or Procedural paradigms in the traditional algorithmic sense. Instead, HTML operates on a <strong>tree-based structural paradigm</strong>, defining an acyclic directed graph (the Document Object Model, or DOM). CSS operates on a <strong>declarative, pattern-matching constraint system</strong>, mapping key-value layout and style properties onto DOM nodes via selector matching and rule cascading.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>HTML syntax relies on tree-like, context-free markup tags enclosed in angle brackets (<code>&lt;element attribute="value"&gt;...&lt;/element&gt;</code>). It does not use semicolons or enforce indentation; whitespace is collapsed by the rendering engine's parser. Structure is defined exclusively through lexical nesting of parent, child, and sibling nodes.</p>
+<p>CSS syntax consists of rule sets composed of <em>selectors</em> and <em>declaration blocks</em> enclosed in curly braces (<code>{}</code>). Declarations are key-value pairs separated by colons and terminated by semicolons (<code>property: value;</code>). Indentation is cosmetically arbitrary.</p>
+<p>Flow in HTML/CSS is driven by the engine's parsing and layout pipeline rather than sequential control flow instructions:</p>
+<ul>
+    <li><strong>Parsing:</strong> HTML bytes are converted into tokens, then constructed into the DOM tree. Simultaneously, CSS is parsed into the CSSOM (CSS Object Model).</li>
+    <li><strong>Cascade & Specificity Engine:</strong> CSS rules are evaluated using an explicit precedence system (<code>Inline Styles &gt; IDs &gt; Classes/Attributes &gt; Elements</code>, modified by <code>!important</code> and Origin Priority).</li>
+    <li><strong>Layout & Box Model Calculation:</strong> The rendered tree calculates physical dimensions using layout modes (Block, Inline, Flexbox, CSS Grid) using a multi-pass sizing algorithm.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>HTML and CSS do not expose manual memory management primitives (such as allocation pointers or manual deallocation), nor do they expose explicit garbage collection APIs to the developer. Memory management is completely abstracted and delegated to the host runtime engine (e.g., Chromium's Blink, Firefox's Gecko, Safari's WebKit).</p>
+<p>Under the hood, browser engines manage layout memory via native host environments (predominantly C++ or Rust):</p></div><hr><div class='lesson'><h2>🔍 Deep Dive: C#</h2>
 <p><strong>Timestamp:</strong> 2026-11-12 04:43 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1548,43 +1568,7 @@ function processEntity&lt;T extends { id: number }&gt;(entity: T): string {
 <ul>
   <li><strong>Header Files (<code>.h</code> / <code>.hpp</code>) & Modules (C++20):</strong> Contain type declarations, interface signatures, template definitions, and inline functions.</li>
   <li><strong>Source Files (<code>.cpp</code>):</strong> Contain executable implementation logic.</li>
-  <li><strong>Compilation Pipeline:</strong> The preprocessor handles macros and file inclusions (`#include`), generating an intermediate translation unit. The compiler translates each unit into an object file (<code>.o</code>/<code>.obj</code>). The linker then stitches object files and</div><hr><div class='lesson'><h2>🔍 Deep Dive: Scala</h2>
-<p><strong>Timestamp:</strong> 2026-10-28 14:38 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Scala—short for <em>Scalable Language</em>—was created by Martin Odersky and released in 2004. Odersky, who previously co-designed Java's generics and the <code>javac</code> reference compiler, created Scala to bridge the rift between Object-Oriented Programming (OOP) and Functional Programming (FP) without sacrificing static type safety or performance on the Java Virtual Machine (JVM).</p>
-
-<p>Scala addresses key limitations of mainstream languages of its era: excessive verbosity, fragile type systems, and the artificial dichotomy between objects and functions. Its unifying thesis is that <strong>every value is an object, and every function is a value</strong>. This duality synthesizes pure FP constructs (algebraic data types, higher-kinded types, pattern matching, immutable data structures) with classical enterprise OOP (subtyping, trait mixins, encapsulation). Scala allows software systems to scale seamlessly from tiny single-file scripts to massively distributed compute clusters.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Scala's syntax is expression-oriented: virtually every statement yields a value, including <code>if/else</code> blocks, <code>try/catch</code> constructs, and <code>match</code> statements. Semicolons are automatically inferred and rarely written explicitly.</p>
-
-<p>Historically (Scala 2), code structure relied heavily on curly braces <code>{}</code>. Scala 3 introduced significant indentation syntax (similar to Python), offering a clean, indentation-based block layout alongside optional brace syntax. Code organization is centered around modular components:</p>
-
-<ul>
-    <li><strong>Packages & Top-Level Definitions:</strong> Scala 3 permits variables, functions, and types to exist directly at the package level without requiring boilerplate wrapper objects.</li>
-    <li><strong>Objects, Classes, and Traits:</strong> Singletons are first-class constructs defined via <code>object</code>. Blueprints are defined via <code>class</code>, and abstract interfaces with concrete default implementations are defined via <code>trait</code> (composed via mixin linearization).</li>
-    <li><strong>Type Inference:</strong> Scala features a sophisticated local type-inference engine. While public API signatures are explicitly typed for domain clarity and compilation performance, local variable types are routinely inferred by the compiler.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Memory management in Scala is primarily delegated to the host runtime platform:</p>
-
-<ul>
-    <li><strong>JVM Runtime:</strong> Standard Scala runs on the Java Virtual Machine. Memory allocation (heap vs. stack) and garbage collection (GC)—such as G1GC, ZGC, or Shenandoah—are completely managed by the JVM.</li>
-    <li><strong>Scala Native & Scala.js:</strong> Scala Native targets LLVM directly, using garbage collectors like Immix or Boehm while supporting explicit manual unmanaged memory allocation (pointers, stack allocations) for low-level system interoperability. Scala.js transpiles Scala into JavaScript, delegating GC to host JS engines.</li>
-    <li><strong>Zero-Cost Abstractions:</strong> To minimize GC overhead on the heap, Scala provides mechanisms like value classes (extending <code>AnyVal</code>) and Scala 3 <code>opaque type aliases</code>. These compile down to unboxed primitive types at runtime while providing strict domain safety at compile time.</li>
-</ul>
-
-<h3>4. Paradigms & Tactics</h3>
-<p>Scala provides architectural mechanisms across multiple paradigms:</p>
-
-<ul>
-    <li><strong>Object-Oriented Programming:</strong> Implements rich subtyping, class extension, and multi-inheritance via <em>trait linearization</em>, which deterministically resolves the "diamond problem" by flattening mixin inheritance trees into a single linear hierarchy. Variance annotations (<code>+T</code> for covariance, <code>-T</code> for contravariance) allow precise control over subtyping relations in generic containers.</li>
-    <li><strong>Concurrency & Asynchrony:</strong> 
-        <ul>
-            <li><em>Actor Model:</em> Popularized by frameworks like Akka and Pekko, using isolated actors communicating via asynchronous message passing.</li>
-            <li><em>Functional Effect Systems:</em> Modern Scala heavily utilizes cooperative multi-threading via lightweight green threads</div><hr>
+  <li><strong>Compilation Pipeline:</strong> The preprocessor handles macros and file inclusions (`#include`), generating an intermediate translation unit. The compiler translates each unit into an object file (<code>.o</code>/<code>.obj</code>). The linker then stitches object files and</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
