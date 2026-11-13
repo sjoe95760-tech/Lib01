@@ -17,7 +17,31 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
+<p><strong>Timestamp:</strong> 2026-11-13 10:15 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Created in 1995 by Yukihiro "Matz" Matsumoto, Ruby was designed with a single overarching goal: human productivity and developer joy, grounded in the <em>Principle of Least Surprise</em> (POLS). From a programming language theory standpoint, Ruby synthesizes the pure object-oriented paradigm of Smalltalk, the text-processing pragmatic scripting capabilities of Perl, the meta-linguistic abstraction of Lisp, and the clean syntax of Eiffel and Ada.</p>
+
+<p>Ruby solves the problem of cognitive friction between a programmer's mental model and the written code. It rejects the idea that code is primarily written for compilers, prioritizing expressive, human-centric syntax instead. Architecturally, Ruby is a <strong>pure, dynamic Object-Oriented Language (POOPL)</strong> where literally every value—including primitive integers, booleans, `nil`, and classes themselves—is an instance of an object residing on the heap with its own methods and internal state.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Ruby syntactically minimizes ceremonial boilerplate. Statements are terminated by newlines rather than semicolons, and code blocks are bounded by explicit keywords (such as <code>def...end</code>, <code>class...end</code>, <code>if...end</code>) or curly braces <code>{ ... }</code> for short, inline closures.</p>
+
+<ul>
+  <li><strong>Implicit Returns:</strong> Functions automatically return the evaluation of their final expression, reducing syntactic noise.</li>
+  <li><strong>Optional Parentheses:</strong> Method invocations do not require parentheses unless needed to resolve ambiguity, allowing the creation of highly readable Domain-Specific Languages (DSLs).</li>
+  <li><strong>Dynamic & Duck Typing:</strong> Types are checked at runtime based on capabilities rather than class hierarchy ("If it walks like a duck and quacks like a duck, it is a duck").</li>
+  <li><strong>Lexical Scope & Modules:</strong> Organization is file-decoupled. Code is encapsulated inside <code>Module</code> namespaces and <code>Class</code> definitions. The file hierarchy does not dictate module structure, allowing open classes (re-opening existing class definitions to add or modify behavior at runtime).</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Ruby relies entirely on managed memory with automatic Garbage Collection (GC). Developers do not manually allocate (`malloc`) or deallocate (`free`) memory, nor does Ruby impose compile-time ownership or borrow-checking rules like Rust.</p>
+
+<ul>
+  <li><strong>Heap Structure:</strong> In the canonical implementation (CRuby/MRI), memory is structured as a collection of fixed-size slots called `RVALUE` objects (typically 40 bytes). Small values (like fixnums or short strings via embedded string optimization) reside directly inside the slot; larger allocations point to external memory allocated on the C heap.</li>
+  <li><strong>Collector Evolution:</strong> Historical Ruby used a basic, synchronous Mark-and-Sweep collector, which caused noticeable pause times ("stop-the-world"). Modern CRuby utilizes an advanced <strong>Generational, Incremental Garbage Collector (RGenGC)</strong> with <strong>Variable Width Allocation (VWA)</strong>. It categorizes objects into young and old generations based on the weak generational hypothesis, performing frequent minor collections on young objects and deferred major collections on mature objects.</li>
+  <li><strong>Reference Graph:</strong> References are tracked transitively from roots (stack frames, global tables, object constants). Unreachable cycles are</div><hr><div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
 <p><strong>Timestamp:</strong> 2026-11-12 13:24 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1544,31 +1568,7 @@ function processEntity&lt;T extends { id: number }&gt;(entity: T): string {
 <p>Ruby relies on an imperative, block-structured syntax that prioritizes natural language readability over explicit punctilious boundaries:</p>
 <ul>
   <li><strong>Delimiters & Keywords:</strong> Scopes are defined via semantic keywords (<code>class</code>, <code>module</code>, <code>def</code>, <code>if</code>, <code>do...end</code>) terminated by explicit <code>end</code> statements rather than braces or significant whitespace indentation. Braces (<code>{ ... }</code>) are conventionally reserved for single-line closures or Hash literals.</li>
-  <li><strong>Optional Syntactic Noise:</strong> Parentheses in method calls and definitions are optional where ambiguity is absent (e</div><hr><div class='lesson'><h2>🔍 Deep Dive: C++</h2>
-<p><strong>Timestamp:</strong> 2026-10-29 03:17 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>C++ was created by Bjarne Stroustrup in 1979 (originally named "C with Classes") to bridge the gap between low-level hardware manipulation and high-level software abstraction. C offered raw performance and hardware control but lacked constructs for managing large-scale software complexity. C++ solved this by layering user-defined types and object-oriented abstractions directly onto C's execution model without incurring performance degradation.</p>
-
-<p>The foundational design paradigm of C++ is the <strong>Zero-Overhead Principle</strong>: <em>What you don't use, you don't pay for. And further: What you do use, you couldn't write any better by hand.</em></p>
-
-<p>C++ is fundamentally a multi-paradigm language. It does not force a single methodology but provides tools for:</p>
-
-<ul>
-  <li><strong>Procedural Programming:</strong> Direct control over flow, functions, memory, and bit-level operations.</li>
-  <li><strong>Object-Oriented Programming (OOP):</strong> Encapsulation, inheritance, and dynamic polymorphism via virtual method tables.</li>
-  <li><strong>Generic Programming:</strong> Compile-time type generation using templates, allowing algorithms to operate over arbitrary types without execution penalty.</li>
-  <li><strong>Compile-time / Functional Programming:</strong> Metaprogramming with <code>constexpr</code>, <code>consteval</code>, high-order functions, lambdas, and C++20 Ranges.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>C++ inherits its syntax from C. It is a statically typed, free-form, block-structured language where statement execution is sequential, terminated by semicolons (<code>;</code>), and scoped by curly braces (<code>{}</code>). Indentation is purely lexical and ignored by the compiler.</p>
-
-<p>Code organization is split across distinct phases and translation units:</p>
-<ul>
-  <li><strong>Header Files (<code>.h</code> / <code>.hpp</code>) & Modules (C++20):</strong> Contain type declarations, interface signatures, template definitions, and inline functions.</li>
-  <li><strong>Source Files (<code>.cpp</code>):</strong> Contain executable implementation logic.</li>
-  <li><strong>Compilation Pipeline:</strong> The preprocessor handles macros and file inclusions (`#include`), generating an intermediate translation unit. The compiler translates each unit into an object file (<code>.o</code>/<code>.obj</code>). The linker then stitches object files and</div><hr>
+  <li><strong>Optional Syntactic Noise:</strong> Parentheses in method calls and definitions are optional where ambiguity is absent (e</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
