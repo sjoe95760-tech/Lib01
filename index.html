@@ -17,7 +17,57 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Penetration Testing</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
+<p><strong>Timestamp:</strong> 2026-11-13 23:59 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p><strong>Zero Trust Architecture (ZTA)</strong> is a strategic cybersecurity paradigm founded on a simple operational principle: <em>"Never trust, always verify."</em> Unlike legacy defense models that relied on a "castle-and-moat" perimeter—where everything inside the corporate network was implicitly trusted—Zero Trust assumes that threats exist both outside and inside the network boundary at all times.</p>
+
+<p>ZTA addresses the vulnerabilities of modern, decentralized enterprise environments. With cloud adoption, remote work, bring-your-own-device (BYOD) policies, and IoT ecosystems, the traditional network perimeter has dissolved. If an attacker breaches the perimeter in a legacy setup, they gain unrestricted lateral movement across internal systems. Zero Trust eliminates implicit trust, requiring every access request (regardless of origin) to be explicitly authenticated, authorized, and encrypted based on real-time context before granting the minimal necessary access.</p>
+
+<h3>2. How It Works</h3>
+<p>Zero Trust operates by dynamically evaluating access decisions across three core operational pillars: <strong>Explicit Verification</strong>, <strong>Least Privilege Access</strong>, and <strong>Assume Breach</strong>.</p>
+
+<ul>
+  <li><strong>Policy Engine (PE) & Policy Decision Point (PDP):</strong> The brain of ZTA. The PE evaluates credentials, device health, location, behavior, and risk scores against defined enterprise security policies to determine whether access should be granted.</li>
+  <li><strong>Policy Enforcement Point (PEP):</strong> The gatekeeper (e.g., an API gateway, proxy, or agent) that terminates connections, enforces the PDP's decision, and continuously monitors the session.</li>
+  <li><strong>Microsegmentation:</strong> Networks and workloads are broken down into isolated, granular zones to isolate workloads and prevent unauthorized lateral movement. Access between micro-segments requires explicit permission.</li>
+  <li><strong>Continuous Authentication & Authorization:</strong> Trust is not a one-time event at login. Sessions are continuously re-evaluated based on contextual changes (e.g., sudden IP change, novel device posture, suspicious network traffic).</li>
+  <li><strong>Identity & Device Context:</strong> Identity serves as the primary security perimeter. Authentication requires Strong Multi-Factor Authentication (MFA), paired with device posture validation (e.g., checking for active EDR agents, OS patch levels, and disk encryption).</li>
+</ul>
+
+<h3>3. Common Attack/Defense Techniques</h3>
+<p>Understanding how threat actors attempt to bypass ZTA controls—and how defenders respond—is critical for implementation.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Offensive Technique (Attack Vector)</th>
+      <th>Defensive Zero Trust Countermeasure</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Credential Theft / Password Spraying:</strong> Attackers compromise valid user credentials via phishing or breach dumps.</td>
+      <td><strong>FIDO2/Passkey Passwordless MFA & Contextual RBAC:</strong> Mandating phishing-resistant hardware keys. Access is denied if the user attempts to connect from an unrecognized, non-compliant device despite supplying valid credentials.</td>
+    </tr>
+    <tr>
+      <td><strong>Session Hijacking / Pass-the-Cookie:</strong> Stealing active session tokens to bypass MFA prompts post-authentication.</td>
+      <td><strong>Continuous Access Evaluation Protocol (CAEP):</strong> Real-time token revocation triggered by contextual anomaly alerts (e.g., Impossible Travel detection or risk score spikes). Token binding restricts token usage strictly to the originating TLS session.</td>
+    </tr>
+    <tr>
+      <td><strong>Lateral Movement post-compromise:</strong> Moving across internal subnets via SMB, RDP, or SSH after compromising a single low-privilege host.</td>
+      <td><strong>Software-Defined Perimeter (SDP) & Microsegmentation:</strong> Resources are completely hidden from non-authorized devices ("dark cloud"). Networks are segregated down to the application level, locking down inter-host communication via strict default-deny firewalls.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>4. Real-World Examples</h3>
+<ul>
+  <li><strong>Google BeyondCorp:</strong> Initiated in response to Operation Aurora (2009), Google completely abandoned its internal privileged network. BeyondCorp shifted all access control from the network perimeter to individual users and devices, pioneering the modern operational blueprint for Zero Trust.</li>
+  <li><strong>SolarWinds Supply Chain Breach (2020):</strong> Attackers breached trusted software update mechanisms to gain access to corporate networks. Organizations with strict Zero Trust architectures successfully mitigated the impact by preventing compromised internal servers from communicating outward or pivoting to unapproved cloud workloads due to microsegmentation and egress filtering.</li>
+  <li><strong>Colonial Pipeline Breach (2021):</strong> A compromised legacy VPN password allowed threat actors access to internal operational infrastructure. A Zero Trust model—requiring device validation, phishing-resistant MFA, and application-level proxying rather than full network VPN access—would have blocked the adversary at the authentication gateway.</li>
+</ul></div><hr><div class='lesson'><h2>🔍 Deep Dive: Penetration Testing</h2>
 <p><strong>Timestamp:</strong> 2026-11-13 18:15 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1531,53 +1581,7 @@ function processEntity&lt;T extends { id: number }&gt;(entity: T): string {
   <li><strong>Detection Engines:</strong>
     <ul>
       <li><em>Signature-Based:</em> Compares traffic streams against known patterns of attack (e.g., specific byte sequences of a CVE exploit). High accuracy for known threats, but completely blind to zero-day attacks.</li>
-      <li><em>Anomaly/Heuristic</div><hr><div class='lesson'><h2>🔍 Deep Dive: Cryptography</h2>
-<p><strong>Timestamp:</strong> 2026-10-29 17:10 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>Cryptography is the science of transforming plain information into unreadable ciphertexts and back, protecting data against unauthorized access, tampering, and impersonation. At its core, modern cryptography underpins the entire trust model of the digital world, providing four primary security services:</p>
-<ul>
-  <li><strong>Confidentiality:</strong> Ensuring that data remains unreadable to unauthorized entities (Encryption).</li>
-  <li><strong>Integrity:</strong> Verifying that data has not been altered in transit or storage (Hashing, Message Authentication Codes).</li>
-  <li><strong>Authentication:</strong> Proving the identity of a sender or endpoint (Digital Signatures, Certificates).</li>
-  <li><strong>Non-repudiation:</strong> Guaranteeing that an actor cannot deny having performed a specific action or sent a message.</li>
-</ul>
-<p>Without cryptography, every digital transaction—from accessing online banking to sending an encrypted messaging payload—would occur in plaintext across public routing infrastructure, exposing organizations and individuals to widespread eavesdropping, credential theft, and catastrophic data breaches.</p>
-
-<h3>2. How It Works</h3>
-<p>Modern cryptography relies on hard mathematical problems (e.g., discrete logarithms, integer factorization, and lattice-based math) rather than security through obscurity. The mechanisms are broken down into key domains:</p>
-
-<h4>A. Symmetric Cryptography</h4>
-<p>Uses a single secret key for both encryption and decryption. It is extremely fast and ideal for encrypting large volumes of data at rest or in bulk streams.</p>
-
-  <li><strong>Algorithms:</strong> Advanced Encryption Standard (AES-128/256 in Galois/Counter Mode (GCM) or Cipher Block Chaining (CBC)), ChaCha20-Poly1305.</li>
-  <li><strong>Use Case:</strong> Full-disk encryption (BitLocker, LUKS), database encryption, media streaming payload encryption.</li>
-
-
-<h4>B. Asymmetric Cryptography (Public-Key Cryptography)</h4>
-<p>Uses a mathematically linked key pair: a <strong>Public Key</strong> (shared openly) to encrypt or verify signatures, and a <strong>Private Key</strong> (kept strictly secret) to decrypt or create signatures.</p>
-<ul>
-  <li><strong>Algorithms:</strong> RSA, Elliptic Curve Cryptography (ECDSA, Ed25519), Diffie-Hellman (DH/ECDH key exchange).</li>
-  <li><strong>Use Case:</strong> Establishing secure communication channels (TLS handshake), SSH access, secure email (PGP/S/MIME).</li>
-</ul>
-
-<h4>C. Cryptographic Hashing & Message Authentication</h4>
-<p>One-way mathematical algorithms that convert input data of any size into a unique, fixed-size string (digest). A tiny change in input fundamentally alters the output (the avalanche effect).</p>
-<ul>
-  <li><strong>Cryptographic Hashes:</strong> SHA-256, SHA-3, BLAKE3. Used for data integrity and password storage (when salted and stretched with Argon2, bcrypt, or PBKDF2).</li>
-  <li><strong>HMACs (Hash-based Message Authentication Codes):</strong> Combines a hash function with a secret key to provide both data integrity and authentication.</li>
-</ul>
-
-<h4>D. Public Key Infrastructure (PKI) & Key Management</h4>
-<p>Cryptography fails without trust management. PKI uses Certificate Authorities (CAs) to bind public keys to digital identities using X.509 certificates. Proper Key Management Lifecycles govern secure generation, distribution, storage (via Hardware Security Modules or KMS), rotation, and revocation (CRLs, OCSP).</p>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-
-<h4>Offensive Vectors (Attacks)</h4>
-<ul>
-  <li><strong>Implementation Attacks:</strong> Exploiting software bugs in cryptographic libraries rather than the math itself (e.g., buffer overflows, improper memory handling).</li>
-  <li><strong>Side-Channel Attacks:</strong> Inferring keys by measuring physical system properties such as execution timing, power consumption, or electromagnetic emissions (e.g., Specter/Meltdown variations, timing attacks on non-constant-time comparisons).</li>
-  <li><strong>Padding Oracle Attacks:</strong> Exploiting improper handling of cipher block padding validation (e.g., PKCS#7 in CBC mode)</div><hr>
+      <li><em>Anomaly/Heuristic</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
