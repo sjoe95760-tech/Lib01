@@ -17,7 +17,34 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Penetration Testing</h2>
+<p><strong>Timestamp:</strong> 2026-11-14 18:34 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>Penetration testing (or "pentesting") is an authorized, simulated cyberattack against an organization's IT infrastructure, web applications, physical assets, or personnel. Unlike malicious hacking, it is conducted with explicit permission, defined scope, and strict rules of engagement to identify and exploit security vulnerabilities before real-world adversaries can leverage them.</p>
+
+<p>Automated vulnerability scanners can only flag potential missing patches or baseline misconfigurations; they cannot assess business context or demonstrate actual risk. Penetration testing addresses the critical risk of <strong>chained vulnerabilities</strong>—where multiple low-severity weaknesses are combined by a human adversary to achieve full system compromise. It acts as the ultimate reality check for an organization’s security posture, proving whether existing security controls, detection mechanisms, and incident response teams can effectively resist and contain an active attack.</p>
+
+<h3>2. How It Works</h3>
+<p>A structured penetration test follows a standardized methodology (such as the Penetration Testing Execution Standard - PTES) consisting of six distinct phases:</p>
+
+<ul>
+    <li><strong>Pre-engagement & Scoping:</strong> Defining the boundaries, target IP ranges/domains, legal agreements (Non-Disclosure Agreements, Hold Harmless letters), emergency contact points, and acceptable testing windows.</li>
+    <li><strong>Reconnaissance & Intelligence Gathering:</strong> Collecting information on the target using passive methods (OSINT, DNS lookups, public breaches) and active methods (port scanning, service enumeration).</li>
+    <li><strong>Vulnerability Analysis:</strong> Analyzing gathered data to map entry points, identifying unpatched software, weak configurations, and flaw patterns in applications or networks.</li>
+    <li><strong>Exploitation:</strong> Safely executing exploits against identified vulnerabilities to gain unauthorized access, bypass security mechanisms, or execute arbitrary code.</li>
+    <li><strong>Post-Exploitation & Privilege Escalation:</strong> Determining the value of the compromised host, escalating privileges (e.g., local admin to Domain Admin), establishing persistence, pivoting to internal subnets, and demonstrating potential business impact (e.g., simulating sensitive data exfiltration).</li>
+    <li><strong>Reporting & Remediation Guidance:</strong> Authoring an actionable document containing an Executive Summary for leadership and detailed technical findings with steps to reproduce and remediate for engineering teams.</li>
+</ul>
+
+<h3>3. Common Attack/Defense Techniques</h3>
+
+<p><strong>Offensive Technique 1: Kerberoasting (Active Directory Exploitation)</strong><br>
+<em>Attack:</em> Pentesters request Kerberos service tickets (TGS) for service accounts with Service Principal Names (SPNs) set in Active Directory. Because parts of the ticket are encrypted with the service account's password hash, attackers extract these tickets offline and crack them using brute-force wordlists.<br>
+<em>Defense:</em> Enforce complex, 25+-character passwords for service accounts, deploy Managed Service Accounts (gMSA), and continuously monitor Active Directory event logs for anomalous <code>Event ID 4769</code> ticket requests.</p>
+
+<p><strong>Offensive Technique 2: SQL Injection (SQLi) into Remote Code Execution</strong><br>
+<em>Attack:</em> Inserting malicious SQL syntax into unsanitized web application input fields to bypass authentication, read or modify database contents, and potentially use administrative database functions (e.g., <code>xp_cmdshell</code> in MSS</div><hr><div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
 <p><strong>Timestamp:</strong> 2026-11-14 12:39 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1559,33 +1586,7 @@ function processEntity&lt;T extends { id: number }&gt;(entity: T): string {
 <p><strong>Control Flow Analysis (CFA):</strong> TypeScript's compiler incorporates sophisticated flow-based type narrowing. As execution moves through control flow paths (<code>if</code>, <code>switch</code>, early returns), the compiler analyzes type guards (e.g., <code>typeof</code>, <code>instanceof</code>, <code>in</code>, and user-defined type predicates) to automatically narrow type unions to specific subtypes within that scope.</p>
 
 <h3>3. Memory Management</h3>
-<p>TypeScript delegates 100% of</div><hr><div class='lesson'><h2>🔍 Deep Dive: Java</h2>
-<p><strong>Timestamp:</strong> 2026-10-30 02:14 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Java was engineered at Sun Microsystems in 1995 by James Gosling to solve critical failure modes in C and C++: pointer manipulation vulnerabilities, platform-dependent compilation, and manual memory management. Its foundational architecture revolves around the concept of <strong>"Write Once, Run Anywhere" (WORA)</strong> achieved via intermediate abstraction—source code compiles into architectural-neutral <em>JVM Bytecode</em>, which is subsequently interpreted or Just-In-Time (JIT) compiled into native machine code by the platform-specific Java Virtual Machine (JVM).</p>
-
-<p>Historically, Java is a strongly typed, class-based Object-Oriented Programming (OOP) language designed with high syntactic conservatism to ensure readability and developer interchangeability. Over time, Java has evolved into a multi-paradigm language. It integrates functional constructs (lambdas, streams, structural pattern matching, sealed hierarchies, and immutability primitives like <code>record</code>) directly onto its core object-oriented type system without compromising runtime backwards compatibility.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Java inherits its syntactic lineage directly from Algol, C, and C++:</p>
-<ul>
-    <li><strong>Block-Scoped Structure:</strong> Execution flow and lexical scope are strictly defined by curly braces (<code>{ }</code>). Statement execution requires explicit semicolon terminators (<code>;</code>). Whitespace and indentation are syntactically irrelevant to the compiler.</li>
-    <li><strong>Structural Hierarchy:</strong> Code organization enforces rigid namespace mapping. Files map to single units of compilation containing types (classes, interfaces, enums, records). Packages represent hierarchical logical namespaces that mirror the physical filesystem structure.</li>
-    <li><strong>Type System Split:</strong> Java maintains a dual type system split:
-        <ul>
-            <li><em>Primitive Types:</em> Direct raw values (<code>int</code>, <code>long</code>, <code>boolean</code>, <code>double</code>, etc.) allocated on the stack or inline inside object layouts for high performance.</li>
-            <li><em>Reference Types:</em> Class, interface, array, and record instances residing on the managed heap accessed via object references (safe, non-arithmetic pointers).</li>
-        </ul>
-    </li>
-    <li><strong>Nominal Subtyping:</strong> Type compatibility is explicit and name-based rather than structural (duck typing). Type enforcement occurs strictly at compile-time with dynamic runtime verification (bytecode verification).</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Java completely abstracts manual pointer allocation and deallocation (such as C's <code>malloc</code>/<code>free</code>) in favor of automatic managed memory via runtime <strong>Garbage Collection (GC)</strong>.</p>
-
-<ul>
-    <li><strong>Stack vs. Heap:</strong> Execution contexts (method invocation frames, local variable references, and primitive data) live on thread-specific execution stacks. All object instances and arrays reside strictly on the shared managed heap. Modern JIT compilers perform <em>Escape Analysis</em> to dynamically substitute heap</div><hr>
+<p>TypeScript delegates 100% of</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
