@@ -17,7 +17,31 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Penetration Testing</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
+<p><strong>Timestamp:</strong> 2026-11-14 22:47 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>Network security appliances—specifically <strong>Firewalls</strong>, <strong>Intrusion Detection Systems (IDS)</strong>, and <strong>Intrusion Prevention Systems (IPS)</strong>—form the core boundary and inspection layer of enterprise network defense. They address the fundamental risk of unauthorized access, lateral movement, malicious data exfiltration, and opportunistic network exploits.</p>
+<ul>
+  <li><strong>Firewall:</strong> A control point that filters inbound and outbound network traffic based on explicit policy rules (IP addresses, ports, protocols, and application signatures). It decides what traffic is allowed to pass through the perimeter or between internal network segments.</li>
+  <li><strong>IDS (Intrusion Detection System):</strong> A passive monitoring mechanism that inspects traffic copies to detect suspicious patterns, policy violations, or known threat signatures, generating alerts for Security Operations Center (SOC) analysts without interfering with traffic flow.</li>
+  <li><strong>IPS (Intrusion Prevention System):</strong> An active, inline control mechanism that inspects real-time traffic and automatically blocks, drops, or alters packets deemed malicious before they reach their destination.</li>
+</ul>
+<p>Without these controls, organizations operate "flat" networks where a single compromised asset can lead to total enterprise compromise, and malicious command-and-control (C2) channels can operate unhindered.</p>
+
+<h3>2. How It Works</h3>
+<p>These systems evaluate network traffic across multiple layers of the OSI model using distinct architectural modes and inspection techniques:</p>
+
+<h4>Firewall Evolution & Mechanics</h4>
+<ul>
+  <li><strong>Stateless Packet Filtering (Layer 3/4):</strong> Evaluates individual packets against access control lists (ACLs) using source/destination IP, port, and protocol. It lacks context regarding TCP connection states.</li>
+  <li><strong>Stateful Inspection (Layer 3/4):</strong> Tracks active connection states in a state table (e.g., TCP handshakes: SYN, SYN-ACK, ACK). It automatically allows return traffic for established outbound sessions.</li>
+  <li><strong>Next-Generation Firewalls (NGFW - Layer 7):</strong> Performs Deep Packet Inspection (DPI), decrypts SSL/TLS traffic, identifies application-layer protocols regardless of port numbers (App-ID), and integrates identity management (User-ID).</li>
+</ul>
+
+<h4>IDS/IPS Operating Modes & Detection Engines</h4>
+<ul>
+  <li><strong>Deployment Modes:</strong> IDS typically operates via <em>SPAN/TAP ports</em> (promiscuous mode, out-of-band</div><hr><div class='lesson'><h2>🔍 Deep Dive: Penetration Testing</h2>
 <p><strong>Timestamp:</strong> 2026-11-14 18:34 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1550,43 +1574,7 @@ func process(user: User?) {
 </ol></div><hr><div class='lesson'>Examples</h3>
 <p>High-profile web application security failures illustrate how technical flaws yield catastrophic business impacts:</p>
 <ul>
-    <li><strong>Equifax Data Breach (2017):</strong> Attackers exploited an unpatched Remote Code Execution (RCE) vulnerability in Apache Struts (CVE-2017-5638), a popular Java web framework. The</div><hr><div class='lesson'><h2>🔍 Deep Dive: TypeScript</h2>
-<p><strong>Timestamp:</strong> 2026-10-30 09:13 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>TypeScript was created by Anders Hejlsberg at Microsoft to solve the problem of scaling JavaScript to large-scale enterprise software engineering ("JavaScript at Scale"). JavaScript's dynamic typing, implicit coercions, and lack of compile-time contracts made refactoring, tooling, and domain modeling brittle in massive codebases.</p>
-
-<p>The core philosophy rests on three pillars:</p>
-<ul>
-    <li><strong>Non-Invasive Superset:</strong> Every valid JavaScript program is valid TypeScript. It adds a type layer on top of ECMAScript standards without inventing custom runtime semantics.</li>
-    <li><strong>Type Erasure:</strong> Types exist purely at compile time. The TypeScript compiler (<code>tsc</code>) strips away all type annotations, interfaces, and generics, outputting clean, standard JavaScript. TypeScript introduces zero runtime overhead.</li>
-    <li><strong>Pragmatic Structural Typing over Nominal Rigidity:</strong> Unlike Java or C# (which use nominal typing based on explicit declarations), TypeScript uses a <em>structural type system</em> based on shape compatibility (akin to compile-time "duck typing"). If Object A satisfies the structural shape contract of Type B, it is assignable to Type B, regardless of inheritance hierarchy.</li>
-</ul>
-
-<p>TypeScript is intentionally <strong>unsound</strong> by design in specific areas (e.g., array index bounds, covariance/contravariance handling) to strike a balance between absolute theoretical correctness and developer ergonomics when modeling dynamic JavaScript idioms.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>TypeScript inherits ECMAScript's block-scoped syntax using braces (<code>{}</code>) and optional semicolons. Code organization relies on standard ES Modules (<code>import</code>/<code>export</code>).</p>
-
-<p>Key syntactic additions include type annotations via postfix syntax (<code>identifier: Type</code>), interfaces, enums, type aliases, and generic constraints.</p>
-
-<pre><code>// Structural contract definition
-interface User {
-    id: number;
-    name: string;
-    role: 'admin' | 'user'; // String literal union
-}
-
-// Function signature with generic constraint and postfix return type
-function processEntity&lt;T extends { id: number }&gt;(entity: T): string {
-    return `Entity ID: ${entity.id}`;
-}
-</code></pre>
-
-<p><strong>Control Flow Analysis (CFA):</strong> TypeScript's compiler incorporates sophisticated flow-based type narrowing. As execution moves through control flow paths (<code>if</code>, <code>switch</code>, early returns), the compiler analyzes type guards (e.g., <code>typeof</code>, <code>instanceof</code>, <code>in</code>, and user-defined type predicates) to automatically narrow type unions to specific subtypes within that scope.</p>
-
-<h3>3. Memory Management</h3>
-<p>TypeScript delegates 100% of</div><hr>
+    <li><strong>Equifax Data Breach (2017):</strong> Attackers exploited an unpatched Remote Code Execution (RCE) vulnerability in Apache Struts (CVE-2017-5638), a popular Java web framework. The</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
