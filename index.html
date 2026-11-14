@@ -17,7 +17,36 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
+<div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
+<p><strong>Timestamp:</strong> 2026-11-14 12:39 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Structured Query Language (SQL) was designed in the early 1970s by Donald Chamberlin and Raymond Boyce at IBM, drawing directly from Edgar F. Codd’s landmark work on the <strong>Relational Model</strong>. Its primary purpose was to ground data management in mathematical logic—specifically <em>relational algebra</em> and <em>tuple relational calculus</em>—thereby decoupling high-level logical data retrieval from physical storage layouts.</p>
+
+<p>Unlike Imperative, Object-Oriented (OOP), or traditional Functional programming languages, standard SQL is fundamentally a <strong>Declarative, Domain-Specific Language (DSL)</strong> optimized for set-oriented operations. The developer explicitly describes <em>what</em> data is required (the target relation and its structural predicates) rather than <em>how</em> to navigate disk sectors, b-tree nodes, or memory pointers to compute it. It solves the critical software engineering problem of structural data access: replacing pointer-heavy, navigational database paradigms (like CODASYL or hierarchical models) with declarative set transformations executed by an optimizing engine.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>SQL syntax is designed to approximate natural English declarative statements. It is case-insensitive by spec (though convention dictates uppercase for keywords) and insensitive to arbitrary whitespace and line breaks. Statements are traditionally terminated with a semicolon (<code>;</code>).</p>
+
+<p>A crucial conceptual aspect of SQL is the contrast between its <strong>Lexical Ordering</strong> (how code is written) and its <strong>Logical Execution Flow</strong> (how the engine evaluates the AST):</p>
+
+<ul>
+  <li><strong>Lexical Syntax Order:</strong> <code>SELECT</code> &rarr; <code>FROM</code> &rarr; <code>JOIN</code> &rarr; <code>WHERE</code> &rarr; <code>GROUP BY</code> &rarr; <code>HAVING</code> &rarr; <code>ORDER BY</code> &rarr; <code>LIMIT/OFFSET</code></li>
+  <li><strong>Logical Execution Flow:</strong> 
+    <ol>
+      <li><code>FROM</code> / <code>JOIN</code> (Establishes the working Cartesian cross-product and relation bounds)</li>
+      <li><code>WHERE</code> (Filters individual tuples using boolean predicates)</li>
+      <li><code>GROUP BY</code> (Partitions tuples into equivalence classes)</li>
+      <li><code>HAVING</code> (Filters aggregated groups based on group-level predicates)</li>
+      <li><code>SELECT</code> (Projects desired columns, evaluates expressions, and applies aggregations)</li>
+      <li><code>DISTINCT</code> (Deduplicates the resulting set of tuples)</li>
+      <li><code>ORDER BY</code> (Sorts the resulting relations based on projection criteria)</li>
+      <li><code>LIMIT / OFFSET</code> (Slices the sorted set window)</li>
+    </ol>
+  </li>
+</ul>
+
+<p</div><hr><div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
 <p><strong>Timestamp:</strong> 2026-11-13 23:59 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1556,32 +1585,7 @@ function processEntity&lt;T extends { id: number }&gt;(entity: T): string {
 <p>Java completely abstracts manual pointer allocation and deallocation (such as C's <code>malloc</code>/<code>free</code>) in favor of automatic managed memory via runtime <strong>Garbage Collection (GC)</strong>.</p>
 
 <ul>
-    <li><strong>Stack vs. Heap:</strong> Execution contexts (method invocation frames, local variable references, and primitive data) live on thread-specific execution stacks. All object instances and arrays reside strictly on the shared managed heap. Modern JIT compilers perform <em>Escape Analysis</em> to dynamically substitute heap</div><hr><div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
-<p><strong>Timestamp:</strong> 2026-10-29 22:09 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>In modern enterprise networks, <strong>Firewalls</strong> and <strong>Intrusion Detection/Prevention Systems (IDS/IPS)</strong> form the foundational bedrock of network security architecture. While often discussed together, they serve complementary, distinct operational roles within the security stack.</p>
-<p>A <strong>Firewall</strong> acts as a gatekeeper, enforcing access control policies by allowing or denying traffic between networks (e.g., the public Internet and an internal corporate network) based on predefined security rules. An <strong>IDS/IPS</strong> acts as an inspector, analyzing the content of allowed traffic to detect, alert on, or actively block malicious activity, unauthorized patterns, and policy violations.</p>
-<p><strong>Why It Matters:</strong> Without these controls, a network is an unmonitored environment where any host can communicate with any other host without restriction. Attackers could freely scan open ports, exploit vulnerable services, establish Command and Control (C2) channels, and exfiltrate sensitive data. Firewalls establish trust boundaries and enforce microsegmentation, while IDS/IPS provides crucial visibility into payload-level threats that pass through allowable network ports.</p>
-
-<h3>2. How It Works</h3>
-<p>Understanding how these systems operate requires examining their architectural mechanics and inspection depth across the OSI model.</p>
-
-<h4>Firewall Evolution & Mechanics</h4>
-<ul>
-  <li><strong>Packet Filtering (Layer 3/4):</strong> Statelessly inspects packet headers (source/destination IP addresses, ports, and protocols like TCP/UDP/ICMP). Very fast, but vulnerable to spoofing and lacks contextual awareness.</li>
-  <li><strong>Stateful Inspection (Layer 3/4):</strong> Tracks the state of active network connections (e.g., TCP three-way handshake: SYN, SYN-ACK, ACK). It maintains a state table to ensure incoming packets correspond to a valid, established outbound session.</li>
-  <li><strong>Next-Generation Firewalls (NGFW - Layer 7):</strong> Performs Deep Packet Inspection (DPI) to identify application context (e.g., distinguishing Skype traffic running over port 80 from standard HTTP traffic), user identity (via Active Directory/SSO integration), and decrypts TLS/SSL sessions for inspection.</li>
-</ul>
-
-<h4>IDS vs. IPS Deployment & Detection Models</h4>
-<ul>
-  <li><strong>Intrusion Detection System (IDS):</strong> Deployed <em>out-of-band</em> (passive). Receives a copy of network traffic via SPAN/mirror ports or Network TAPs. Generates alerts for SOC analysts without impacting network throughput or latency. It cannot directly block traffic.</li>
-  <li><strong>Intrusion Prevention System (IPS):</strong> Deployed <em>in-line</em> (active). Traffic physically flows through the device. Can actively drop malicious packets, reset TCP connections (sending TCP RST packets to both endpoints), or automatically update firewall rules to block offending IPs.</li>
-  <li><strong>Detection Engines:</strong>
-    <ul>
-      <li><em>Signature-Based:</em> Compares traffic streams against known patterns of attack (e.g., specific byte sequences of a CVE exploit). High accuracy for known threats, but completely blind to zero-day attacks.</li>
-      <li><em>Anomaly/Heuristic</div><hr>
+    <li><strong>Stack vs. Heap:</strong> Execution contexts (method invocation frames, local variable references, and primitive data) live on thread-specific execution stacks. All object instances and arrays reside strictly on the shared managed heap. Modern JIT compilers perform <em>Escape Analysis</em> to dynamically substitute heap</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
