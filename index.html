@@ -17,7 +17,27 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Cryptography</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
+<p><strong>Timestamp:</strong> 2026-11-15 22:13 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>In network security, <strong>Firewalls</strong> and <strong>Intrusion Detection/Prevention Systems (IDS/IPS)</strong> form the foundational perimeter and internal control layers of defense-in-depth architecture.</p>
+<p>A <strong>Firewall</strong> acts as a control gatekeeper, establishing a trust boundary between networks (e.g., untrusted Internet vs. trusted Internal LAN) by inspecting incoming and outgoing traffic to permit or block packets based on defined security policy rules. Without firewalls, an organization's internal assets are exposed directly to public routable IP space, leaving services open to arbitrary connection attempts.</p>
+<p>An <strong>IDS (Intrusion Detection System)</strong> and <strong>IPS (Intrusion Prevention System)</strong> operate at a deeper level of packet payload analysis. While firewalls generally focus on IP addresses, ports, and connection state tracking (Layers 3, 4, and 7), IDS/IPS inspect the actual payload content and behavioral context of network traffic to identify malicious patterns, exploit attempts, and policy violations:</p>
+<ul>
+    <li><strong>IDS (Passive):</strong> Monitors network traffic out-of-band via TAP/SPAN ports, generating alerts when suspicious activity matches a rule or baseline anomaly, but does not interfere with traffic flow.</li>
+    <li><strong>IPS (Active/Inline):</strong> Sits inline within the network traffic path, capable of blocking, dropping, or resetting malicious streams in real-time before they reach the target host.</li>
+</ul>
+<p><strong>Why It Matters:</strong> Modern threats move fast—automated scanners, wormable exploits, and lateral movement by ransomware operators exploit open network paths within seconds. Firewalls enforce structural segmentation, while IDS/IPS enforce deep content hygiene. Together, they prevent unauthorized initial access, mitigate post-exploitation lateral movement, and restrict command-and-control (C2) egress channels.</p>
+
+<h3>2. How It Works</h3>
+<p>The technical architecture of network defense mechanisms has evolved through distinct layers of complexity:</p>
+
+<h4>Firewall Architecture Types</h4>
+<ul>
+    <li><strong>Stateless Packet Filters (Layer 3/4):</strong> Evaluates individual packets independently against Access Control Lists (ACLs) using source/destination IP, protocol (TCP/UDP/ICMP), and port numbers. It maintains no context regarding active connections.</li>
+    <li><strong>Stateful Inspection Firewalls:</strong> Tracks the execution state of active network connections in a <em>State Table</em>. It verifies TCP 3-way handshakes (SYN, SYN-ACK, ACK) and dynamically opens ephemeral return ports only for valid, initiated connections.</li>
+    <li><strong>Next-Generation Firewalls (NGFW):</strong> Integrates traditional stateful filtering with Application Identification (App-ID), User Identification (User-ID integration with Identity Providers like Active Directory/Entra ID), SSL/TLS Decryption, and</div><hr><div class='lesson'><h2>🔍 Deep Dive: Cryptography</h2>
 <p><strong>Timestamp:</strong> 2026-11-15 17:28 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1514,24 +1534,7 @@ func process(user: User?) {
         </ul>
     </li>
     <li><strong>3. Threat Modeling & Vulnerability Analysis:</strong> Mapping mapped assets against known software vulnerabilities, misconfigurations, default credentials, and weak architectural designs.</li>
-    <li><strong>4. Exploitation:</div><hr><div class='lesson'><h2>🔍 Deep Dive: HTML/CSS</h2>
-<p><strong>Timestamp:</strong> 2026-10-31 13:58 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>From a programming language perspective, neither HTML nor CSS are imperative, object-oriented, or traditional functional programming languages. They are domain-specific declarative languages (DSLs) designed to solve the problem of hypermedia content structuring and presentation over distributed network nodes.</p>
-<p><strong>HTML (HyperText Markup Language)</strong> is a formal document-structure specification language derived from SGML (Standard Generalized Markup Language). Its core philosophy is semantic representation: defining *what* information exists and its hierarchical relationships, abstract from *how* it is displayed. It builds an abstract syntax tree (AST) known at runtime as the Document Object Model (DOM).</p>
-<p><strong>CSS (Cascading Style Sheets)</strong> is a constraint-based declarative rule system. It solves the problem of coupling document content with visual presentation. CSS models styling as an overlay of conditional rules evaluated against the DOM AST. Instead of imperative drawing commands (like canvas APIs), CSS declares desired aesthetic invariants (e.g., "all children of X must be arranged in a horizontal flexible container"), leaving the layout execution engine (e.g., Blink's LayoutNG, Gecko's Layout) to compute exact geometric solutions via constraint satisfaction algorithms.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>HTML utilizes a tagged XML-like hierarchical token structure composed of start tags, attributes, content text, and end tags. It maps directly to an explicit nested tree structure.</p>
-
-<p>CSS utilizes a grammar composed of selector chains, declaration blocks enclosed in curly braces (<code>{}</code>), and semicolon-terminated property-value pairs (`property: value;`).</p>
-
-<p><strong>The Parsing and Execution Pipeline:</strong></p>
-<ol>
-  <li><strong>Byte-to-DOM Parsing:</strong> The HTML parser consumes raw bytes, converts them to characters, tokenizes them, constructs Node objects, and builds the DOM tree. HTML parsing is unique because it is non-context-free and speculative; script execution can mutate the input stream (`document.write`).</li>
-  <li><strong>CSSOM Construction:</strong> The CSS parser converts raw CSS into the CSS Object Model (CSSOM), a secondary tree structure mapping selectors to calculated properties.</li>
-  <li><strong>Style Resolution & Rendering Tree:</strong> The engine merges DOM and CSSOM via the <em>Cascading Algorithm</em> to produce a Render Tree (omitting non-rendered elements like</div><hr>
+    <li><strong>4. Exploitation:</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
