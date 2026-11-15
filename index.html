@@ -17,7 +17,20 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Cryptography</h2>
+<p><strong>Timestamp:</strong> 2026-11-15 17:28 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>Cryptography is the science and mathematical practice of securing information by transforming plain, human-readable data (plaintext) into an unreadable format (ciphertext) accessible only to authorized parties possessing the correct cryptographic keys. It serves as the foundational bedrock of modern information security, providing four core security guarantees: <strong>Confidentiality</strong> (preventing unauthorized access), <strong>Integrity</strong> (ensuring data is not altered in transit or at rest), <strong>Authentication</strong> (verifying the identity of communicating entities), and <strong>Non-Repudiation</strong> (ensuring a sender cannot deny creating a message).</p>
+<p>Without cryptography, every digital transaction—from accessing bank accounts, transmitting sensitive military intelligence, and storing personal medical records to executing automated software updates—would occur in cleartext across untrusted networks. It addresses the fundamental risk of unauthorized eavesdropping, data manipulation, identity impersonation, and systemic trust failure across interconnected digital infrastructure.</p>
+
+<h3>2. How It Works</h3>
+<p>Modern cryptography relies on public, mathematically rigorous algorithms paired with secret keys, adhering to <em>Kerckhoffs's Principle</em> (security must reside in the secret key, not in keeping the algorithm hidden). Cryptography is generally categorized into three main primitives:</p>
+
+<ul>
+  <li><strong>Symmetric Encryption:</strong> Uses a single shared secret key for both encryption and decryption. Algorithms like <strong>AES (Advanced Encryption Standard)</strong> with 128-bit or 256-bit keys and <strong>ChaCha20</strong> operate on block or stream data at high speeds, making them ideal for bulk data encryption at rest (e.g., BitLocker, LUKS) and in transit (e.g., TLS data phase).</li>
+  <li><strong>Asymmetric Encryption (Public-Key Cryptography):</strong> Uses a mathematically linked key pair: a <em>Public Key</em> for encryption/verification and a <em>Private Key</em> for decryption/signing. Grounded in hard mathematical problems like integer factorization (RSA) or discrete logarithms over elliptic curves (ECC/ECDSA), asymmetric crypto solves the key distribution problem and powers digital signatures and secure key exchanges.</li>
+  <li><strong>Cryptographic Hash Functions & MACs:</strong> Deterministic, one-way mathematical functions (e.g., SHA-256, SHA-3) that map arbitrary input data to a fixed-size digest. Hash functions are irreversible and collision-resistant. When combined with a</div><hr><div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
 <p><strong>Timestamp:</strong> 2026-11-15 10:05 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1518,27 +1531,7 @@ func process(user: User?) {
 <ol>
   <li><strong>Byte-to-DOM Parsing:</strong> The HTML parser consumes raw bytes, converts them to characters, tokenizes them, constructs Node objects, and builds the DOM tree. HTML parsing is unique because it is non-context-free and speculative; script execution can mutate the input stream (`document.write`).</li>
   <li><strong>CSSOM Construction:</strong> The CSS parser converts raw CSS into the CSS Object Model (CSSOM), a secondary tree structure mapping selectors to calculated properties.</li>
-  <li><strong>Style Resolution & Rendering Tree:</strong> The engine merges DOM and CSSOM via the <em>Cascading Algorithm</em> to produce a Render Tree (omitting non-rendered elements like</div><hr><div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
-<p><strong>Timestamp:</strong> 2026-10-31 07:40 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Swift was developed by Apple (led by Chris Lattner) and introduced in 2014 to replace Objective-C. Objective-C was burdened by 1980s Smalltalk-style dynamic message passing atop standard C, leading to runtime overhead, unsafe pointer arithmetic, verbose syntax, and ubiquitous null-pointer dereferencing risks ("the billion-dollar mistake").</p>
-<p>Swift’s core design philosophy prioritizes <strong>safety, speed, and expressiveness</strong>. From a programming language theory standpoint, Swift is a multi-paradigm, statically typed, compiled language engineered to leverage modern compiler infrastructure (LLVM). It enforces safety by design—eliminating uninitialized variables, enforcing strict type safety, and treating optionality as a first-class type system construct.</p>
-<p>Swift sits at the intersection of three major paradigms:</p>
-<ul>
-    <li><strong>Protocol-Oriented Programming (POP):</strong> Prioritizes composition over class inheritance through protocols and protocol extensions.</li>
-    <li><strong>Functional Programming:</strong> Emphasizes value immutability, algebraic data types (enums with associated values), first-class functions, higher-order functions (`map`, `filter`, `reduce`), and monadic types (`Optional`, `Result`).</li>
-    <li><strong>Object-Oriented Programming (OOP):</strong> Retains classic reference-based classes with single inheritance, interfaces (protocols), and dynamic dispatch when required.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Swift uses a clean, C-family syntax without mandatory semicolons. Code is organized into modules, targets, and source files (`.swift`). Unlike C/Objective-C, there are no header files (`.h`); Swift automatically builds dependency graphs across files within the same module.</p>
-
-<p>Key syntactic characteristics include:</p>
-<ul>
-    <li><strong>Explicit Immutability:</strong> The keyword <code>let</code> defines immutable bindings (constants), while <code>var</code> declares mutable state. Swift strongly encourages <code>let</code> by default.</li>
-    <li><strong>Type Inference:</strong> Strong static typing paired with powerful type inference (e.g., <code>let count = 42</code> infers <code>Int</code>).</li>
-    <li><strong>Expressive Control Flow:</strong> Control structures (<code>if</code>, <code>switch</code>, <code>for-in</div><hr>
+  <li><strong>Style Resolution & Rendering Tree:</strong> The engine merges DOM and CSSOM via the <em>Cascading Algorithm</em> to produce a Render Tree (omitting non-rendered elements like</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
