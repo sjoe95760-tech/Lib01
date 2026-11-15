@@ -17,7 +17,20 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Java</h2>
+<p><strong>Timestamp:</strong> 2026-11-15 02:14 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Java was engineered at Sun Microsystems in the mid-1990s by James Gosling to solve the structural fragmentation, memory-unsafe behaviors, and architectural fragility of C++. Built around the core ethos of <em>"Write Once, Run Anywhere" (WORA)</em>, Java introduced an intermediate execution layer—the Java Virtual Machine (JVM)—decoupling application code from host CPU architectures and operating systems.</p>
+<p>Architecturally, Java was designed as a strongly typed, class-based Object-Oriented (OO) language with extreme emphasis on safety, stability, and developer predictability. It deliberately eliminated unsafe pointer arithmetic, implicit type conversions, and manual memory deallocation. Over time, Java has evolved into a pragmatic multi-paradigm language, integrating functional constructs (Lambdas, Streams, Method References) alongside object immutability (Records) and pattern matching, while strictly retaining its static, class-centric baseline.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Java borrows heavily from C/C++ syntactic conventions, utilizing block scope defined by curly braces (<code>{}</code>) and requiring explicit statement terminators via semicolons (<code>;</code>). Whitespace is non-semantic, serving purely aesthetic and readable purposes.</p>
+<p>The unit of organization in Java is the Class, mapped directly to physical source files. The language enforces a rigid structural layout:</p>
+<ul>
+  <li><strong>Namespacing:</strong> Package declarations (e.g., <code>package com.architecture.system;</code>) correspond directly to the directory hierarchy on the filesystem.</li>
+  <li><strong>Compilation Unit:</strong> A single source file (<code>.java</code>) can generally host only one top-level <code>public</code> class matching the filename.</li>
+  <li><strong>Compilation Pipeline:</strong> High-level source code is compiled</div><hr><div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
 <p><strong>Timestamp:</strong> 2026-11-14 22:47 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1571,10 +1584,7 @@ func process(user: User?) {
     <li><strong>Lexical Environments & Closures:</strong> Functions carry their birth environment with them. A function retains access to variables declared in its outer scope, even when invoked completely outside that scope. Variable access is determined by physical code structure at write time, not invocation time.</li>
     <li><strong>Prototypal Delegation (Not Classical Class Blueprinting):</strong> Instantiation does not copy properties down a class hierarchy. Instead, instances delegate lookup failures upward to shared, linked dynamic prototypes at runtime. Objects are live bags of properties.</li>
     <li><strong>Non-Blocking Event Loop Mindset:</strong> Execution must never block the main thread. Long-running tasks are explicitly scheduled asynchronously. The programmer views code as synchronous run-to-completion blocks interleaved between promise microtasks and event macrotasks coordinated by the engine event loop.</li>
-</ol></div><hr><div class='lesson'>Examples</h3>
-<p>High-profile web application security failures illustrate how technical flaws yield catastrophic business impacts:</p>
-<ul>
-    <li><strong>Equifax Data Breach (2017):</strong> Attackers exploited an unpatched Remote Code Execution (RCE) vulnerability in Apache Struts (CVE-2017-5638), a popular Java web framework. The</div><hr>
+</ol></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
