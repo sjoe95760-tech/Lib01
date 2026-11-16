@@ -17,7 +17,42 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Malware Analysis</h2>
+<p><strong>Timestamp:</strong> 2026-11-16 20:43 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p><strong>Malware Analysis</strong> is the art and science of dissecting malicious software—including ransomware, trojans, spyware, keyloggers, and rootkits—to understand its structure, functionality, origin, and intended impact. It is a foundational discipline within reverse engineering and incident response.</p>
+<p>In modern cybersecurity, simply knowing that a system was infected is insufficient. Organizations must answer critical questions: <em>What data was accessed or exfiltrated? How did the malware persist? What Command & Control (C2) servers did it communicate with? Can we reverse the encryption key?</em> Malware analysis provides the actionable intelligence necessary to contain active breaches, develop robust detection engineering signatures (such as YARA rules and EDR indicators), patch vulnerabilities, and attribute attacks to specific Advanced Persistent Threat (APT) groups.</p>
+
+<h3>2. How It Works</h3>
+<p>Malware analysis follows a structured, tiered methodology ranging from quick surface-level inspection to complex binary reverse engineering:</p>
+
+<ul>
+  <li><strong>Static Analysis (Basic):</strong> Examining the binary without executing it. Analysts inspect file hashes (MD5, SHA-256), examine embedded strings (looking for URLs, registry keys, error messages), inspect Portable Executable (PE) headers, analyze imported/exported DLL functions, and verify digital signatures.</li>
+  <li><strong>Dynamic Analysis (Basic):</strong> Executing the sample within an isolated, monitored environment (a sandbox) to observe real-time behavior. This includes capturing network traffic, tracing filesystem modifications, monitoring process creation, and analyzing registry alterations.</li>
+  <li><strong>Advanced Static Analysis:</strong> Loading the compiled binary into a disassembler or decompiler (e.g., Ghidra or IDA Pro) to analyze assembly code (x86/x64, ARM) and control flow graphs. This allows analysts to uncover hidden logic, custom encryption routines, and dormant capabilities.</li>
+  <li><strong>Advanced Dynamic Analysis:</strong> Attaching a debugger (e.g., x64dbg, WinDbg) to step through instructions line-by-line while execution is live. This technique is used to bypass crypters, inspect decrypted memory buffers, unpack obfuscated binaries, and manipulate program execution flow.</li>
+  <li><strong>Memory Analysis:</strong> Extracting and analyzing physical RAM dumps using tools like Volatility to detect unlinked processes, injected DLLs, hookings, and in-memory payload execution (fileless malware).</li>
+</ul>
+
+<h3>3. Common Attack/Defense Techniques</h3>
+<p>Malware authors continuously innovate to evade security tools and hinder analysts, leading to a dynamic game of cat-and-mouse:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Offensive / Evasion Technique</th>
+      <th>Defensive / Counter-Analysis Technique</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Anti-Debugging:</strong> API calls like <code>IsDebuggerPresent()</code> or checking PEB flags to detect if a debugger is attached.</td>
+      <td><strong>Debugger Hiding:</strong> Using plugins (e.g., ScyllaHide) to patch PEB structures, intercept API calls, and hide debugger presence.</td>
+    </tr>
+    <tr>
+      <td><strong>Anti-Sandboxing:</strong> Delaying execution (sleep timers), checking for human interaction (mouse movement), or auditing system hardware specs (RAM, CPU cores, MAC address).</td>
+      <td><strong>Hypervisor Hardening & Simulation:</strong> Customizing sand</div><hr><div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
 <p><strong>Timestamp:</strong> 2026-11-16 10:18 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1500,28 +1535,7 @@ func process(user: User?) {
 <p>Kotlin utilizes C-style syntax featuring block scoping via curly braces (<code>{}</code>). However, it radically streamlines control flow and structural declarations compared to classical C/Java-family languages:</p>
 <ul>
     <li><strong>Semicolons:</strong> Semicolons are optional and idiomatic Kotlin omits them entirely, relying on newline parsing logic.</li>
-    <li><strong>Type Inference & Mutability:</strong> Variable declarations mandate explicit immutability contracts using <code>val</code> (read-only reference) or <code>var</code> (mutable reference). Type specification is trailing (e.g., <code>val name: String</code>) and frequently omitted when inferred by</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
-<p><strong>Timestamp:</strong> 2026-11-01 01:35 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>JavaScript was designed in 1995 by Brendan Eich at Netscape under a tight ten-day development window. Originally intended as a lightweight scripting layer for non-programmers to manipulate the Document Object Model (DOM) in web browsers, it was fundamentally constrained by Netscape's business deal with Sun Microsystems. Java was envisioned as the heavy, compiled language for enterprise application logic, while JavaScript was forced to adopt a C/Java-like syntax on the surface to look familiar, despite having fundamentally different semantics under the hood.</p>
-
-<p>Language theorists categorize JavaScript as a multi-paradigm, dynamically typed, weakly typed, interpreted (and JIT-compiled) language featuring first-class functions and dynamic prototype-based object orientation. Its foundational core was built by blending two radically different language lineages:</p>
-<ul>
-  <li><strong>Scheme (Lisp dialect):</strong> Supplied the functional foundations, including first-class functions, higher-order functions, dynamic typing, and lexical closures.</li>
-  <li><strong>Self (Smalltalk dialect):</strong> Provided prototype-based object delegation instead of class-based inheritance, treating objects as mutable key-value maps without fixed schemas.</li>
-</ul>
-
-<p>JavaScript solves the problem of ubiquitous, zero-installation, cross-platform client-side runtime execution. Its dynamic nature accepts runtime flexibility and high forgiveness (failing open rather than crashing hard) to preserve web page rendering and continuous program execution across heterogeneous client environments.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>JavaScript relies on C-style block formatting delimited by curly braces (<code>{}</code>). Statement separation structurally uses semicolons (<code>;</code>), though the runtime features standard Automatic Semicolon Insertion (ASI), a parser mechanism that programmatically infers missing semicolons at newline boundaries based on explicit lookahead rules—frequently a source of obscure parser edge-cases.</p>
-
-<p>Code organization is characterized by strict lexical scoping rules, variable declarations, and module boundaries:</p>
-<ul>
-  <li><strong>Variable Scoping & Temporal Dead Zone:</strong> Legacy declarations using <code>var</code> are function-scoped and subject to variable hoisting (moving declarations to the top of the scope). Modern JavaScript (ES6+) uses <code>let</code> and <code>const</code>, which are block-scoped. They are also hoisted internally, but accessing them before their declaration line throws a <code>ReferenceError</code> due to the <em>Temporal Dead Zone (TDZ)</em>.</li>
-  <li><strong>Type Coercion:</strong> The syntax allows implicit structural dynamic type conversion. The abstract equality operator (<code>==</code>) invokes complex language specification algorithms (<code>Abstract Equality Comparison Algorithm</code>) to coerce types before evaluating equality, whereas strict equality (<code>===</code>) enforces identity without structural type casting.</li>
-  <li><strong>Module Systems</div><hr>
+    <li><strong>Type Inference & Mutability:</strong> Variable declarations mandate explicit immutability contracts using <code>val</code> (read-only reference) or <code>var</code> (mutable reference). Type specification is trailing (e.g., <code>val name: String</code>) and frequently omitted when inferred by</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
