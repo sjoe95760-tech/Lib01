@@ -17,7 +17,24 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Java</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
+<p><strong>Timestamp:</strong> 2026-11-16 10:18 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Ruby was created in 1995 by Yukihiro "Matz" Matsumoto with a core focus on developer happiness, human ergonomics, and expressiveness over machine execution performance. Influenced heavily by Smalltalk, Lisp, and Perl, Matz designed Ruby according to the "Principle of Least Surprise" (POLS)—meaning the language should behave in a way that minimizes cognitive friction for the programmer.</p>
+<p>At its architectural foundation, Ruby is a <strong>pure object-oriented language</strong>. Unlike languages with primitive types (like Java or C++), every single piece of data in Ruby is a fully fledged object, including integers, booleans, symbols, and even `nil`. Classes and methods themselves are dynamic runtime objects. Ruby also deeply integrates functional programming concepts (first-class blocks, closures, higher-order functions via `Enumerable`) and procedural syntax at the top level, providing an imperative façade while running a complete Smalltalk-style message-passing model underneath.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Ruby’s syntax emphasizes natural language readability, flexibility, and extreme minimalism regarding structural boilerplate:</p>
+<ul>
+    <li><strong>Delimiters & Indentation:</strong> Ruby uses block keywords (`def...end`, `class...end`, `do...end`) rather than curly braces for structural scopes. Indentation (conventionally 2 spaces) is purely for human readability and is not syntactically enforced like Python's whitespace.</li>
+    <li><strong>Optional Punctuation:</strong> Parentheses around method arguments and trailing semicolons are almost entirely optional. This syntax feature allows developers to craft natural, readable Domain-Specific Languages (DSLs).</li>
+    <li><strong>Expression-Based Flow:</strong> Every statement in Ruby evaluates to a return value. Flow control structures like `if/else`, `case/when`, and block evaluations produce values directly without requiring explicit return statements.</li>
+    <li><strong>Code Organization:</strong> Code is organized into files containing classes and modules. Modules serve two primary functions: acting as namespaces to prevent collisons and acting as Mixins to inject shared functionality across distinct class hierarchies. Dependency loading is managed dynamically using `require` or `require_relative`.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Ruby utilizes an automated dynamic memory management model managed by an internal Virtual Machine (typically YARV - Yet Another Ruby VM in standard</div><hr><div class='lesson'><h2>🔍 Deep Dive: Java</h2>
 <p><strong>Timestamp:</strong> 2026-11-16 02:27 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1504,24 +1521,7 @@ func process(user: User?) {
 <ul>
   <li><strong>Variable Scoping & Temporal Dead Zone:</strong> Legacy declarations using <code>var</code> are function-scoped and subject to variable hoisting (moving declarations to the top of the scope). Modern JavaScript (ES6+) uses <code>let</code> and <code>const</code>, which are block-scoped. They are also hoisted internally, but accessing them before their declaration line throws a <code>ReferenceError</code> due to the <em>Temporal Dead Zone (TDZ)</em>.</li>
   <li><strong>Type Coercion:</strong> The syntax allows implicit structural dynamic type conversion. The abstract equality operator (<code>==</code>) invokes complex language specification algorithms (<code>Abstract Equality Comparison Algorithm</code>) to coerce types before evaluating equality, whereas strict equality (<code>===</code>) enforces identity without structural type casting.</li>
-  <li><strong>Module Systems</div><hr><div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
-<p><strong>Timestamp:</strong> 2026-10-31 22:00 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p>In network security, <strong>Firewalls</strong> and <strong>Intrusion Detection/Prevention Systems (IDS/IPS)</strong> serve as the primary network perimeter controls and internal boundary enforcers.</p>
-<ul>
-    <li><strong>Firewalls:</strong> Act as traffic gatekeepers. Operating primarily at Layers 3, 4, and 7 of the OSI model, they enforce access control policies by analyzing traffic attributes (IP addresses, ports, protocols, and application signatures) to allow or deny entry.</li>
-    <li><strong>IDS (Intrusion Detection System):</strong> Acts as a passive security monitor (tap/SPAN port). It inspects packet payloads and traffic patterns to alert security analysts of malicious activity without interfering with flow.</li>
-    <li><strong>IPS (Intrusion Prevention System):</strong> Operates inline with traffic flow. It actively inspects payloads and automatically takes defensive actions (such as dropping packets, resetting TCP connections, or blocking source IPs) when a threat is detected.</li>
-</ul>
-<p><strong>Why It Matters:</strong> Without robust network filtering and deep inspection, an enterprise exposes every internal endpoint directly to the public internet. Firewalls prevent unauthorized connections, while IDS/IPS inspect the internal contents of authorized connections—combating threats like lateral movement, zero-day exploits, command-and-control (C2) beaconing, and data exfiltration.</p>
-
-<h3>2. How It Works</h3>
-<p>Network control technologies operate across varying levels of inspection depth and deployment architectures:</p>
-
-<h4>Firewall Architecture & Inspection Levels</h4>
-<ul>
-    <li><strong>Stateless Packet Filtering (Layer 3/4):</strong> Evaluates individual packets against static Access Control Lists (ACL</div><hr>
+  <li><strong>Module Systems</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
