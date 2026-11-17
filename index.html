@@ -17,7 +17,33 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: C++</h2>
+<div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
+<p><strong>Timestamp:</strong> 2026-11-17 12:35 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Structured Query Language (SQL) was conceived in the early 1970s by Donald D. Chamberlin and Raymond F. Boyce at IBM, drawing directly from Edgar F. Codd’s seminal paper on the Relational Model for Data Banks. Prior to SQL, data manipulation relied on navigational databases (hierarchical or network models like CODASYL), where programmers had to write manual, procedural algorithms to traverse physical pointers on disk to retrieve records. This created tight coupling between application code and physical data storage schemas.</p>
+
+<p>SQL was created to enforce complete <strong>physical and logical data independence</strong>. It belongs to the <strong>Declarative Domain-Specific Language (DSL)</strong> paradigm, grounded mathematically in first-order predicate logic and relational algebra. Instead of specifying <em>how</em> to navigate disk sectors or iterate through arrays (imperative paradigm), the developer defines <em>what</em> result set is desired. The underlying Relational Database Management System (RDBMS) abstract engine is responsible for parsing, compiling, optimizing, and executing the physical retrieval strategy.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>SQL execution is distinct because its <strong>lexical order</strong> (how code is written) differs dramatically from its <strong>logical processing order</strong> (how the database engine evaluates it). A developer writes a standard query in the following lexical format:</p>
+
+<code>SELECT DISTINCT columns FROM table JOIN table2 ON condition WHERE predicate GROUP BY columns HAVING aggregate_predicate ORDER BY column LIMIT n;</code>
+
+<p>Internally, the RDBMS engine evaluates clauses in a strictly defined logical pipeline:</p>
+
+<ol>
+  <li><strong>FROM & JOIN:</strong> Cartesian products are constructed and joined based on predicates to form the base working table.</li>
+  <li><strong>WHERE:</strong> Row-level filters are applied to eliminate tuples before aggregation.</li>
+  <li><strong>GROUP BY:</strong> Remaining tuples are partitioned into equivalence classes based on unique group key combinations.</li>
+  <li><strong>HAVING:</strong> Group-level filters are applied to eliminate aggregated groups.</li>
+  <li><strong>SELECT:</strong> Expressions, projections, and scalar/aggregate calculations are evaluated.</li>
+  <li><strong>DISTINCT:</strong> Duplicate tuples are eliminated from the result set.</li>
+  <li><strong>ORDER BY:</strong> The final dataset is sorted physically or virtually using temporary buffers.</li>
+  <li><strong>LIMIT/OFFSET:</strong> Top-level window slices are extracted for pagination.</li>
+</ol>
+
+<p>SQL relies on block-based structural composition rather than indentation or functional chaining. Statements are terminated by semicolons (`;`). SQL is divided into sub-languages: <strong>DDL</strong> (Data Definition Language like <code>CREATE</code>, <code>ALTER</code>), <strong>DML</strong> (Data Manipulation Language like <code>SELECT</code>, </div><hr><div class='lesson'><h2>🔍 Deep Dive: C++</h2>
 <p><strong>Timestamp:</strong> 2026-11-17 03:16 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1525,21 +1551,7 @@ func process(user: User?) {
   <thead>
     <tr>
       <th>Offensive Vector</th>
-      </div><hr><div class='lesson'><h2>🔍 Deep Dive: Perl</h2>
-<p><strong>Timestamp:</strong> 2026-11-01 15:31 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Perl (Practical Extraction and Report Language) was created in 1987 by Larry Wall, a linguist and systems administrator. It was designed to bridge the gap between low-level system languages like C and limited high-level shell scripting languages (such as <code>sh</code>, <code>awk</code>, and <code>sed</code>). Perl’s foundational philosophy is heavily influenced by natural human language, prioritizing expressiveness, pragmatism, and human adaptability over mathematical elegance or strict grammatical enforcement.</p>
-<p>The core ethos of Perl is <strong>TMTOWTDI</strong> ("There's More Than One Way To Do It") and <strong>DWIM</strong> ("Do What I Mean"). Architecturally, Perl is a multi-paradigm language: fundamentally procedural at its core, with robust functional capabilities (first-class anonymous functions, closures, higher-order functions) and an object-oriented system that was integrated in Perl 5 via blessed references and refined in modern versions via native object syntax and Meta-Object Protocols (MOP).</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Perl uses C-style syntax with block structures delimited by curly braces <code>{}</code> and statements terminated by semicolons <code>;</code>. Indentation is purely stylistic and ignored by the lexer. A defining syntactic feature of Perl is its system of <strong>sigils</strong>, which denote the data structure being accessed rather than just the variable container:</p>
-<ul>
-  <li><code>$scalar</code>: Holds a single value (string, number, reference).</li>
-  <li><code>@array</code>: Ordered list of scalars.</li>
-  <li><code>%hash</code>: Unordered mapping of string keys to scalar values.</li>
-</ul>
-<p>Perl execution is fundamentally driven by <strong>context</strong>: expression evaluation changes based on whether a <em></div><hr>
+      </div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
