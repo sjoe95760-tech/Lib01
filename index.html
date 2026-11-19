@@ -17,7 +17,31 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
+<p><strong>Timestamp:</strong> 2026-11-19 10:51 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Ruby was designed in 1993 and released in 1995 by Yukihiro "Matz" Matsumoto. Matz sought to create a true object-oriented scripting language that bridged the textual power of Perl, the pure object model of Smalltalk, and the functional capabilities of Lisp. The central design philosophy of Ruby is the <strong>Principle of Least Surprise (POLS)</strong> combined with a relentless focus on human-centric ergonomics and programmer happiness over execution speed or compiler simplicity.</p>
+<p>Architecturally, Ruby is a <strong>pure, dynamic Object-Oriented Programming (OOP)</strong> language with strong functional programming constructs:</p>
+<ul>
+    <li><strong>Pure Object-Orientation:</strong> There are no primitive types. Every value—including primitive integers, booleans, and even <code>nil</code>—is an instance of an object descending from a root class (<code>BasicObject</code> / <code>Object</code>).</li>
+    <li><strong>Functional Influences:</strong> Ruby treats code blocks as first-class citizens using closures (<code>Proc</code> objects and lambdas), enabling expressive higher-order function patterns like map, reduce, and filter natively.</li>
+    <li><strong>Dynamic Executable Semantics:</strong> Definitions in Ruby are not static declarations; they are imperative code executed at runtime. Class bodies, method definitions, and module declarations execute sequentially when encountered by the interpreter.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Ruby’s syntax prioritizes visual minimalism and natural expression, aiming to read almost like pseudo-code or formatted English.</p>
+<ul>
+    <li><strong>Delimiters & Expressions:</strong> Ruby omits mandatory semicolons (using newlines instead) and makes method call parentheses optional when unambiguous (e.g., <code>puts "hello"</code>). Statements inherently evaluate to values, making everything an expression.</li>
+    <li><strong>Block Structure:</strong> Control structures (<code>if</code>, <code>def</code>, <code>class</code>, <code>do...end</code>) use keyword delimiters rather than braces. Braces are conventionally reserved for single-line blocks (e.g., <code>[1, 2, 3].map { |n| n * 2 }</code>) and hash literal declarations. Indentation (typically 2 spaces) is stylistic, not syntactically enforced like Python.</li>
+    <li><strong>Implicit Returns:</strong> Methods automatically return the value evaluated in their final expression without requiring an explicit <code>return</code> keyword.</li>
+    <li><strong>Code Organization & Namespaces:</strong> Code is structured into classes and modules. Modules serve a dual purpose: providing namespaces to prevent naming collisions and enabling mixin capabilities. File structure is decoupled from module names by default, though tools like Zeitwerk enforce conventions (e.g., <code>UserServices::Authenticator</code> mapped to <code>user_services/authenticator.rb</code>).</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>Ruby delegates all memory allocation and deallocation to an automatic Garbage Collector (GC), freeing developers from explicit pointers or manual destruction, though requiring internal engine optimizations for throughput.</p>
+<ul>
+    <li><strong>Object Allocation Model:</strong> Objects live on an internal heap managed by the VM (such as Matz's Ruby Interpreter, MRI). The heap consists of page slots containing fixed-size structures called <code>RVALUE</code>s. Small values like short integers (Fixnums), static symbols, <code>true</code>, <code>false</code>, and <code>nil</code> are</div><hr><div class='lesson'><h2>🔍 Deep Dive: SQL</h2>
 <p><strong>Timestamp:</strong> 2026-11-17 12:35 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1513,45 +1537,7 @@ func process(user: User?) {
   <em>ZTA Defense:</em> Continuous Access Evaluation Protocol (CAEP) and token binding. Devices must maintain an active, cryptographically tied health state (TPM attestation + EDR integration) to maintain session validity.</li>
 
   <li><strong>Attack Technique: Lateral Movement via Over-Privileged Service Accounts</strong><br />
-  <em>Offense:</em> Compromising service principals, machine identities</div><hr><div class='lesson'><h2>🔍 Deep Dive: Social Engineering</h2>
-<p><strong>Timestamp:</strong> 2026-11-01 19:56 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p><strong>Social Engineering</strong> is the psychological manipulation of human cognitive biases to trick individuals into divulging confidential information, granting unauthorized system access, or executing actions that compromise an organization's security posture. Rather than exploiting technical vulnerabilities in software or hardware, social engineering targets the "human operating system."</p>
-
-<p><strong>Why It Matters:</strong></p>
-<ul>
-  <li><strong>Bypasses Technical Controls:</strong> An enterprise can deploy state-of-the-art Web Application Firewalls (WAFs), Next-Gen Antivirus (NGAV), and Endpoint Detection and Response (EDR) agents, but a single valid credential harvested via a targeted pretext invalidates these perimeter defenses.</li>
-  <li><strong>High ROI for Adversaries:</strong> Developing zero-day exploits requires significant research and financial capital. In contrast, crafting a convincing phishing email or making a persuasive phone call requires minimal resources while yielding high success rates.</li>
-  <li><strong>Root Cause of Major Breaches:</strong> According to industry data (such as the Verizon DBIR), human factors are involved in over 70–80% of all confirmed data breaches, serving as the primary initial access vector for ransomware, Business Email Compromise (BEC), and espionage operations.</li>
-</ul>
-
-<h3>2. How It Works</h3>
-<p>Social engineering attacks typically follow a structured four-stage lifecycle combined with targeted psychological triggers.</p>
-
-<h4>The Attack Lifecycle</h4>
-<ol>
-  <li><strong>Information Gathering (OSINT):</strong> The attacker gathers intelligence on the target via corporate websites, social media (LinkedIn, X/Twitter), code repositories (GitHub), and leaked databases to identify organizational hierarchy, software stacks, vendor relationships, and personal details.</li>
-  <li><strong>Establishing Rapport & Pretexting:</strong> The adversary establishes a plausible scenario (pretext) to build trust. This may involve impersonating an IT helpdesk technician, a corporate executive, an outside auditor, or a trusted vendor.</li>
-  <li><strong>Exploitation (Execution):</strong> The attacker leverages the established trust or artificial urgency to push the target into taking an action—such as clicking a malicious link, executing a payload, revealing an OTP (One-Time Password), or initiating a wire transfer.</li>
-  <li><strong>Execution & Exit:</strong> The adversary secures initial access, establishes persistence, or achieves their objective, subsequently severing communication to prevent immediate detection and cover their tracks.</li>
-</ol>
-
-<h4>Psychological Triggers (Cialdini’s Principles of Persuasion)</h4>
-<ul>
-  <li><strong>Authority:</strong> Targets tend to comply with requests from perceived figures of authority (e.g., C-suite executives, law enforcement, corporate IT admins).</li>
-  <li><strong>Urgency & Scarcity:</strong> Creating a false sense of emergency ("Account suspended in 15 minutes!") bypasses critical thinking and forces hasty decision-making.</li>
-  <li><strong>Social Proof & Likability:</strong> Exploiting the tendency to follow what others are doing or to trust individuals who mirror the victim's domain knowledge or interest.</li>
-  <li><strong>Fear & Threat:</strong> Threatening negative consequences (e.g., legal action, termination, security lockout) if compliance is not immediately met.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Offensive Vector</th>
-      </div><hr>
+  <em>Offense:</em> Compromising service principals, machine identities</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
