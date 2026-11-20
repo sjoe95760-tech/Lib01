@@ -17,7 +17,22 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: TypeScript</h2>
+<p><strong>Timestamp:</strong> 2026-11-20 09:20 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>
+TypeScript was designed by Anders Hejlsberg at Microsoft to address a fundamental architectural bottleneck: <strong>JavaScript does not scale gracefully to large-scale, enterprise systems</strong>. Plain JavaScript is dynamically and weakly typed, evaluating type operations strictly at runtime. As codebases grow, refactoring untyped JavaScript introduces catastrophic runtime fragility.
+<br><br>
+TypeScript operates as a <strong>compile-time static type system layer built over JavaScript</strong>. Its core design philosophy revolves around three theoretical pillars:
+</p>
+<ul>
+    <li><strong>Gradual & Structural Typing:</strong> TypeScript accepts dynamic code patterns by allowing incremental type adoption while evaluating type compatibility based on shape (structure) rather than explicit nominal declarations.</li>
+    <li><strong>Type Erasure Semantics:</strong> Types exist purely as a compile-time static verification mechanism. The compiler (<code>tsc</code>) strips all type annotations during emission, leaving clean, standard JavaScript. TypeScript introduces zero runtime execution overhead and zero custom runtime object models.</li>
+    <li><strong>Pragmatism over Absolute Soundness:</strong> Unlike purely sound languages like Haskell or OCaml, TypeScript intentionally allows controlled unsoundness (e.g., the <code>any</code> escape hatch, array bounds non-checking, method bivariance) to seamlessly interface with the chaotic nature of the existing JavaScript ecosystem.</li>
+</ul>
+<p>
+TypeScript is fundamentally multi-paradigm. It heavily favors <strong>Functional Programming (</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
 <p><strong>Timestamp:</strong> 2026-11-20 01:29 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1497,25 +1512,7 @@ func process(user: User?) {
 <ul>
   <li><strong>ZVAL Container:</strong> All PHP variables are stored internally in standard C structures called <code>zval</code> (Zend Value). The <code>zval</code> holds the variable's value, type, and a reference count (<code>refcount</code>).</li>
   <li><strong>Copy-On-Write (COW):</strong> When a variable is assigned to another (e.g., <code>$b = $a</code>), memory is not duplicated immediately. Both variables point to the same internal <code>zval</code>, incrementing its <code>refcount</code>. A physical memory clone occurs only when one of the variables is mutated.</li>
-  <li><strong>Garbage Collection (GC):</strong> When a <code>zval</code> reference count drops to zero, Zend immediately frees that memory block. For circular references (e.g., Object A referencing Object B</div><hr><div class='lesson'><h2>🔍 Deep Dive: C++</h2>
-<p><strong>Timestamp:</strong> 2026-11-02 03:07 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>C++ was created in 1979 by Bjarne Stroustrup at Bell Labs, originally termed "C with Classes." It was designed to bridge the gap between high-level architectural abstraction and low-level hardware performance. The fundamental guiding principle of C++ is the <strong>zero-cost abstraction rule</strong>: "What you don't use, you don't pay for; and what you do use, you couldn't write better by hand."</p>
-<p>Unlike languages that impose a single paradigm or a heavy runtime engine, C++ solves the problem of building massive, high-performance systems (e.g., operating system kernels, game engines, embedded systems, and browsers) where control over memory layout, deterministic execution, and CPU cache efficiency are non-negotiable. It is fundamentally multi-paradigm, supporting:</p>
-<ul>
-  <li><strong>Procedural:</strong> Direct, raw imperative control close to assembly.</li>
-  <li><strong>Object-Oriented:</strong> Encapsulation, inheritance, and dynamic dispatch (via virtual method tables).</li>
-  <li><strong>Generic:</strong> Compile-time parametric polymorphism via templates and concepts.</li>
-  <li><strong>Functional:</strong> Stateless lambdas, pure functions, continuous evaluation, and range transformations.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>C++ inherits its statement syntax from C (Algol family), relying on block-scoped curly braces (<code>{}</code>) and mandatory semicolon (<code>;</code>) statement terminators. Whitespace is ignored by the lexer, making indentation purely stylistic, though strict idiomatic formatting (e.g., ClangFormat standards) is universally expected in production.</p>
-<p>The translation model of C++ relies on separate compilation:</p>
-<ul>
-  <li><strong>Preprocessing:</strong> Macro expansion and file inclusion (e.g., <code>#include</code> directives) textually paste interfaces before parsing. Modern C++20 introduced native <strong>Modules</strong> (<code>import std;</code>) to replace headers, isolating translation units and reducing compilation times.</li>
-  <li><strong>Translation Units:</strong> Each source file (<code>.cpp</code>) compiles into an independent object file</div><hr>
+  <li><strong>Garbage Collection (GC):</strong> When a <code>zval</code> reference count drops to zero, Zend immediately frees that memory block. For circular references (e.g., Object A referencing Object B</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
