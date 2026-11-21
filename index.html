@@ -17,7 +17,54 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Perl</h2>
+<p><strong>Timestamp:</strong> 2026-11-21 15:43 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>
+Perl (Practical Extraction and Report Language) was created by Larry Wall in 1987 while working as a system administrator. Wall, a linguist by training, designed Perl to bridge the operational gap between low-level system systems programming (C) and high-level shell scripting (<code>sh</code>, <code>sed</code>, <code>awk</code>). Its original intent was text processing and report generation, but it quickly evolved into a general-purpose, dynamic systems-glue language.
+</p>
+<p>
+The central architectural philosophy of Perl is encapsulated in the acronym <strong>TMTOWTDI</strong> ("There's More Than One Way To Do It"). This stands in direct ideological opposition to languages like Python ("there should be one—and preferably only one—obvious way to do it"). Wall applied linguistic principles to programming language design:
+</p>
+<ul>
+    <li><strong>Context Sensitivity:</strong> Words (code elements) take meaning based on their grammatical environment.</li>
+    <li><strong>Expressiveness & Redundancy:</strong> Multiple constructs exist to express the same logic, catering to human thought variation rather than machine uniformity.</li>
+    <li><strong>Huffman Coding Principles:</strong> Frequently used constructs are made concise (e.g., default variable <code>$_</code>, regular expression operations), while rare operations are syntactically heavier.</li>
+</ul>
+<p>
+Perl is fundamentally dynamic and multi-paradigm. It began as a procedural scripting language, added robust functional programming primitives (first-class functions, lexical closures, high-order list operations), and later synthesized an object-oriented system built on top of its reference architecture.
+</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>
+Perl borrows heavily from C syntax (curly braces, semicolons, operator precedence) combined with shell-scripting sigils. Statement blocks require explicit braces <code>{ ... }</code>, and statements end with standard semicolons <code>;</code>.
+</p>
+
+<h4>Sigils & Data Structures</h4>
+<p>Perl uses mandatory variable prefixes (sigils) that indicate the data container type and the context of access:</p>
+<ul>
+    <li><code>$scalar</code>: Denotes a single value (number, string, or reference).</li>
+    <li><code>@array</code>: Denotes an ordered list of scalars.</li>
+    <li><code>%hash</code>: Denotes an associative array mapping scalar keys to scalar values.</li>
+    <li><code>&subroutine</code>: Denotes a function symbol (often optional during invocation).</li>
+    <li><code>*typeglob</code>: Denotes a symbol table entry containing slots for all sigil types sharing a name.</li>
+</ul>
+
+<h4>Contextual Evaluation</h4>
+<p>
+A defining feature of Perl execution is <em>Context</em>. Expressions evaluate differently depending on whether a scalar or list value is expected:
+</p>
+<pre><code>my @items = ('a', 'b', 'c');
+my $count = @items; # Scalar context: evaluates to array length (3)
+my ($first) = @items; # List context: evaluates to the list ('a', 'b', 'c'), assigning 'a' to $first
+</code></pre>
+
+<h4>Flow Control Modifiers</h4>
+<p>
+Perl allows postfix statement modifiers to increase readability by emphasizing the primary action over the condition:
+</p>
+<pre><code>return $cache{$key} if exists $cache{$</div><hr><div class='lesson'><h2>🔍 Deep Dive: Python</h2>
 <p><strong>Timestamp:</strong> 2026-11-21 00:25 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1461,39 +1508,7 @@ func process(user: User?) {
 <h3>4. Paradigms & Tactics</h3>
 <p>Java balances pure enterprise Object-Oriented paradigms with modern functional and concurrent tactics:</p>
 <ul>
-    <li><strong>Object-Oriented Subtyping:</strong></div><hr><div class='lesson'><h2>🔍 Deep Dive: Malware Analysis</h2>
-<p><strong>Timestamp:</strong> 2026-11-02 20:58 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p><strong>Malware Analysis</strong> is the art and science of dissecting malicious software—such as ransomware, trojans, rootkits, spyware, and wipers—to understand its structure, functionality, origin, and intended objective. Rather than treating malware as a black box, analysts break it down to figure out how it infected a system, what damage it caused or could cause, and how to stop it.</p>
-<p>In modern cybersecurity operations, malware analysis is fundamental to proactive defense and incident response. It addresses critical business risks by allowing security teams to:</p>
-<ul>
-    <li><strong>Extract Indicators of Compromise (IoCs):</strong> Identify malicious IP addresses, domain names, file hashes, and registry keys to block ongoing attacks across the enterprise.</li>
-    <li><strong>Understand Adversary Intent & Capabilities:</strong> Determine if an attack is opportunistically automated or part of an advanced persistent threat (APT) campaign targeting intellectual property.</li>
-    <li><strong>Improve Security Controls:</strong> Craft custom YARA rules, Sigma detection rules, and firewall signatures to patch defensive blind spots before adversaries strike again.</li>
-</ul>
-
-<h3>2. How It Works</h3>
-<p>Malware analysis is executed through a structured, multi-stage pipeline ranging from quick high-level assessments to low-level code reverse engineering:</p>
-<ul>
-    <li><strong>Static Analysis (Basic & Advanced):</strong> Examining the binary without executing it. Basic static analysis involves inspecting file headers (e.g., PE/ELF structure), calculated cryptographic hashes (MD5, SHA-256), embedded human-readable strings, and imported API functions. Advanced static analysis uses disassemblers and decompiler frameworks (such as Ghidra or IDA Pro) to reverse-engineer the compiled assembly code (x86/x64, ARM) into pseudo-code.</li>
-    <li><strong>Dynamic Analysis (Basic & Advanced):</strong> Executing the malware within an isolated, controlled sandbox environment (e.g., dedicated virtual machines with host-only networking). Basic dynamic analysis observes external behaviors such as registry modifications, process spawning, file dropping, and network callbacks (C2 traffic). Advanced dynamic analysis uses interactive debuggers (like x64dbg) to pause execution, modify memory states, inspect register values, and step through routines line-by-line.</li>
-    <li><strong>Memory Forensics:</strong> Extracting and inspecting volatile RAM from an infected host to analyze running processes, unhook DLLs, identify injected malicious payload code, and extract hidden symmetric encryption keys before they are wiped from memory.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<p>Malware authors constantly innovate to resist analysis, leading to a cat-and-mouse game with defenders:</p>
-<ul>
-    <li><strong>Offensive (Evasion & Anti-Analysis Tactics):</strong>
-        <ul>
-            <li><em>Packing & Obfuscation:</em> Compressing or encrypting the payload executable to obscure assembly code and hide static strings.</li>
-            <li><em>Anti-Debugging & Anti-VM Checks:</em> Executing API calls (e.g., <code>IsDebuggerPresent</code>) or checking CPU instructions (e.g., <code>CPUID</code>, MAC address vendor codes) to detect if the binary is inside an analyst's virtual machine or debugger. If detected, the malware terminates early or acts benign.</li>
-            <li><em>Process Injection & Hollowing:</em> Injecting code into legitimate system processes (like <code>explorer.exe</code> or <code>svchost.exe</code>) to evade basic process-monitoring security tools.</li>
-        </ul>
-    </li>
-    <li><strong>Defensive Countermeasures:</strong>
-        <ul>
-            <li><em>De-obfuscation & Unpacking:</em> Dumping</div><hr>
+    <li><strong>Object-Oriented Subtyping:</strong></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
