@@ -17,7 +17,18 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: TypeScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<p><strong>Timestamp:</strong> 2026-11-21 00:25 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Python was created in 1989 by Guido van Rossum as a successor to the ABC language, aiming to bridge the gap between shell scripting and low-level system languages like C. Its underlying philosophy centers on maximizing developer velocity, code readability, and expressiveness—often summarized as "executable pseudocode."</p>
+<p>Architecturally, Python is a multi-paradigm language. It natively supports:</p>
+<ul>
+    <li><strong>Object-Oriented Programming (OOP):</strong> Pure object model where everything—including primitive types, functions, modules, and classes—is a first-class object on the heap.</li>
+    <li><strong>Procedural Programming:</strong> Clean imperative control flow without requiring boilerplate class wrappers (unlike Java).</li>
+    <li><strong>Functional Programming:</strong> First-class and higher-order functions, anonymous functions (<code>lambda</code>), list/dict comprehensions, and lazy evaluation via generators.</li>
+</ul>
+<p>The core logic is guided by <em>The Zen of Python (PEP 20)</em>, prioritizing explicit declaration over implicit behavior ("Explicit is better than implicit") and a single obvious way to achieve a task ("There should be one-- and preferably only one --obvious way</div><hr><div class='lesson'><h2>🔍 Deep Dive: TypeScript</h2>
 <p><strong>Timestamp:</strong> 2026-11-20 09:20 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1482,37 +1493,7 @@ func process(user: User?) {
     </li>
     <li><strong>Defensive Countermeasures:</strong>
         <ul>
-            <li><em>De-obfuscation & Unpacking:</em> Dumping</div><hr><div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
-<p><strong>Timestamp:</strong> 2026-11-02 11:46 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>PHP (originally Personal Home Page, now a recursive acronym for <em>PHP: Hypertext Preprocessor</em>) was created by Rasmus Lerdorf in 1994. It was designed not as a theoretical computer science exercise, but as a pragmatic tool to solve a specific problem: embedding dynamic logic directly into static HTML pages for web rendering.</p>
-<p>The core architectural principle of classic PHP is the <strong>Share-Nothing Request Architecture</strong>. Every HTTP request executes in an isolated environment, instantiates its state, processes the input, renders an output, and immediately tears down all resources. This completely eliminates state leaks between web requests at the runtime layer, drastically simplifying concurrency and memory leak management for developers.</p>
-<p>In terms of programming paradigms, PHP is a modern multi-paradigm language:</p>
-<ul>
-  <li><strong>Procedural:</strong> Its original form, relying heavily on a massive standard library of global functions.</li>
-  <li><strong>Object-Oriented (OOP):</strong> Since PHP 5, and refined radically in PHP 7 and 8, PHP features a fully-fledged class-based OOP model with single inheritance, interfaces, traits, abstract classes, encapsulation, strict typing, and reflection.</li>
-  <li><strong>Functional:</strong> PHP supports first-class functions, closures, anonymous functions, arrow functions (<code>fn() =&gt; ...</code>), and first-class callable syntax.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>PHP syntax derives heavily from C, Perl, and Java. It operates as an embedded scripting language within HTML demarcated by <code>&lt;?php ... ?&gt;</code> tags, though pure modern backend logic omits closing tags entirely to prevent trailing whitespace injection into HTTP headers.</p>
-
-<p><strong>Key Syntactic Characteristics:</strong></p>
-<ul>
-  <li><strong>Sigils for Variables:</strong> All variables are prefixed with a dollar sign (<code>$variable</code>), distinguishing them visually from functions, constants, or keywords.</li>
-  <li><strong>Braces &amp; Semicolons:</strong> Structural flow relies on C-style curly braces (<code>{}</code>) and mandatory trailing semicolons (<code>;</code>).</li>
-  <li><strong>Gradual &amp; Strict Typing:</strong> PHP is dynamically typed by default, but allows strict type enforcement per file via <code>declare(strict_types=1);</code>. Modern PHP supports scalar types, class/interface types, union types (<code>int|string</code>), intersection types (<code>Foo&amp;Bar</code>), DNF types, and <code>never</code>/<code>void</code> return types.</li>
-  <li><strong>Code Organization:</strong> Managed using <code>namespace</code> declarations and modern autoloading standards (PSR-4), which map PHP namespaces directly to file system paths, executed dynamically via dependency manager autoloaders (e.g., Composer).</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>PHP's Zend Engine manages memory automatically using a combination of <strong>Reference Counting</strong> and a <strong>Cyclic Garbage Collector</strong>, optimized via a mechanism called <strong>Copy-On-Write (COW)</strong>.</p>
-
-<ul>
-  <li><strong>ZVAL Container:</strong> All PHP variables are stored internally in standard C structures called <code>zval</code> (Zend Value). The <code>zval</code> holds the variable's value, type, and a reference count (<code>refcount</code>).</li>
-  <li><strong>Copy-On-Write (COW):</strong> When a variable is assigned to another (e.g., <code>$b = $a</code>), memory is not duplicated immediately. Both variables point to the same internal <code>zval</code>, incrementing its <code>refcount</code>. A physical memory clone occurs only when one of the variables is mutated.</li>
-  <li><strong>Garbage Collection (GC):</strong> When a <code>zval</code> reference count drops to zero, Zend immediately frees that memory block. For circular references (e.g., Object A referencing Object B</div><hr>
+            <li><em>De-obfuscation & Unpacking:</em> Dumping</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
