@@ -17,7 +17,27 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Network Security</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Firewalls & IDS/IPS</h2>
+<p><strong>Timestamp:</strong> 2026-11-22 22:12 UTC</p>
+
+<h3>1. What It Is & Why It Matters</h3>
+<p>In modern network security architecture, <strong>Firewalls</strong> and <strong>Intrusion Detection/Prevention Systems (IDS/IPS)</strong> form the foundational defensive line for controlling traffic flow and discovering malicious activity.</p>
+<ul>
+    <li><strong>Firewall:</strong> A network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules. It establishes a barrier between a trusted internal network and untrusted external networks (such as the Internet).</li>
+    <li><strong>IDS (Intrusion Detection System):</strong> A passive monitoring system that analyzes network traffic or system logs for suspicious activity or known threat signatures, issuing alerts to security teams when anomalies or threats are detected.</li>
+    <li><strong>IPS (Intrusion Prevention System):</strong> An active inline system that extends IDS capabilities by detecting threats and immediately taking automated actions to block, drop, or remediate malicious traffic before it reaches its target.</li>
+</ul>
+<p><strong>Why It Matters:</strong> Organizations face continuous scanning, exploitation attempts, and lateral movement from malicious actors. Flat networks without perimeter controls and internal segmentation allow initial access vectors (such as phishing or vulnerable edge systems) to compromise the entire enterprise. Firewalls enforce access policy boundaries, while IDS/IPS provide real-time inspection and rapid threat neutralisation, directly mitigating data breaches, ransomware propagation, and unmitigated protocol exposure.</p>
+
+<h3>2. How It Works</h3>
+<p>Understanding these security controls requires analyzing their operational mechanics, placement, and inspection depth across the OSI model.</p>
+
+<h4>Firewall Mechanics & Generations</h4>
+<ul>
+    <li><strong>Packet Filtering (Layer 3/4):</strong> Evaluates individual packets independently using source/destination IP addresses, ports, and protocols. Highly efficient but stateless and easily spoofed.</li>
+    <li><strong>Stateful Inspection (Layer 4):</strong> Tracks the context of active network connections (connection states: NEW, ESTABLISHED, RELATED). Ensures incoming packets match an established outbound session, preventing unsolicited incoming traffic.</li>
+    <li><strong>Next-Generation Firewalls (NGFW - Layer 7):</strong> Performs Deep Packet Inspection (DPI) to identify specific applications (e.g., distinguishing standard HTTP traffic from BitTorrent operating over port 80), integrates user identity mapping, SSL/TLS decryption, and threat intelligence feeds.</li>
+    <li></div><hr><div class='lesson'><h2>🔍 Deep Dive: Network Security</h2>
 <p><strong>Timestamp:</strong> 2026-11-22 16:52 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1427,28 +1447,7 @@ func process(user: User?) {
 <h3>6. How it "Makes Sense" (Internal Logic)</h3>
 <p>To master Swift, a programmer must pivot their mental model around one core principle: <strong>"Value Types by Default, Reference Types only when Identity Matters."</strong></p>
 
-<p>In languages like Java or C#, nearly everything complex is a heap-allocated reference. In C++, value types require precise manual memory layout management. Swift bridges this divide by making</div><hr><div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
-<p><strong>Timestamp:</strong> 2026-11-04 11:41 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>PHP (originally <em>Personal Home Page</em>, now the recursive acronym <em>PHP: Hypertext Preprocessor</em>) was created by Rasmus Lerdorf in 1994 as a set of C CGI binaries to manage personal web pages. Unlike languages designed for general-purpose computation (such as C or Python), PHP was designed from its inception specifically for the Web context: parsing HTTP requests, managing state, rendering text/HTML, and interacting with databases.</p>
-
-<p>The fundamental architectural philosophy of traditional PHP is the <strong>Shared-Nothing Request Model</strong>. Every incoming HTTP request executes in total isolation inside a fresh process or thread context. When the request terminates, the execution environment, memory allocations, and state are completely flushed. This design trades long-running in-memory process state for stateless reliability, resilience against memory leaks, and simple horizontal scaling.</p>
-
-<p>PHP has evolved from a loosely-typed procedural templating tool into a multi-paradigm language favoring strict, class-based Object-Oriented Programming (OOP) with strong functional programming capabilities. Its design prioritizes pragmatism, rapid developer velocity, and backward compatibility over academic theoretical purity.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>PHP syntax derives heavily from C, Java, and Perl. Code is embedded directly within text streams using the <code>&lt;?php ... ?&gt;</code> tags, allowing raw template passthrough. Key syntactic rules include:</p>
-
-<ul>
-  <li><strong>Variable Identification:</strong> Variables are explicitly prefixed with a dollar sign (<code>$variable</code>), distinguishing identifiers from functions or types.</li>
-  <li><strong>Scope and Delimiters:</strong> Block scoping uses C-style braces (<code>{}</code>), and statements strictly require trailing semicolons (<code>;</code>). Indentation is purely cosmetic.</li>
-  <li><strong>Gradual & Static Typing:</strong> PHP dynamic typing has evolved into a optional, powerful static type system. Modern PHP (8.x+) supports union types (<code>int|string</code>), intersection types (<code>Countable&amp;Iterator</code>), disjunctive normal form (DNF) types, non-nullable types, <code>never</code>, and property/constructor type enforcement at runtime.</li>
-  <li><strong>Code Organization & Autoloading:</strong> Code is structured via hierarchical namespaces (<code>namespace App\Services;</code>). The modern standard (PSR-4) maps namespace paths directly to directory layout, enabling lazy-loading of class files via class autoloaders registered with <code>spl_autoload_register()</code> without manual <code>require</code> statements.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>PHP manages memory automatically through the Zend Engine using a combined engine</div><hr>
+<p>In languages like Java or C#, nearly everything complex is a heap-allocated reference. In C++, value types require precise manual memory layout management. Swift bridges this divide by making</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
