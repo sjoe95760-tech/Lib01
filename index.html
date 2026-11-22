@@ -17,7 +17,25 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
+<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<p><strong>Timestamp:</strong> 2026-11-22 01:44 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>JavaScript was created in 1995 by Brendan Eich at Netscape in just ten days. Its primary objective was to inject dynamic behavior, interactivity, and lightweight scripting capabilities into web pages, complementing static HTML and CSS. The language design synthesizes three distinct theoretical roots:</p>
+
+<ul>
+  <li><strong>Scheme (Functional Programming):</strong> First-class functions, lexical closures, and higher-order functions form JavaScript's functional core.</li>
+  <li><strong>Self (Prototype-based OOP):</strong> Delegation-based object inheritance instead of class-based classical inheritance.</li>
+  <li><strong>Java/C (Syntax & Surface Appearance):</strong> Standard C-style syntax (`if`, `for`, `curly braces`) was adopted primarily for fast developer onboarding and commercial alignment with Java during the mid-1990s enterprise web era.</li>
+</ul>
+
+<p>JavaScript is fundamentally a multi-paradigm language: dynamic, weakly typed, imperative, object-oriented via prototypal delegation, and functional. It solved the critical problem of real-time client-side user interface manipulation without requiring round-trip network execution back to monolithic web servers.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>JavaScript utilizes C-style lexical conventions using block delimiters (<code>{}</code>). However, its underlying mechanics depart significantly from strictly compiled language behaviors:</p>
+
+<ul>
+  <li><strong>Dynamic & Weak Typing:</strong> Types are attached to values,</div><hr><div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
 <p><strong>Timestamp:</strong> 2026-11-21 21:16 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1452,51 +1470,7 @@ func process(user: User?) {
 <p>Modern security teams rely on standard frameworks and specialized tools to perform thorough and compliant assessments:</p>
 <ul>
     <li><strong>Methodology Frameworks:</strong> PTES (Penetration Testing Execution Standard), OWASP Web Security Testing Guide (WSTG), NIST SP 800-115, and the MITRE ATT&CK Matrix.</li>
-    <li><strong>Reconnaissance & Scanning:</strong> Nmap, Mass</div><hr><div class='lesson'><h2>🔍 Deep Dive: Ruby</h2>
-<p><strong>Timestamp:</strong> 2026-11-03 10:13 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Created in the mid-1990s by Yukihiro "Matz" Matsumoto, Ruby was designed around human-centric computing. Matz sought a language more powerful than Perl and more object-oriented than Python. Its governing core principle is to make programmers happy and productive, emphasizing expressiveness, readability, and the "Principle of Least Surprise" (POLS).</p>
-<p>Ruby is a pure, dynamic, imperative Object-Oriented Programming (OOP) language with heavy functional programming influences. In Ruby, <em>everything is an object</em> without exception—primitive numbers, booleans, methods, and even classes themselves are instances of object types. It synthesizes elements from Smalltalk (pure object-oriented message passing), Lisp (higher-order functions, blocks, dynamic evaluation), Perl (regular expressions, concise string parsing), and Eiffel.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Ruby prioritizes human readability with a syntax that reads almost like English prose. Key structural and syntactic rules include:</p>
-<ul>
-    <li><strong>Delimiters over Braces:</strong> Code blocks inside classes and methods are delimited by keywords (<code>def...end</code>, <code>class...end</code>, <code>if...end</code>). Braces (<code>{ ... }</code>) are primarily reserved for short, single-line blocks or hash literals.</li>
-    <li><strong>Optional Syntactic Noise:</strong> Parentheses around method arguments and semicolons at line ends are optional. Newlines signify statement ends unless explicitly escaped.</li>
-    <li><strong>Expression-Based Flow:</strong> Nearly every construction in Ruby evaluates to a value. The last line evaluated in a block or method is implicitly returned; explicit <code>return</code> keywords are typically reserved for guard clauses and early exits.</li>
-    <li><strong>Identifiers & Naming Conventions:</strong> Variable scope is encoded in prefix symbols: local variables (<code>foo</code>), instance variables (<code>@foo</code>), class variables (<code>@@foo</code>), and global variables (<code>$foo</code>). Method names can end in predicate flags like <code>?</code> (returns boolean) or <code>!</code> (indicates mutation or potentially dangerous operations).</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Memory in Ruby is managed automatically by the runtime (historically CRuby/MRI) using an automatic Garbage Collector (GC):</p>
-<ul>
-    <li><strong>Allocation:</strong> Objects are allocated on a managed heap. Each object is represented internally by an <code>RVALUE</code> structure in C. Small integers (<code>Fixnum</code>) and certain symbols are directly encoded into pointer references (tagged pointers), avoiding dynamic heap allocation.</li>
-    <li><strong>Garbage Collection Evolution:</strong> CRuby originally used a simple, stop-the-world Mark-and-Sweep garbage collector. Modern Ruby (3.x+) uses <strong>RGenGC</strong>—a generational, incremental Mark-and-Sweep collector combined with a full compacting GC (introduced in Ruby 2.7) to eliminate heap fragmentation and optimize copy-on-write (CoW) memory sharing in multi-process architectures.</li>
-    <li><strong>No Manual Pointer Ownership:</strong> Unlike C++ or Rust, developers do not handle allocation, lifetimes, or explicit dynamic memory deallocation.</li>
-</ul>
-
-<h3>4. Paradigms & Tactics</h3>
-<p>Ruby's multi-paradigm architecture allows developers to choose tactics tailored to the domain:</p>
-<ul>
-    <li><strong>Object-Oriented Architecture & Mixins:</strong> Ruby implements single class inheritance paired with <em>Mixins</em>. Modules act as decoupled bundles of methods that can be included into classes using <code>include</code>, <code>prepend</code>, or <code>extend</code>, providing a clean alternative to complex multiple inheritance trees.</li>
-    <li><strong>Functional Primitives:</strong> Closures are first-class concepts via <code>Blocks</code>, <code>Procs</code>, and <code>Lambdas</code>. Enumerable operations (<code>map</code>, <code>select</code>, <code>reduce</code>) are central to iteration and data transformation.</li>
-    <li><strong>Concurrency & Parallelism:</strong> 
-        <ul>
-            <li><em>GVL (Global VM Lock):</em> CRuby utilizes a GVL to serialize execution of Ruby bytecode, meaning standard Ruby threads run on a single CPU core for CPU-bound tasks, though they execute concurrently for non-blocking I/O.</li>
-            <li><em>Ractors (Ruby 3+):</em> An implementation of the Actor model that allows true parallel CPU-bound execution by eliminating shared mutable state across isolated execution units.</li>
-            <li><em>Fibers:</em> Light-weight, cooperative co-routines (used extensively with modern Fiber Schedulers for high-concurrency non-blocking evented async I/O).</li>
-        </ul>
-    </li>
-    <li><strong>Exception Handling:</strong> Handled natively using <code>begin...rescue...else...ensure...end</code> blocks, unwinding the call stack until caught.</li>
-</ul>
-
-<h3>5. Unique Patterns & Ecosystem</h3>
-<ul>
-    <li><strong>Domain-Specific Languages (DSLs):</strong> Ruby’s relaxed syntax and flexible metaprogramming allow developers to write internal DSLs that look like plain language (e.g., RSpec for testing, Active Record for databases).</li>
-    <li><strong>Metaprogramming & Dynamic Dispatch:</strong> Ruby permits runtime class modification ("open classes" or monkey patching). It relies heavily on dynamic dispatch techniques such as <code>method_missing</code>, <code>define_method</code>, and runtime evaluation (<code>instance_eval</code>).</li>
-    <li><strong>Frameworks & Ecosystem:</strong> 
-        </div><hr>
+    <li><strong>Reconnaissance & Scanning:</strong> Nmap, Mass</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
