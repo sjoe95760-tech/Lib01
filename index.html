@@ -17,7 +17,20 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
+<p><strong>Timestamp:</strong> 2026-11-24 11:44 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Created by Rasmus Lerdorf in 1994, PHP (originally "Personal Home Page", now a recursive acronym for "PHP: Hypertext Preprocessor") was designed with a pragmatic, utility-first mandate: to solve immediate web dynamic content problems without the boilerplate of C CGI binaries or the complexity of early Perl scripts. Its design philosophy centers around web-native execution, fast feedback loops, and an uncompromising "shared-nothing" request lifecycle.</p>
+<p>Architecturally, PHP evolved from a procedural template-rendering engine into a multi-paradigm language. While it supports functional idioms (first-class functions, closures, pure functions) and legacy procedural scripting, modern PHP (PHP 7.0+) is strictly optimized around a Java/C#-style classical Object-Oriented paradigm featuring nominal typing, interface contracts, traits, single-inheritance, and modern static analysis capabilities. Its core philosophy favors developer velocity and web application pragmatism over rigid academic purity.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>PHP uses a C-style syntax bounded by explicit execution tags (<code>&lt;?php ... ?&gt;</code>), enabling code execution context to be embedded directly within raw stream data (HTML, text). Lexical scoping relies on curly braces <code>{}</code>, and all statement boundaries require explicit semicolon <code>;</code> terminators. Variables are syntactically marked with a leading dollar sign (<code>$variable</code>), distinguishing them visually from functions, constants, or language constructs.</p>
+<p>Execution flows linearly within a HTTP request processing boundary. Code structure is standardized via the PSR-4 autoloading standard, which maps file paths directly to object namespaces (e.g., <code>App\Services\PaymentProcessor</code> maps to <code>App/Services/PaymentProcessor.php</code>). The type system is dynamically and weakly typed by default, but has evolved into a robust <em>gradual typing engine</em> supporting strict type declarations (<code>declare(strict_types=1);</code>), union/intersection types, generic-like docblock definitions via static analyzers (PHPStan/Psalm), property type-hinting, and <code>match</code> expression constructs.</p>
+
+<h3>3. Memory Management</h3>
+<p>PHP employs automated memory management utilizing a reference counting architecture combined with a cycle collector algorithm (based on the Bacon &amp; Rajan algorithm for synchronous non-collecting garbage collection). Under the Zend Engine, every variable container (<code>zval</code>) maintains a reference counter and flags. PHP uses a Copy-on-Write (CoW) optimization: assigning arrays or strings duplicates pointers rather than memory until a mutation occurs on one of the references.</p>
+</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
 <p><strong>Timestamp:</strong> 2026-11-24 01:19 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1346,36 +1359,7 @@ JavaScript utilizes a C-style syntax defined by curly braces <code>{}</code>, in
     <li><strong>Domain-Specific Languages (DSLs):</strong> Combining type-safe builders, lambdas with receivers, and infix notation allows developers to build clean internal DSLs (e.g., HTML rendering, Gradle configuration, UI layouts).</li>
 </ul>
 
-</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
-<p><strong>Timestamp:</strong> 2026-11-06 01:52 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>
-JavaScript was designed in 1995 by Brendan Eich at Netscape in just ten days. Its foundational imperative was to provide lightweight dynamic programmability to HTML documents without requiring the compilation overhead of C++ or Java. Syntactically, it borrowed Java's C-like control structures to feel approachable, but its underlying semantics were radically influenced by two functional and dynamic language pioneers: <strong>Scheme</strong> (first-class functions, lexical scoping) and <strong>Self</strong> (prototype-based object orientation).
-</p>
-<p>
-JavaScript solves the problem of high-concurrency client-side user interaction and asynchronous non-blocking I/O within dynamic execution environments. Architecturally, it operates as a dynamic, dynamically-typed, multi-paradigm language. Rather than enforcing strict structural class hierarchies, it relies on prototype delegation and higher-order functions. Today, it serves as a universal execution runtime across browsers, servers (Node.js/Bun/Deno), embedded devices, and native desktop shells.
-</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>
-JavaScript uses a standard C-style syntax using curly braces <code>{}</code> for block structures and parentheses <code>()</code> for expression evaluation. While statements are traditionally terminated with semicolons, the execution engine features Automatic Semicolon Insertion (ASI), making them syntactically optional in many contexts, though relying on ASI can introduce subtle syntax edge cases.
-</p>
-<p>
-Key syntactic rules and structural mechanics include:
-</p>
-<ul>
-  <li><strong>Variable Scoping:</strong> Legacy <code>var</code> is function-scoped and hoisted to the top of its context. Modern ES6+ standards favor <code>let</code> (re-assignable block-scoped) and <code>const</code> (immutable reference block-scoped), both of which reside in a "Temporal Dead Zone" (TDZ) prior to declaration.</li>
-  <li><strong>Dynamic & Weak Typing:</strong> Types are bound to values, not variables. Implicit coercion occurs liberally in non-strict comparisons (<code>==</code>), leading to implicit type conversions. The language provides strict equality (<code>===</code>) to enforce both identity and type equivalence.</li>
-  <li><strong>Module Organization:</strong> ES Modules (ESM) utilize static import/export statements (<code>import { foo } from './bar.js'</code>), enabling static analysis and tree-shaking, superseding legacy CommonJS (<code>require/module.exports</code>) environments.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>
-JavaScript executes within an automatically managed runtime environment (e.g., V8, JavaScriptCore, SpiderMonkey). Memory allocation occurs implicitly when objects, closures, or primitives are created on the stack or heap.
-</p>
-<ul>
-  <li><strong>Garbage Collection Engine:</strong> Modern engines implement a generational <strong>Mark-and-Sweep</strong> garbage collector. Memory is</div><hr>
+</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
