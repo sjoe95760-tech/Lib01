@@ -17,7 +17,25 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: C++</h2>
+<div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
+<p><strong>Timestamp:</strong> 2026-11-24 01:19 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>JavaScript was designed in 1995 by Brendan Eich at Netscape under extreme time constraints (10 days). Its primary purpose was to make the Web dynamic by executing client-side scripts inside the browser, avoiding full-page server round-trips for minor user interactions. To appeal to web developers while satisfying corporate directives, Eich fused Java-like syntax with concepts from Lisp (first-class functions) and Self (prototype-based object orientation).</p>
+<p>JavaScript is fundamentally a <strong>multi-paradigm language</strong>:</p>
+<ul>
+    <li><strong>Functional:</strong> Functions are first-class objects (can be passed as arguments, returned from other functions, and assigned to variables) with lexical scoping and closures.</li>
+    <li><strong>Prototype-based Object-Oriented:</strong> Objects inherit behavior directly from other objects via dynamic prototype delegation, rather than from static class blueprints.</li>
+    <li><strong>Imperative/Event-Driven:</strong> Controls control flow sequentially while reacting asynchronously to user interactions and network events.</li>
+</ul>
+<p>The key theoretical problem JavaScript solves is executing untrusted user-land code safely within a restricted, platform-agnostic client runtime without sacrificing continuous user interface responsiveness.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>JavaScript adopts a C-style syntax using curly braces <code>{}</code> to define block scopes and statement blocks. Statements are terminated by semicolons <code>;</code>, though the language engine includes an <strong>Automatic Semicolon Insertion (ASI)</strong> parser mechanism that infers missing semicolons at line breaks—a source of syntactic edge cases.</p>
+<p>Code organization is governed by variables, scopes, and module boundaries:</p>
+<ul>
+    <li><strong>Scoping & Binding:</strong> <code>var</code> provides function-scoped binding subject to hoisting (declaration moved to the top of execution context). Modern JavaScript relies on <code>let</code> (mutable) and <code>const</code> (immutable reference), both of which are block-scoped and bounded by the Temporal Dead Zone (TDZ).</li>
+    <li><strong>Type System:</strong> Dynamic and weakly typed. Variables hold references to dynamic values, not fixed types. Implicit type coercion occurs via complex abstract operations</div><hr><div class='lesson'><h2>🔍 Deep Dive: C++</h2>
 <p><strong>Timestamp:</strong> 2026-11-23 03:19 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1357,37 +1375,7 @@ Key syntactic rules and structural mechanics include:
 JavaScript executes within an automatically managed runtime environment (e.g., V8, JavaScriptCore, SpiderMonkey). Memory allocation occurs implicitly when objects, closures, or primitives are created on the stack or heap.
 </p>
 <ul>
-  <li><strong>Garbage Collection Engine:</strong> Modern engines implement a generational <strong>Mark-and-Sweep</strong> garbage collector. Memory is</div><hr><div class='lesson'><h2>🔍 Deep Dive: Perl</h2>
-<p><strong>Timestamp:</strong> 2026-11-05 15:52 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Perl (Practical Extraction and Report Language) was created by Larry Wall in 1987 as a Unix system administration tool designed to bridge the gap between shell scripting (sh, awk, sed) and low-level C programming. Its design philosophy is explicitly modeled after human linguistics rather than mathematical purity, encapsulated by the core axiom: <em>"There's More Than One Way To Do It"</em> (TMTOWTDI).</p>
-
-<p>Perl prioritizes authoring expressiveness, pragmatism, and context sensitivity over formal simplicity. From a programming language theory perspective, Perl is a dynamic, multiparadigm language. It is fundamentally procedural at its core, but provides rich capabilities for functional programming (first-class anonymous functions, lexically enclosed closures, list transformations) and object-oriented programming (historically package/bless based, modernly object systems like Moose or native feature classes).</p>
-
-<p>The core innovation of Perl's internal logic is <strong>Contextuality</strong>. Expressions do not have a static, intrinsic evaluation type; instead, their behavior and return types are governed dynamically by the syntactic expectation of the calling environment—primarily <em>Scalar Context</em> (expecting a single value) versus <em>List Context</em> (expecting a sequence of values).</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Perl syntax uses explicit sigils to denote variable categories, though the sigil morphs based on the context of access rather than just declaration:</p>
-
-<ul>
-  <li><code>$scalar</code>: Denotes a single value (string, integer, float, or reference).</li>
-  <li><code>@array</code>: Denotes an ordered integer-indexed list of scalars.</li>
-  <li><code>%hash</code>: Denotes an unordered key-value lookup map (string keys, scalar values).</li>
-  <li><code>&amp;subroutine</code>: Denotes a callable routine.</li>
-  <li><code>*glob</code>: Denotes a symbol table entry (typeglob) spanning all variable types for a given name.</li>
-</ul>
-
-<p>Code organization relies on C-style block structures using curly braces <code>{}</code> and mandatory statement-terminating semicolons <code>;</code>. Indentation is purely cosmetic. Perl permits statement modifiers (postfix conditionals and loops), allowing code to read like natural language: <code>do_something() if $condition;</code>.</p>
-
-<p>Perl heavily utilizes implicit default variables to minimize verbosity, most notably <code>$_</code> (the default topic variable for loops, regex matches, and built-in functions) and <code>@_</code> (the parameter array within subroutines). Scoping is explicit: <code>my</code> establishes lexically scoped variables (block-scoped static scoping), <code>our</code> declares package-scoped global aliases, and <code>local</code> provides dynamically scoped temporary overrides of package variables.</p>
-
-<h3>3. Memory Management</h3>
-<p>Perl utilizes a deterministic <strong>Reference Counting</strong> garbage collection scheme coupled with Copy-On-Write (COW) string optimization. Every value inside the Perl C-interpreter is represented by a structure (Scalar Value <code>SV</code>, Array Value <code>AV</code>, Hash Value <code>HV</code>, Code Value <code>CV</code>). Each structure contains an explicit reference counter (<code>Refcnt</code>).</p>
-
-<ul>
-  <li>When a variable reference goes out of lexical scope or is unlinked, its internal reference count is decremented immediately.</li>
-  <li>When the count hits zero, the memory allocated for that structure is synchronously reclaimed. This enables RAII (Resource Acquisition</div><hr>
+  <li><strong>Garbage Collection Engine:</strong> Modern engines implement a generational <strong>Mark-and-Sweep</strong> garbage collector. Memory is</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
