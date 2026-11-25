@@ -17,7 +17,24 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
+<div class='lesson'><h2>🔍 Deep Dive: C#</h2>
+<p><strong>Timestamp:</strong> 2026-11-25 04:39 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>C# was created by Anders Hejlsberg at Microsoft in 2000 as a flagship language for the .NET initiative. Designed initially to overcome the memory unsafety of C++ and the proprietary, vendor-locked nature of early Java implementations, C# aimed to deliver a modern, type-safe, object-oriented language optimized for component-based software engineering.</p>
+
+<p>The core philosophy of C# centers on <strong>pragmatic balance, high developer velocity, strong static typing, and evolutionary innovation</strong>. Rather than adhering rigidly to a single paradigm, C# has evolved into a multi-paradigm powerhouse:</p>
+<ul>
+    <li><strong>Object-Oriented (OOP):</strong> Strict class-based hierarchy, encapsulation, dynamic dispatch, and interface segregation form its foundational core.</li>
+    <li><strong>Functional Programming (FP):</strong> Heavily integrated via features like lambdas, immutability contracts (<code>records</code>), pattern matching, local functions, and first-class query expressions (LINQ).</li>
+    <li><strong>System-Level & High Performance:</strong> Provides controlled low-level execution primitives (pointers, <code>ref struct</code>, direct memory allocation via <code>Span&lt;T&gt;</code>) without discarding garbage collection.</li>
+</ul>
+<p>Unlike languages that maintain pure academic traits, C# prioritizes backwards compatibility alongside rapid adaptation to contemporary software engineering challenges (e.g., cloud-native microservices, asynchronous execution models, zero-allocation runtime paths).</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>C# features a classic C-style syntax using curly braces <code>{}</code> to define execution scopes and mandatory semicolons <code>;</code> for statement termination. Whitespace and indentation are syntactically irrelevant.</p>
+
+<h4>Logical Hierarchy</div><hr><div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
 <p><strong>Timestamp:</strong> 2026-11-24 21:39 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1305,46 +1322,7 @@ JavaScript utilizes a C-style syntax defined by curly braces <code>{}</code>, in
 </p>
 <ul>
     <li><strong>Variable Binding & Scoping:</strong> Lexical scope is governed by three primary keywords: legacy function-scoped <code>var</code> (subject to scope hoisting), and modern block-scoped <code>let</code> (mutable binding) and <code>const</code> (immutable binding reference, though the underlying object remains mutable).</li>
-    <li><strong>Type System Dynamics:</strong> JavaScript is dynamically and weakly typed. Values hold types, not variables. Primitive types include <code>Undefined</code>, <code>Null</code>, <code>Boolean</code>, <code>Number</code></div><hr><div class='lesson'><h2>🔍 Deep Dive: Web Application Security</h2>
-<p><strong>Timestamp:</strong> 2026-11-06 21:50 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p><strong>Web Application Security (Web AppSec)</strong> is the discipline of protecting web applications, services, and Application Programming Interfaces (APIs) throughout their lifecycle from malicious threats. It spans software development, deployment, architecture, and continuous monitoring.</p>
-<p>As organizations shifted to cloud computing and software-as-a-service (SaaS), the traditional network perimeter dissolved. Web applications now act as the front door to enterprise backend databases, corporate infrastructure, and proprietary intelligence. Because these interfaces are exposed intentionally to the public internet over ports 80 (HTTP) and 443 (HTTPS), standard network firewalls cannot block bad traffic without disrupting legitimate business. Unsecured web applications expose organizations to catastrophic risks, including large-scale data breaches, ransomware delivery, compliance penalties (e.g., GDPR, PCI-DSS), financial loss, and severe reputational damage.</p>
-
-<h3>2. How It Works</h3>
-<p>Web Application Security operates by analyzing and enforcing control mechanisms across the application runtime stack: the client layer (browser), the network transmission layer (HTTP/S), the application logic layer (code, middleware), and the data layer (databases, APIs, third-party services).</p>
-<p>Because HTTP is fundamentally stateless, web applications rely on tokens, session IDs, and cookies to track user state across requests. Securing web applications requires establishing zero-trust validation at every layer:</p>
-<ul>
-    <li><strong>Input Processing:</strong> Untrusted data originating from HTTP requests (headers, query parameters, POST bodies, cookies) must be validated, sanitized, and typed before processing.</li>
-    <li><strong>Authentication &amp; Session Management:</strong> Securing identity verification (OAuth 2.0, OIDC, SAML, Passkeys) and maintaining strong state isolation using encrypted or cryptographically signed tokens (e.g., JWTs with proper signing validation).</li>
-    <li><strong>Authorization Enforceability:</strong> Enforcing strict access control checks on every server-side endpoint to ensure users can only access data and operations explicitly permitted for their role.</li>
-    <li><strong>Output Contextual Encoding:</strong> Sanitizing dynamic server responses before rendering data in the browser to prevent execution of arbitrary client-side code.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<p>The arms race between offensive exploits (vectors) and defensive controls relies on key technical patterns:</p>
-
-<ul>
-    <li>
-        <strong>SQL Injection (SQLi)</strong>
-        <ul>
-            <li><em>Attack:</em> Inserting malicious SQL control characters into untrusted input fields to hijack database queries.</li>
-            <li><em>Defense:</em> Use parameterized queries (prepared statements) or Object-Relational Mapping (ORM) frameworks that separate code from data.</li>
-        </ul>
-    </li>
-    <li>
-        <strong>Cross-Site Scripting (XSS)</strong>
-        <ul>
-            <li><em>Attack:</em> Injecting malicious JavaScript that executes inside a victim's browser context to steal cookies, hijack sessions, or manipulate the DOM.</li>
-            <li><em>Defense:</em> Context-aware output encoding, strict <code>Content-Security-Policy</code> (CSP) HTTP headers, and using modern frontend frameworks (e.g., React, Angular) that auto-escape variables.</li>
-        </ul>
-    </li>
-    <li>
-        <strong>Broken Object Level Authorization (BOLA / IDOR)</strong>
-        <ul>
-            <li><em>Attack:</em> Modifying resource identifiers in a request (e.g., changing <code>/api/user/1001</code> to <code>/api/user/1002</code>) to access unauthorized records.</li>
-            <li><em>Defense:</em> Enforce centralized, server-side Access Control Lists (ACLs) or Attribute-Based Access Control (ABAC) verified against the session</div><hr>
+    <li><strong>Type System Dynamics:</strong> JavaScript is dynamically and weakly typed. Values hold types, not variables. Primitive types include <code>Undefined</code>, <code>Null</code>, <code>Boolean</code>, <code>Number</code></div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
