@@ -17,7 +17,20 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: C#</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Perl</h2>
+<p><strong>Timestamp:</strong> 2026-11-25 15:05 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Created by Larry Wall in 1987, a linguist and programmer, Perl ("Practical Extraction and Report Language") was designed to bridge the gap between low-level system languages like C and high-level, restricted scripting utilities like <code>sh</code>, <code>sed</code>, and <code>awk</code>. Its central mission was pragmatic text processing, report generation, and Unix systems administration.</p>
+<p>Perl’s design is guided by several foundational axioms:</p>
+<ul>
+    <li><strong>TMTOWTDI ("There's More Than One Way To Do It"):</strong> Unlike Python's zen of a single obvious path, Perl values expressive freedom, allowing programmers to write code matching their personal cognitive style or problem constraints.</li>
+    <li><strong>Linguistic Design Principles:</strong> Applied natural language concepts to computing. Concepts include contextual sensitivity (nouns change meaning based on singular/plural context), implicit topics (pronouns), and Huffman coding (frequently used constructs should be shorter than rare ones).</li>
+    <li><strong>Pragmatism Over Purity:</strong> Perl is fundamentally multi-paradigm. It began as a procedural, imperative shell-glue language, absorbed functional idioms (higher-order functions, map/fold), implemented nominal object-orientation via symbol table manipulation ("blessing"), and eventually adopted modern declarative class syntax.</li>
+</ul>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Perl uses a C-derived syntax with block structures delimited by curly braces <code>{}</code>, explicit statement terminators (semicolons <code>;</code>), and variable sigils that define the data container</div><hr><div class='lesson'><h2>🔍 Deep Dive: C#</h2>
 <p><strong>Timestamp:</strong> 2026-11-25 04:39 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1300,29 +1313,7 @@ TypeScript is fundamentally multi-paradigm. It heavily favors <strong>Functional
   <li><strong>ARC Mechanics:</strong> The compiler injects inline <code>retain</code> and <code>release</code> instructions into the Swift Intermediate Language (SIL) during compilation. Memory is freed instantly when reference counts drop to zero, preventing GC latency spikes or non-deterministic pauses.</li>
   <li><strong>Reference Cycles & Retain Cycle Mitigation:</strong> Developers must manage reference relationships to prevent memory leaks using three reference qualifiers:
     <ul>
-      <li><code>strong</code>: Default ownership, increments the reference count.</div><hr><div class='lesson'><h2>🔍 Deep Dive: JavaScript</h2>
-<p><strong>Timestamp:</strong> 2026-11-07 01:24 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>
-JavaScript was designed in 1995 by Brendan Eich at Netscape under an explicit imperative: add lightweight, dynamic scriptability to the web browser. Developed in just 10 days, its theoretical foundation is an amalgam of three distinct programming language lineages:
-</p>
-<ul>
-    <li><strong>Scheme:</strong> Inspired JavaScript's core functional programming capabilities, including first-class functions, lexical scoping, and dynamic typing.</li>
-    <li><strong>Self:</strong> Provided the paradigm for object orientation via delegation-based prototypal inheritance rather than class-based inheritance.</li>
-    <li><strong>Java:</strong> Influenced the C-like syntax, keyword naming conventions, and basic visual structure to appeal to developers in the mid-1990s.</li>
-</ul>
-<p>
-Architecturally, JavaScript was built to solve the execution latency of client-server roundtrips by enabling dynamic, in-browser execution. Over three decades, it evolved from a browser-bound scripting tool into a dynamic, multi-paradigm runtime engine (ECMAScript specification) powering client-side applications, high-throughput backend services (Node.js, Bun), and embedded edge functions.
-</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>
-JavaScript utilizes a C-style syntax defined by curly braces <code>{}</code>, infix operators, and statement-ending semicolons (which can be omitted via Automatic Semicolon Insertion rules, though explicit usage is standard practice in enterprise codebases).
-</p>
-<ul>
-    <li><strong>Variable Binding & Scoping:</strong> Lexical scope is governed by three primary keywords: legacy function-scoped <code>var</code> (subject to scope hoisting), and modern block-scoped <code>let</code> (mutable binding) and <code>const</code> (immutable binding reference, though the underlying object remains mutable).</li>
-    <li><strong>Type System Dynamics:</strong> JavaScript is dynamically and weakly typed. Values hold types, not variables. Primitive types include <code>Undefined</code>, <code>Null</code>, <code>Boolean</code>, <code>Number</code></div><hr>
+      <li><code>strong</code>: Default ownership, increments the reference count.</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
