@@ -17,7 +17,17 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<div class='lesson'><h2>🔍 Deep Dive: TypeScript</h2>
+<p><strong>Timestamp:</strong> 2026-11-27 09:13 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Designed by Anders Hejlsberg at Microsoft and released in 2012, TypeScript was conceived to solve the problem of scaling JavaScript to enterprise-level codebases. JavaScript's dynamic, untyped nature makes refactoring risky and static analysis near-impossible at scale. TypeScript's core thesis is simple: <strong>provide a compile-time static type system over ECMAScript without changing runtime behavior</strong>.</p>
+<p>Key theoretical pillars include:</p>
+<ul>
+    <li><strong>Structural Typing (Duck Typing formalized):</strong> Unlike nominal type systems (like Java or C#), where type equality is driven by explicit class names and declarations, TypeScript uses structural subtyping. If Type <em>A</em> has all the shape requirements of Type <em>B</em>, <em>A</em> is a subtype of <em>B</em>, regardless of how it was declared.</li>
+    <li><strong>Compile-Time Type Erasure:</strong> TypeScript types exist purely as an architectural blueprint during development and static analysis. Upon compilation (transpilation), types are entirely stripped, leaving clean, standard ECMAScript. TypeScript imposes zero runtime type overhead.</li>
+    <li><strong>Pragmatic Unsoundness by Design:</strong> TypeScript intentionally sacrifices mathematical type-soundness in specific scenarios (e.g., array index lookups returning <code>T</code> instead of <code>T | undefined</code> by default, bivariant function parameters) to prioritize developer ergonomics, compatibility with idiomatic JavaScript, and performance.</li>
+    <li><strong>Multi-Paradigm Support:</strong> It seamlessly blends Object-Oriented Programming (OOP) with Object/Class primitives, Functional Programming (FP) with first-class</div><hr><div class='lesson'><h2>🔍 Deep Dive: Python</h2>
 <p><strong>Timestamp:</strong> 2026-11-27 00:12 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1295,15 +1305,7 @@ TypeScript is fundamentally multi-paradigm. It heavily favors <strong>Functional
 
 <h3>4. Real-World Examples</h3>
 <ul>
-    <li><strong>MGM Resorts & Caesars Entertainment (2023):</strong> Threat actors associated with the "Scattered Spider" (UNC3944) group utilized targeted vishing and OSINT from LinkedIn to call corporate IT help desks. Imperson</div><hr><div class='lesson'><h2>🔍 Deep Dive: Scala</h2>
-<p><strong>Timestamp:</strong> 2026-11-07 14:31 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Created by Martin Odersky at EPFL in 2004, Scala (short for <em>Scalable Language</em>) was designed to solve the rigid verbosity, weak abstraction capabilities, and paradigm segregation present in early Java. Its core design philosophy is the seamless fusion of <strong>Object-Oriented Programming (OOP)</strong> and <strong>Pure Functional Programming (FP)</strong> within a single statically typed type system targeting the JVM (and later JS and Native via Scala.js and Scala Native).</p>
-<p>In Scala, every value is an object, and every function is a value. It eliminates the dichotomy between primitive and reference types present in Java, while treating functions as first-class citizens. The language was engineered to scale from small scripting tasks to massive, distributed enterprise systems (such as Apache Spark). Scala's type system is one of the most powerful in commercial software engineering, featuring expressiveness derived from system $F_{<:}$ with path-dependent types, higher-kinded types, and ad-hoc polymorphism via typeclasses.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Scala’s syntax is unified around <strong>expressions</strong> rather than statements. Almost every construct—including <code>if/else</code> blocks, <code>try/catch</code>, and <code>match</code> statements—returns a value. Semicolons are automatically inferred by newline semantics and are practically non-existent in</div><hr>
+    <li><strong>MGM Resorts & Caesars Entertainment (2023):</strong> Threat actors associated with the "Scattered Spider" (UNC3944) group utilized targeted vishing and OSINT from LinkedIn to call corporate IT help desks. Imperson</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
