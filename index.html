@@ -17,7 +17,22 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Perl</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Python</h2>
+<p><strong>Timestamp:</strong> 2026-11-27 00:12 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>Python was created in 1989 by Guido van Rossum as a successor to the ABC language, designed explicitly to prioritize human readability, developer velocity, and cognitive clarity over raw machine execution speed. It addresses the gap between low-level system programming languages (like C) and high-level shell scripting environments.</p>
+<p>Architecturally, Python is a dynamically typed, strongly typed, multi-paradigm interpreted language. Its design philosophy is codified in the "Zen of Python" (PEP 20), emphasizing explicit mechanisms, simplicity, and a single obvious way to accomplish tasks. It unifies Object-Oriented (OOP), Procedural, and Functional programming constructs without forcing a single paradigm upon the developer. The core abstraction principle is that <strong>everything in Python is a first-class object</strong>—including functions, modules, classes, and primitive types.</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>Python uses the "off-side rule," where code block boundaries are defined by explicit whitespace indentation rather than curly braces (<code>{}</code>) or explicit block-closing keywords. Semicolons are valid statement terminators but are syntactically idiomatic anti-patterns except when chaining small, single-line commands.</p>
+<ul>
+    <li><strong>Type System:</strong> Dynamic and strong. Variable names are un-typed references (pointers) bound to typed objects in heap memory. Type checks occur strictly at runtime, though optional static type hinting (PEP 484) is parsed at compile-time for external static analysis tools (e.g., <code>mypy</code>) without altering runtime execution behavior.</li>
+    <li><strong>Code Organization:</strong> Code is organized hierarchically into Modules (single <code>.py</code> files) and Packages (directories containing an <code>__init__.py</code> file).</li>
+    <li><strong>Control Flow:</strong> Standard control structures include standard branching (<code>if/elif/else</code>), loops (<code>while</code>, <code>for</code>), and structural pattern matching (<code>match/case</code> introduced in Python 3.10). Loops in Python operate explicitly via the <em>Iterator Protocol</em> (<code>__iter__()</code> and <code>__next__()</code>), translating <code>for x in iterable:</code> into continuous call operations until a <code>StopIteration</code> exception is raised.</li>
+</ul>
+
+<h3></div><hr><div class='lesson'><h2>🔍 Deep Dive: Perl</h2>
 <p><strong>Timestamp:</strong> 2026-11-25 15:05 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1288,32 +1303,7 @@ TypeScript is fundamentally multi-paradigm. It heavily favors <strong>Functional
 <p>In Scala, every value is an object, and every function is a value. It eliminates the dichotomy between primitive and reference types present in Java, while treating functions as first-class citizens. The language was engineered to scale from small scripting tasks to massive, distributed enterprise systems (such as Apache Spark). Scala's type system is one of the most powerful in commercial software engineering, featuring expressiveness derived from system $F_{<:}$ with path-dependent types, higher-kinded types, and ad-hoc polymorphism via typeclasses.</p>
 
 <h3>2. Syntax, Structure & Flow</h3>
-<p>Scala’s syntax is unified around <strong>expressions</strong> rather than statements. Almost every construct—including <code>if/else</code> blocks, <code>try/catch</code>, and <code>match</code> statements—returns a value. Semicolons are automatically inferred by newline semantics and are practically non-existent in</div><hr><div class='lesson'><h2>🔍 Deep Dive: Swift</h2>
-<p><strong>Timestamp:</strong> 2026-11-07 07:56 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Swift was designed by Chris Lattner and Apple to systematically replace Objective-C, a 1980s-era hybrid language combining C's low-level execution model with Smalltalk's dynamic dynamic-dispatch messaging runtime. Objective-C suffered from manual pointer arithmetic, unchecked null dereferences, fragile binary interfaces, and verbose syntax. Swift was architected around three non-negotiable vectors: <strong>Safety, Speed, and Expressiveness</strong>.</p>
-<p>From a programming language theory (PLT) perspective, Swift is a compiled, strongly and statically typed, multi-paradigm language with rich type inference. It bridges high-level abstractions with zero-cost low-level performance via LLVM infrastructure. Its design philosophy centers on <em>Protocol-Oriented Programming (POP)</em> combined with heavy functional influence (monadic Optionals, immutable-by-default value semantics, first-class functions) and modern object-oriented programming (OOP). Swift explicitly forces developers to make invalid states unrepresentable at compile-time rather than relying on runtime exceptions.</p>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>Swift features a clean syntax derived from the ALGOL/C family, influenced by languages like Rust, Haskell, and CLU. Code blocks are defined by curly braces <code>{}</code>, and statement-terminating semicolons are optional and idiomaticly omitted. Code layout uses Swift Package Manager (SPM) or Xcode module systems—headers (<code>.h</code> files) are eliminated; access control and module imports define boundaries.</p>
-<p>Key syntactic mechanics include:</p>
-<ul>
-  <li><strong>Explicit Argument Labels:</strong> Function calls enforce named parameters to enhance readability at call sites (e.g., <code>func connect(to host: String, port: Int)</code> invoked as <code>connect(to: "127.0.0.1", port: 8080)</code>).</li>
-  <li><strong>Optionology & Immutability:</strong> Variables declared with <code>let</code> are immutable (constants); <code>var</code> defines mutable state. Types are non-nullable by default. Nullability is explicitly modeled via the <code>Optional&lt;Wrapped&gt;</code> monad (syntactic sugar: <code>Type?</code>).</li>
-  <li><strong>Guarded Flow Control:</strong> Control flow favors early exits via <code>guard</code> statements, which statically bind unwrapped optionals into the remaining outer block scope, avoiding nested <code>if-let</code> pyramids of doom.</li>
-  <li><strong>Pattern Matching & Switches:</strong> <code>switch</code> statements are exhaustive at compile time, supporting complex tuple destructuring, value binding, and type casting without implicit fallthrough.</li>
-  <li><strong>Access Modifiers:</strong> Ranging strictly from broadest to narrowest: <code>open</code>, <code>public</code>, <code>package</code>, <code>internal</code> (default), <code>fileprivate</code>, and <code>private</code>.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>Unlike managed runtimes using tracing Garbage Collection (e.g., JVM, Go) or languages relying strictly on manual allocation (C), Swift uses <strong>Deterministic Automatic Reference Counting (ARC)</strong> for heap-allocated reference types (classes, closures).</p>
-
-<ul>
-  <li><strong>ARC Mechanics:</strong> The compiler injects inline <code>retain</code> and <code>release</code> instructions into the Swift Intermediate Language (SIL) during compilation. Memory is freed instantly when reference counts drop to zero, preventing GC latency spikes or non-deterministic pauses.</li>
-  <li><strong>Reference Cycles & Retain Cycle Mitigation:</strong> Developers must manage reference relationships to prevent memory leaks using three reference qualifiers:
-    <ul>
-      <li><code>strong</code>: Default ownership, increments the reference count.</div><hr>
+<p>Scala’s syntax is unified around <strong>expressions</strong> rather than statements. Almost every construct—including <code>if/else</code> blocks, <code>try/catch</code>, and <code>match</code> statements—returns a value. Semicolons are automatically inferred by newline semantics and are practically non-existent in</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
