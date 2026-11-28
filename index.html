@@ -17,7 +17,42 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Social Engineering</h2>
+<div class='lesson'><h2>🔍 Deep Dive: Java</h2>
+<p><strong>Timestamp:</strong> 2026-11-28 02:18 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>
+Java was conceived at Sun Microsystems in 1991 (originally named Oak) by James Gosling to solve the structural fragility, platform dependency, and memory management pitfalls of C and C++. Its central architectural axiom is <em>"Write Once, Run Anywhere" (WORA)</em>. Java achieves platform independence by compiling source code not to native machine code, but to an intermediate representation known as <strong>Java Bytecode</strong>, which executes inside a virtual machine environment: the <strong>Java Virtual Machine (JVM)</strong>.
+</p>
+<p>
+From a language theory perspective, Java was historically a strict, statically typed, class-based Object-Oriented Programming (OOP) language utilizing a nominal type system. It deliberately excluded complex C++ primitives such as pointer arithmetic, explicit memory deallocation, header files, operator overloading, and multiple implementation inheritance to optimize for system safety, maintainability, and developer scalability. 
+</p>
+<p>
+In modern iterations (Java 8 through 21+), Java has evolved into a pragmatic multi-paradigm language. While retaining its foundational classic nominal OOP roots, it incorporates functional programming constructs (lambda expressions, first-class functions via SAM/Functional Interfaces, lazy evaluation streams) and algebraic data types (sealed classes, records, and pattern matching).
+</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>
+Java inherits C-style syntax, relying on explicit braces <code>{}</code> to define lexical scope block structures and mandatory semicolons <code>;</code> to terminate statements. Whitespace is insignificant.
+</p>
+<p>
+Code organization enforces a strict, rigid structural hierarchy:
+</p>
+<ul>
+    <li><strong>Compilation Unit:</strong> Every <code>.java</code> source file corresponds directly to types (classes, interfaces, enums, records). A public class name must strictly match the file name.</li>
+    <li><strong>Package Namespaces:</strong> Code is organized into hierarchical namespaces via packages (e.g., <code>package com.architecture.system;</code>), which strictly map to physical directory structures on the file system.</li>
+    <li><strong>Compilation Pipeline:</strong> Source code (<code>.java</code>) &rarr; Compiler (<code>javac</code>) &rarr; Bytecode (<code>.class</code> files) &rarr; ClassLoader &rarr; JVM Execution Engine (JIT Compiler / Interpreter).</li>
+</ul>
+<p>
+Control flow uses standard imperative structures (<code>if/else</code>, <code>for</code> loops, <code>while</code> loops, <code>try-catch-finally</code>) alongside advanced pattern-matching <code>switch</code> expressions that can destructure object records directly.
+</p>
+
+<h3>3. Memory Management</h3>
+<p>
+Java eliminates manual memory management entirely, substituting explicit allocation (`malloc`/`free` or `new`/`delete`) with an automated execution context managed by the JVM runtime.
+</p>
+<ul>
+    <li><strong>Stack vs. Heap Execution Context:</strong> Local variable primitives and reference pointers live on the thread stack. All object instances themselves reside exclusively on the managed</div><hr><div class='lesson'><h2>🔍 Deep Dive: Social Engineering</h2>
 <p><strong>Timestamp:</strong> 2026-11-27 19:13 UTC</p>
 
 <h3>1. What It Is & Why It Matters</h3>
@@ -1212,65 +1247,7 @@ TypeScript is fundamentally multi-paradigm. It heavily favors <strong>Functional
 </ul>
 
 <h3>3. Memory Management</h3>
-<p>C++ does not rely on a runtime Garbage Collector (GC). Memory is divided primarily into static storage,</div><hr><div class='lesson'><h2>🔍 Deep Dive: Zero Trust Architecture</h2>
-<p><strong>Timestamp:</strong> 2026-11-07 23:11 UTC</p>
-
-<h3>1. What It Is & Why It Matters</h3>
-<p><strong>Zero Trust Architecture (ZTA)</strong> is an enterprise cybersecurity framework rooted in a fundamental paradigm shift: <em>"Never trust, always verify."</em> Unlike legacy network security models built on implicit trust based on physical or network location, Zero Trust operates under the core assumption that threats exist both outside and inside the network environment at all times.</p>
-
-<p><strong>The Problem It Solves:</strong> Traditional security relied on a "castle-and-moat" strategy (perimeter-based defense). Once an adversary breached the perimeter—via stolen credentials, phishing, unpatched edge devices, or insider threat—they inherited broad, unchecked lateral access across internal networks. In modern IT environments characterized by multi-cloud infrastructure, remote workforces, and third-party integrations, the traditional network perimeter no longer exists. Zero Trust solves this by eliminating implicit trust, enforcing strict access controls at every transaction, and minimizing the blast radius of any breach.</p>
-
-<h3>2. How It Works</h3>
-<p>Zero Trust relies on three foundational tenets defined by NIST (SP 800-207):</p>
-<ul>
-    <li><strong>Continuous Verification:</strong> Always authenticate and authorize based on all available data points (user identity, physical location, device posture, workload state, and real-world behavioral telemetry).</li>
-    <li><strong>Limit the Blast Radius (Least Privilege):</strong> Enforce Just-In-Time (JIT) and Just-Enough-Access (JEA) controls using Role-Based Access Control (RBAC) and Attribute-Based Access Control (ABAC) to minimize data exposure.</li>
-    <li><strong>Assume Breach:</strong> Design systems assuming attackers already control parts of the environment. Encrypt all communication end-to-end, log every transaction, and utilize micro-segmentation to prevent lateral movement.</li>
-</ul>
-
-<p><strong>Architectural Mechanics:</strong></p>
-<ul>
-    <li><strong>Policy Decision Point (PDP):</strong> Evaluates access requests against organizational security policies using dynamic context (e.g., identity status, device health, risk score).</li>
-    <li><strong>Policy Enforcement Point (PEP):</strong> Gateways or agents that intercept, inspect, and enforce decisions made by the PDP before granting access to a resource.</li>
-    <li><strong>Micro-segmentation:</strong> Deconstructing networks into tiny isolated zones to secure individual workloads, applications, or data stores independently.</li>
-</ul>
-
-<h3>3. Common Attack/Defense Techniques</h3>
-<table>
-    <thead>
-        <tr>
-            <th>Threat / Attack Vector</th>
-            <th>Offensive Exploitation Technique</th>
-            <th>Zero Trust Defensive Control</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><strong>Credential Theft / Phishing</strong></td>
-            <td>Adversary-in-the-Middle (AiTM) phishing to steal passwords and session tokens.</td>
-            <td><strong>Phishing-Resistant MFA:</strong> Enforcement of FIDO2/WebAuthn hardware tokens combined with dynamic continuous authentication.</td>
-        </tr>
-        <tr>
-            <td><strong>Lateral Movement</strong></td>
-            <td>Pass-the-Hash / Pass-the-Ticket to move across internal subnet ranges after initial access.</td>
-            <td><strong>Micro-segmentation & ZTNA:</strong> Software-Defined Perimeters (SDP) that shroud internal services, preventing discovery and network-level traversal.</td>
-        </tr>
-        <tr>
-            <td><strong>Session Token Hijacking</strong></td>
-            <td>Stealing active browser cookies/tokens to bypass standard multi-factor authentication.</td>
-            <td><strong>Continuous Adaptive Trust (CAEP/RISC):</strong> Real-time assessment of session risk; revoking access immediately if IP, device state, or behavior anomalies trigger risk thresholds.</td>
-        </tr>
-        <tr>
-            <td><strong>Supply Chain Compromise</strong></td>
-            <td>Injecting malicious code into trusted software dependencies or administrative scripts.</td>
-            <td><strong>Workload Identity & Least Privilege:</strong> Mutual TLS (mTLS) with strict microservices identity verification, enforcing sandboxing and minimal application execution permissions.</td>
-        </tr>
-    </tbody>
-</table>
-
-<h3>4. Real-World Examples</h3>
-<ul>
-    <li><strong>Google BeyondCorp (Origin Scenario):</strong> Following <em>Operation Aurora</em></div><hr>
+<p>C++ does not rely on a runtime Garbage Collector (GC). Memory is divided primarily into static storage,</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
