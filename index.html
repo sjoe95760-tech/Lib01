@@ -17,7 +17,28 @@
     <p>This page is automatically updated hourly by Gemini (free tier).
        It learns the logic, structure, and patterns of programming languages and cybersecurity topics.</p>
     <hr>
-<div class='lesson'><h2>🔍 Deep Dive: Java</h2>
+<div class='lesson'><h2>🔍 Deep Dive: PHP</h2>
+<p><strong>Timestamp:</strong> 2026-11-28 11:01 UTC</p>
+
+<h3>1. Core Logic & Design Philosophy</h3>
+<p>PHP (originally Personal Home Page, now a recursive acronym for <em>PHP: Hypertext Preprocessor</em>) was created by Rasmus Lerdorf in 1994. Its initial design philosophy was radically pragmatic: solve the immediate engineering problem of rendering dynamic content within HTML documents with minimal operational overhead. Unlike general-purpose systems languages designed for long-running processes, PHP was designed specifically for the request-response lifecycle of the Web.</p>
+<p>Architecturally, PHP operates on a <strong>shared-nothing execution model</strong>. Each HTTP request is isolated into a transient process or worker thread context, initializing its state, executing business logic, returning a payload, and destroying its heap memory immediately afterward. Over three decades, PHP has evolved from a procedural CGI scripting wrapper into a modern, multi-paradigm language featuring strict nominal typing, robust Object-Oriented Programming (OOP) modelled heavily after Java/C#, and functional programming primitives (first-class functions, closures, pure arrow functions, and immutability attributes).</p>
+
+<h3>2. Syntax, Structure & Flow</h3>
+<p>PHP uses a C-style syntax mixed with Perl-style variable sigils. Code execution is triggered inside processing tags (<code>&lt;?php ... ?&gt;</code>), allowing raw text or HTML to coexist outside these boundaries within the same compilation unit.</p>
+<ul>
+  <li><strong>Sigils &amp; Scoping:</strong> Variables are explicitly prefixed with a dollar sign (<code>$variable</code>). Variable scoping is function-scoped rather than block-scoped by default, though global variables require explicit imported binding via the <code>global</code> keyword or <code>$GLOBALS</code> superglobal.</li>
+  <li><strong>Delimiters:</strong> Statements are terminated with strict semicolons (<code>;</code>). Code blocks use standard C curly braces (<code>{}</code>).</li>
+  <li><strong>Type System:</strong> PHP implements a gradual, dynamic type system with dynamic runtime coercions (weak mode) that can be overridden using <code>declare(strict_types=1);</code>. Modern PHP (8.x+) supports scalar typing, return types, union types (<code>TypeA|TypeB</code>), intersection types (<code>TypeA&amp;TypeB</code>), disjunctive normal form (DNF) types, and <code>never</code>/<code>mixed</code> primitives.</li>
+  <li><strong>Organization:</strong> Modern PHP abandons legacy file inclusion (`require`/`include`) in favor of standard PSR-4 autoloading. Namespaces (<code>namespace App\Services;</code>) map directly to directory structures, dynamically resolved at runtime via Composer's autoloader map.</li>
+</ul>
+
+<h3>3. Memory Management</h3>
+<p>PHP manages memory using a hybrid strategy dominated by dynamic reference counting and dynamic garbage collection within the Zend Engine runtime:</p>
+<ul>
+  <li><strong>Reference Counting with Copy-on-Write (CoW):</strong> Every PHP variable container (<code>zval</code>) maintains a reference counter. When a variable is assigned to another variable, PHP does not duplicate memory; it increments the reference count. Allocation occurs only when one of the variables is modified (Copy-on-Write).</li>
+  <li><strong>Cyclic Garbage Collection:</strong> To prevent memory leaks from circular object references, PHP implements a cyclic garbage collector based on the Bacon-Rajan algorithm. When a <code>zval</code> reference count drops but remains non-zero, it is flagged in a root buffer for potential cycle collection and swept when the buffer fills.</li>
+  <li><strong>Transient Heap Life:</strong> In traditional FPM (FastCGI Process Manager) setups, memory allocation is bounded by request lifetime. The engine performs a</div><hr><div class='lesson'><h2>🔍 Deep Dive: Java</h2>
 <p><strong>Timestamp:</strong> 2026-11-28 02:18 UTC</p>
 
 <h3>1. Core Logic & Design Philosophy</h3>
@@ -1224,30 +1245,7 @@ TypeScript is fundamentally multi-paradigm. It heavily favors <strong>Functional
 <p>Ruby solves the problem of rigid, verbose, and computer-centric syntax by prioritizing context-aware expressiveness. It sacrifices raw execution speed to give software architects high-abstraction tools, domain-specific language (DSL) creation primitives, and rapid prototyping capabilities.</p>
 
 <h3>2. Syntax, Structure & Flow</h3>
-<p>Ruby syntax reads remarkably close to pseudocode or natural English. It abandons C-style braces for block scope in favor of explicit keyword delimiters (e.g., <code>def...end</code>, <code>class...end</code>, <code>if...end</div><hr><div class='lesson'><h2>🔍 Deep Dive: C++</h2>
-<p><strong>Timestamp:</strong> 2026-11-08 03:05 UTC</p>
-
-<h3>1. Core Logic & Design Philosophy</h3>
-<p>Created by Bjarne Stroustrup in 1979 (originally as "C with Classes") at Bell Labs, C++ was designed to combine the high performance, hardware manipulation capabilities, and predictability of C with the high-level structural abstractions of Simula. Its fundamental design vision centers around the <strong>Zero-Overhead Principle</strong>: <em>What you don't use, you don't pay for; and what you do use, you couldn't write any better by hand.</em></p>
-<p>C++ is non-opinionated and multi-paradigm by design. It supports:</p>
-<ul>
-  <li><strong>Procedural Programming:</strong> Direct control over data execution flow, pointers, memory offset calculations, and functions.</li>
-  <li><strong>Object-Oriented Programming (OOP):</strong> Encapsulation, inheritance, and dynamic polymorphism via virtual dispatch tables (vtables).</li>
-  <li><strong>Generic Programming:</strong> Compile-time abstraction through templates, enabling parametric polymorphism without runtime cost.</li>
-  <li><strong>Compile-Time Metaprogramming &amp; Functional Traits:</strong> Evaluation of execution logic at compile time via <code>constexpr</code>, <code>consteval</code>, concepts, lambdas, and higher-order range abstractions.</li>
-</ul>
-
-<h3>2. Syntax, Structure & Flow</h3>
-<p>C++ inherits C-style block syntax using curly braces (<code>{}</code>) to delineate lexical scopes and semicolons (<code>;</code>) to terminate statements. Code organization is based on independent <strong>Translation Units (TUs)</strong>: source files (<code>.cpp</code>) are compiled into object files (<code>.o</code>/<code>.obj</code>) after headers (<code>.h</code>/<code>.hpp</code>) are expanded by the preprocessor, which are then linked into a single binary. C++20 introduced a native <strong>Modules system</strong> (<code>import std;</code>) to mitigate preprocessor overhead and textual inclusion issues.</p>
-<p>Key syntactic characteristics include:</p>
-<ul>
-  <li><strong>Explicit Value Semantics:</strong> By default, variables are value-types residing on the stack or in-place within data structures. Reference semantics (pointers <code>*</code> or references <code>&amp;</code>) must be specified explicitly.</li>
-  <li><strong>Explicit Cast Mechanics:</strong> Replaces unsafe C-style casting with type-safe operations: <code>static_cast</code>, <code>dynamic_cast</code>, <code>const_cast</code>, and raw bit-interpretation via <code>reinterpret_cast</code>.</li>
-  <li><strong>Strict Compilation &amp; Typing:</strong> Statically typed with structural type inference via <code>auto</code>, <code>decltype</code>, and structural binding patterns.</li>
-</ul>
-
-<h3>3. Memory Management</h3>
-<p>C++ does not rely on a runtime Garbage Collector (GC). Memory is divided primarily into static storage,</div><hr>
+<p>Ruby syntax reads remarkably close to pseudocode or natural English. It abandons C-style braces for block scope in favor of explicit keyword delimiters (e.g., <code>def...end</code>, <code>class...end</code>, <code>if...end</div><hr>
     <footer>🔄 Updated hourly by Gemini (free tier). No human interaction required.</footer>
 </body>
 </html>
